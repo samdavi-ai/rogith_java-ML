@@ -1,0 +1,195 @@
+{
+  "modelName": "MobileNetV2 E-Waste Classifier",
+  "version": "1.0.0",
+  "framework": "TensorFlow 2.17.0 / Keras 3.15.1",
+  "architecture": "ImageNet MobileNetV2 feature extractor, GlobalAveragePooling2D, Dropout(0.25), Dense logits head; last 20 backbone layers fine-tuned with BatchNorm frozen",
+  "pretrainedWeights": "MobileNetV2 ImageNet weights (Keras official weights)",
+  "seed": 42,
+  "input": {
+    "width": 224,
+    "height": 224,
+    "channels": 3,
+    "layout": "NCHW",
+    "dtype": "float32",
+    "normalization": "RGB / 127.5 - 1.0"
+  },
+  "classMappingFile": "ml/classes.json",
+  "classes": [
+    {
+      "id": 0,
+      "name": "battery_waste",
+      "displayName": "Battery waste",
+      "datasetLabel": "Battery_Waste"
+    },
+    {
+      "id": 1,
+      "name": "keyboard",
+      "displayName": "Keyboard",
+      "datasetLabel": "Keyboard"
+    },
+    {
+      "id": 2,
+      "name": "light_bulb",
+      "displayName": "Light bulb",
+      "datasetLabel": "Light_Bulb"
+    },
+    {
+      "id": 3,
+      "name": "mobile_phone",
+      "displayName": "Mobile phone",
+      "datasetLabel": "Mobile"
+    },
+    {
+      "id": 4,
+      "name": "mouse",
+      "displayName": "Mouse",
+      "datasetLabel": "Mouse"
+    },
+    {
+      "id": 5,
+      "name": "pcb",
+      "displayName": "Printed circuit board",
+      "datasetLabel": "PCB"
+    }
+  ],
+  "batchSize": 16,
+  "optimizer": "Adam",
+  "frozenLearningRate": 0.001,
+  "fineTuneLearningRate": 1e-05,
+  "frozenEpochLimit": 12,
+  "fineTuneEpochLimit": 8,
+  "earlyStopping": {
+    "monitor": "validation loss",
+    "patience": 3,
+    "restoreBestWeights": true
+  },
+  "classWeights": {
+    "0": 0.8462783171521036,
+    "1": 0.9685185185185186,
+    "2": 2.8118279569892475,
+    "3": 0.8223270440251572,
+    "4": 1.8546099290780143,
+    "5": 0.5970319634703196
+  },
+  "trainImagesIncludingTrainOnlyAugmentations": 523,
+  "trainImagesPerClass": {
+    "battery_waste": 103,
+    "keyboard": 90,
+    "light_bulb": 31,
+    "mobile_phone": 106,
+    "mouse": 47,
+    "pcb": 146
+  },
+  "validationMetricsAtSelectedCheckpoint": {
+    "loss": 0.018005644902586937,
+    "accuracy": 1.0
+  },
+  "history": {
+    "frozen": {
+      "accuracy": [
+        0.6443594694137573,
+        0.9273422360420227,
+        0.9560229182243347,
+        0.9923518300056458,
+        0.9923518300056458,
+        0.9885277152061462,
+        0.9942638874053955,
+        0.9942638874053955,
+        0.9980879426002502,
+        0.9961758852005005,
+        0.9961758852005005,
+        0.9980879426002502
+      ],
+      "loss": [
+        1.0944820642471313,
+        0.2818501591682434,
+        0.1545128971338272,
+        0.08962827920913696,
+        0.07288017868995667,
+        0.054648932069540024,
+        0.04860042408108711,
+        0.04040355980396271,
+        0.03299383074045181,
+        0.02778635360300541,
+        0.024811778217554092,
+        0.021864768117666245
+      ],
+      "val_accuracy": [
+        0.9166666865348816,
+        0.9333333373069763,
+        0.949999988079071,
+        0.9666666388511658,
+        0.9666666388511658,
+        0.9833333492279053,
+        0.9833333492279053,
+        0.9833333492279053,
+        0.9833333492279053,
+        0.9833333492279053,
+        0.9833333492279053,
+        0.9833333492279053
+      ],
+      "val_loss": [
+        0.42169296741485596,
+        0.26412928104400635,
+        0.1833585798740387,
+        0.144984170794487,
+        0.12494923919439316,
+        0.09857457131147385,
+        0.08828642219305038,
+        0.0834791287779808,
+        0.07702410221099854,
+        0.06932322680950165,
+        0.07314038276672363,
+        0.0602036789059639
+      ]
+    },
+    "fine_tune": {
+      "accuracy": [
+        0.990439772605896,
+        0.9980879426002502,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.9961758852005005,
+        1.0
+      ],
+      "loss": [
+        0.02315686270594597,
+        0.009429628029465675,
+        0.00491316756233573,
+        0.006615844555199146,
+        0.004603653680533171,
+        0.0027025151066482067,
+        0.005154999438673258,
+        0.002034467877820134
+      ],
+      "val_accuracy": [
+        0.9833333492279053,
+        1.0,
+        0.9833333492279053,
+        0.9833333492279053,
+        1.0,
+        0.9833333492279053,
+        1.0,
+        0.9833333492279053
+      ],
+      "val_loss": [
+        0.062234725803136826,
+        0.03912414237856865,
+        0.047746531665325165,
+        0.034461602568626404,
+        0.02063748985528946,
+        0.024747733026742935,
+        0.018005644902586937,
+        0.026431234553456306
+      ]
+    }
+  },
+  "bestCheckpoint": "ml/models/best_model.keras",
+  "trainingSeconds": 67.50328108300164,
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "tensorflowDevices": [
+    "/physical_device:CPU:0"
+  ]
+}

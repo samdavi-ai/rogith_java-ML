@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "path": "ml/models/ewaste.onnx",
+  "sizeBytes": 8943137,
+  "input": {
+    "name": "image",
+    "shape": [
+      "unk__655",
+      3,
+      224,
+      224
+    ],
+    "type": "tensor(float)"
+  },
+  "output": {
+    "name": "logits",
+    "shape": [
+      "unk__656",
+      6
+    ],
+    "type": "tensor(float)"
+  },
+  "opset": 17,
+  "providers": [
+    "CPUExecutionProvider"
+  ],
+  "validationImagesCompared": 60,
+  "kerasOnnxArgmaxAgreements": 60,
+  "maxAbsoluteLogitDifference": 5.7220458984375e-05,
+  "maxRelativeLogitDifference": 4.775055276695639e-05,
+  "classesFile": "ml/classes.json"
+}

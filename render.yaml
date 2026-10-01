@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: rogith-ewaste-api
+    runtime: docker
+    plan: free
+    dockerfilePath: backend/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: DATABASE_URL
+        fromDatabase:
+          name: rogith-ewaste-db
+          property: connectionString
+      - key: DATABASE_USER
+        fromDatabase:
+          name: rogith-ewaste-db
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: rogith-ewaste-db
+          property: password
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://rogith-ewaste-web.onrender.com
+      - key: EWASTE_MODEL_PATH
+        value: /app/ml/models/ewaste.onnx
+      - key: EWASTE_CLASS_MAPPING_PATH
+        value: /app/ml/classes.json
+
+  - type: web
+    name: rogith-ewaste-web
+    runtime: static
+    buildCommand: node deployment/build-frontend.js
+    staticPublishPath: frontend-dist
+    autoDeployTrigger: commit
+    envVars:
+      - key: EWASTE_API_BASE_URL
+        value: https://rogith-ewaste-api.onrender.com
+
+databases:
+  - name: rogith-ewaste-db
+    databaseName: rogith
+    user: rogith
+    plan: free

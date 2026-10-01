@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "classes": [
+    { "id": 0, "name": "battery_waste", "displayName": "Battery waste", "datasetLabel": "Battery_Waste" },
+    { "id": 1, "name": "keyboard", "displayName": "Keyboard", "datasetLabel": "Keyboard" },
+    { "id": 2, "name": "light_bulb", "displayName": "Light bulb", "datasetLabel": "Light_Bulb" },
+    { "id": 3, "name": "mobile_phone", "displayName": "Mobile phone", "datasetLabel": "Mobile" },
+    { "id": 4, "name": "mouse", "displayName": "Mouse", "datasetLabel": "Mouse" },
+    { "id": 5, "name": "pcb", "displayName": "Printed circuit board", "datasetLabel": "PCB" }
+  ]
+}

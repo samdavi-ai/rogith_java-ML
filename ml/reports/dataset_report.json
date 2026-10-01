@@ -1,0 +1,1990 @@
+{
+  "source": "Custom Bangladeshi E-Waste Image Dataset, Mendeley Data V1",
+  "sourceArchiveImages": 2157,
+  "sourceClassNames": [
+    "Battery_Waste",
+    "Glass_Waste",
+    "Keyboard",
+    "Light_Bulb",
+    "Medical_Waste",
+    "Metal_Waste",
+    "Mobile",
+    "Mouse",
+    "Organic_Waste",
+    "PCB",
+    "Paper_Waste",
+    "Plastic_Waste"
+  ],
+  "sourceImagesBySplitAndClass": {
+    "train": {
+      "Battery_Waste": 99,
+      "Mouse": 51,
+      "Mobile": 99,
+      "Plastic_Waste": 279,
+      "Metal_Waste": 192,
+      "Glass_Waste": 93,
+      "Light_Bulb": 33,
+      "PCB": 144,
+      "Paper_Waste": 141,
+      "Organic_Waste": 84,
+      "Keyboard": 87,
+      "Medical_Waste": 195
+    },
+    "valid": {
+      "Battery_Waste": 26,
+      "Mouse": 13,
+      "Mobile": 26,
+      "Plastic_Waste": 61,
+      "Metal_Waste": 60,
+      "Glass_Waste": 14,
+      "Light_Bulb": 4,
+      "PCB": 30,
+      "Paper_Waste": 26,
+      "Organic_Waste": 12,
+      "Keyboard": 20,
+      "Medical_Waste": 38
+    },
+    "test": {
+      "Battery_Waste": 23,
+      "Mouse": 16,
+      "Mobile": 26,
+      "Plastic_Waste": 58,
+      "Metal_Waste": 41,
+      "Glass_Waste": 20,
+      "Light_Bulb": 6,
+      "PCB": 31,
+      "Paper_Waste": 33,
+      "Organic_Waste": 4,
+      "Keyboard": 19,
+      "Medical_Waste": 49
+    }
+  },
+  "sourceAnnotationBoxesByClass": {
+    "Battery_Waste": 154,
+    "Mouse": 80,
+    "Mobile": 151,
+    "Plastic_Waste": 398,
+    "Metal_Waste": 293,
+    "Glass_Waste": 127,
+    "Light_Bulb": 43,
+    "PCB": 205,
+    "Paper_Waste": 200,
+    "Organic_Waste": 100,
+    "Keyboard": 126,
+    "Medical_Waste": 282
+  },
+  "uniqueSourceGroupsBySplitAndClass": {
+    "train": {
+      "Battery_Waste": 33,
+      "Mouse": 17,
+      "Mobile": 33,
+      "Light_Bulb": 11,
+      "PCB": 48,
+      "Keyboard": 29
+    },
+    "valid": {
+      "Battery_Waste": 26,
+      "Mouse": 13,
+      "Mobile": 26,
+      "Light_Bulb": 4,
+      "PCB": 30,
+      "Keyboard": 20
+    },
+    "test": {
+      "Battery_Waste": 23,
+      "Mouse": 16,
+      "Mobile": 26,
+      "Light_Bulb": 6,
+      "PCB": 31,
+      "Keyboard": 19
+    }
+  },
+  "sourceGroupVariantCounts": {
+    "1": 657,
+    "3": 500
+  },
+  "multiClassFrames": 0,
+  "missingLabels": 0,
+  "corruptImages": [],
+  "missingImagesForLabels": 0,
+  "exactDuplicateGroups": [],
+  "nearDuplicateCandidatesAcrossSplits": [
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_215808_jpg.rf.8a06ce738b95b31fc02705ce61b6d0ad.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_215807_jpg.rf.949f4e1a94325c40ad658940123c68d8.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_215924_jpg.rf.2527e2e5a72383888bed75c4da4b9c64.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_215921_jpg.rf.84e43de9ae7a629acd537e14400126c6.jpg",
+      "leftClass": "Mouse",
+      "rightClass": "Mouse"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_215924_jpg.rf.2527e2e5a72383888bed75c4da4b9c64.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_215922_jpg.rf.2d0d3acf3b2ae57e09ef07ea4f228f4a.jpg",
+      "leftClass": "Mouse",
+      "rightClass": "Mouse"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220030_jpg.rf.1f79ea661a57dc1bd9c74db29adb4ec2.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220031_jpg.rf.980993866f095141d958d78983b61f11.jpg",
+      "leftClass": "Mobile",
+      "rightClass": "Mobile"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220207_jpg.rf.0f17df4cec5b7117887884be5ea29430.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220206_jpg.rf.de998e9b904dcfe77468124a9e729352.jpg",
+      "leftClass": "Mobile",
+      "rightClass": "Mobile"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220312_jpg.rf.07000a53f58fd8b7ca0a0d97613d25f3.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220311_jpg.rf.72c9015fb578049a797e0d93bd65aee3.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220946_jpg.rf.1ed353d6fee2290258e88fd89d838a42.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220949_jpg.rf.3ace4d5f9ac28dc7cf5f3e5cb2ba1181.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220956_jpg.rf.3131b747648558d4ede3bc482cf49864.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220955_jpg.rf.8dd2b8a8a60e6a334821d9751836a964.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220958_jpg.rf.02846a3ab02382815ff47af2376043c0.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220957_jpg.rf.26c09e79ea7c3e48d381e39e30e30abb.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_221038_jpg.rf.84a0d91458b125a6bdbda83e8e0e1f69.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_221037_jpg.rf.29e8cf20123f9a73107df6244b555deb.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_221120_jpg.rf.104471aa0591b3a60ecb747c5e81bc83.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_221122_jpg.rf.fdf549b0cced384f1ec7a2e6faf7b1dc.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_221120_jpg.rf.104471aa0591b3a60ecb747c5e81bc83.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_221123_jpg.rf.e083365d0c0f2844f5b893a617bfdeb1.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_221506_jpg.rf.4f444aa21d4e7ed0e0e29ba4d838f741.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_221509_jpg.rf.a82623207ec63a0367bdc172aeced86a.jpg",
+      "leftClass": "Glass_Waste",
+      "rightClass": "Glass_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_203631_jpg.rf.1657f6333a95106b19ae986bab71732d.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_203634_jpg.rf.637eded8a427107899b3fb52ffa04675.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_203631_jpg.rf.1657f6333a95106b19ae986bab71732d.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_203635_jpg.rf.4b7ff9b6be85b3adf4c377982527e6c0.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_204014_1_jpg.rf.a0927620ab1df0ce2f95851ee32a046d.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204015_jpg.rf.3843eb861f76edbc2719fa6f6a48c491.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_204014_1_jpg.rf.a0927620ab1df0ce2f95851ee32a046d.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204014_jpg.rf.edd767591a6a2c56b9c099869b6c2b9e.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_204020_jpg.rf.b59d5e51f6ecab5f5bdb9fc97c4e9a63.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204021_jpg.rf.c38944bc37d953025211694e6fd1ecc8.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_204028_jpg.rf.56cb5adaf3658888f1766c56918fcb16.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204029_jpg.rf.aa01ab0e27a808110e71fbd949d12bde.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_204038_jpg.rf.00e363bc40e50b03bfa7b05993b6efd9.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204041_jpg.rf.4919482aa67af9cf130a2d897e6aca0d.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_204229_jpg.rf.8018bfdf212eb4100ca58e6df1b4092b.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204228_jpg.rf.d40317ca03e80a73dc8fbf09e93e412e.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_204510_jpg.rf.68cd7514cdffd79fb1345a3738ba2d40.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204509_jpg.rf.8d4d8d7aecbaad03b2d5e3cea5250aa8.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_204602_jpg.rf.46126897b0ce94667462e96af8c74250.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204601_jpg.rf.962e98b8a533612bdc4285fee12d3d21.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_204855_jpg.rf.0aff6682a72494fb8dd291d2a26ac637.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204853_jpg.rf.00d07d9974c2d7326107af752f44f6b3.jpg",
+      "leftClass": "Mouse",
+      "rightClass": "Mouse"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_204855_jpg.rf.0aff6682a72494fb8dd291d2a26ac637.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204854_jpg.rf.33200c016aea8eb346be36b6e3165667.jpg",
+      "leftClass": "Mouse",
+      "rightClass": "Mouse"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_204904_jpg.rf.26c3c769979b6631f4634cda07d3f1d8.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204903_jpg.rf.eb71917bed9892e488f346ccd5a20030.jpg",
+      "leftClass": "Mouse",
+      "rightClass": "Mouse"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_205014_jpg.rf.27bf09f507a0550ea39e9abb58e0c3e3.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_205015_jpg.rf.0b048a47b8688797012e70a4b28cc43b.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_205125_jpg.rf.9c86fe141bdde374eb32ae2b9590ad30.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_205124_1_jpg.rf.648255e5416d096ea002d22b3db3a443.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_205244_jpg.rf.8295fd5449aa1e8126dcde737e1d4ed4.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_205245_jpg.rf.b753ab0e76c54f4090f1563c206b55bf.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_205246_jpg.rf.032c4b659925079662b191153a6f30c1.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_205245_jpg.rf.b753ab0e76c54f4090f1563c206b55bf.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_205402_jpg.rf.1dbf2217905b58de972eeee23b80a74c.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_205402_1_jpg.rf.52b9b8f73f3b91a34da7deb704776245.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250805_205402_jpg.rf.1dbf2217905b58de972eeee23b80a74c.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_205403_jpg.rf.5a9b820f5d2612316dc692feb3654491.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250819_235826_jpg.rf.b2d7a1c6a7e91964d06337b719db27de.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235825_jpg.rf.7aa576f7cb02471e8994444cf27fa28c.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250819_235826_jpg.rf.b2d7a1c6a7e91964d06337b719db27de.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235826_1_jpg.rf.c4b68d324e66f8a22b052b5fc9caf77e.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250819_235827_jpg.rf.327889f36d8a3ce465f7c81f2cde3b3d.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235825_jpg.rf.7aa576f7cb02471e8994444cf27fa28c.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250819_235827_jpg.rf.327889f36d8a3ce465f7c81f2cde3b3d.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235826_1_jpg.rf.c4b68d324e66f8a22b052b5fc9caf77e.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250819_235833_1_jpg.rf.9337aaa6e20a1cb461c56ca7363fb3c6.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235834_jpg.rf.ca82a7a2b1613934ff84e4f2b604624f.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250819_235900_1_jpg.rf.4f228b35a40657a9d4044001db65e10b.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235901_1_jpg.rf.9ea5d881b87f497f931cf97313b89250.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250819_235900_1_jpg.rf.4f228b35a40657a9d4044001db65e10b.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235902_jpg.rf.c861cb0db3eb318ae1c784dbfe49f3fb.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250819_235900_1_jpg.rf.4f228b35a40657a9d4044001db65e10b.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235901_jpg.rf.dd11536cef119c9a8d77c4ca35e81b59.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250819_235900_jpg.rf.5c3de33bdc0b69b007d1023306ba07d8.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235901_1_jpg.rf.9ea5d881b87f497f931cf97313b89250.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250819_235900_jpg.rf.5c3de33bdc0b69b007d1023306ba07d8.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235902_jpg.rf.c861cb0db3eb318ae1c784dbfe49f3fb.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250819_235900_jpg.rf.5c3de33bdc0b69b007d1023306ba07d8.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235901_jpg.rf.dd11536cef119c9a8d77c4ca35e81b59.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250819_235927_1_jpg.rf.7e9741f402fcea1372755cb7cd6649b7.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235928_1_jpg.rf.bdf2ed5c451e3f0f6f66c14a405fdcf4.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250819_235933_jpg.rf.6843a58d482baffde8f245b0070b7d10.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235934_jpg.rf.2917ec33822c0e587ad4e50feba3a906.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250819_235952_jpg.rf.e3da93e10bebcefb29b3999f41eb70d5.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235953_jpg.rf.9187dfa4123f92bf96f0e4822508c0c8.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250820_000048_jpg.rf.6a99fa63000cac5c466630531a0a9129.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250820_000047_jpg.rf.c2f82c69a566742b8d1f5b87fd1b9984.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250820_000059_jpg.rf.6adc5dc6f10c99459626fb574c520246.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250820_000100_jpg.rf.51dd1976b3d96637fa3ddfa23a9f1532.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250820_000059_jpg.rf.6adc5dc6f10c99459626fb574c520246.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250820_000059_1_jpg.rf.0a4cc07d817a5083c6dc09505c31b33e.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250820_000059_jpg.rf.6adc5dc6f10c99459626fb574c520246.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250820_000101_jpg.rf.4f68106af83c526406d31efab9a05adc.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250820_000154_jpg.rf.1c700361f1c7746d1c142524ef9c0953.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250820_000156_jpg.rf.c869c224644d0a8d0fa0126eda24dda9.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250820_000154_jpg.rf.1c700361f1c7746d1c142524ef9c0953.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250820_000155_1_jpg.rf.0cc062953a4fabb2963a72c41cc6ff8e.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250820_000209_jpg.rf.45c69cf62f02485203a8869889acba69.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250820_000210_jpg.rf.c7731efde23ccbb6f20b0c3b033dc383.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250820_000326_jpg.rf.90d9675991b991431f8f2f4b9571f403.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250820_000329_jpg.rf.6eb3fdff32f72ecc14203b4c5ba7d620.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250820_000326_jpg.rf.90d9675991b991431f8f2f4b9571f403.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250820_000327_jpg.rf.0057c7022a462cf14b440bdb3e8d1681.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_135926_1_jpg.rf.49e382ff8d6056bb91eb8a655f476da9.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_135926_jpg.rf.aec0150c69b71db21d3875a85d27febe.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_135926_1_jpg.rf.49e382ff8d6056bb91eb8a655f476da9.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_135928_jpg.rf.19a6acb4bf9635132865bde5ab1b90ce.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_135926_1_jpg.rf.49e382ff8d6056bb91eb8a655f476da9.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_135929_jpg.rf.2f0cf54e9747d01974aa628d24d1dde1.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_135941_jpg.rf.0f849286b56295d86dfac80004043e70.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_135940_jpg.rf.21280cf79175e652ea82f65d0b9c7f62.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_135957_jpg.rf.13e2326857ec937b9229ce60ed079db9.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_135958_jpg.rf.420daab7fb8b612ee27099a692f61e42.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_140005_jpg.rf.195b765a30d0cfd96916154243033d3e.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_140003_1_jpg.rf.0e78a2a48ca922c8698712970b716051.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_140218_jpg.rf.62b8084437ec79482ea652792d8bd9a3.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140225_jpg.rf.853567ed56f80104abe0de86d68a50e1.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_140407_jpg.rf.81ad563e6ed99b3f70bfd1ed79e8a054.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140409_jpg.rf.42405a2d8bac9ee2bce25275e0e3d92d.jpg",
+      "leftClass": "Mouse",
+      "rightClass": "Mouse"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_140408_jpg.rf.61f8634ee075628b4808de0f10f76426.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140409_jpg.rf.42405a2d8bac9ee2bce25275e0e3d92d.jpg",
+      "leftClass": "Mouse",
+      "rightClass": "Mouse"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_14044_jpg.rf.b4b8c82e45e10713916c08bc18a2c10e.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_140438_jpg.rf.abf8602d67cb2faf0f4e87678daa3eae.jpg",
+      "leftClass": "Mouse",
+      "rightClass": "Mouse"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_14044_jpg.rf.b4b8c82e45e10713916c08bc18a2c10e.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140439_jpg.rf.9cefc436b0a5838a8f3e084f24758d45.jpg",
+      "leftClass": "Mouse",
+      "rightClass": "Mouse"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_140532_jpg.rf.0b3b51fc5b01db5b96fe5cd358f4f550.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140534_jpg.rf.268594c436cd144eba2c43c88ac635f2.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_140600_1_jpg.rf.1e163db170fc4bf762ec5928738ad55b.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_140602_jpg.rf.803619495847fccb4b011bb9212f9db8.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_140600_1_jpg.rf.1e163db170fc4bf762ec5928738ad55b.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140600_jpg.rf.7b5883061ca4a70e4fced90d41cbb9ae.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_140907_1_jpg.rf.1a6312f51a92d072d2aeb06b2fc0b0ad.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140907_jpg.rf.c066db1fce595c6ef38c60d5e329dd4f.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_141130_jpg.rf.41bd16fd2f883dd117c286631036c3cd.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_141131_jpg.rf.6bc9d7c9d12a91707c423c70f7639835.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_141150_jpg.rf.189c51b23ca1ce8af42ca5725ab365c0.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_141152_jpg.rf.55ac8b24a683a0bf4164cb577c94d795.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_141522_jpg.rf.0f204846a7ea21f36acb76bc2665cbfe.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_141521_jpg.rf.f00f29234fc515ddbf32ce164f0696f7.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_141522_jpg.rf.0f204846a7ea21f36acb76bc2665cbfe.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_141520_jpg.rf.4e8d5c23e2dd421195fff2db30fb4e5b.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_141655_jpg.rf.4d4a56abda51fac3d9ac6727c72fba24.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_141653_jpg.rf.bb972a8631d3de0718c5d1ffd4343be6.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_142130_jpg.rf.30cf1130d863e4a597302c6bf8b35a66.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142131_jpg.rf.25cf35369d5a38003db90902ee4053f6.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_142130_jpg.rf.30cf1130d863e4a597302c6bf8b35a66.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142132_jpg.rf.6409191476f26c685eef0a3154877d1a.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_142143_jpg.rf.1ffd886e202f47f704edad54c5176c9a.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_142147_jpg.rf.94cd758475f73a6586d112cda87ac370.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_142228_jpg.rf.26b983f263b182f6eb6570c00301c50a.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_142225_jpg.rf.fb98ee37ad43b9c50c7034721f3dbd67.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_142228_jpg.rf.26b983f263b182f6eb6570c00301c50a.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142225_1_jpg.rf.bf1dc8734d550d4fe1d7e7395f5dd0e7.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_142228_jpg.rf.26b983f263b182f6eb6570c00301c50a.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142229_jpg.rf.0e6d6225a922628f52fc8f3e34d4cc83.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_142343_jpg.rf.161c97c249cc6492a0f98e85d198b97d.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_142344_1_jpg.rf.8f765dcd882b126ac960dac36973502f.jpg",
+      "leftClass": "Glass_Waste",
+      "rightClass": "Glass_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_142347_jpg.rf.2083e174c2f1fd022b3c05d668a51ec7.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142348_jpg.rf.72f1026a5890370beac5700b2ad49f2b.jpg",
+      "leftClass": "Glass_Waste",
+      "rightClass": "Glass_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_142543_jpg.rf.7c8c56037fe38ae62acfce2c83da73cd.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_142543_1_jpg.rf.9a3e254df2a0aaccb8b52089b859148c.jpg",
+      "leftClass": "Glass_Waste",
+      "rightClass": "Glass_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_142931_jpg.rf.68824d2de793c8eb46fc649df9782fc2.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142941_jpg.rf.75a55ee4e7ed7668f2f4c2f839be32c6.jpg",
+      "leftClass": "Organic_Waste",
+      "rightClass": "Organic_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_142933_jpg.rf.2f10d052a23b39c19662982592222ce9.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142941_jpg.rf.75a55ee4e7ed7668f2f4c2f839be32c6.jpg",
+      "leftClass": "Organic_Waste",
+      "rightClass": "Organic_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230545_jpg.rf.3d3eec3ec17179597df8db94cf78f4e5.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230546_jpg.rf.9b86d914136a43f3b15ed814e1ba72e2.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230548_jpg.rf.7e6735590cb378544d4e373fca1e6bf9.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230548_1_jpg.rf.9a9c3ddc6ee19eb65c26219d87dc5d06.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230611_jpg.rf.0a938e23347b8ad098af89c04c4c0862.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230612_1_jpg.rf.e5395ae6aed69c08216490e1b18f2a41.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230611_jpg.rf.0a938e23347b8ad098af89c04c4c0862.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230610_jpg.rf.2b4c14dc94b94537d8b0b0b6ef032587.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230613_1_jpg.rf.76b16c8047eb25a57f78ea2b0736cf17.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230612_1_jpg.rf.e5395ae6aed69c08216490e1b18f2a41.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230618_jpg.rf.354efd62141329b367f78cd57f772967.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230619_jpg.rf.5983ad2a144f44e71170695c9d31409f.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230618_jpg.rf.354efd62141329b367f78cd57f772967.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230620_1_jpg.rf.eb30e72a6bb7352e5f67aa4e0631bf62.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230618_jpg.rf.354efd62141329b367f78cd57f772967.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230620_jpg.rf.06b9f9e804854a1d95c72910c49cbcfc.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230619_1_jpg.rf.15efc70da7215bdce90a8dfdf7eea3f3.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230619_jpg.rf.5983ad2a144f44e71170695c9d31409f.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230619_1_jpg.rf.15efc70da7215bdce90a8dfdf7eea3f3.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230620_1_jpg.rf.eb30e72a6bb7352e5f67aa4e0631bf62.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230619_1_jpg.rf.15efc70da7215bdce90a8dfdf7eea3f3.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230620_jpg.rf.06b9f9e804854a1d95c72910c49cbcfc.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230648_jpg.rf.499ddbb88a721adeae50ee19623ddc8a.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230649_jpg.rf.a492eb5c86abec9abd802bad8699c29e.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230708_1_jpg.rf.1a036f295988e771895f7611277eb0ae.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230709_1_jpg.rf.2f7f2871ee1fe87720fa2d11baab2a65.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230709_jpg.rf.40f5ac92b22ba8a97ddf5494940c6bf5.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230709_1_jpg.rf.2f7f2871ee1fe87720fa2d11baab2a65.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230725_jpg.rf.33bcdb59c51b88292448c632aba08ec4.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230723_jpg.rf.c17046dc09580d4021973aee62259ed2.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230725_jpg.rf.33bcdb59c51b88292448c632aba08ec4.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230724_1_jpg.rf.808bea3b14ef5cc2ed3ea5925d1c25bf.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230937_jpg.rf.1c727d120a4ea5d864cde91e28e12281.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230938_jpg.rf.b91df5902019d0f975281f7edc4e3536.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_230959_1_jpg.rf.24962cf7cf37644dcc82c61b97906991.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230959_jpg.rf.14a5c983f0588c30b1ae533014d69a93.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_231030_jpg.rf.0ac4cdc46b0a386d01e4708cddb5dd8f.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231032_jpg.rf.6c242755da7f4bfc18e5981b795dd799.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_231030_jpg.rf.0ac4cdc46b0a386d01e4708cddb5dd8f.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231031_jpg.rf.7621229e8ae4e8dde1396f6a41e5dc07.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_231125_1_jpg.rf.055929b00c16ff17c6d4a49b7cef58a9.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231124_1_jpg.rf.15f6be87893a7f3e91d86d821962f40f.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_231125_1_jpg.rf.055929b00c16ff17c6d4a49b7cef58a9.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231125_jpg.rf.712cf5e8bb04d06029470cfebfd9db8a.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_231125_1_jpg.rf.055929b00c16ff17c6d4a49b7cef58a9.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231126_jpg.rf.7712b4701c0e3c8ad2f513a37cac8107.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_231134_1_jpg.rf.19857d21bf15db9b7b5a3e2669c53f03.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231135_jpg.rf.5eab8abfbf6ce0006e47452bb4e351aa.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_231136_jpg.rf.744ffa1266ae25359cf64542d5c6e0ef.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231136_1_jpg.rf.dfd740b56687c8a262b0ca3521ea517e.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_231138_jpg.rf.0edbeb921cea2c27bf09a0a7aea04b04.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231136_1_jpg.rf.dfd740b56687c8a262b0ca3521ea517e.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_231153_1_jpg.rf.055d65f1f0714e9fda6d890f79bc15ab.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231153_jpg.rf.c0581636936ffd3f551a62ae4e3aadb3.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_231209_jpg.rf.4c130981a9fbbd3987e2dd770795972d.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231211_jpg.rf.29439c714ba00a43492ccf5b2673e53f.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_231255_1_jpg.rf.5f530548951cb35377a1987db865ecc0.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231256_1_jpg.rf.aea99bc61d2369c19f56241e3f0876cf.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250822_231255_jpg.rf.36ef9257a4993f8d263c5dd4cb7bf7f5.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231254_jpg.rf.b3dfdd482b858b6fb25f930221870e93.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_215725_jpg.rf.7d5f701994ab8ce96ca5d49e1d276ee3.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_215727_jpg.rf.ed0c24ebb5a6e14c10a1c4d99dbf6530.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_215903_jpg.rf.f4d35f59677c39dc89f4ce0148aca47c.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_215905_jpg.rf.9ea9ffc023daf5f2d35c1aabb1d51bb7.jpg",
+      "leftClass": "Mouse",
+      "rightClass": "Mouse"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_215921_jpg.rf.84e43de9ae7a629acd537e14400126c6.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_215922_jpg.rf.2d0d3acf3b2ae57e09ef07ea4f228f4a.jpg",
+      "leftClass": "Mouse",
+      "rightClass": "Mouse"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220024_jpg.rf.2fc166ace133b8664434156a034ba786.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220025_jpg.rf.0c5fa936f319339057069716325911b2.jpg",
+      "leftClass": "Mobile",
+      "rightClass": "Mobile"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220227_jpg.rf.c42373ef7c64d08b36804cc7fcad4d15.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220228_jpg.rf.8e94e7ce7153325b8e181e6a1d331ef0.jpg",
+      "leftClass": "Mobile",
+      "rightClass": "Mobile"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220320_1_jpg.rf.4004befc73e0f7a956fcd25d6de4037b.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220320_jpg.rf.10f96e152fbca7bb72a58524897b976a.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220320_1_jpg.rf.4004befc73e0f7a956fcd25d6de4037b.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220323_1_jpg.rf.573457ae657057432e59564c621a62b2.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220323_jpg.rf.dae4ff08759027feadbee436a4098da3.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220320_jpg.rf.10f96e152fbca7bb72a58524897b976a.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220323_jpg.rf.dae4ff08759027feadbee436a4098da3.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220323_1_jpg.rf.573457ae657057432e59564c621a62b2.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220349_1_jpg.rf.c2488b27ffdb7b551091ec1aff857cce.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220351_jpg.rf.450e818f2d954bda365821a90b9c2a70.jpg",
+      "leftClass": "Mobile",
+      "rightClass": "Mobile"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220349_jpg.rf.9a2cadc69014490f60e59e1826cdc947.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220351_jpg.rf.450e818f2d954bda365821a90b9c2a70.jpg",
+      "leftClass": "Mobile",
+      "rightClass": "Mobile"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_221338_jpg.rf.1eb68a295b7829c3f9334c0a1b4e94a2.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_221334_jpg.rf.9f1107803cb1ee522fad104657e063d8.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_221338_jpg.rf.1eb68a295b7829c3f9334c0a1b4e94a2.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_221337_jpg.rf.0dc3d6102f72fa0780d7197750898d5d.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_221345_jpg.rf.ad863f7f18a397d71d488aeb64bbc9f9.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_221346_jpg.rf.da011ab4b385dd0a91706f9a7e663513.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_203145_jpg.rf.b23148ac6fcef2219e3b804c67e11773.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_203146_jpg.rf.e25134ccf361d70976ae6a77ebd96682.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_203322_jpg.rf.55299a747169161eadaecc211e423a31.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_203323_jpg.rf.a182df57cbdc73a0a473a3e488e1725f.jpg",
+      "leftClass": "Mobile",
+      "rightClass": "Mobile"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_203327_jpg.rf.32be60b70e6f9a50917a48881f5ab85a.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_203327_1_jpg.rf.fa4eadf62370e6bdea8c64d3f20085bf.jpg",
+      "leftClass": "Mobile",
+      "rightClass": "Mobile"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_203328_jpg.rf.593c94263769d9d875503af03e97d8f7.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_203327_1_jpg.rf.fa4eadf62370e6bdea8c64d3f20085bf.jpg",
+      "leftClass": "Mobile",
+      "rightClass": "Mobile"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_203630_jpg.rf.625b50a472e14f385eb490d10fa695e9.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_203629_jpg.rf.d89fd0de6e89404602d2a25bdad904e4.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_203630_jpg.rf.625b50a472e14f385eb490d10fa695e9.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_203635_jpg.rf.4b7ff9b6be85b3adf4c377982527e6c0.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_203633_jpg.rf.27acce328d6706fec7feeea5d61d3d68.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_203635_jpg.rf.4b7ff9b6be85b3adf4c377982527e6c0.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_203634_jpg.rf.637eded8a427107899b3fb52ffa04675.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_203629_jpg.rf.d89fd0de6e89404602d2a25bdad904e4.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_203634_jpg.rf.637eded8a427107899b3fb52ffa04675.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_203635_jpg.rf.4b7ff9b6be85b3adf4c377982527e6c0.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_203719_jpg.rf.8220ca04e669e9154570756ade2cd685.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_203720_jpg.rf.15922a548d7874a6ff4d0b741a3eca9c.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_203719_jpg.rf.8220ca04e669e9154570756ade2cd685.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_203721_jpg.rf.1ac5083435db1cc9be594e05cc7a6be1.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_203947_jpg.rf.d549f89d842b21852845f82bff9abb09.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_203950_jpg.rf.e20c8cf0ae6b59ee38b2a9c2dadbe0eb.jpg",
+      "leftClass": "Mobile",
+      "rightClass": "Mobile"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_203948_jpg.rf.dbcb8f50ff9c3d8ab30e1018b3995fa7.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_203950_jpg.rf.e20c8cf0ae6b59ee38b2a9c2dadbe0eb.jpg",
+      "leftClass": "Mobile",
+      "rightClass": "Mobile"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_203949_jpg.rf.c78fa0f75f1aea8e269f90a2c79abeaa.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_203950_jpg.rf.e20c8cf0ae6b59ee38b2a9c2dadbe0eb.jpg",
+      "leftClass": "Mobile",
+      "rightClass": "Mobile"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204034_jpg.rf.15036e8bb4a67ee5ac7c722c26a80781.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204035_jpg.rf.e1c07dca1c4c1fbee2f331681dfa44d3.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204107_jpg.rf.9a8e47f8a4ba2c0374e901509566fb93.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204108_jpg.rf.4af4a9e325ac0c7ff3eca39a2b7d88ea.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204127_jpg.rf.952dac11cc93268bad625e9bf48028d6.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204126_1_jpg.rf.9a9df0bec9c45b42c64cddc67af2c9c8.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204127_jpg.rf.952dac11cc93268bad625e9bf48028d6.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204128_jpg.rf.5b8f7b79ed1140bc2cf21ff49fc3827a.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204137_jpg.rf.78cf875b74c82eb92cc07b375e058ffb.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204136_jpg.rf.27a6ab940a35b768e293348d61b95943.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204150_jpg.rf.51f7024e94bbed2ce3ec22459f5f7d64.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204149_jpg.rf.d9150efe0f0785192433135bff1383fe.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204150_jpg.rf.51f7024e94bbed2ce3ec22459f5f7d64.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204152_jpg.rf.fa53a95341fd37acb3055a8e3bf55cce.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204151_jpg.rf.3b6fa612ec5e99526eb5e3a4ed385052.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204149_jpg.rf.d9150efe0f0785192433135bff1383fe.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204533_jpg.rf.c15ef16fa2ef3f90f28fedf214c4f7d5.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204531_jpg.rf.3c74d598795cf488074d6f536599252a.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204533_jpg.rf.c15ef16fa2ef3f90f28fedf214c4f7d5.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204535_jpg.rf.c5afedd771afb16dfb161aa9e47529cc.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204534_jpg.rf.9c7858bdfd1db19dabde202bed07fd45.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204535_jpg.rf.c5afedd771afb16dfb161aa9e47529cc.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204620_jpg.rf.46cae3537038a9e3ecab0ebbab0f31f4.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204617_jpg.rf.6bb21b42c794bd4cb885ac3a9aae5e46.jpg",
+      "leftClass": "Glass_Waste",
+      "rightClass": "Glass_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_204620_jpg.rf.46cae3537038a9e3ecab0ebbab0f31f4.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_204618_jpg.rf.16ccf63a195520f6ec112fd61ab536e3.jpg",
+      "leftClass": "Glass_Waste",
+      "rightClass": "Glass_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_205009_jpg.rf.0292aedad341e86afd7847ea27857feb.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_205008_jpg.rf.a4c86fb79e5cdc6a0bf0e8d4691a2628.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_205024_jpg.rf.d712c687a82bbe88f51807560183469b.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_205023_jpg.rf.ca9a6515e2b28cc0bf600793ec912a51.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_205024_jpg.rf.d712c687a82bbe88f51807560183469b.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_205026_jpg.rf.2b4336e312c5c015dec782fa65d0d53a.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_205104_jpg.rf.13fe8b932124c1d9b7a12c0fe5709be4.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_205103_jpg.rf.98fd26f06009a55e2ebc9d5ef8f07b79.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_205104_jpg.rf.13fe8b932124c1d9b7a12c0fe5709be4.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_205105_jpg.rf.64baa5f50ef7acfeb065e54695ae2760.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_205249_jpg.rf.c00f1841c88990f1eb3c331bdd3d2fdd.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_205250_jpg.rf.299bcff334c54651f50f43d8337ce02a.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250805_205402_1_jpg.rf.52b9b8f73f3b91a34da7deb704776245.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250805_205403_jpg.rf.5a9b820f5d2612316dc692feb3654491.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235853_1_jpg.rf.ae6094b2a084ddac00441c8cf74ac624.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235854_jpg.rf.1301ce39100af13ea5388ee514c5ae8d.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235853_1_jpg.rf.ae6094b2a084ddac00441c8cf74ac624.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235855_1_jpg.rf.f04c1306dc16b1f9b9278111b7d62f68.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235854_1_jpg.rf.c972ca1131e9d19f42d96feac39ee3ea.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235854_jpg.rf.1301ce39100af13ea5388ee514c5ae8d.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235854_1_jpg.rf.c972ca1131e9d19f42d96feac39ee3ea.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235855_1_jpg.rf.f04c1306dc16b1f9b9278111b7d62f68.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235855_jpg.rf.ec4e49eb3acae9ad6cf5993ae2a773e8.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235854_jpg.rf.1301ce39100af13ea5388ee514c5ae8d.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235855_jpg.rf.ec4e49eb3acae9ad6cf5993ae2a773e8.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235855_1_jpg.rf.f04c1306dc16b1f9b9278111b7d62f68.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235901_1_jpg.rf.9ea5d881b87f497f931cf97313b89250.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235901_jpg.rf.dd11536cef119c9a8d77c4ca35e81b59.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235902_jpg.rf.c861cb0db3eb318ae1c784dbfe49f3fb.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235901_jpg.rf.dd11536cef119c9a8d77c4ca35e81b59.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235908_1_jpg.rf.95f926adcf3efa512b4651b72a29d006.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235909_jpg.rf.7b6756f0b84eca2fee8652178b358cad.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235908_jpg.rf.89fdef3b3a973def9c379873513bb364.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235909_jpg.rf.7b6756f0b84eca2fee8652178b358cad.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235926_1_jpg.rf.7f3f4609c5055b0420445f0b330dbb3f.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235928_1_jpg.rf.bdf2ed5c451e3f0f6f66c14a405fdcf4.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250819_235927_jpg.rf.92ca28607d3583cbb4e47ac76d4d4979.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250819_235928_1_jpg.rf.bdf2ed5c451e3f0f6f66c14a405fdcf4.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250820_000100_jpg.rf.51dd1976b3d96637fa3ddfa23a9f1532.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250820_000059_1_jpg.rf.0a4cc07d817a5083c6dc09505c31b33e.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250820_000100_jpg.rf.51dd1976b3d96637fa3ddfa23a9f1532.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250820_000101_jpg.rf.4f68106af83c526406d31efab9a05adc.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250820_000135_jpg.rf.c544cb7ae163fca94462a5366dfbeb75.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250820_000134_1_jpg.rf.9d5420526a6c553ff0faa51084546ee3.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250820_000156_jpg.rf.c869c224644d0a8d0fa0126eda24dda9.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250820_000155_1_jpg.rf.0cc062953a4fabb2963a72c41cc6ff8e.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250820_000210_1_jpg.rf.ff97d480f7938169ebf6b45ece2bf008.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250820_000210_jpg.rf.c7731efde23ccbb6f20b0c3b033dc383.jpg",
+      "leftClass": "PCB",
+      "rightClass": "PCB"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250820_000329_jpg.rf.6eb3fdff32f72ecc14203b4c5ba7d620.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250820_000327_jpg.rf.0057c7022a462cf14b440bdb3e8d1681.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250820_000345_jpg.rf.f5ce578c3eae046df54c887265f22e42.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250820_000345_1_jpg.rf.8a56e4c81b502c74fced7db7285abde0.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250820_000345_jpg.rf.f5ce578c3eae046df54c887265f22e42.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250820_000347_jpg.rf.b087947381255155846ccf96858177ef.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250820_000400_1_jpg.rf.19d37a3e87ee1b6e09deb768a8d87036.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250820_000401_jpg.rf.e850d2354d04cd96561cbc82dce9263b.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_135857_jpg.rf.203ff1d415de4f0edb8dd6bc5850cb1c.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_135900_jpg.rf.453e2314c45b42bcd284114778b8c551.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_135903_jpg.rf.a4113502495933e697f731c4c8f73979.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_135906_jpg.rf.3b7d2cbc98e29c0fcb4c76e1ca805446.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_135905_jpg.rf.38ad275938f82a1a7dd66f5e6ea0abbc.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_135906_jpg.rf.3b7d2cbc98e29c0fcb4c76e1ca805446.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_135922_jpg.rf.c8af085579a9a9e77f321ea5cb54a42c.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_135923_jpg.rf.093e30b9e636a584f99200ec22dc90e7.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_135926_jpg.rf.aec0150c69b71db21d3875a85d27febe.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_135929_jpg.rf.2f0cf54e9747d01974aa628d24d1dde1.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_135928_jpg.rf.19a6acb4bf9635132865bde5ab1b90ce.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_135929_jpg.rf.2f0cf54e9747d01974aa628d24d1dde1.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_140221_jpg.rf.fa562f352e53a236baf68ee2df8906c2.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140219_jpg.rf.02ec3714370ecd019073128a348ea140.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_140303_jpg.rf.68c84f598eda90d3ed815a15f1ac931e.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140302_jpg.rf.6eaa141f0ef3721372cbe3dc889dec87.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_140307_jpg.rf.2a87ece5d03144e4209ff05bb0e44ae4.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140308_jpg.rf.8d6f8692a27b5076cdc634ac3a93e8fa.jpg",
+      "leftClass": "Keyboard",
+      "rightClass": "Keyboard"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_140349_jpg.rf.6460419b61231e8fd594a77eb8f62b1a.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140350_jpg.rf.37910db6261f9d7b4c8e256400d8771c.jpg",
+      "leftClass": "Mouse",
+      "rightClass": "Mouse"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_140413_jpg.rf.73cf4af821a990defde96ed1db5c0d92.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140412_jpg.rf.4ee51e53754b9b6942d000b4469de550.jpg",
+      "leftClass": "Mouse",
+      "rightClass": "Mouse"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_140429_jpg.rf.5cdd4a2e6db7fcffa0b8ac686d2182fb.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140431_jpg.rf.0219dfce4349916a8a0b4c3a90383476.jpg",
+      "leftClass": "Mouse",
+      "rightClass": "Mouse"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_140538_jpg.rf.ac48c9f6c937875957fe3fe945c55063.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140539_jpg.rf.cde02abebb4dcdae8d8bff45501e38e8.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_140541_jpg.rf.a8e4182a5555f7534f1c1b8cedc611d2.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140544_jpg.rf.e28c16fcab9ebedbb7287210430f0c0e.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_140542_jpg.rf.1e3b8260fa03431f2c0a20a56bbdc207.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140544_jpg.rf.e28c16fcab9ebedbb7287210430f0c0e.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_140734_jpg.rf.22901ffbca3572a3cd4c501aecfa6853.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140735_jpg.rf.7c52bddb838601517556ba12ba6a3f7e.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_140902_jpg.rf.b5185070d5fb1ca4c0cf2d5600eabd3e.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140901_jpg.rf.eb59ae1ee095dcc3b5c4d4faf6eba8fb.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_140902_jpg.rf.b5185070d5fb1ca4c0cf2d5600eabd3e.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_140903_jpg.rf.0ab3494f906b9f6e76136edfb1d74544.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_141521_jpg.rf.f00f29234fc515ddbf32ce164f0696f7.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_141520_jpg.rf.4e8d5c23e2dd421195fff2db30fb4e5b.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_141648_jpg.rf.39751b3d0eab5b8589bd8a7f66e470f3.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_141649_jpg.rf.62c4d3a55ffbfc49d4e7f27c7e3b49e5.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_141856_1_jpg.rf.1bc44332dd4a5e9d1ae7d3fae7140043.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_141856_jpg.rf.a4f2095539bee947c606e1890b9f45cf.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_141916_jpg.rf.be4a2db8b9366d41d0d4dde47b888ddf.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_141915_jpg.rf.25485f886da7dc63658ef186691d6537.jpg",
+      "leftClass": "Metal_Waste",
+      "rightClass": "Metal_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_142028_jpg.rf.e397cba6a075cfa8e1d5c9edfa40abcd.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142033_jpg.rf.2fc15d3a056ebab3ac87cbef4af69dec.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_142029_jpg.rf.e13f709f722a9c85a631db36a33b3c99.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142033_jpg.rf.2fc15d3a056ebab3ac87cbef4af69dec.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_142030_jpg.rf.f32349d4aff512b88a4ff86f3dfdb4b4.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142033_jpg.rf.2fc15d3a056ebab3ac87cbef4af69dec.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_142053_jpg.rf.3867619f5e714c25ddc1b4d3fd5c017b.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142054_jpg.rf.d4f53d0d3b0017ba730f9f36844d41c9.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_142129_jpg.rf.5f8da18536b8ae2bf9b982f14b4c96fb.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142132_jpg.rf.6409191476f26c685eef0a3154877d1a.jpg",
+      "leftClass": "Plastic_Waste",
+      "rightClass": "Plastic_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_142225_jpg.rf.fb98ee37ad43b9c50c7034721f3dbd67.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142226_jpg.rf.a86e6e16236c763e0b1d7d58ef48acb6.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_142225_jpg.rf.fb98ee37ad43b9c50c7034721f3dbd67.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142229_jpg.rf.0e6d6225a922628f52fc8f3e34d4cc83.jpg",
+      "leftClass": "Paper_Waste",
+      "rightClass": "Paper_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_142454_jpg.rf.43c1991162c3bd2e61f256e6622b31fa.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142452_jpg.rf.e0311189664f12052f6fcf5c4aaf0cf1.jpg",
+      "leftClass": "Glass_Waste",
+      "rightClass": "Glass_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_142454_jpg.rf.43c1991162c3bd2e61f256e6622b31fa.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142453_jpg.rf.3b3ce19a8afac31caaf9084aaa6fb245.jpg",
+      "leftClass": "Glass_Waste",
+      "rightClass": "Glass_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_142454_jpg.rf.43c1991162c3bd2e61f256e6622b31fa.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142455_jpg.rf.ffe575329ec6e702d3f2aa8f6ec4aa36.jpg",
+      "leftClass": "Glass_Waste",
+      "rightClass": "Glass_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_142549_jpg.rf.ceaa32446f155ab02be4bf2521046d48.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_142551_jpg.rf.3745eaa37cd825062d50a2cc8d2a6ed6.jpg",
+      "leftClass": "Glass_Waste",
+      "rightClass": "Glass_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230548_1_jpg.rf.9a9c3ddc6ee19eb65c26219d87dc5d06.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230547_jpg.rf.1fc1c1813b14d8a6c453192a3655c902.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230612_1_jpg.rf.e5395ae6aed69c08216490e1b18f2a41.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230613_jpg.rf.35667ac31e8b6a1962f303a7d62982ea.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230721_jpg.rf.da4a0e6b5ec0694bd49b1a5e9736dc69.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230724_1_jpg.rf.808bea3b14ef5cc2ed3ea5925d1c25bf.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230721_jpg.rf.da4a0e6b5ec0694bd49b1a5e9736dc69.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230724_jpg.rf.2a2a2381641c452a7939871d048fefff.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230723_jpg.rf.c17046dc09580d4021973aee62259ed2.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230724_1_jpg.rf.808bea3b14ef5cc2ed3ea5925d1c25bf.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230741_jpg.rf.dc0bedfaa4027479fab23c0976545a6b.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230744_jpg.rf.a0b2fc492d6ba7c83137caa46cc56c8f.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230745_jpg.rf.575284a1f604651d70552dd83a91e217.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230744_jpg.rf.a0b2fc492d6ba7c83137caa46cc56c8f.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230751_1_jpg.rf.b6a6bdfa657f14559718f7b530cde398.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230750_1_jpg.rf.f2e3e131c4b8d6a6d72a384376258e0d.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230751_1_jpg.rf.b6a6bdfa657f14559718f7b530cde398.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230751_jpg.rf.5c638c4102c040fcaa64f8a0d317165b.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230752_jpg.rf.35e62924506878244db8c7a6a3bd88d2.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230750_1_jpg.rf.f2e3e131c4b8d6a6d72a384376258e0d.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230752_jpg.rf.35e62924506878244db8c7a6a3bd88d2.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230751_jpg.rf.5c638c4102c040fcaa64f8a0d317165b.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230753_jpg.rf.689df5e4539001a17087ec4dadc1a8f6.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230750_1_jpg.rf.f2e3e131c4b8d6a6d72a384376258e0d.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230753_jpg.rf.689df5e4539001a17087ec4dadc1a8f6.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230751_jpg.rf.5c638c4102c040fcaa64f8a0d317165b.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230813_1_jpg.rf.7476e47179e5626eb1dae94947d63ecc.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230814_jpg.rf.c1a3e8be37415e8a91dbd1d08a1e586e.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230821_1_jpg.rf.89e9f0260ce520e031d42a8303137089.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230822_jpg.rf.d73da08d0256f0d949555210e81cdc83.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230827_jpg.rf.9a8644527cf59c24a31f2c1e3b4ea3df.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230827_1_jpg.rf.f3088dd2b28aca547dae631de9e65eb6.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230827_jpg.rf.9a8644527cf59c24a31f2c1e3b4ea3df.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230828_1_jpg.rf.88a62d0b5973073c62ee48f6f650e23d.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230903_jpg.rf.a9b7287aa11fac499dfd7ca29aa0deef.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230902_jpg.rf.d37d70a19cd3c53b52d33056d1598a9b.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230931_jpg.rf.509ffd53ecb557d345b1a8a2f5209d16.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230933_jpg.rf.42b56caa8399d8e9d56c48d2a47e861a.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_230933_1_jpg.rf.3f6180d0eafd9fbe45146868a29db733.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_230933_jpg.rf.42b56caa8399d8e9d56c48d2a47e861a.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231007_jpg.rf.a259e4afd2671043dd2b5456f54a9969.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231009_1_jpg.rf.350057483044d17308cf711abbef5e50.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231007_jpg.rf.a259e4afd2671043dd2b5456f54a9969.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231010_jpg.rf.72416950c9568f45f8fb88f6d5e47048.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231016_1_jpg.rf.e0532c96badf0153ba5cd901938cfe64.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231015_1_jpg.rf.2b5837fc595a7df0d0b70b651d8f0759.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231016_1_jpg.rf.e0532c96badf0153ba5cd901938cfe64.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231016_jpg.rf.10db514065989dd2b1000319bd77ede1.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231026_1_jpg.rf.704c7620ee3d47cdaf574daa82eb82ad.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231025_1_jpg.rf.f88ff3cfa58096932a4d5be7ea1c003b.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231026_1_jpg.rf.704c7620ee3d47cdaf574daa82eb82ad.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231025_jpg.rf.6a262fdd6af025ae819a92bc11b54fe7.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231026_1_jpg.rf.704c7620ee3d47cdaf574daa82eb82ad.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231026_jpg.rf.dc047e44b8968fa277d6e15b36bc3983.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231027_jpg.rf.7ec416e4c92466fa1d067f07ea2a3bdd.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231025_1_jpg.rf.f88ff3cfa58096932a4d5be7ea1c003b.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231027_jpg.rf.7ec416e4c92466fa1d067f07ea2a3bdd.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231025_jpg.rf.6a262fdd6af025ae819a92bc11b54fe7.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231027_jpg.rf.7ec416e4c92466fa1d067f07ea2a3bdd.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231026_jpg.rf.dc047e44b8968fa277d6e15b36bc3983.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231032_jpg.rf.6c242755da7f4bfc18e5981b795dd799.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231031_jpg.rf.7621229e8ae4e8dde1396f6a41e5dc07.jpg",
+      "leftClass": "Medical_Waste",
+      "rightClass": "Medical_Waste"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231124_1_jpg.rf.15f6be87893a7f3e91d86d821962f40f.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231126_jpg.rf.7712b4701c0e3c8ad2f513a37cac8107.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231125_jpg.rf.712cf5e8bb04d06029470cfebfd9db8a.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231126_jpg.rf.7712b4701c0e3c8ad2f513a37cac8107.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231211_1_jpg.rf.81b7eb1b4bb750b87e50a18ac5a90583.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231210_jpg.rf.3e928d15c853583abf8b89eff296af81.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231220_1_jpg.rf.32d046cd028697cf3c99f250db87866d.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231221_jpg.rf.f1b09c45232ce7f53d9929c1a6024cc0.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231241_jpg.rf.d6ccb4191c62c428828b1cebbd503123.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231238_jpg.rf.3c4cd2453b779bbf5224c35672da6c9d.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/valid/images/IMG_20250822_231241_jpg.rf.d6ccb4191c62c428828b1cebbd503123.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250822_231239_jpg.rf.a708ada26d463e1fc8125634fc78cbf5.jpg",
+      "leftClass": "Battery_Waste",
+      "rightClass": "Battery_Waste"
+    }
+  ],
+  "sourceGroupCrossSplitLeaks": [],
+  "classificationImagesBySplitAndClass": {
+    "train": {
+      "battery_waste": 103,
+      "mouse": 47,
+      "mobile_phone": 106,
+      "light_bulb": 31,
+      "pcb": 146,
+      "keyboard": 90
+    },
+    "validation": {
+      "battery_waste": 10,
+      "mouse": 11,
+      "mobile_phone": 11,
+      "light_bulb": 3,
+      "pcb": 15,
+      "keyboard": 10
+    },
+    "test": {
+      "battery_waste": 15,
+      "mouse": 6,
+      "mobile_phone": 12,
+      "light_bulb": 3,
+      "pcb": 16,
+      "keyboard": 8
+    }
+  },
+  "classificationUniqueSourceGroupsBySplitAndClass": {
+    "train": {
+      "battery_waste": 57,
+      "mouse": 29,
+      "mobile_phone": 62,
+      "light_bulb": 15,
+      "pcb": 78,
+      "keyboard": 50
+    },
+    "validation": {
+      "battery_waste": 10,
+      "mouse": 11,
+      "mobile_phone": 11,
+      "light_bulb": 3,
+      "pcb": 15,
+      "keyboard": 10
+    },
+    "test": {
+      "battery_waste": 15,
+      "mouse": 6,
+      "mobile_phone": 12,
+      "light_bulb": 3,
+      "pcb": 16,
+      "keyboard": 8
+    }
+  },
+  "oodTestImagesByClass": {
+    "Plastic_Waste": 58,
+    "Metal_Waste": 41,
+    "Glass_Waste": 20,
+    "Paper_Waste": 33,
+    "Organic_Waste": 4,
+    "Medical_Waste": 49
+  },
+  "ignoredSourceImages": {
+    "missing_or_multi_class": 4,
+    "Plastic_Waste": 398,
+    "Metal_Waste": 293,
+    "Glass_Waste": 127,
+    "Paper_Waste": 200,
+    "Organic_Waste": 100,
+    "Medical_Waste": 282
+  },
+  "imageDimensions": {
+    "640x640": 2157
+  },
+  "nearDuplicateComponentCount": 320,
+  "selectedNearDuplicateEdgesGrouped": 109,
+  "splitMethod": "Selected-class source filename families connected by same-class dHash distance <=3 were kept together; deterministic seed-42 70/15/15 split stratified by class; training variants retained only in train.",
+  "selectedClassNames": [
+    "battery_waste",
+    "keyboard",
+    "light_bulb",
+    "mobile_phone",
+    "mouse",
+    "pcb"
+  ],
+  "selectedDatasetLabels": [
+    "Battery_Waste",
+    "Keyboard",
+    "Light_Bulb",
+    "Mobile",
+    "Mouse",
+    "PCB"
+  ]
+}

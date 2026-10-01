@@ -1,0 +1,17 @@
+.git
+.env
+.env.*
+!.env.example
+**/target
+node_modules
+datasets
+ml/data
+ml/.venv
+ml/models/*.keras
+ml/models/*.h5
+.idea
+.vscode
+__pycache__
+*.pyc
+*.log
+frontend-dist

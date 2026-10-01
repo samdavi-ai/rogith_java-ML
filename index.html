@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f6">
+  <title>Second Circuit — E-waste assistant</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Second Circuit home"><span class="brand-mark">SC</span><span>Second Circuit</span></a>
+    <nav aria-label="Main navigation"><a href="#identify">Identify</a><a href="#guide">Guide</a><a href="#history">History</a><a href="#about">About</a></nav>
+    <button class="text-button" id="accountButton" type="button">Sign in</button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">A practical guide to electronic waste</p>
+        <h1>Identify an electronic item.</h1>
+        <p class="intro">Take a photo to learn what it may be, how to handle it safely, and what to do before recycling.</p>
+        <div class="actions"><a class="button primary" href="#identify">Identify an item</a><a class="button secondary" href="#guide">Browse the guide</a></div>
+      </div>
+      <div class="hero-note" aria-label="Three simple steps"><p class="eyebrow">How it works</p><ol><li><span>01</span> Upload a photo</li><li><span>02</span> Review the identification</li><li><span>03</span> Follow safe recycling guidance</li></ol></div>
+    </section>
+
+    <section class="section identify-section" id="identify">
+      <div class="section-heading"><p class="eyebrow">Start here</p><h2>Identify an item</h2><p>Use a camera or choose a clear photo showing most of the item.</p></div>
+      <div class="identify-actions"><button class="button primary" id="useCameraButton" type="button">Use camera</button><button class="button secondary" id="uploadPhotoButton" type="button">Upload a photo</button></div>
+      <section id="cameraPanel" class="camera-panel" aria-labelledby="cameraHeading" hidden>
+        <div class="camera-heading"><div><p class="eyebrow">Live camera</p><h3 id="cameraHeading">Identify with camera</h3></div><button class="text-button" id="closeCameraButton" type="button">Close</button></div>
+        <div id="cameraSetup" class="camera-setup">
+          <p>Use your camera to identify an electronic item in real time.</p>
+          <p>Your camera is accessed only while this screen is active. Video is not recorded or stored.</p>
+          <p id="cameraSetupMessage" class="camera-live-message" role="status" hidden></p>
+          <button class="button primary" id="startCameraButton" type="button">Start camera</button>
+        </div>
+        <div id="cameraActive" hidden>
+          <div class="camera-frame"><video id="cameraVideo" autoplay playsinline muted aria-label="Live camera preview"></video></div>
+          <p id="cameraLiveMessage" class="camera-live-message" role="status" aria-live="polite">Camera active. Identification will be unavailable until a trained model is configured.</p>
+          <div id="cameraPrediction" class="camera-prediction" aria-live="polite" hidden></div>
+          <div class="camera-controls"><button class="button primary" id="useResultButton" type="button" hidden>Use this result</button><button class="button secondary" id="retryInferenceButton" type="button" hidden>Retry classification</button><button class="button secondary" id="switchCameraButton" type="button" hidden>Switch camera</button><button class="text-button" id="stopCameraButton" type="button">Stop camera</button></div>
+        </div>
+        <div id="cameraError" class="camera-error" role="alert" hidden></div>
+        <div id="cameraRecovery" class="camera-controls" hidden><button class="button secondary" id="retryCameraButton" type="button">Try again</button><button class="text-button" id="cameraUploadFallback" type="button">Upload a photo instead</button></div>
+      </section>
+      <form id="identifyForm" class="upload-panel">
+        <input id="imageInput" type="file" accept="image/jpeg,image/png" capture="environment" hidden>
+        <div id="dropZone" class="drop-zone" tabindex="0" role="button" aria-label="Choose an image of an electronic item">
+          <div id="emptyUpload"><div class="upload-symbol" aria-hidden="true">＋</div><h3>Choose a photo</h3><p>JPG or PNG · up to 10 MB</p><button type="button" class="button secondary" id="chooseButton">Choose image</button><p class="camera-hint">On a phone, you can take a photo with your camera.</p></div>
+          <div id="previewWrap" hidden><img id="preview" alt="Preview of the selected electronic item"><div class="file-meta"><strong id="fileName"></strong><span id="fileSize"></span></div><div class="preview-actions"><button type="button" class="text-button" id="changeButton">Change image</button><button type="button" class="text-button danger-text" id="removeButton">Remove</button></div></div>
+        </div>
+        <ul class="tips"><li>Use good lighting</li><li>Keep the item in focus</li><li>Show the complete item where possible</li><li>Avoid heavy obstruction</li></ul>
+        <button class="button primary submit-button" id="analyzeButton" type="submit" disabled>Identify item</button>
+        <p id="uploadError" class="form-error" role="alert" hidden></p>
+      </form>
+      <section id="result" class="result-panel" aria-live="polite" hidden></section>
+    </section>
+
+    <section class="section guide-section" id="guide">
+      <div class="section-heading"><p class="eyebrow">Practical information</p><h2>E-waste guide</h2><p>General preparation advice. Local collection options and rules vary by location.</p></div>
+      <label class="search-label" for="guideSearch">Search items</label><input class="search-input" id="guideSearch" type="search" placeholder="Search for an electronic item">
+      <div class="guide-list" id="guideList"></div>
+      <p class="source-note">Official disposal guidance is jurisdiction-specific. This starter guide does not claim a local recycler is verified.</p>
+    </section>
+
+    <section class="section history-section" id="history">
+      <div class="section-heading"><p class="eyebrow">On this device</p><h2>My classifications</h2><p>Your recent results are stored only in this browser.</p></div>
+      <div id="historyList" class="history-list"></div>
+    </section>
+
+    <section class="section about-section" id="about"><p class="eyebrow">Why this matters</p><h2>Make the next step a safer one.</h2><p>Electronic waste can contain materials that need appropriate handling, while many components can be recovered through recycling. Correct identification is a useful first step.</p><p class="source-note">Image-based identification can be uncertain. Lighting, obstruction, damage and unfamiliar designs may affect results. Always use official local guidance for disposal decisions.</p></section>
+  </main>
+  <footer><a class="brand" href="#home"><span class="brand-mark">SC</span><span>Second Circuit</span></a><span>Recycling guidance may vary by location.</span><a href="#about">About this service</a></footer>
+  <script src="api-config.js"></script>
+  <script src="camera-controller.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+# AI-Based E-Waste Classification and Recycling Assistant Using Java & ML
+
+## Overview
+
+Second Circuit is a practical e-waste utility for identifying selected electronics from a photo or webcam frame and reviewing general handling guidance. Image identification is experimental and should be treated as a suggestion for human review.
+
+## Features
+
+- Desktop webcam and mobile rear-camera preference where available
+- JPG/PNG upload and preview
+- Six-class MobileNetV2 image classifier served through Java and ONNX Runtime
+- Recycling preparation guide and local browser history
+- Explicit low-confidence and unavailable-model states
+
+## Architecture
+
+```text
+Static HTML/CSS/JavaScript → Spring Boot REST API → ONNX Runtime
+                                              └── PostgreSQL configuration
+```
+
+The static site can be served by the included Nginx image or deployed as a Render Static Site. A configurable API origin lets the static site call a separately hosted HTTPS backend.
+
+## Webcam Detection
+
+The browser captures and compresses JPEG frames, submits one request at a time to `POST /api/classifications`, and stops requesting after repeated service errors. The browser does not upload a continuous video stream. A camera run on an unspecified room frame returned **Light bulb, 89.4% confidence**; no supported target object was deliberately presented, so this is not a known-item accuracy test; it demonstrates that a room scene may be associated with a supported class.
+
+## Image Upload
+
+The backend validates MIME type, decoded file format, image dimensions and maximum file size before inference. The ONNX model returns one of six supported categories; it does not detect unknown classes.
+
+## Recycling Guide
+
+The guide contains general preparation advice. It does not claim to verify local recyclers or jurisdiction-specific requirements.
+
+## Technology Stack
+
+- Vanilla JavaScript, HTML and CSS
+- Java 17, Spring Boot 3.3.5, Maven
+- ONNX Runtime Java 1.20.0
+- TensorFlow/Keras MobileNetV2 training and tf2onnx export
+- PostgreSQL
+- Docker, Docker Compose and Render
+
+## Machine Learning
+
+The trained model and complete experiment reports are in `ml/`. Dataset sources and licensing are documented in [`ml/DATASET_SOURCES.md`](ml/DATASET_SOURCES.md), and the test metrics and limitations are in [`ml/reports/TRAINING_REPORT.md`](ml/reports/TRAINING_REPORT.md) and [`ml/MODEL_CARD.md`](ml/MODEL_CARD.md).
+
+The final ONNX artifact is `ml/models/ewaste.onnx`. Its preprocessing contract is RGB, bilinear 224×224 stretch, float32, NCHW, values normalized as `pixel / 127.5 - 1`. Python and Java share the ordered mapping in `ml/classes.json`.
+
+The model scored 98.33% accuracy on 60 held-out images from a small dataset. The bulb test support is three images. It also made confident forced predictions on excluded classes; it is not an open-set detector. Do not use these numbers as a field-performance guarantee.
+
+## Backend
+
+- `POST /api/classifications` accepts a multipart field named `image`.
+- `GET /health` returns `{"status":"UP"}` while the application is running.
+- `EWASTE_MODEL_PATH` and `EWASTE_CLASS_MAPPING_PATH` configure model artifacts.
+- `PORT`, `DATABASE_URL`, `DATABASE_USER`, `DATABASE_PASSWORD`, and `CORS_ALLOWED_ORIGINS` configure service runtime.
+
+## Database
+
+PostgreSQL remains the configured database. Local Compose uses the `db` service; Render injects a managed PostgreSQL URL. The app converts Render's `postgresql://` URI into the JDBC form expected by the Java driver.
+
+## Local Development
+
+Requirements: Java 17, Maven, Python 3.11 for ML work, and Docker for the full local stack.
+
+```bash
+cp .env.example .env
+# Set a local DATABASE_PASSWORD before using Docker Compose.
+docker compose up --build
+```
+
+Open `http://localhost:8088`. To run backend tests:
+
+```bash
+cd backend
+mvn clean test
+mvn package
+```
+
+To run the Python artifact checks:
+
+```bash
+ml/.venv/bin/python -m unittest discover -s ml/tests -v
+```
+
+## Render Deployment
+
+See [`RENDER_DEPLOYMENT.md`](RENDER_DEPLOYMENT.md). The checked-in `render.yaml` defines a static site, Docker API service and PostgreSQL database using Free plans for an initial preview. No Render resources have been created by this project work.
+
+## Current ML Status
+
+A real MobileNetV2 model has been trained, evaluated, exported to ONNX, integrated into the API, and exercised through the live camera flow. The model is available in the local repository and is included in the Docker build. Recognition remains experimental: the held-out sample is small, source data lacks physical-item IDs, and an unspecified webcam scene produced a confident bulb prediction.

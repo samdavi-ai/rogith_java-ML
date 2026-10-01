@@ -1,0 +1,216 @@
+{
+  "testImages": 60,
+  "accuracy": 0.9833333333333333,
+  "macroPrecision": 0.9871794871794872,
+  "macroRecall": 0.9888888888888889,
+  "macroF1": 0.9875862068965517,
+  "weightedF1": 0.9833793103448277,
+  "perClass": {
+    "battery_waste": {
+      "precision": 1.0,
+      "recall": 0.9333333333333333,
+      "f1-score": 0.9655172413793104,
+      "support": 15.0
+    },
+    "keyboard": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 8.0
+    },
+    "light_bulb": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 3.0
+    },
+    "mobile_phone": {
+      "precision": 0.9230769230769231,
+      "recall": 1.0,
+      "f1-score": 0.96,
+      "support": 12.0
+    },
+    "mouse": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 6.0
+    },
+    "pcb": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 16.0
+    },
+    "accuracy": 0.9833333333333333,
+    "macro avg": {
+      "precision": 0.9871794871794872,
+      "recall": 0.9888888888888889,
+      "f1-score": 0.9875862068965517,
+      "support": 60.0
+    },
+    "weighted avg": {
+      "precision": 0.9846153846153847,
+      "recall": 0.9833333333333333,
+      "f1-score": 0.9833793103448277,
+      "support": 60.0
+    }
+  },
+  "confusionMatrix": [
+    [
+      14,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      8,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      3,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      12,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      6,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      16
+    ]
+  ],
+  "confusionMatrixLabels": [
+    "battery_waste",
+    "keyboard",
+    "light_bulb",
+    "mobile_phone",
+    "mouse",
+    "pcb"
+  ],
+  "misclassifiedCountsByConfusion": {
+    "battery_waste->mobile_phone": 1
+  },
+  "misclassifiedExamples": [
+    {
+      "true": "battery_waste",
+      "predicted": "mobile_phone",
+      "confidence": 0.5203114748001099
+    }
+  ],
+  "ood": {
+    "evaluatedImages": 205,
+    "bySourceClass": {
+      "Glass_Waste": {
+        "images": 20,
+        "topPredictions": {
+          "battery_waste": 10,
+          "keyboard": 0,
+          "light_bulb": 5,
+          "mobile_phone": 3,
+          "mouse": 2,
+          "pcb": 0
+        },
+        "meanMaxConfidence": 0.6367133855819702,
+        "maxConfidenceAtLeast85Percent": 3
+      },
+      "Medical_Waste": {
+        "images": 49,
+        "topPredictions": {
+          "battery_waste": 22,
+          "keyboard": 0,
+          "light_bulb": 2,
+          "mobile_phone": 8,
+          "mouse": 10,
+          "pcb": 7
+        },
+        "meanMaxConfidence": 0.7587838172912598,
+        "maxConfidenceAtLeast85Percent": 23
+      },
+      "Metal_Waste": {
+        "images": 41,
+        "topPredictions": {
+          "battery_waste": 30,
+          "keyboard": 0,
+          "light_bulb": 4,
+          "mobile_phone": 6,
+          "mouse": 1,
+          "pcb": 0
+        },
+        "meanMaxConfidence": 0.8460602164268494,
+        "maxConfidenceAtLeast85Percent": 25
+      },
+      "Organic_Waste": {
+        "images": 4,
+        "topPredictions": {
+          "battery_waste": 4,
+          "keyboard": 0,
+          "light_bulb": 0,
+          "mobile_phone": 0,
+          "mouse": 0,
+          "pcb": 0
+        },
+        "meanMaxConfidence": 0.7831287384033203,
+        "maxConfidenceAtLeast85Percent": 1
+      },
+      "Paper_Waste": {
+        "images": 33,
+        "topPredictions": {
+          "battery_waste": 19,
+          "keyboard": 0,
+          "light_bulb": 1,
+          "mobile_phone": 11,
+          "mouse": 0,
+          "pcb": 2
+        },
+        "meanMaxConfidence": 0.8829560875892639,
+        "maxConfidenceAtLeast85Percent": 22
+      },
+      "Plastic_Waste": {
+        "images": 58,
+        "topPredictions": {
+          "battery_waste": 26,
+          "keyboard": 0,
+          "light_bulb": 17,
+          "mobile_phone": 4,
+          "mouse": 0,
+          "pcb": 11
+        },
+        "meanMaxConfidence": 0.7547865509986877,
+        "maxConfidenceAtLeast85Percent": 18
+      }
+    },
+    "meanMaxConfidence": 0.7836625541128763,
+    "confidentForcedPredictions": 92,
+    "threshold": 0.85,
+    "interpretation": "This closed-set classifier always chooses one supported class; results are not an unknown-class detector."
+  },
+  "testUsedForSelection": false,
+  "preprocessing": "RGB, bilinear stretch resize 224x224, pixel/127.5 - 1.0, NCHW float32"
+}

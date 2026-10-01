@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME:-ewaste}
+      POSTGRES_USER: ${DATABASE_USER:-ewaste}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:?Set DATABASE_PASSWORD in .env}
+    volumes: ["postgres-data:/var/lib/postgresql/data", "./database/schema.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USER:-ewaste} -d ${DATABASE_NAME:-ewaste}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      DATABASE_URL: jdbc:postgresql://db:5432/${DATABASE_NAME:-ewaste}
+      DATABASE_USER: ${DATABASE_USER:-ewaste}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:?Set DATABASE_PASSWORD in .env}
+      EWASTE_MODEL_PATH: /app/ml/models/ewaste.onnx
+      EWASTE_CLASS_MAPPING_PATH: /app/ml/classes.json
+    depends_on:
+      db: {condition: service_healthy}
+  frontend:
+    build: .
+    ports: ["${WEB_PORT:-8088}:80"]
+    depends_on: [backend]
+volumes:
+  postgres-data:

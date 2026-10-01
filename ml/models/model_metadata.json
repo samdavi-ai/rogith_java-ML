@@ -9,7 +9,7 @@
   "normalization": "RGB float32, pixel / 127.5 - 1.0",
   "resize": "bilinear stretch to 224x224; decoder uses stored pixel orientation (no EXIF auto-rotation)",
   "output": "logits [1,N]; softmax applied by Java",
-  "classesFile": "ml/classes.json",
+  "classesFile": "ml/class_mapping.json",
   "classes": [
     {
       "id": 0,
@@ -50,5 +50,15 @@
   ],
   "trainingDataset": "Mendeley Data 10.17632/77383kmdnw.1, CC BY 4.0; six supported classes",
   "trainingSeed": 42,
-  "checkpoint": "ml/models/best_model.keras"
+  "checkpoint": "ml/models/best_model.keras",
+  "minimumConfidenceThreshold": 0.66,
+  "minimumConfidenceCalibration": {
+    "validationImages": 60,
+    "validationAccuracy": 1.0,
+    "minimumCorrectValidationConfidence": 0.651542246,
+    "policy": "Round minimum correctly classified validation confidence upward to nearest 0.01; held-out test was not used to select threshold."
+  },
+  "parameters": 2265670,
+  "weightedPrecision": 0.9846153846153847,
+  "weightedRecall": 0.9833333333333333
 }

@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 class PipelineArtifactTests(unittest.TestCase):
     def test_class_ids_are_the_single_ordered_authority(self):
-        classes = parse_classes(ROOT / "ml/classes.json")
+        classes = parse_classes(ROOT / "ml/class_mapping.json")
         self.assertEqual([item["id"] for item in classes], list(range(6)))
         self.assertEqual([item["name"] for item in classes], [
             "battery_waste", "keyboard", "light_bulb", "mobile_phone", "mouse", "pcb"

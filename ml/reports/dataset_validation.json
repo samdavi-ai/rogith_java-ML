@@ -1,0 +1,122 @@
+{
+  "source": "ml/data/raw/roboflow_v5",
+  "images": 2157,
+  "bySplit": {
+    "train": 1500,
+    "valid": 330,
+    "test": 327
+  },
+  "corrupt": [],
+  "unsupportedFiles": [],
+  "exactDuplicateGroups": [],
+  "crossSplitFamilies": [],
+  "missingLabels": [],
+  "dimensions": {
+    "640x640": 2157
+  },
+  "emptyOrSmallImages": [],
+  "nearDuplicateCandidatePairsAcrossSourceSplits": 544,
+  "nearDuplicateCandidateExamples": [
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_215648_jpg.rf.c339d9561861e32aec3649527f4423f7.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_215638_jpg.rf.ba4f3127b341131ea269136e3d2b124e.jpg"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_215648_jpg.rf.c339d9561861e32aec3649527f4423f7.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_215639_jpg.rf.fbe999007ecf4fd037195142c1702267.jpg"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_215808_jpg.rf.8a06ce738b95b31fc02705ce61b6d0ad.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_215807_jpg.rf.949f4e1a94325c40ad658940123c68d8.jpg"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_215915_jpg.rf.e940d8c0ac5dd3a490a488180d848a1b.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_215916_jpg.rf.422a26ebcd2da19f8dbc2846c7a3bd6e.jpg"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_215915_jpg.rf.e940d8c0ac5dd3a490a488180d848a1b.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_215914_jpg.rf.8feef1eccb5913579498f857230745d0.jpg"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_215924_jpg.rf.2527e2e5a72383888bed75c4da4b9c64.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_215921_jpg.rf.84e43de9ae7a629acd537e14400126c6.jpg"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_215924_jpg.rf.2527e2e5a72383888bed75c4da4b9c64.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_215922_jpg.rf.2d0d3acf3b2ae57e09ef07ea4f228f4a.jpg"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220022_jpg.rf.dc0fdee22f504920709e6321bf117c22.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220024_jpg.rf.2fc166ace133b8664434156a034ba786.jpg"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220030_jpg.rf.1f79ea661a57dc1bd9c74db29adb4ec2.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220031_jpg.rf.980993866f095141d958d78983b61f11.jpg"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220046_jpg.rf.593a44abf20cee25f06845f455285742.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220045_jpg.rf.337135edaed79d430b95b610ec32c0db.jpg"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220047_jpg.rf.f69036399cb844d4fa35545cbe8bf18c.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220045_jpg.rf.337135edaed79d430b95b610ec32c0db.jpg"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220114_jpg.rf.68d25d49b60c21e990f42a77571309d7.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220117_jpg.rf.0594f79bcf0bff0635472395fec31752.jpg"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220115_jpg.rf.986aaba8691d3660da734c3014d6edd7.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220117_jpg.rf.0594f79bcf0bff0635472395fec31752.jpg"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220207_jpg.rf.0f17df4cec5b7117887884be5ea29430.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220206_jpg.rf.de998e9b904dcfe77468124a9e729352.jpg"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220226_jpg.rf.ff911118579e3a71da019d386eb1d7eb.jpg",
+      "right": "ml/data/raw/roboflow_v5/valid/images/IMG_20250803_220227_jpg.rf.c42373ef7c64d08b36804cc7fcad4d15.jpg"
+    },
+    {
+      "distance": 3,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220226_jpg.rf.ff911118579e3a71da019d386eb1d7eb.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220228_jpg.rf.8e94e7ce7153325b8e181e6a1d331ef0.jpg"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220243_jpg.rf.c17d27aa58b11aa0475d5b41c8ddbd97.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220244_jpg.rf.25e694fad0069d6b3720bcfeff342f09.jpg"
+    },
+    {
+      "distance": 0,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220255_jpg.rf.3511615b828854235bed04fcf894a5f5.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220254_jpg.rf.11410f220a6391f2c4b55aa7acabf966.jpg"
+    },
+    {
+      "distance": 2,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220255_jpg.rf.3511615b828854235bed04fcf894a5f5.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220256_jpg.rf.3b9f89aa439c4e4d73ed04ed18e16668.jpg"
+    },
+    {
+      "distance": 1,
+      "left": "ml/data/raw/roboflow_v5/train/images/IMG_20250803_220255_jpg.rf.3511615b828854235bed04fcf894a5f5.jpg",
+      "right": "ml/data/raw/roboflow_v5/test/images/IMG_20250803_220257_jpg.rf.8553c912c825e21ed3ec17bc2f25ff9a.jpg"
+    }
+  ],
+  "status": "PASS"
+}

@@ -6,6 +6,8 @@ Source: Custom Bangladeshi E-Waste Image Dataset, Mendeley Data V1
 
 The archive contains 2,157 images across 12 labeled waste classes in train/valid/test folders, with YOLO bounding-box annotations. Images are suitable for image-level classification because audited frames each had exactly one unique class label; box annotations were not used to crop objects. Selected classes are six e-waste categories with visual object identities relevant to the app. The original test images from the six non-selected source classes are held out for a closed-set OOD characterization.
 
+The read-only validation run (`reports/dataset_validation.json`) checked all 2,157 source images: 1,500 train, 330 validation, 327 test; zero corrupt images, missing labels, exact-duplicate groups, or source filename families crossing source splits. It recorded 544 raw image-pair dHash ≤3 candidates across source splits. The preparation audit separately compares one representative per source family (255 near-duplicate candidates) and groups same-class selected candidates before constructing the final split; those counts use different units and are not contradictory.
+
 The archive documentation declares CC BY 4.0. Source links and attribution are in [DATASET_SOURCES.md](../DATASET_SOURCES.md). Source-reported names/counts were read from the archive and verified by the audit script; this report does not infer physical object identities.
 
 ## Cleaning and leakage checks

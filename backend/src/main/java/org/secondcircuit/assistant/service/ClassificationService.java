@@ -38,9 +38,10 @@ public class ClassificationService {
                 if (decoded == null) throw new InvalidImageException("We couldn't read this image. Please try another photo.");
                 return classifier.predict(decoded);
             } finally { reader.dispose(); }
-        } catch (InvalidImageException | ModelUnavailableException e) { throw e; }
+        } catch (InvalidImageException | ModelUnavailableException | ModelLoadException e) { throw e; }
         catch (Exception e) { throw new InvalidImageException("We couldn't read this image. Please try another photo."); }
     }
     public static class InvalidImageException extends RuntimeException { public InvalidImageException(String message) { super(message); } }
     public static class ModelUnavailableException extends RuntimeException { public ModelUnavailableException() { super("Model not configured"); } }
+    public static class ModelLoadException extends RuntimeException { public ModelLoadException() { super("Model could not be loaded"); } }
 }

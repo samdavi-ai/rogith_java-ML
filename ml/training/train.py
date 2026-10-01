@@ -55,7 +55,7 @@ def make_dataset(data_root: Path, split: str, classes: list[dict], batch_size: i
         crop_to_aspect_ratio=False,
     )
     if dataset.class_names != [entry["name"] for entry in classes]:
-        raise ValueError(f"Dataset classes do not match classes.json: {dataset.class_names}")
+        raise ValueError(f"Dataset classes do not match class_mapping.json: {dataset.class_names}")
 
     def preprocess(images: tf.Tensor, labels: tf.Tensor) -> tuple[tf.Tensor, tf.Tensor]:
         rgb = tf.cast(images, tf.float32) / 127.5 - 1.0
@@ -82,7 +82,7 @@ def build_model(class_count: int) -> tuple[tf.keras.Model, tf.keras.Model]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--data", type=Path, default=Path("ml/data/processed/classification"))
-    parser.add_argument("--classes", type=Path, default=Path("ml/classes.json"))
+    parser.add_argument("--classes", type=Path, default=Path("ml/class_mapping.json"))
     parser.add_argument("--out", type=Path, default=Path("ml/models"))
     parser.add_argument("--frozen-epochs", type=int, default=12)
     parser.add_argument("--fine-tune-epochs", type=int, default=8)
@@ -182,7 +182,7 @@ def main() -> None:
         "normalization": "RGB float32, pixel / 127.5 - 1.0",
         "resize": "bilinear stretch to 224x224; EXIF orientation applied before RGB decode",
         "output": "logits [1,N]; softmax applied by Java",
-        "classesFile": "ml/classes.json",
+        "classesFile": "ml/class_mapping.json",
         "classes": classes,
         "trainingDataset": "Mendeley Data 10.17632/77383kmdnw.1, CC BY 4.0; six supported classes",
         "trainingSeed": SEED,

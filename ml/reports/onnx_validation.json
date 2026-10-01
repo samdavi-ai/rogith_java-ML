@@ -1,7 +1,15 @@
 {
   "status": "PASS",
-  "path": "ml/models/ewaste.onnx",
-  "sizeBytes": 8943137,
+  "onnxPath": "ml/models/ewaste.onnx",
+  "imagesCompared": 60,
+  "argmaxAgreements": 60,
+  "maxAbsoluteLogitDifference": 5.53131103515625e-05,
+  "maxProbabilityDifference": 7.212162017822266e-06,
+  "singleImageLatencyMs": {
+    "median": 6.695895499433391,
+    "p95": 8.221685701028035,
+    "max": 9.188541996991262
+  },
   "input": {
     "name": "image",
     "shape": [
@@ -19,14 +27,5 @@
       6
     ],
     "type": "tensor(float)"
-  },
-  "opset": 17,
-  "providers": [
-    "CPUExecutionProvider"
-  ],
-  "validationImagesCompared": 60,
-  "kerasOnnxArgmaxAgreements": 60,
-  "maxAbsoluteLogitDifference": 5.7220458984375e-05,
-  "maxRelativeLogitDifference": 4.775055276695639e-05,
-  "classesFile": "ml/classes.json"
+  }
 }

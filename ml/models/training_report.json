@@ -13,7 +13,7 @@
     "dtype": "float32",
     "normalization": "RGB / 127.5 - 1.0"
   },
-  "classMappingFile": "ml/classes.json",
+  "classMappingFile": "ml/class_mapping.json",
   "classes": [
     {
       "id": 0,
@@ -191,5 +191,15 @@
   "platform": "macOS-26.6.2-arm64-arm-64bit",
   "tensorflowDevices": [
     "/physical_device:CPU:0"
-  ]
+  ],
+  "minimumConfidenceThreshold": 0.66,
+  "minimumConfidenceCalibration": {
+    "validationImages": 60,
+    "validationAccuracy": 1.0,
+    "minimumCorrectValidationConfidence": 0.651542246,
+    "policy": "Round minimum correctly classified validation confidence upward to nearest 0.01; held-out test was not used to select threshold."
+  },
+  "parameters": 2265670,
+  "weightedPrecision": 0.9846153846153847,
+  "weightedRecall": 0.9833333333333333
 }

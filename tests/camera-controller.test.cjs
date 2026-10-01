@@ -111,6 +111,15 @@ test('keeps a real camera active but pauses repeated requests after MODEL_UNAVAI
   fixture.controller.stop();
 });
 
+test('pauses inference and reports a non-sensitive message on MODEL_LOAD_ERROR', async () => {
+  const fixture = makeController({fetchImpl:async()=>({ok:false,status:503,json:async()=>({error:{code:'MODEL_LOAD_ERROR',message:'load failed'}})})});
+  await fixture.controller.start();
+  await flush();
+  assert.match(fixture.unavailable[0],/model could not be loaded/i);
+  assert.equal(fixture.controller.inferenceEnabled,false);
+  fixture.controller.stop();
+});
+
 test('uses the configured HTTPS API origin for a separately hosted production frontend', async () => {
   const fixture = makeController({apiBase:'https://ewaste-api.onrender.com/'});
   await fixture.controller.start();
@@ -148,6 +157,16 @@ test('requires three matching predictions before presenting a stable result', ()
   assert.equal(stable.stable,true);
   assert.equal(stable.category,'Laptop');
   assert.ok(Math.abs(stable.confidence-.82)<0.001);
+});
+
+test('stabilizes UNSURE votes without inventing a supported category', () => {
+  const fixture=makeController();
+  const frame=new Blob(['frame'],{type:'image/jpeg'});
+  for(let i=0;i<3;i++) fixture.controller.acceptPrediction({category:'UNSURE',isUnsure:true,confidence:.56,frame});
+  const stable=fixture.predictions.at(-1);
+  assert.equal(stable.stable,true);
+  assert.equal(stable.category,'UNSURE');
+  assert.equal(stable.isUnsure,true);
 });
 
 test('uses a one-second configurable inference interval by default', () => {

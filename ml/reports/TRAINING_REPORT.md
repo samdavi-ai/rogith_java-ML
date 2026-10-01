@@ -1,6 +1,6 @@
 # Training and evaluation report
 
-Run date: 2026-10-02 (local project date). Framework: TensorFlow 2.17.0 / Keras 3.15.1. Device: CPU on macOS-26.6.2-arm64-arm-64bit.
+Run date: 2026-10-02 (local project date). Framework: TensorFlow 2.17.0 / Keras 3.15.1. Python: 3.11.15. Device: CPU on macOS-26.6.2-arm64-arm-64bit.
 
 ## Training setup
 
@@ -19,6 +19,8 @@ Run date: 2026-10-02 (local project date). Framework: TensorFlow 2.17.0 / Keras 
 | Macro precision | 0.9872 |
 | Macro recall | 0.9889 |
 | Macro F1 | 0.9876 |
+| Weighted precision | 0.9846 |
+| Weighted recall | 0.9833 |
 | Weighted F1 | 0.9834 |
 
 Per-class precision/recall/F1 (support):
@@ -45,6 +47,14 @@ Confusion matrix (rows=true, columns=predicted; class order in header):
 
 One error: battery_waste → mobile_phone, predicted confidence 0.5203. Small test supports, especially 3 light_bulb images, make per-class estimates imprecise.
 
+## Confidence policy
+
+The API minimum confidence is 0.66. On the 60 validation images, the selected checkpoint classified all 60 correctly and the minimum top-class confidence was 0.651542. The threshold was rounded upward to 0.66 using validation only. The held-out test error had 0.5203 Keras confidence (Java/ONNX preprocessing yielded about 0.5655 in the previous direct inference check), so the API reports `UNSURE` and suppresses category-specific guidance for that example. With only 60 validation images, this is an initial operating threshold, not a statistical calibration guarantee.
+
 ## Excluded-class images / unknown behavior
 
-The model forced a supported-class prediction on 205 held-aside images from six excluded source classes. Mean maximum confidence was 0.7837; 92 predictions had confidence ≥0.85. A normal closed-set classifier is not an unknown detector. Full counts are in evaluation.json.
+The model forced a supported-class prediction on 205 held-aside images from six excluded waste classes within the same dataset project. Mean maximum confidence was 0.7837; 92 predictions had confidence ≥0.85. This is not the requested external set of household objects such as bottles, books, shoes, food, chairs, people, and vehicles. The closed-set classifier is not an unknown detector; evaluation on an independently sourced non-e-waste set remains outstanding. Full counts are in evaluation.json.
+
+## Runtime observations
+
+The running Spring service reported 1,063 ms to load and validate the ONNX model and class map. A 30-request sequential HTTP sample using a real held-out mobile-phone image measured 11.31 ms median and 13.87 ms p95 (15.46 ms max; local machine, includes multipart upload and HTTP handling). The browser interval is 1,000 ms and one request may be in flight, giving a nominal cadence near one frame per second; camera capture/encoding was not separately instrumented. These local measurements do not predict Render performance. Process memory and a Docker-contained runtime were not measured.

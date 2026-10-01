@@ -23,6 +23,12 @@ public class ApiExceptionHandler {
                 .body(ApiModels.Envelope.fail("MODEL_UNAVAILABLE", "Image identification is not configured yet. Please use the guide while the model is being prepared."));
     }
 
+    @ExceptionHandler(ClassificationService.ModelLoadException.class)
+    ResponseEntity<ApiModels.Envelope<?>> modelLoadError(Exception ex) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                .body(ApiModels.Envelope.fail("MODEL_LOAD_ERROR", "The image identification model could not be loaded."));
+    }
+
     @ExceptionHandler(MaxUploadSizeExceededException.class)
     ResponseEntity<ApiModels.Envelope<?>> uploadTooLarge(Exception ex) {
         return ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE)

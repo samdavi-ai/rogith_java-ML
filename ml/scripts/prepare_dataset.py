@@ -28,9 +28,9 @@ def parse_classes(classes_path: Path) -> list[dict]:
     data = json.loads(classes_path.read_text(encoding="utf-8"))
     classes = data["classes"]
     if [entry["id"] for entry in classes] != list(range(len(classes))):
-        raise ValueError("classes.json IDs must be contiguous and ordered from zero")
+        raise ValueError("class_mapping.json IDs must be contiguous and ordered from zero")
     if len({entry["name"] for entry in classes}) != len(classes):
-        raise ValueError("classes.json contains duplicate canonical class names")
+        raise ValueError("class_mapping.json contains duplicate canonical class names")
     return classes
 
 
@@ -274,7 +274,7 @@ def audit_and_prepare(data_root: Path, classes_path: Path, output_root: Path, re
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--data-root", type=Path, required=True)
-    parser.add_argument("--classes", type=Path, default=Path("ml/classes.json"))
+    parser.add_argument("--classes", type=Path, default=Path("ml/class_mapping.json"))
     parser.add_argument("--output", type=Path, default=Path("ml/data/processed/classification"))
     parser.add_argument("--ood-output", type=Path, default=Path("ml/data/processed/ood_test"))
     parser.add_argument("--report", type=Path, default=Path("ml/reports/dataset_report.json"))

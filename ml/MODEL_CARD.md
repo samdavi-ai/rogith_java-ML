@@ -2,14 +2,17 @@
 
 ## Intended use
 
-Experimental image classifier for six visually identifiable categories from uploaded photos or camera frames: battery waste, keyboard, light bulb, mobile phone, mouse, and printed circuit board. It returns one of these classes plus confidence. It is a prototype for human-reviewed recycling guidance, not a safety or disposal authority.
+Experimental image classifier for six visually identifiable categories from uploaded photos or camera frames: battery waste, keyboard, light bulb, mobile phone, mouse, and printed circuit board. It returns a supported category only above the configured minimum confidence, otherwise `UNSURE`. It is a prototype for human-reviewed recycling guidance, not a safety or disposal authority.
 
 ## Model and data
 
+- Version 1.0.0; evaluated and documented 2026-10-02.
 - MobileNetV2 ImageNet transfer learning; input 224×224 RGB float32, NCHW, bilinear stretch, pixel normalization `x / 127.5 - 1`.
-- Class mapping is authoritative in [classes.json](classes.json); model output is six logits.
+- Class mapping is authoritative in [class_mapping.json](class_mapping.json); model output is six logits.
+- Parameters: 2,265,670. Version: 1.0.0. Training used seed 42, batch size 16, up to 12 frozen-backbone and 8 fine-tuning epochs, Adam at 0.001 then 0.00001, early stopping by validation loss.
+- Minimum confidence: 0.66, calibrated from the 60-image validation set (minimum correctly classified confidence 0.6515, rounded upward to 0.66). This is a small-sample operating threshold, not a calibrated probability guarantee. Below it the API returns `UNSURE` and withholds category-specific guidance.
 - Training/evaluation dataset source, attribution, license, and split limitations: [DATASET_REPORT.md](reports/DATASET_REPORT.md) and [DATASET_SOURCES.md](DATASET_SOURCES.md).
-- Held-out test: 60 images, accuracy 0.983, macro F1 0.988; use caution due to small class supports.
+- Held-out test: 60 images, accuracy 0.983, macro F1 0.988; weighted precision 0.985, weighted recall 0.983, weighted F1 0.983. Use caution due to small class supports.
 
 ## Limitations
 

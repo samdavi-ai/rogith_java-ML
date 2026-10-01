@@ -8,6 +8,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.secondcircuit.assistant.api.ApiModels;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jakarta.annotation.PreDestroy;
 import javax.imageio.ImageIO;
@@ -23,54 +25,86 @@ import java.util.Map;
 
 @Component
 public class OnnxClassifier {
+    private static final Logger log = LoggerFactory.getLogger(OnnxClassifier.class);
     private final OrtEnvironment environment;
     private final OrtSession session;
     private final String inputName;
     private final List<String> labels;
-    private final double highThreshold, mediumThreshold;
+    private final double highThreshold, mediumThreshold, minimumConfidence;
+    private final String modelStatus;
+    private final long modelLoadTimeMs;
 
     public OnnxClassifier(@Value("${app.ml.model-path:ml/models/ewaste.onnx}") String modelPath,
-                          @Value("${app.ml.labels-path:ml/classes.json}") String labelsPath,
+                          @Value("${app.ml.labels-path:ml/class_mapping.json}") String labelsPath,
                           @Value("${app.ml.high-threshold:0.85}") double highThreshold,
-                          @Value("${app.ml.medium-threshold:0.60}") double mediumThreshold) {
+                          @Value("${app.ml.medium-threshold:0.60}") double mediumThreshold,
+                          @Value("${app.ml.minimum-confidence:0.66}") double minimumConfidence) {
         this.highThreshold = highThreshold;
         this.mediumThreshold = mediumThreshold;
+        this.minimumConfidence = minimumConfidence;
         if (!Files.isRegularFile(Path.of(modelPath)) || !Files.isRegularFile(Path.of(labelsPath))) {
             environment = null;
             session = null;
             inputName = null;
             labels = List.of();
+            modelStatus = "MODEL_UNAVAILABLE";
+            modelLoadTimeMs = 0;
             return;
         }
+        long loadStart = System.nanoTime();
+        OrtEnvironment loadedEnvironment = null;
+        OrtSession loadedSession = null;
+        String loadedInput = null;
+        List<String> loadedLabels = List.of();
+        String status;
         try {
             var root = new ObjectMapper().readTree(Path.of(labelsPath).toFile());
             var classNodes = root.path("classes");
-            if (!classNodes.isArray() || classNodes.isEmpty()) throw new IllegalArgumentException("classes.json has no classes");
+            if (!classNodes.isArray() || classNodes.isEmpty()) throw new IllegalArgumentException("class_mapping.json has no classes");
             var names = new java.util.ArrayList<String>();
             for (int i = 0; i < classNodes.size(); i++) {
                 var item = classNodes.get(i);
                 if (item.path("id").asInt(-1) != i || item.path("name").asText().isBlank())
-                    throw new IllegalArgumentException("classes.json IDs must be contiguous and ordered");
+                    throw new IllegalArgumentException("class_mapping.json IDs must be contiguous and ordered");
                 names.add(item.path("displayName").asText(item.path("name").asText()));
             }
-            labels = List.copyOf(names);
-            environment = OrtEnvironment.getEnvironment();
-            session = environment.createSession(modelPath, new OrtSession.SessionOptions());
-            inputName = session.getInputNames().iterator().next();
-            var shape = ((TensorInfo) session.getInputInfo().get(inputName).getInfo()).getShape();
+            loadedLabels = List.copyOf(names);
+            loadedEnvironment = OrtEnvironment.getEnvironment();
+            loadedSession = loadedEnvironment.createSession(modelPath, new OrtSession.SessionOptions());
+            loadedInput = loadedSession.getInputNames().iterator().next();
+            var shape = ((TensorInfo) loadedSession.getInputInfo().get(loadedInput).getInfo()).getShape();
             if (shape.length != 4 || shape[1] != 3 || shape[2] != 224 || shape[3] != 224)
                 throw new IllegalArgumentException("ONNX input must be NCHW float32 [N,3,224,224]");
-            var outputName = session.getOutputNames().iterator().next();
-            var outputShape = ((TensorInfo) session.getOutputInfo().get(outputName).getInfo()).getShape();
-            if (outputShape.length != 2 || outputShape[1] != labels.size())
-                throw new IllegalArgumentException("ONNX output class count does not match classes.json");
+            var outputName = loadedSession.getOutputNames().iterator().next();
+            var outputShape = ((TensorInfo) loadedSession.getOutputInfo().get(outputName).getInfo()).getShape();
+            if (outputShape.length != 2 || outputShape[1] != loadedLabels.size())
+                throw new IllegalArgumentException("ONNX output class count does not match class_mapping.json");
+            status = "MODEL_READY";
         } catch (Exception e) {
-            throw new IllegalStateException("Unable to initialize the configured e-waste ONNX model", e);
+            log.error("Configured e-waste model could not be loaded; classifier is disabled ({})", e.getClass().getSimpleName());
+            if (loadedSession != null) try { loadedSession.close(); } catch (Exception ignored) { }
+            loadedSession = null;
+            loadedEnvironment = null;
+            loadedInput = null;
+            loadedLabels = List.of();
+            status = "MODEL_LOAD_ERROR";
         }
+        environment = loadedEnvironment;
+        session = loadedSession;
+        inputName = loadedInput;
+        labels = loadedLabels;
+        modelStatus = status;
+        modelLoadTimeMs = (System.nanoTime() - loadStart) / 1_000_000;
     }
 
+    public String modelStatus() { return modelStatus; }
+    public long modelLoadTimeMs() { return modelLoadTimeMs; }
+
     public ApiModels.ClassificationView predict(BufferedImage source) {
-        if (session == null) throw new ClassificationService.ModelUnavailableException();
+        if (session == null) {
+            if ("MODEL_LOAD_ERROR".equals(modelStatus)) throw new ClassificationService.ModelLoadException();
+            throw new ClassificationService.ModelUnavailableException();
+        }
         try {
             BufferedImage resized = new BufferedImage(224, 224, BufferedImage.TYPE_INT_RGB);
             Graphics2D g = resized.createGraphics();
@@ -97,7 +131,10 @@ public class OnnxClassifier {
                 List<ApiModels.Alternative> alternatives = Arrays.stream(order).skip(1).limit(3)
                         .map(i -> new ApiModels.Alternative(labels.get(i), probabilities[i])).toList();
                 String level = confidence >= highThreshold ? "HIGH" : confidence >= mediumThreshold ? "MODERATE" : "LOW";
-                return new ApiModels.ClassificationView(labels.get(order[0]), confidence, level, alternatives, null);
+                boolean classified = confidence >= minimumConfidence;
+                return new ApiModels.ClassificationView(classified ? "CLASSIFIED" : "UNSURE",
+                        classified ? labels.get(order[0]) : null, confidence,
+                        classified ? level : "UNSURE", alternatives, null);
             }
         } catch (ClassificationService.ModelUnavailableException e) { throw e; }
         catch (Exception e) { throw new IllegalStateException("Image analysis failed", e); }

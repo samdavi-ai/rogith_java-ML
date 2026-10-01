@@ -20,7 +20,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=Path, default=Path("ml/models/best_model.keras"))
     parser.add_argument("--data", type=Path, default=Path("ml/data/processed/classification"))
-    parser.add_argument("--classes", type=Path, default=Path("ml/classes.json"))
+    parser.add_argument("--classes", type=Path, default=Path("ml/class_mapping.json"))
     parser.add_argument("--out", type=Path, default=Path("ml/models/onnx/ewaste_mobilenetv2.onnx"))
     parser.add_argument("--report", type=Path, default=Path("ml/reports/onnx_validation.json"))
     args = parser.parse_args()

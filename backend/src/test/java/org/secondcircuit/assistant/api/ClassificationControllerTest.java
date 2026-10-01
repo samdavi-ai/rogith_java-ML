@@ -13,6 +13,7 @@ import org.springframework.mock.web.MockMultipartFile;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import java.util.List;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -31,5 +32,24 @@ class ClassificationControllerTest {
                 .andExpect(jsonPath("$.success").value(false))
                 .andExpect(jsonPath("$.error.code").value("MODEL_UNAVAILABLE"))
                 .andExpect(jsonPath("$.error.message").value("Image identification is not configured yet. Please use the guide while the model is being prepared."));
+    }
+
+    @Test void reportsModelLoadErrorWithoutExposingPaths() throws Exception {
+        when(service.classify(any())).thenThrow(new ClassificationService.ModelLoadException());
+        MockMultipartFile image = new MockMultipartFile("image", "item.jpg", MediaType.IMAGE_JPEG_VALUE, new byte[]{1,2,3});
+        mvc.perform(multipart("/api/classifications").file(image))
+                .andExpect(status().isServiceUnavailable())
+                .andExpect(jsonPath("$.error.code").value("MODEL_LOAD_ERROR"))
+                .andExpect(jsonPath("$.error.message").value("The image identification model could not be loaded."));
+    }
+
+    @Test void returnsUnsureContractForLowConfidencePrediction() throws Exception {
+        when(service.classify(any())).thenReturn(new ApiModels.ClassificationView("UNSURE", null, .5655, "UNSURE", List.of(), null));
+        MockMultipartFile image = new MockMultipartFile("image", "item.jpg", MediaType.IMAGE_JPEG_VALUE, new byte[]{1,2,3});
+        mvc.perform(multipart("/api/classifications").file(image))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.classification.status").value("UNSURE"))
+                .andExpect(jsonPath("$.data.classification.categoryName").doesNotExist())
+                .andExpect(jsonPath("$.data.classification.confidence").value(.5655));
     }
 }

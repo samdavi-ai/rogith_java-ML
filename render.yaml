@@ -27,7 +27,7 @@ services:
       - key: EWASTE_MODEL_PATH
         value: /app/ml/models/ewaste.onnx
       - key: EWASTE_CLASS_MAPPING_PATH
-        value: /app/ml/classes.json
+        value: /app/ml/class_mapping.json
 
   - type: web
     name: rogith-ewaste-web

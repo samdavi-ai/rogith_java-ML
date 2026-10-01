@@ -182,20 +182,23 @@
           const error = new Error(result?.error?.message || 'The classification service could not analyze this frame.');
           error.code = result?.error?.code;
           error.status = response.status;
-          if (error.code === 'MODEL_UNAVAILABLE') {
+          if (error.code === 'MODEL_UNAVAILABLE' || error.code === 'MODEL_LOAD_ERROR') {
             this.inferenceEnabled = false;
             clearTimeout(this.timer);
-            this.onUnavailable('Live identification is currently unavailable. A trained classification model has not been configured yet.');
+            this.onUnavailable(error.code === 'MODEL_LOAD_ERROR'
+              ? 'Live identification is currently unavailable because the model could not be loaded.'
+              : 'Live identification is currently unavailable. A trained classification model has not been configured yet.');
             return;
           }
           throw error;
         }
         this.failedRequests = 0;
         const prediction = result?.data?.classification || result?.data || result?.prediction;
-        const category = prediction?.categoryName || prediction?.category;
+        const isUnsure = prediction?.status === 'UNSURE' || prediction?.confidenceLevel === 'UNSURE';
+        const category = isUnsure ? 'UNSURE' : prediction?.categoryName || prediction?.category;
         const confidence = Number(prediction?.confidence);
         if (!category || !Number.isFinite(confidence)) throw Object.assign(new Error('The service response did not contain a valid classification.'), { code: 'INVALID_RESPONSE' });
-        this.acceptPrediction({ category, confidence, confidenceLevel: prediction.confidenceLevel, alternatives: prediction.alternatives || [], frame });
+        this.acceptPrediction({ category, confidence, isUnsure, confidenceLevel: prediction.confidenceLevel, alternatives: prediction.alternatives || [], frame });
       } catch (error) {
         if (generation !== this.loopGeneration || controller.signal.aborted && controller.signal.reason !== 'timeout') return;
         this.failedRequests++;

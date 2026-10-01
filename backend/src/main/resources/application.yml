@@ -23,8 +23,9 @@ app:
     max-bytes: 10485760
   ml:
     model-path: ${EWASTE_MODEL_PATH:${MODEL_PATH:../ml/models/ewaste.onnx}}
-    labels-path: ${EWASTE_CLASS_MAPPING_PATH:${LABELS_PATH:../ml/classes.json}}
+    labels-path: ${EWASTE_CLASS_MAPPING_PATH:${LABELS_PATH:../ml/class_mapping.json}}
     high-threshold: ${CONFIDENCE_HIGH:0.85}
     medium-threshold: ${CONFIDENCE_MODERATE:0.60}
+    minimum-confidence: ${EWASTE_MIN_CONFIDENCE:0.66}
   cors:
     allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:4173,http://localhost:8088}

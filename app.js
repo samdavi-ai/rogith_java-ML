@@ -3,6 +3,8 @@ const guides = [
   {name:'Computers and laptops',terms:'computer laptop desktop pc',desc:'Computers contain reusable components, batteries and storage that may hold personal information.',prepare:['Back up files and securely erase storage where possible.','Remove accessories and any removable media.','Do not dismantle a swollen or damaged battery.'],action:'Take the device to an e-waste collection or recycling channel that accepts computers.'},
   {name:'Batteries and power banks',terms:'battery batteries power bank cell',desc:'Batteries can present a fire risk if damaged, shorted or placed in household waste.',prepare:['Cover exposed terminals with non-conductive tape if safe to do so.','Keep batteries dry and away from heat.','If a battery is swollen, hot or leaking, avoid handling it and seek local hazardous-waste advice.'],action:'Use a battery collection point that explicitly accepts that battery type.'},
   {name:'Displays and televisions',terms:'display monitor tv television screen',desc:'Screens and displays may require separate handling from ordinary household waste.',prepare:['Keep the screen intact and protect it from impact.','Disconnect cables and accessories.'],action:'Check with your local authority or an authorized e-waste channel for display acceptance.'},
+  {name:'Light bulbs',terms:'light bulb lamp fluorescent led',desc:'Some bulbs contain materials that require separate handling, and broken bulbs can create a hazard.',prepare:['Keep the bulb intact and protect it from impact.','Do not place a broken bulb in a recycling bin; follow local hazardous-waste instructions.'],action:'Use a collection point that accepts that bulb type and check local handling requirements.'},
+  {name:'Circuit boards',terms:'pcb circuit board printed circuit electronics',desc:'Circuit boards contain electronic components and materials that should be handled through an appropriate e-waste channel.',prepare:['Keep the board dry and avoid burning, crushing or dismantling it.','Handle damaged boards carefully and avoid sharp edges.'],action:'Take circuit boards to an authorized electronics recycler or e-waste collection point.'},
   {name:'Printers and peripherals',terms:'printer scanner keyboard mouse',desc:'Printers and peripherals include electronic parts and, in some cases, ink or toner.',prepare:['Remove paper and accessories.','Keep toner or ink cartridges contained and follow their separate return instructions.'],action:'Check that your local e-waste channel accepts printers and peripherals.'},
   {name:'Cables and small electronics',terms:'cable charger adapter router electronics',desc:'Small electronic equipment and cables can contain recoverable materials.',prepare:['Bundle cables without cutting them.','Separate batteries when designed to be safely removable.'],action:'Take them to an e-waste collection point rather than putting them in mixed recycling.'}
 ];
@@ -116,7 +118,7 @@ function renderCameraPrediction(prediction) {
   const confidence = prediction.confidence <= 1 ? prediction.confidence : prediction.confidence / 100;
   const percentage = Math.round(confidence * 1000) / 10;
   const level = confidence >= ML_HIGH_CONFIDENCE_THRESHOLD ? 'High confidence' : confidence >= ML_MEDIUM_CONFIDENCE_THRESHOLD ? 'Moderate confidence' : 'Low confidence';
-  if (confidence < ML_MEDIUM_CONFIDENCE_THRESHOLD) {
+  if (prediction.isUnsure || prediction.category === 'UNSURE' || confidence < ML_MEDIUM_CONFIDENCE_THRESHOLD) {
     $('cameraLiveMessage').textContent = 'Not sure yet. Try moving closer, improving the lighting, or showing the whole item.';
     $('useResultButton').hidden = true;
     $('cameraPrediction').hidden = true;
@@ -227,16 +229,33 @@ form.addEventListener('submit', async event => {
 });
 
 function renderUnavailable(target, message) {
-  target.innerHTML = `<p class="eyebrow">Identification unavailable</p><p class="result-message error" role="status">${escapeHtml(message)} You can still browse the general guide below.</p><p class="result-disclaimer">Your image was not saved by this page. Add a trained model and configure the backend to enable image identification.</p>`;
+  target.innerHTML = `<p class="eyebrow">Identification unavailable</p><p class="result-message error" role="status">${escapeHtml(message)} You can still browse the general guide below.</p><p class="result-disclaimer">Your image was not saved by this page. Try again later or use the general guide.</p>`;
   saveHistory({name:'Analysis unavailable',status:'unavailable',date:new Date().toISOString()});
 }
+function guideForCategory(category) {
+  const normalized = String(category || '').toLowerCase();
+  const guideName = normalized.includes('battery') ? 'Batteries and power banks'
+    : normalized.includes('phone') ? 'Phones and tablets'
+    : normalized.includes('keyboard') || normalized.includes('mouse') ? 'Printers and peripherals'
+    : normalized.includes('bulb') ? 'Light bulbs'
+    : normalized.includes('circuit') || normalized === 'pcb' || normalized.includes('printed circuit') ? 'Circuit boards' : null;
+  const guide = guides.find(item => item.name === guideName);
+  return guide ? {recyclingMethod:guide.action, preparationInstructions:guide.prepare, safetyInstructions:guide.desc} : {};
+}
 function renderResult(item, target, imageSource = previewUrl) {
-  const name = item.categoryName || item.category || 'Uncertain identification';
+  const unsure = item.status === 'UNSURE' || item.confidenceLevel === 'UNSURE';
+  const name = unsure ? 'Not sure' : item.categoryName || item.category || 'Uncertain identification';
   const conf = Number(item.confidence);
   const pct = Number.isFinite(conf) ? (conf <= 1 ? conf * 100 : conf) : null;
   const confidence = Number.isFinite(pct) ? Math.round(pct * 10) / 10 : null;
   const level = confidence === null ? 'Uncertain' : confidence / 100 >= ML_HIGH_CONFIDENCE_THRESHOLD ? 'High confidence' : confidence / 100 >= ML_MEDIUM_CONFIDENCE_THRESHOLD ? 'Moderate confidence' : 'Low confidence';
-  const guidance = item.guide || {}, prepare = guidance.preparationInstructions || guidance.preparation || [], alternatives = item.alternatives || [];
+  const guidance = item.guide || guideForCategory(name), prepare = guidance.preparationInstructions || guidance.preparation || [], alternatives = unsure ? [] : item.alternatives || [];
+  if (unsure) {
+    target.innerHTML = `<p class="eyebrow">Identification</p><div class="result-top"><img src="${imageSource || ''}" alt="Selected item photo"><div><p>Estimated match</p><h3>Not sure</h3><span class="confidence">${confidence === null ? 'Uncertain' : `${confidence}% · below the confidence threshold`}</span></div></div><h4>Try another photo</h4><ul><li>Use better lighting.</li><li>Move closer to the item.</li><li>Show the whole item.</li></ul><p class="source-note">The image did not meet the model’s confidence threshold. No category-specific recycling advice is shown.</p><button class="button secondary" id="anotherButton" type="button">Identify another item</button>`;
+    target.querySelector('#anotherButton').addEventListener('click', () => { cameraController.stop(); clearImage(); target.hidden = true; if (cameraStableUrl) URL.revokeObjectURL(cameraStableUrl); cameraStableUrl = null; $('identify').scrollIntoView(); });
+    saveHistory({name, status:'unsure', confidence, date:new Date().toISOString()});
+    return;
+  }
   target.innerHTML = `<p class="eyebrow">Identification</p><div class="result-top"><img src="${imageSource || ''}" alt="Selected item photo"><div><p>Estimated match</p><h3>${escapeHtml(name)}</h3><span class="confidence">${confidence === null ? level : `${confidence}% · ${level}`}</span></div></div><h4>What should I do?</h4><p>${escapeHtml(guidance.recyclingMethod || 'Check your local authorized e-waste collection or recycling channel for this item.')}</p>${prepare.length ? `<h4>Before recycling</h4><ul>${prepare.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}<h4>Safety</h4><p>${escapeHtml(guidance.safetyInstructions || 'Do not burn, crush or dismantle batteries. If a battery is swollen, hot or leaking, avoid handling it and seek local hazardous-waste advice.')}</p>${alternatives.length ? `<h4>Possible matches</h4><ul>${alternatives.map(item => `<li>${escapeHtml(item.category || item.name)} — ${Math.round(item.confidence * 100)}%</li>`).join('')}</ul>` : ''}<p class="source-note">${guidance.sourceName ? `Source: ${escapeHtml(guidance.sourceName)} · ` : ''}Guidance varies by location. Identification is based on image analysis and may be uncertain.</p><button class="button secondary" id="anotherButton" type="button">Identify another item</button>`;
   target.querySelector('#anotherButton').addEventListener('click', () => {
     cameraController.stop();

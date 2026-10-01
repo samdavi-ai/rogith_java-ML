@@ -20,7 +20,7 @@ services:
       DATABASE_USER: ${DATABASE_USER:-ewaste}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD:?Set DATABASE_PASSWORD in .env}
       EWASTE_MODEL_PATH: /app/ml/models/ewaste.onnx
-      EWASTE_CLASS_MAPPING_PATH: /app/ml/classes.json
+      EWASTE_CLASS_MAPPING_PATH: /app/ml/class_mapping.json
     depends_on:
       db: {condition: service_healthy}
   frontend:

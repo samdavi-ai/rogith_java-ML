@@ -18,7 +18,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--data", type=Path, default=Path("ml/data/processed/classification"))
     parser.add_argument("--ood-data", type=Path, default=Path("ml/data/processed/ood_test"))
-    parser.add_argument("--classes", type=Path, default=Path("ml/classes.json"))
+    parser.add_argument("--classes", type=Path, default=Path("ml/class_mapping.json"))
     parser.add_argument("--model", type=Path, default=Path("ml/models/best_model.keras"))
     parser.add_argument("--out", type=Path, default=Path("ml/reports/evaluation.json"))
     args = parser.parse_args()
@@ -89,6 +89,8 @@ def main() -> None:
         "macroPrecision": float(precision_score(y_true, y_pred, average="macro", zero_division=0)),
         "macroRecall": float(recall_score(y_true, y_pred, average="macro", zero_division=0)),
         "macroF1": float(f1_score(y_true, y_pred, average="macro", zero_division=0)),
+        "weightedPrecision": float(precision_score(y_true, y_pred, average="weighted", zero_division=0)),
+        "weightedRecall": float(recall_score(y_true, y_pred, average="weighted", zero_division=0)),
         "weightedF1": float(f1_score(y_true, y_pred, average="weighted", zero_division=0)),
         "perClass": report,
         "confusionMatrix": confusion.tolist(),
@@ -101,7 +103,7 @@ def main() -> None:
     }
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(metrics, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({k: metrics[k] for k in ("testImages", "accuracy", "macroPrecision", "macroRecall", "macroF1", "weightedF1")}, indent=2))
+    print(json.dumps({k: metrics[k] for k in ("testImages", "accuracy", "macroPrecision", "macroRecall", "macroF1", "weightedPrecision", "weightedRecall", "weightedF1")}, indent=2))
 
 
 if __name__ == "__main__":

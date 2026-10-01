@@ -9,8 +9,8 @@ FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=build /workspace/backend/target/ewaste-assistant-0.1.0.jar /app/app.jar
 COPY ml/models/ewaste.onnx /app/ml/models/ewaste.onnx
-COPY ml/classes.json /app/ml/classes.json
+COPY ml/class_mapping.json /app/ml/class_mapping.json
 ENV EWASTE_MODEL_PATH=/app/ml/models/ewaste.onnx
-ENV EWASTE_CLASS_MAPPING_PATH=/app/ml/classes.json
+ENV EWASTE_CLASS_MAPPING_PATH=/app/ml/class_mapping.json
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","/app/app.jar"]

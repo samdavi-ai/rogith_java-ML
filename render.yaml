@@ -23,7 +23,7 @@ services:
           name: rogith-ewaste-db
           property: password
       - key: CORS_ALLOWED_ORIGINS
-        value: https://recolens.onrender.com
+        value: https://recolens.onrender.com,https://rogith-ewaste-web.onrender.com
       - key: EWASTE_MODEL_PATH
         value: /app/ml/models/ewaste.onnx
       - key: EWASTE_CLASS_MAPPING_PATH

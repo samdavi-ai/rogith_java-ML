@@ -18,7 +18,7 @@ The frontend build copies only the required HTML/CSS/JS files and writes `api-co
 
 The Blueprint wires `DATABASE_URL`, `DATABASE_USER`, and `DATABASE_PASSWORD` from the PostgreSQL resource. It sets:
 
-- API: `PORT=8080`, `CORS_ALLOWED_ORIGINS=https://rogith-ewaste-web.onrender.com`, `EWASTE_MODEL_PATH=/app/ml/models/ewaste.onnx`, `EWASTE_CLASS_MAPPING_PATH=/app/ml/class_mapping.json`, `EWASTE_MIN_CONFIDENCE=0.66`.
+- API: `PORT=10000`, `CORS_ALLOWED_ORIGINS=https://rogith-ewaste-web.onrender.com`, `EWASTE_MODEL_PATH=/app/ml/models/ewaste.onnx`, `EWASTE_CLASS_MAPPING_PATH=/app/ml/class_mapping.json`, `EWASTE_MIN_CONFIDENCE=0.66`.
 - Static site: `EWASTE_API_BASE_URL=https://rogith-ewaste-api.onrender.com`.
 - PostgreSQL: `DATABASE_URL`, `DATABASE_USER`, and `DATABASE_PASSWORD` reference the Render database's private connection values. `ipAllowList: []` blocks external DB connections; the API uses Render's private network.
 
@@ -48,7 +48,7 @@ The Blueprint selects Render's Free PostgreSQL plan for a no-cost preview. Rende
 - **Frontend cannot reach API:** check `EWASTE_API_BASE_URL`; the static build fails if it is missing or is not HTTPS.
 - **Model unavailable:** check the Docker image includes `/app/ml/models/ewaste.onnx` and `/app/ml/class_mapping.json`; verify the two model-path environment variables.
 - **Model load error:** inspect server startup logs and verify model/mapping artifact integrity; health returns `MODEL_LOAD_ERROR` without exposing local paths.
-- **Database connection error:** check the Blueprint database is running and that the API has its internal `DATABASE_URL`, user and password values.
+- **Database connection error:** check the Blueprint database is running and that the API has its internal `DATABASE_URL`, user and password values. The URI host is converted to JDBC format; credentials are passed separately.
 - **Image rejected:** upload a JPEG or PNG at least 32 pixels per side, within the 10 MB limit and 40-megapixel decoded limit.
 - **Camera blocked:** use the HTTPS static site and grant browser camera permission. The app prefers a rear camera on mobile where the browser provides that capability.
 

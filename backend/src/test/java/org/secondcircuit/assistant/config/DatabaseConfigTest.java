@@ -9,7 +9,7 @@ class DatabaseConfigTest {
     @Test void adaptsRenderPostgresUrisToJdbcUrls() {
         var config = new DatabaseConfig();
         try (var datasource = (HikariDataSource) config.dataSource("postgresql://user:pass@host:5432/db", "user", "pass")) {
-            assertEquals("jdbc:postgresql://user:pass@host:5432/db", datasource.getJdbcUrl());
+            assertEquals("jdbc:postgresql://host:5432/db", datasource.getJdbcUrl());
         }
     }
 }

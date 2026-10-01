@@ -1,6 +1,7 @@
 FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /workspace
 COPY backend/pom.xml backend/pom.xml
+COPY database database
 RUN cd backend && mvn -q -DskipTests dependency:go-offline
 COPY backend/src backend/src
 RUN cd backend && mvn -q -DskipTests package

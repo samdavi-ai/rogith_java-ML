@@ -1,13 +1,95 @@
-CREATE EXTENSION IF NOT EXISTS pgcrypto;
-CREATE TABLE app_user (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), email TEXT NOT NULL UNIQUE, password_hash TEXT NOT NULL, display_name TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'USER' CHECK (role IN ('USER','ADMIN')), country TEXT, state TEXT, city TEXT, created_at TIMESTAMPTZ NOT NULL DEFAULT now());
-CREATE TABLE source (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), name TEXT NOT NULL, organization TEXT, url TEXT NOT NULL, jurisdiction_country TEXT, jurisdiction_state TEXT, topic TEXT NOT NULL, last_verified_at DATE, status TEXT NOT NULL DEFAULT 'UNVERIFIED' CHECK (status IN ('VERIFIED','UNVERIFIED','RETIRED')));
-CREATE TABLE ewaste_category (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), slug TEXT NOT NULL UNIQUE, name TEXT NOT NULL, description TEXT NOT NULL, examples JSONB NOT NULL DEFAULT '[]', hazard_level TEXT, enabled BOOLEAN NOT NULL DEFAULT TRUE, created_at TIMESTAMPTZ NOT NULL DEFAULT now(), updated_at TIMESTAMPTZ NOT NULL DEFAULT now());
-CREATE TABLE recycling_guide (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), category_id UUID NOT NULL REFERENCES ewaste_category(id), source_id UUID REFERENCES source(id), jurisdiction_country TEXT, jurisdiction_state TEXT, jurisdiction_city TEXT, recycling_method TEXT NOT NULL, preparation_instructions JSONB NOT NULL DEFAULT '[]', safety_instructions TEXT NOT NULL, data_instructions TEXT, last_verified_at DATE, active BOOLEAN NOT NULL DEFAULT TRUE);
-CREATE TABLE uploaded_image (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), storage_key TEXT NOT NULL UNIQUE, sha256 CHAR(64) NOT NULL, mime_type TEXT NOT NULL, size_bytes BIGINT NOT NULL CHECK(size_bytes BETWEEN 1 AND 10485760), width INTEGER NOT NULL, height INTEGER NOT NULL, created_at TIMESTAMPTZ NOT NULL DEFAULT now());
-CREATE TABLE classification (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), user_id UUID REFERENCES app_user(id) ON DELETE SET NULL, image_id UUID REFERENCES uploaded_image(id) ON DELETE SET NULL, model_version TEXT NOT NULL, inference_ms INTEGER, created_at TIMESTAMPTZ NOT NULL DEFAULT now());
-CREATE TABLE prediction (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), classification_id UUID NOT NULL REFERENCES classification(id) ON DELETE CASCADE, category_id UUID NOT NULL REFERENCES ewaste_category(id), confidence NUMERIC(7,6) NOT NULL CHECK(confidence BETWEEN 0 AND 1), rank SMALLINT NOT NULL CHECK(rank > 0), UNIQUE(classification_id, rank));
-CREATE TABLE activity_log (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), actor_id UUID REFERENCES app_user(id) ON DELETE SET NULL, action TEXT NOT NULL, subject_type TEXT NOT NULL, subject_id UUID, created_at TIMESTAMPTZ NOT NULL DEFAULT now());
-CREATE INDEX classification_created_idx ON classification(created_at DESC);
-CREATE INDEX classification_user_created_idx ON classification(user_id, created_at DESC);
-CREATE INDEX prediction_category_idx ON prediction(category_id);
-CREATE INDEX guide_jurisdiction_idx ON recycling_guide(jurisdiction_country, jurisdiction_state, jurisdiction_city, category_id) WHERE active;
+CREATE TABLE IF NOT EXISTS app_user (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    email TEXT NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL,
+    display_name TEXT NOT NULL,
+    role TEXT NOT NULL DEFAULT 'USER' CHECK (role IN ('USER', 'ADMIN')),
+    country TEXT,
+    state TEXT,
+    city TEXT,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS source (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name TEXT NOT NULL,
+    organization TEXT,
+    url TEXT NOT NULL,
+    jurisdiction_country TEXT,
+    jurisdiction_state TEXT,
+    topic TEXT NOT NULL,
+    last_verified_at DATE,
+    status TEXT NOT NULL DEFAULT 'UNVERIFIED' CHECK (status IN ('VERIFIED', 'UNVERIFIED', 'RETIRED'))
+);
+
+CREATE TABLE IF NOT EXISTS ewaste_category (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    slug TEXT NOT NULL UNIQUE,
+    name TEXT NOT NULL,
+    description TEXT NOT NULL,
+    examples JSONB NOT NULL DEFAULT '[]',
+    hazard_level TEXT,
+    enabled BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS recycling_guide (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    category_id UUID NOT NULL REFERENCES ewaste_category(id),
+    source_id UUID REFERENCES source(id),
+    jurisdiction_country TEXT,
+    jurisdiction_state TEXT,
+    jurisdiction_city TEXT,
+    recycling_method TEXT NOT NULL,
+    preparation_instructions JSONB NOT NULL DEFAULT '[]',
+    safety_instructions TEXT NOT NULL,
+    data_instructions TEXT,
+    last_verified_at DATE,
+    active BOOLEAN NOT NULL DEFAULT TRUE
+);
+
+CREATE TABLE IF NOT EXISTS uploaded_image (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    storage_key TEXT NOT NULL UNIQUE,
+    sha256 CHAR(64) NOT NULL,
+    mime_type TEXT NOT NULL,
+    size_bytes BIGINT NOT NULL CHECK (size_bytes BETWEEN 1 AND 10485760),
+    width INTEGER NOT NULL,
+    height INTEGER NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS classification (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID REFERENCES app_user(id) ON DELETE SET NULL,
+    image_id UUID REFERENCES uploaded_image(id) ON DELETE SET NULL,
+    model_version TEXT NOT NULL,
+    inference_ms INTEGER,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS prediction (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    classification_id UUID NOT NULL REFERENCES classification(id) ON DELETE CASCADE,
+    category_id UUID NOT NULL REFERENCES ewaste_category(id),
+    confidence NUMERIC(7, 6) NOT NULL CHECK (confidence BETWEEN 0 AND 1),
+    rank SMALLINT NOT NULL CHECK (rank > 0),
+    UNIQUE (classification_id, rank)
+);
+
+CREATE TABLE IF NOT EXISTS activity_log (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    actor_id UUID REFERENCES app_user(id) ON DELETE SET NULL,
+    action TEXT NOT NULL,
+    subject_type TEXT NOT NULL,
+    subject_id UUID,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS classification_created_idx ON classification (created_at DESC);
+CREATE INDEX IF NOT EXISTS classification_user_created_idx ON classification (user_id, created_at DESC);
+CREATE INDEX IF NOT EXISTS prediction_category_idx ON prediction (category_id);
+CREATE INDEX IF NOT EXISTS guide_jurisdiction_idx
+    ON recycling_guide (jurisdiction_country, jurisdiction_state, jurisdiction_city, category_id)
+    WHERE active;

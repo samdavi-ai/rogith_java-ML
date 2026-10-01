@@ -12,28 +12,35 @@
 2. `rogith-ewaste-api`: Docker Web Service; Dockerfile `backend/Dockerfile`; Docker context `.`; health check `/health`.
 3. `rogith-ewaste-db`: Render PostgreSQL.
 
-The frontend build copies only the required HTML/CSS/JS files and writes `api-config.js` from `EWASTE_API_BASE_URL`. The API image contains the validated ONNX model and canonical `class_mapping.json`; it does not depend on a mounted model volume.
+The frontend build copies only the required HTML/CSS/JS files and writes `api-config.js` from `EWASTE_API_BASE_URL`. It uses Node's built-in modules only: there is no `package.json`, `npm install`, or frontend framework. The API image contains the validated ONNX model and canonical `class_mapping.json`; it does not depend on a mounted model volume. The API image also packages `database/schema.sql`, and Spring runs its idempotent `CREATE ... IF NOT EXISTS` statements at startup against the Render database.
 
 ## Environment variables
 
 The Blueprint wires `DATABASE_URL`, `DATABASE_USER`, and `DATABASE_PASSWORD` from the PostgreSQL resource. It sets:
 
-- API: `PORT=8080`, `CORS_ALLOWED_ORIGINS=https://rogith-ewaste-web.onrender.com`, `EWASTE_MODEL_PATH=/app/ml/models/ewaste.onnx`, `EWASTE_CLASS_MAPPING_PATH=/app/ml/class_mapping.json`.
+- API: `PORT=8080`, `CORS_ALLOWED_ORIGINS=https://rogith-ewaste-web.onrender.com`, `EWASTE_MODEL_PATH=/app/ml/models/ewaste.onnx`, `EWASTE_CLASS_MAPPING_PATH=/app/ml/class_mapping.json`, `EWASTE_MIN_CONFIDENCE=0.66`.
 - Static site: `EWASTE_API_BASE_URL=https://rogith-ewaste-api.onrender.com`.
+- PostgreSQL: `DATABASE_URL`, `DATABASE_USER`, and `DATABASE_PASSWORD` reference the Render database's private connection values. `ipAllowList: []` blocks external DB connections; the API uses Render's private network.
 
 If Render assigns a suffixed service hostname because a name is unavailable, update both the frontend API origin and API CORS origin in the Dashboard (and in `render.yaml` if continuing to use Blueprint sync).
 
-## Deployment sequence
+## Dashboard deployment steps
 
-1. Push `main` to the configured GitHub repository.
-2. In Render, choose **New → Blueprint**, connect `samdavi-ai/rogith_java-ML`, select `main`, and review the three resources and their Free plans before applying.
-3. Wait for the API health check and static site build to pass. Render builds static sites with HTTPS; the camera requires HTTPS outside localhost.
-4. Verify `GET https://rogith-ewaste-api.onrender.com/health` returns `status: UP` and `modelStatus: MODEL_READY`; that endpoint does not expose artifact paths.
-5. Open the static site, upload a valid photo, and test the camera. Confirm requests reach the API and return real model output.
+1. Confirm `main` is pushed to `https://github.com/samdavi-ai/rogith_java-ML` and sign in to the Render Dashboard with the account that owns or can connect this repository.
+2. Choose **New → Blueprint**, connect `samdavi-ai/rogith_java-ML`, select `main`, and review the proposed static site, Docker web service, and PostgreSQL resources before applying. This Blueprint requests Free plans; it does not configure a custom domain or embed credentials.
+3. Allow Render to create the database and attach its private URL to the API. The API runs `database/schema.sql` on startup; the schema creates tables and indexes without dropping data. Confirm the database and API are in the same Render region.
+4. Wait for both API and static-site deployments to finish. Render issues HTTPS URLs for the static site and public API.
+5. In the API's Environment page, verify the effective `CORS_ALLOWED_ORIGINS` is the exact HTTPS origin of the deployed static site. If Render assigned different service slugs, also set the static site's `EWASTE_API_BASE_URL` to the actual API URL and rebuild the static site. Keep the CORS origin specific; do not use `*`.
+6. Open the API URL's `/health`. Confirm HTTP 200, `status: UP`, and `modelStatus: MODEL_READY` (the model path is not returned).
+7. Upload a supported JPG/PNG and confirm a real prediction. Test a low-confidence image and confirm `UNSURE` is shown without category-specific advice.
+8. On desktop, grant camera permission, confirm preview and sampled classifications, then stop and restart the camera. On Android Chrome and iPhone Safari, repeat the check with the rear camera if physical devices are available.
+9. Confirm the guide matches classified categories. History is browser-local and is not stored in PostgreSQL or tied to an account.
+
+Do not report a step as complete until it has been checked at the deployed URL or device.
 
 ## PostgreSQL note
 
-The Blueprint selects Render's Free PostgreSQL plan for a no-cost preview. Render documents that Free Postgres databases expire after 30 days, have a 1 GB limit, and do not include backups. Upgrade or select a suitable paid plan before relying on persistent production data. Free web services can spin down when idle.
+The Blueprint selects Render's Free PostgreSQL plan for a no-cost preview. Render says Free Postgres expires after 30 days, has a 1 GB limit, and has no backups; Free web services spin down after 15 minutes idle and may take about a minute to wake. Render explicitly positions Free instances for preview/hobby use, not production. Before real users or durable data, choose paid always-on web and database plans, enable backups, and review database retention. No paid resources have been created or authorized by this code change. [Render Free plan limits](https://render.com/docs/free).
 
 ## Troubleshooting
 

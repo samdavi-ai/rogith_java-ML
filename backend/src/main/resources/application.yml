@@ -15,7 +15,8 @@ spring:
     open-in-view: false
   sql:
     init:
-      mode: never
+      mode: always
+      schema-locations: classpath:schema.sql
 server:
   port: ${PORT:8080}
 app:

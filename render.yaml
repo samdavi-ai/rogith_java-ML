@@ -28,6 +28,8 @@ services:
         value: /app/ml/models/ewaste.onnx
       - key: EWASTE_CLASS_MAPPING_PATH
         value: /app/ml/class_mapping.json
+      - key: EWASTE_MIN_CONFIDENCE
+        value: "0.66"
 
   - type: web
     name: rogith-ewaste-web
@@ -44,3 +46,4 @@ databases:
     databaseName: rogith
     user: rogith
     plan: free
+    ipAllowList: []

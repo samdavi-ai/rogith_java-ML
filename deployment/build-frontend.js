@@ -13,6 +13,7 @@ fs.mkdirSync(output, {recursive: true});
 for (const file of ['index.html', 'styles.css', 'app.js', 'camera-controller.js']) {
   fs.copyFileSync(path.join(root, file), path.join(output, file));
 }
+fs.cpSync(path.join(root, 'assets'), path.join(output, 'assets'), {recursive: true});
 fs.writeFileSync(path.join(output, 'api-config.js'),
   `window.EWASTE_API_BASE_URL = ${JSON.stringify(parsed.origin)};\n`);
 console.log(`Built frontend for ${parsed.origin}`);

@@ -1,8 +1,8 @@
-# AI-Based E-Waste Classification and Recycling Assistant Using Java & ML
+# RecoLens — AI-Powered E-Waste Identification & Recycling Assistant
 
 ## Overview
 
-Second Circuit is a practical e-waste utility for identifying selected electronics from a photo or webcam frame and reviewing general handling guidance. Image identification is experimental and should be treated as a suggestion for human review.
+RecoLens is a practical e-waste utility for identifying selected electronics from a photo or webcam frame and reviewing general handling guidance. Image identification is experimental and should be treated as a suggestion for human review.
 
 ## Features
 
@@ -53,13 +53,13 @@ The model scored 98.33% accuracy on 60 held-out images from a small dataset. The
 ## Backend
 
 - `POST /api/classifications` accepts a multipart field named `image`.
-- `GET /health` returns `{"status":"UP"}` while the application is running.
+- `GET /health` returns application status and model readiness (`MODEL_READY`, `MODEL_UNAVAILABLE`, or `MODEL_LOAD_ERROR`) without revealing artifact paths.
 - `EWASTE_MODEL_PATH` and `EWASTE_CLASS_MAPPING_PATH` configure model artifacts.
 - `PORT`, `DATABASE_URL`, `DATABASE_USER`, `DATABASE_PASSWORD`, and `CORS_ALLOWED_ORIGINS` configure service runtime.
 
 ## Database
 
-PostgreSQL remains the configured database. Local Compose uses the `db` service; Render injects a managed PostgreSQL URL. The app converts Render's `postgresql://` URI into the JDBC form expected by the Java driver.
+PostgreSQL remains configured for the application. Fresh databases are initialized from the idempotent `database/schema.sql` at Spring startup; Render injects its private PostgreSQL URL and the app converts the `postgresql://` URI into JDBC form. The current app does not yet write classifications or history to PostgreSQL: history remains in browser local storage.
 
 ## Local Development
 

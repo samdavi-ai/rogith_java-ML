@@ -46,7 +46,7 @@
           <div class="camera-frame"><video id="cameraVideo" autoplay playsinline muted aria-label="Live camera preview"></video></div>
           <p id="cameraLiveMessage" class="camera-live-message" role="status" aria-live="polite">Camera active. Identification will be unavailable until a trained model is configured.</p>
           <div id="cameraPrediction" class="camera-prediction" aria-live="polite" hidden></div>
-          <div class="camera-controls"><button class="button primary" id="useResultButton" type="button" hidden>Use this result</button><button class="button secondary" id="retryInferenceButton" type="button" hidden>Retry classification</button><button class="button secondary" id="switchCameraButton" type="button" hidden>Switch camera</button><button class="text-button" id="stopCameraButton" type="button">Stop camera</button></div>
+          <div class="camera-controls"><button class="button primary" id="useResultButton" type="button" hidden>Use this result</button><button class="button secondary" id="retryInferenceButton" type="button" hidden>Retry classification</button><button class="button secondary" id="switchCameraButton" type="button" hidden>Switch camera</button><button class="button secondary" id="flashlightButton" type="button" aria-pressed="false" hidden>Turn flashlight on</button><button class="text-button" id="stopCameraButton" type="button">Stop camera</button></div>
         </div>
         <div id="cameraError" class="camera-error" role="alert" hidden></div>
         <div id="cameraRecovery" class="camera-controls" hidden><button class="button secondary" id="retryCameraButton" type="button">Try again</button><button class="text-button" id="cameraUploadFallback" type="button">Upload a photo instead</button></div>

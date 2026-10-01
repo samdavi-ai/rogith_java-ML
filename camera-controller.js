@@ -7,7 +7,7 @@
   const MIN_STABLE_VOTES = 3;
 
   class CameraController {
-    constructor({ video, mediaDevices, intervalMs, fetchImpl, formDataFactory, canvasFactory, visibilityState, isMobile, apiBase, onState, onPrediction, onUnavailable, onNetworkError, onCameraCount }) {
+    constructor({ video, mediaDevices, intervalMs, fetchImpl, formDataFactory, canvasFactory, visibilityState, isMobile, apiBase, onState, onPrediction, onUnavailable, onNetworkError, onCameraCount, onTorchAvailability }) {
       this.video = video;
       this.mediaDevices = mediaDevices || root.navigator?.mediaDevices;
       this.intervalMs = Math.max(250, Number(intervalMs) || DEFAULT_INTERVAL_MS);
@@ -22,6 +22,9 @@
       this.onUnavailable = onUnavailable || (() => {});
       this.onNetworkError = onNetworkError || (() => {});
       this.onCameraCount = onCameraCount || (() => {});
+      this.onTorchAvailability = onTorchAvailability || (() => {});
+      this.torchSupported = false;
+      this.torchOn = false;
       this.stream = null;
       this.devices = [];
       this.currentDeviceId = null;
@@ -58,6 +61,7 @@
           } else throw error;
         }
         await this.attachStream(stream);
+        this.updateTorchSupport();
         this.devices = await this.enumerateCameras();
         this.mediaDevices.addEventListener?.('devicechange', this.handleDeviceChange);
         this.deviceChangeAttached = true;
@@ -105,6 +109,30 @@
       } catch { return []; }
     }
 
+    updateTorchSupport() {
+      const track = this.stream?.getVideoTracks?.()[0];
+      this.torchSupported = Boolean(track?.getCapabilities?.().torch);
+      this.torchOn = false;
+      this.onTorchAvailability(this.torchSupported, this.torchOn);
+    }
+
+    async toggleTorch() {
+      const track = this.stream?.getVideoTracks?.()[0];
+      if (!this.torchSupported || !track?.applyConstraints) return false;
+      const nextState = !this.torchOn;
+      try {
+        await track.applyConstraints({ advanced: [{ torch: nextState }] });
+        this.torchOn = nextState;
+        this.onTorchAvailability(true, this.torchOn);
+        return true;
+      } catch {
+        this.torchSupported = false;
+        this.torchOn = false;
+        this.onTorchAvailability(false, false);
+        return false;
+      }
+    }
+
     async switchCamera() {
       if (!this.stream) return false;
       this.devices = await this.enumerateCameras();
@@ -118,6 +146,7 @@
       try {
         const nextStream = await this.mediaDevices.getUserMedia({ video: { deviceId: { exact: next.deviceId } }, audio: false });
         await this.attachStream(nextStream);
+        this.updateTorchSupport();
         this.stopTracks(oldStream);
         this.currentDeviceId = next.deviceId;
         this.onState('active', 'Camera active.');
@@ -257,6 +286,9 @@
       this.stopTracks(stream);
       if (this.video) this.video.srcObject = null;
       this.currentDeviceId = null;
+      this.torchSupported = false;
+      this.torchOn = false;
+      this.onTorchAvailability(false, false);
       this.devices = [];
       this.onCameraCount(0);
       this.onState(state, message);

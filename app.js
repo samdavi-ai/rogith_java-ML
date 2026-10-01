@@ -136,6 +136,12 @@ const cameraController = new CameraController({
   intervalMs: INFERENCE_INTERVAL_MS,
   onState: handleCameraState,
   onCameraCount: count => { $('switchCameraButton').hidden = count < 2; },
+  onTorchAvailability: (supported, enabled) => {
+    const button = $('flashlightButton');
+    button.hidden = !supported;
+    button.setAttribute('aria-pressed', String(Boolean(enabled)));
+    button.textContent = enabled ? 'Turn flashlight off' : 'Turn flashlight on';
+  },
   onPrediction: renderCameraPrediction,
   onUnavailable: message => {
     $('cameraLiveMessage').textContent = message;
@@ -163,6 +169,10 @@ $('startCameraButton').addEventListener('click', async () => {
 });
 $('retryCameraButton').addEventListener('click', () => cameraController.start());
 $('switchCameraButton').addEventListener('click', () => cameraController.switchCamera());
+$('flashlightButton').addEventListener('click', async () => {
+  const enabled = await cameraController.toggleTorch();
+  if (!enabled && cameraController.stream) $('cameraLiveMessage').textContent = 'This camera could not turn on its flashlight.';
+});
 $('stopCameraButton').addEventListener('click', () => {
   cameraController.stop('stopped', 'Camera stopped.');
   $('cameraPrediction').hidden = true;

@@ -8,7 +8,7 @@
 
 ## Services in the Blueprint
 
-1. `rogith-ewaste-web`: Render Static Site; build command `node deployment/build-frontend.js`; publish directory `frontend-dist`.
+1. `recolens`: Render Static Site; build command `node deployment/build-frontend.js`; publish directory `frontend-dist`.
 2. `rogith-ewaste-api`: Docker Web Service; Dockerfile `backend/Dockerfile`; Docker context `.`; health check `/health`.
 3. `rogith-ewaste-db`: Render PostgreSQL.
 
@@ -18,7 +18,7 @@ The frontend build copies only the required HTML/CSS/JS files and writes `api-co
 
 The Blueprint wires `DATABASE_URL`, `DATABASE_USER`, and `DATABASE_PASSWORD` from the PostgreSQL resource. It sets:
 
-- API: `PORT=10000`, `CORS_ALLOWED_ORIGINS=https://rogith-ewaste-web.onrender.com`, `EWASTE_MODEL_PATH=/app/ml/models/ewaste.onnx`, `EWASTE_CLASS_MAPPING_PATH=/app/ml/class_mapping.json`, `EWASTE_MIN_CONFIDENCE=0.66`.
+- API: `PORT=10000`, `CORS_ALLOWED_ORIGINS=https://recolens.onrender.com`, `EWASTE_MODEL_PATH=/app/ml/models/ewaste.onnx`, `EWASTE_CLASS_MAPPING_PATH=/app/ml/class_mapping.json`, `EWASTE_MIN_CONFIDENCE=0.66`.
 - Static site: `EWASTE_API_BASE_URL=https://rogith-ewaste-api.onrender.com`.
 - PostgreSQL: `DATABASE_URL`, `DATABASE_USER`, and `DATABASE_PASSWORD` reference the Render database's private connection values. `ipAllowList: []` blocks external DB connections; the API uses Render's private network.
 

@@ -1,0 +1,72 @@
+{
+  "suite": "user-supplied RecoLens mobile camera challenge crops",
+  "dateAudited": "2026-10-02",
+  "use": "qualitative evaluation only; never training, augmentation, validation, or model selection",
+  "imageFiles": "Local-only JPG crops are ignored by Git; hashes refer to those cropped files.",
+  "cases": [
+    {
+      "file": "bottle_challenge.jpg",
+      "sha256": "0de19b368b8cb10d9ffebfda0885f5f2d920d95f88a21f49621527620e7b4cbb",
+      "actual": "plastic water bottle / not e-waste",
+      "productionScreenshotResult": {
+        "category": "Mouse",
+        "confidence": 0.766
+      },
+      "v1CropReplay": {
+        "category": "mouse",
+        "confidence": 0.7223418
+      },
+      "candidateV2CropReplay": {
+        "category": "not_ewaste",
+        "confidence": 0.9995379
+      }
+    },
+    {
+      "file": "laptop_scene_challenge.jpg",
+      "sha256": "9718d6d48a676a44b8b7b46bf462b289eaf82a3f117b2bfcd81c6b91a36d90f0",
+      "actual": "laptop with visible keyboard; laptop is unsupported by current taxonomy",
+      "productionScreenshotResult": {
+        "category": "Keyboard",
+        "confidence": 0.744
+      },
+      "v1CropReplay": {
+        "category": "keyboard",
+        "confidence": 0.8644119
+      },
+      "candidateV2CropReplay": {
+        "category": "keyboard",
+        "confidence": 0.5510537
+      }
+    },
+    {
+      "file": "power_adapter_challenge.jpg",
+      "sha256": "eaf450af99679e34dbefdd4d11b1fe0a309dcffd67c37de79c27da08701ba5a1",
+      "actual": "white power adapter / charger; unsupported e-waste category",
+      "productionScreenshotResult": {
+        "category": "Light bulb",
+        "confidence": 0.826
+      },
+      "v1CropReplay": {
+        "category": "light_bulb",
+        "confidence": 0.7072218
+      },
+      "candidateV2CropReplay": {
+        "category": "not_ewaste",
+        "confidence": 0.9993299
+      }
+    }
+  ],
+  "notYetCovered": [
+    "independent keyboard-only scene",
+    "independent mouse",
+    "independent phone",
+    "other electronics such as monitor",
+    "additional everyday negatives such as food, clothing, furniture, people, and walls",
+    "different physical phone cameras, lighting, distance, occlusion, and backgrounds"
+  ],
+  "caveats": [
+    "Displayed screenshot probabilities differ from crop replay because the original camera frames were unavailable.",
+    "The three screenshots are not a representative sample and do not support aggregate accuracy claims.",
+    "The candidate adapter false negative is a release-blocking regression."
+  ]
+}

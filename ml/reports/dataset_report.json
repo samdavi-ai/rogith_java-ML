@@ -1986,5 +1986,193 @@
     "Mobile",
     "Mouse",
     "PCB"
-  ]
+  ],
+  "classInventory": [
+    {
+      "sourceClass": "Battery_Waste",
+      "canonicalName": "battery_waste",
+      "classId": 0,
+      "images": 148,
+      "imagesBySplit": {
+        "train": 99,
+        "validation": 26,
+        "test": 23
+      },
+      "candidateV2Role": "supported e-waste class"
+    },
+    {
+      "sourceClass": "Glass_Waste",
+      "canonicalName": null,
+      "classId": null,
+      "images": 127,
+      "imagesBySplit": {
+        "train": 93,
+        "validation": 14,
+        "test": 20
+      },
+      "candidateV2Role": "not_ewaste candidate examples"
+    },
+    {
+      "sourceClass": "Keyboard",
+      "canonicalName": "keyboard",
+      "classId": 1,
+      "images": 126,
+      "imagesBySplit": {
+        "train": 87,
+        "validation": 20,
+        "test": 19
+      },
+      "candidateV2Role": "supported e-waste class"
+    },
+    {
+      "sourceClass": "Light_Bulb",
+      "canonicalName": "light_bulb",
+      "classId": 2,
+      "images": 43,
+      "imagesBySplit": {
+        "train": 33,
+        "validation": 4,
+        "test": 6
+      },
+      "candidateV2Role": "supported e-waste class"
+    },
+    {
+      "sourceClass": "Medical_Waste",
+      "canonicalName": null,
+      "classId": null,
+      "images": 282,
+      "imagesBySplit": {
+        "train": 195,
+        "validation": 38,
+        "test": 49
+      },
+      "candidateV2Role": "excluded; semantics may overlap e-waste"
+    },
+    {
+      "sourceClass": "Metal_Waste",
+      "canonicalName": null,
+      "classId": null,
+      "images": 293,
+      "imagesBySplit": {
+        "train": 192,
+        "validation": 60,
+        "test": 41
+      },
+      "candidateV2Role": "excluded; semantics may overlap e-waste"
+    },
+    {
+      "sourceClass": "Mobile",
+      "canonicalName": "mobile_phone",
+      "classId": 3,
+      "images": 151,
+      "imagesBySplit": {
+        "train": 99,
+        "validation": 26,
+        "test": 26
+      },
+      "candidateV2Role": "supported e-waste class"
+    },
+    {
+      "sourceClass": "Mouse",
+      "canonicalName": "mouse",
+      "classId": 4,
+      "images": 80,
+      "imagesBySplit": {
+        "train": 51,
+        "validation": 13,
+        "test": 16
+      },
+      "candidateV2Role": "supported e-waste class"
+    },
+    {
+      "sourceClass": "Organic_Waste",
+      "canonicalName": null,
+      "classId": null,
+      "images": 100,
+      "imagesBySplit": {
+        "train": 84,
+        "validation": 12,
+        "test": 4
+      },
+      "candidateV2Role": "not_ewaste candidate examples"
+    },
+    {
+      "sourceClass": "PCB",
+      "canonicalName": "pcb",
+      "classId": 5,
+      "images": 205,
+      "imagesBySplit": {
+        "train": 144,
+        "validation": 30,
+        "test": 31
+      },
+      "candidateV2Role": "supported e-waste class"
+    },
+    {
+      "sourceClass": "Paper_Waste",
+      "canonicalName": null,
+      "classId": null,
+      "images": 200,
+      "imagesBySplit": {
+        "train": 141,
+        "validation": 26,
+        "test": 33
+      },
+      "candidateV2Role": "not_ewaste candidate examples"
+    },
+    {
+      "sourceClass": "Plastic_Waste",
+      "canonicalName": null,
+      "classId": null,
+      "images": 398,
+      "imagesBySplit": {
+        "train": 279,
+        "validation": 61,
+        "test": 58
+      },
+      "candidateV2Role": "not_ewaste candidate examples"
+    }
+  ],
+  "candidateV2NegativeSources": [
+    "Plastic_Waste",
+    "Paper_Waste",
+    "Glass_Waste",
+    "Organic_Waste"
+  ],
+  "candidateV2ExcludedAmbiguousSources": [
+    "Metal_Waste",
+    "Medical_Waste"
+  ],
+  "imageDimensionsDistribution": {
+    "640x640": 2157
+  },
+  "candidateV2SplitCounts": {
+    "train": {
+      "battery_waste": 103,
+      "keyboard": 90,
+      "light_bulb": 31,
+      "mobile_phone": 106,
+      "mouse": 47,
+      "pcb": 146,
+      "not_ewaste": 597
+    },
+    "validation": {
+      "battery_waste": 10,
+      "keyboard": 10,
+      "light_bulb": 3,
+      "mobile_phone": 11,
+      "mouse": 11,
+      "pcb": 15,
+      "not_ewaste": 113
+    },
+    "test": {
+      "battery_waste": 15,
+      "keyboard": 8,
+      "light_bulb": 3,
+      "mobile_phone": 12,
+      "mouse": 6,
+      "pcb": 16,
+      "not_ewaste": 115
+    }
+  }
 }

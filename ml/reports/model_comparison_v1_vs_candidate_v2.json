@@ -1,0 +1,177 @@
+{
+  "evaluation": "Both models evaluated against identical candidate-v2 test images using the repository TensorFlow preprocessing. V1 has six logits and therefore always forces one supported e-waste class for not_ewaste.",
+  "testImages": 175,
+  "classes": [
+    "battery_waste",
+    "keyboard",
+    "light_bulb",
+    "mobile_phone",
+    "mouse",
+    "pcb",
+    "not_ewaste"
+  ],
+  "models": {
+    "v1_baseline": {
+      "accuracy": 0.33714285714285713,
+      "macroPrecision": 0.42799804991814383,
+      "macroRecall": 0.8476190476190476,
+      "macroF1": 0.5216388390062351,
+      "weightedF1": 0.2092098643836529,
+      "confusionMatrix": [
+        [
+          14,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          12,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          0
+        ],
+        [
+          59,
+          0,
+          23,
+          18,
+          2,
+          13,
+          0
+        ]
+      ],
+      "confusionMatrixLabels": [
+        "battery_waste",
+        "keyboard",
+        "light_bulb",
+        "mobile_phone",
+        "mouse",
+        "pcb",
+        "not_ewaste"
+      ]
+    },
+    "v2_candidate": {
+      "accuracy": 0.9257142857142857,
+      "macroPrecision": 0.8975488796917368,
+      "macroRecall": 0.9080745341614908,
+      "macroF1": 0.8989478169114198,
+      "weightedF1": 0.9260626804376524,
+      "confusionMatrix": [
+        [
+          11,
+          0,
+          0,
+          3,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          8,
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          4,
+          110
+        ]
+      ],
+      "confusionMatrixLabels": [
+        "battery_waste",
+        "keyboard",
+        "light_bulb",
+        "mobile_phone",
+        "mouse",
+        "pcb",
+        "not_ewaste"
+      ]
+    }
+  }
+}

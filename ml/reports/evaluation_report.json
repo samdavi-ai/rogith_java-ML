@@ -1,0 +1,228 @@
+{
+  "testImages": 175,
+  "accuracy": 0.9257142857142857,
+  "macroPrecision": 0.8975488796917368,
+  "macroRecall": 0.9080745341614908,
+  "macroF1": 0.8989478169114198,
+  "weightedPrecision": 0.9314421292992721,
+  "weightedRecall": 0.9257142857142857,
+  "weightedF1": 0.9260626804376524,
+  "perClass": {
+    "battery_waste": {
+      "precision": 0.8461538461538461,
+      "recall": 0.7333333333333333,
+      "f1-score": 0.7857142857142857,
+      "support": 15.0
+    },
+    "keyboard": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 8.0
+    },
+    "light_bulb": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 3.0
+    },
+    "mobile_phone": {
+      "precision": 0.7272727272727273,
+      "recall": 0.6666666666666666,
+      "f1-score": 0.6956521739130435,
+      "support": 12.0
+    },
+    "mouse": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 6.0
+    },
+    "pcb": {
+      "precision": 0.7272727272727273,
+      "recall": 1.0,
+      "f1-score": 0.8421052631578947,
+      "support": 16.0
+    },
+    "not_ewaste": {
+      "precision": 0.9821428571428571,
+      "recall": 0.9565217391304348,
+      "f1-score": 0.9691629955947136,
+      "support": 115.0
+    },
+    "accuracy": 0.9257142857142857,
+    "macro avg": {
+      "precision": 0.8975488796917368,
+      "recall": 0.9080745341614908,
+      "f1-score": 0.8989478169114198,
+      "support": 175.0
+    },
+    "weighted avg": {
+      "precision": 0.9314421292992721,
+      "recall": 0.9257142857142857,
+      "f1-score": 0.9260626804376524,
+      "support": 175.0
+    }
+  },
+  "confusionMatrix": [
+    [
+      11,
+      0,
+      0,
+      3,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      8,
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      16,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      0,
+      4,
+      110
+    ]
+  ],
+  "confusionMatrixLabels": [
+    "battery_waste",
+    "keyboard",
+    "light_bulb",
+    "mobile_phone",
+    "mouse",
+    "pcb",
+    "not_ewaste"
+  ],
+  "misclassifiedCountsByConfusion": {
+    "battery_waste->mobile_phone": 3,
+    "battery_waste->pcb": 1,
+    "mobile_phone->not_ewaste": 2,
+    "mobile_phone->pcb": 1,
+    "mobile_phone->battery_waste": 1,
+    "not_ewaste->pcb": 4,
+    "not_ewaste->battery_waste": 1
+  },
+  "misclassifiedExamples": [
+    {
+      "true": "battery_waste",
+      "predicted": "mobile_phone",
+      "confidence": 0.5499401688575745
+    },
+    {
+      "true": "battery_waste",
+      "predicted": "mobile_phone",
+      "confidence": 0.9375931620597839
+    },
+    {
+      "true": "battery_waste",
+      "predicted": "mobile_phone",
+      "confidence": 0.8375183343887329
+    },
+    {
+      "true": "battery_waste",
+      "predicted": "pcb",
+      "confidence": 0.4379453957080841
+    },
+    {
+      "true": "mobile_phone",
+      "predicted": "not_ewaste",
+      "confidence": 0.5425544381141663
+    },
+    {
+      "true": "mobile_phone",
+      "predicted": "not_ewaste",
+      "confidence": 0.48502978682518005
+    },
+    {
+      "true": "mobile_phone",
+      "predicted": "pcb",
+      "confidence": 0.5867124795913696
+    },
+    {
+      "true": "mobile_phone",
+      "predicted": "battery_waste",
+      "confidence": 0.486698716878891
+    },
+    {
+      "true": "not_ewaste",
+      "predicted": "pcb",
+      "confidence": 0.5806673169136047
+    },
+    {
+      "true": "not_ewaste",
+      "predicted": "pcb",
+      "confidence": 0.6226622462272644
+    },
+    {
+      "true": "not_ewaste",
+      "predicted": "pcb",
+      "confidence": 0.7152154445648193
+    },
+    {
+      "true": "not_ewaste",
+      "predicted": "battery_waste",
+      "confidence": 0.5114052891731262
+    },
+    {
+      "true": "not_ewaste",
+      "predicted": "pcb",
+      "confidence": 0.6552809476852417
+    }
+  ],
+  "ood": {
+    "evaluatedImages": 0,
+    "bySourceClass": {},
+    "confidentForcedPredictions": 0,
+    "threshold": 0.85
+  },
+  "testUsedForSelection": false,
+  "preprocessing": "RGB, bilinear stretch resize 224x224, pixel/127.5 - 1.0, NCHW float32",
+  "modelVersion": "candidate-v2 experiment; rejected for deployment",
+  "releaseStatus": "REJECTED: six-class e-waste accuracy regressed from 59/60 to 52/60; adapter challenge was labeled not_e_waste.",
+  "testSet": "175 images: 60 unchanged selected e-waste test images + 115 negatives from original source test partitions"
+}

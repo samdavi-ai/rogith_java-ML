@@ -11,7 +11,7 @@ Experimental image classifier for six visually identifiable categories from uplo
 - Class mapping is authoritative in [class_mapping.json](class_mapping.json); model output is six logits.
 - Parameters: 2,265,670. Version: 1.0.0. Training used seed 42, batch size 16, up to 12 frozen-backbone and 8 fine-tuning epochs, Adam at 0.001 then 0.00001, early stopping by validation loss.
 - Minimum confidence: 0.66, calibrated from the 60-image validation set (minimum correctly classified confidence 0.6515, rounded upward to 0.66). This is a small-sample operating threshold, not a calibrated probability guarantee. Below it the API returns `UNSURE` and withholds category-specific guidance.
-- Training/evaluation dataset source, attribution, license, and split limitations: [DATASET_REPORT.md](reports/DATASET_REPORT.md) and [DATASET_SOURCES.md](DATASET_SOURCES.md).
+- Training/evaluation dataset source, attribution, license, and split limitations: [dataset report](reports/dataset_report.md) and [DATASET_SOURCES.md](DATASET_SOURCES.md).
 - Held-out test: 60 images, accuracy 0.983, macro F1 0.988; weighted precision 0.985, weighted recall 0.983, weighted F1 0.983. Use caution due to small class supports.
 
 ## Limitations
@@ -19,6 +19,9 @@ Experimental image classifier for six visually identifiable categories from uplo
 - Test images come from the same dataset project as training but were regrouped by filename families and same-class dHash similarity. No physical-object IDs are available, so object-level independence cannot be guaranteed.
 - The bulb class has only 3 test images; reported metrics are highly uncertain.
 - OOD experiment shows confident forced predictions among excluded waste classes. The classifier cannot identify unknown objects and must not imply otherwise.
+- User screenshot challenge crops (evaluation-only) show production-model errors: bottle→Mouse, laptop/keyboard scene→Keyboard, and adapter→Light bulb. Exact original camera frames were unavailable; local screenshot-crop replays and candidate comparison are documented in [the model improvement report](../docs/MODEL_IMPROVEMENT_REPORT.md).
+- An experimental seven-class candidate added `not_ewaste` from four general-waste source labels. It improved rejection on its mixed test set but reduced accuracy on the same six-class e-waste test subset from 59/60 to 52/60 and mislabeled the adapter as not e-waste. It was rejected and is not part of this model card's deployable artifact.
+- Candidate ONNX parity was verified in Python, but candidate Java integration was not performed. Production remains model v1.0.0.
 - ImageNet initialization and dataset collection conditions may not transfer to diverse real-world settings. Lighting, occlusion, damaged devices, multiple objects, and visually similar materials need broader external testing.
 - An unspecified live room frame returned “Light bulb” at 89.4% confidence. Because no target object was deliberately presented, this is not a ground-truth accuracy result.
 - Recycling/disposal advice requires region-specific expert validation.

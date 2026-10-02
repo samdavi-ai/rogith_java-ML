@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "path": "ml/models/candidate_v2/recolens-v2.onnx",
+  "sizeBytes": 8948184,
+  "input": {
+    "name": "image",
+    "shape": [
+      "unk__655",
+      3,
+      224,
+      224
+    ],
+    "type": "tensor(float)"
+  },
+  "output": {
+    "name": "logits",
+    "shape": [
+      "unk__656",
+      7
+    ],
+    "type": "tensor(float)"
+  },
+  "opset": 17,
+  "providers": [
+    "CPUExecutionProvider"
+  ],
+  "validationImagesCompared": 64,
+  "kerasOnnxArgmaxAgreements": 64,
+  "maxAbsoluteLogitDifference": 5.3882598876953125e-05,
+  "maxRelativeLogitDifference": 4.8283905925927684e-05,
+  "classesFile": "ml/data/candidates/reject_v2/class_mapping.json"
+}

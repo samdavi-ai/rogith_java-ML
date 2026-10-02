@@ -44,7 +44,7 @@ The guide contains general preparation advice. It does not claim to verify local
 
 ## Machine Learning
 
-The trained model and complete experiment reports are in `ml/`. Dataset sources and licensing are documented in [`ml/DATASET_SOURCES.md`](ml/DATASET_SOURCES.md), and the test metrics and limitations are in [`ml/reports/TRAINING_REPORT.md`](ml/reports/TRAINING_REPORT.md) and [`ml/MODEL_CARD.md`](ml/MODEL_CARD.md).
+The trained model and complete experiment reports are in `ml/`. Dataset sources and licensing are documented in [`ml/DATASET_SOURCES.md`](ml/DATASET_SOURCES.md), and the test metrics and limitations are in [`ml/reports/TRAINING_REPORT.md`](ml/reports/TRAINING_REPORT.md) and [`ml/MODEL_CARD.md`](ml/MODEL_CARD.md). The latest camera-error audit and the rejected negative-class experiment are recorded in [`docs/ML_AUDIT.md`](docs/ML_AUDIT.md) and [`docs/MODEL_IMPROVEMENT_REPORT.md`](docs/MODEL_IMPROVEMENT_REPORT.md).
 
 The final ONNX artifact is `ml/models/ewaste.onnx`. Its preprocessing contract is RGB, bilinear 224×224 stretch, float32, NCHW, values normalized as `pixel / 127.5 - 1`. Python and Java share the ordered mapping in `ml/class_mapping.json`.
 
@@ -87,10 +87,21 @@ ml/.venv/bin/python -m unittest discover -s ml/tests -v
 
 ## Render Deployment
 
-See [`RENDER_DEPLOYMENT.md`](RENDER_DEPLOYMENT.md). The checked-in `render.yaml` defines a static site, Docker API service and PostgreSQL database using Free plans for an initial preview. No Render resources have been created by this project work.
+The checked-in `render.yaml` defines the deployed static site, Docker API service, and PostgreSQL database. See [deployment guide](docs/RECOLENS_DEPLOYMENT_GUIDE.md) for URLs, Blueprint details, and verification steps.
 
 ## Current ML Status
 
 A real MobileNetV2 model has been trained, evaluated, exported to ONNX, integrated into the API, and exercised through the live camera flow. The model is available in the local repository and is included in the Docker build. Recognition remains experimental: the held-out sample is small, source data lacks physical-item IDs, and an unspecified webcam scene produced a confident bulb prediction.
 
-The API exposes model readiness at `/health` as `MODEL_READY`, `MODEL_UNAVAILABLE`, or `MODEL_LOAD_ERROR`. `EWASTE_MIN_CONFIDENCE` defaults to 0.66 based on validation data; lower-confidence results are returned as `UNSURE` and do not receive category-specific recycling advice. Run `ml/.venv/bin/python ml/scripts/validate_dataset.py --data-root ml/data/raw/roboflow_v5` for the read-only source audit and `ml/.venv/bin/python ml/scripts/validate_onnx.py` to compare the existing Keras and ONNX artifacts on validation images.
+The API exposes model readiness at `/health` as `MODEL_READY`, `MODEL_UNAVAILABLE`, or `MODEL_LOAD_ERROR`. `EWASTE_MIN_CONFIDENCE` defaults to 0.66 based on validation data; lower-confidence results are returned as `UNSURE` and do not receive category-specific recycling advice. Run `ml/.venv/bin/python ml/scripts/validate_dataset.py --data-root ml/data/raw/roboflow_v5` for the read-only source audit and `ml/.venv/bin/python ml/scripts/validate_onnx.py` to compare the existing Keras and ONNX artifacts on validation images. A seven-class `not_ewaste` experiment was rejected because it reduced e-waste recall and mislabeled a charger; production remains on v1.
+
+## Documentation
+
+- [Complete technical report](docs/RECOLENS_COMPLETE_TECHNICAL_REPORT.md)
+- [Setup guide](docs/RECOLENS_COMPLETE_SETUP_GUIDE.md)
+- [User guide](docs/RECOLENS_USER_GUIDE.md)
+- [Developer guide](docs/RECOLENS_DEVELOPER_GUIDE.md)
+- [Deployment guide](docs/RECOLENS_DEPLOYMENT_GUIDE.md)
+- [API reference](docs/RECOLENS_API_REFERENCE.md)
+- [ML guide](docs/RECOLENS_ML_GUIDE.md)
+- [Troubleshooting](docs/RECOLENS_TROUBLESHOOTING.md)

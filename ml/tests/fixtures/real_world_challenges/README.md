@@ -1,0 +1,3 @@
+# Real-world challenge fixtures
+
+These three cropped photos come from user-supplied production screenshots. They are **evaluation-only** and must never be copied into a training, validation, or model-tuning split. They capture reported challenge cases: laptop scene (expected broad laptop class, currently unsupported), bottle (not e-waste), and power adapter (e-waste charger class, currently unsupported). The screen screenshots are cropped to the displayed photo region. Because these are user-supplied samples and not a representative cohort, report them as qualitative regression examples, not aggregate metrics.

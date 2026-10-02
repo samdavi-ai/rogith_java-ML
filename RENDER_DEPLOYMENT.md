@@ -67,4 +67,4 @@ The Blueprint selects Render's Free PostgreSQL plan for a no-cost preview. Rende
 - The browser samples at a configured 1,000 ms interval, one request at a time (nominally about one analyzed frame per second). Camera capture/encoding was not separately timed. Process memory and a Docker-contained runtime were not measured.
 - A live webcam room frame returned Light bulb at 89.4%; no target e-waste object was deliberately presented, so this is not an accuracy measurement.
 - The configured model confidence floor is `EWASTE_MIN_CONFIDENCE=0.66`; below it the response is `UNSURE` with `categoryName: null`, and the browser shows photo tips without class-specific guidance.
-- Docker Compose and the Render Blueprint parse successfully. A Docker image build and Render smoke test have not been verified in this environment.
+- Docker Compose and the Render Blueprint parsed successfully during earlier verification. A subsequent live Render deployment and smoke check were recorded; see [deployment guide](docs/RECOLENS_DEPLOYMENT_GUIDE.md) for the current URLs and verification checklist. A physical mobile-device torch test is not recorded.

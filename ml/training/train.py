@@ -72,7 +72,17 @@ def build_model(class_count: int) -> tuple[tf.keras.Model, tf.keras.Model]:
         input_shape=(*IMAGE_SIZE, 3), include_top=False, weights="imagenet", pooling=None
     )
     backbone.trainable = False
-    features = backbone(nhwc, training=False)
+    # Mild camera-like perturbations are active only during training; inference
+    # remains deterministic and retains the established preprocessing contract.
+    augmentation = tf.keras.Sequential([
+        tf.keras.layers.RandomFlip("horizontal", seed=SEED),
+        tf.keras.layers.RandomRotation(0.04, fill_mode="reflect", seed=SEED + 1),
+        tf.keras.layers.RandomZoom(0.08, fill_mode="reflect", seed=SEED + 2),
+        tf.keras.layers.RandomTranslation(0.04, 0.04, fill_mode="reflect", seed=SEED + 3),
+        tf.keras.layers.RandomContrast(0.12, seed=SEED + 4),
+    ], name="camera_augmentation")
+    augmented = augmentation(nhwc)
+    features = backbone(augmented, training=False)
     features = tf.keras.layers.GlobalAveragePooling2D(name="global_average_pooling")(features)
     features = tf.keras.layers.Dropout(0.25, name="classifier_dropout")(features)
     logits = tf.keras.layers.Dense(class_count, name="logits")(features)

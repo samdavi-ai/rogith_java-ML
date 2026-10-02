@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "onnxPath": "ml/models/candidate_v2/recolens-v2.onnx",
+  "imagesCompared": 173,
+  "argmaxAgreements": 173,
+  "maxAbsoluteLogitDifference": 5.9604644775390625e-05,
+  "maxProbabilityDifference": 8.553266525268555e-06,
+  "singleImageLatencyMs": {
+    "median": 6.706790998578072,
+    "p95": 9.748583202599548,
+    "max": 10.431750000861939
+  },
+  "input": {
+    "name": "image",
+    "shape": [
+      "unk__655",
+      3,
+      224,
+      224
+    ],
+    "type": "tensor(float)"
+  },
+  "output": {
+    "name": "logits",
+    "shape": [
+      "unk__656",
+      7
+    ],
+    "type": "tensor(float)"
+  }
+}

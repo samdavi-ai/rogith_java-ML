@@ -16,11 +16,14 @@ data/raw/
 data/intermediate/
 ml/data/raw/
 ml/data/processed/
+ml/data/candidates/
 ml/datasets/
 ml/checkpoints/
 ml/runs/
+ml/models/candidate_v2/
 ml/.venv/
 ml/models/*.keras
 ml/models/*.h5
 *.onnx.tmp
+ml/tests/fixtures/real_world_challenges/*.jpg
 frontend-dist/

@@ -88,10 +88,10 @@ def main() -> None:
         "sourceArchiveCrossSplitDHashCandidateCount": source_candidate_count,
         "interpretation": "dHash distance <=3 marks candidates for visual review; it does not prove same physical object. Any unresolved candidate remains a split-leakage gate failure.",
         "manualVisualReview": {
-            "reviewedPairCount": len(near),
-            "method": "Side-by-side contact sheet inspection of every cross-split dHash candidate.",
-            "finding": "All reviewed pairs show the same apparent object or near-identical view in the same scene. Image-only review cannot establish physical-object identity, so all remain potential leakage candidates.",
-            "disposition": "UNRESOLVED; retain as a split leakage gate failure until related views are grouped or removed and the split is rebuilt.",
+            "reviewedPairCount": 0,
+            "method": "No manual pair review required when the automated cross-split candidate count is zero; otherwise inspect every listed pair side by side.",
+            "finding": "No cross-split dHash candidates remain." if not near else "Cross-split candidates require manual disposition; image similarity alone does not prove physical-object identity.",
+            "disposition": "PASS: no cross-split candidates." if not near else "UNRESOLVED; retain as a split leakage gate failure until related views are grouped or removed and the split is rebuilt.",
         },
     }
     report["gate"] = "FAIL" if corrupt or unsupported or report["exactDuplicateGroups"] or report["sourceFilenameFamiliesCrossingSplits"] or near else "PASS"

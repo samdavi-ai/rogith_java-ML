@@ -1,0 +1,48 @@
+{
+  "dataRoot": "ml/data/candidates/phase11_reblocked",
+  "images": 1139,
+  "countsBySplitAndClass": {
+    "train": {
+      "battery_waste": 96,
+      "keyboard": 70,
+      "light_bulb": 24,
+      "mobile_phone": 90,
+      "mouse": 47,
+      "not_ewaste": 561,
+      "pcb": 103
+    },
+    "validation": {
+      "battery_waste": 7,
+      "keyboard": 6,
+      "light_bulb": 3,
+      "mobile_phone": 8,
+      "mouse": 4,
+      "not_ewaste": 36,
+      "pcb": 9
+    },
+    "test": {
+      "battery_waste": 8,
+      "keyboard": 6,
+      "light_bulb": 2,
+      "mobile_phone": 9,
+      "mouse": 5,
+      "not_ewaste": 36,
+      "pcb": 9
+    }
+  },
+  "corruptOrSmall": [],
+  "unsupportedFiles": [],
+  "exactDuplicateGroups": [],
+  "sourceFilenameFamiliesCrossingSplits": [],
+  "crossSplitDHashDistanceAtMost3": [],
+  "crossSplitDHashCandidateCount": 0,
+  "sourceArchiveCrossSplitDHashCandidateCount": 544,
+  "interpretation": "dHash distance <=3 marks candidates for visual review; it does not prove same physical object. Any unresolved candidate remains a split-leakage gate failure.",
+  "manualVisualReview": {
+    "reviewedPairCount": 0,
+    "method": "No manual pair review required when the automated cross-split candidate count is zero; otherwise inspect every listed pair side by side.",
+    "finding": "No cross-split dHash candidates remain.",
+    "disposition": "PASS: no cross-split candidates."
+  },
+  "gate": "PASS"
+}

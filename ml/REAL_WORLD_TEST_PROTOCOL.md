@@ -21,12 +21,16 @@ The full Cartesian product is too large for one object; use a balanced fractiona
 
 ## Per-image metadata
 
-Record image ID, actual object, canonical category/system label, object identity group (for duplicate control), lighting, background, camera class (phone/webcam; omit make/model if it could identify a person), approximate distance, object orientation, timestamp rounded to date, source/consent, EXIF handling, and SHA-256. Do not put names, precise location, faces, or other PII in metadata. Any field not known must say `unknown`, not be guessed.
+Record image ID, file name, actual object, canonical category/system label, opaque object identity group (for duplicate control), device class, browser, generic camera label, image width/height, lighting, background, approximate distance, orientation/visibility, timestamp rounded to date, source/consent, EXIF handling, and SHA-256. Do not put names, precise location, faces, serials, or other PII in metadata. Any field not known must say `unknown`, not be guessed.
 
 ## Quality and lock procedure
 
 Before lock, verify image decode, label review, no PII, class counts, exact hashes, perceptual near-duplicates, and object-ID grouping. Keep all images from one physical object/near-duplicate family together. Create train/validation/test splits by object/source before training; this real-world test remains separate. Once finalized, write the SHA-256 manifest, freeze the files read-only, tag the manifest version, and record model/test-set version together. Do not inspect test errors until candidate/model/configuration are frozen.
 
+## Capture helper
+
+Use [`tools/real_world_capture.html`](tools/real_world_capture.html) from localhost or HTTPS. It requests camera access only after “Start camera”, saves the full video frame as a JPEG, computes SHA-256, and records the chosen class and conditions. Chrome/Edge can write into the selected `ml/data` folder; other browsers use downloads. The capture tool does not verify physical labels or PII; a person must review each image before the manifest can be locked.
+
 ## Current set state
 
-The existing three user-provided crops are a locked diagnostic pilot for bottle, charger/adapter, and laptop scene only; original camera and scene metadata are incomplete. They are not a representative real-camera dataset. Bower is a potential independent phone-camera waste validation set, but it has generic electronic-device annotations rather than RecoLens subtype labels. The required multi-condition RecoLens test set is **NOT COMPLETE**; no capture metadata is fabricated in the accompanying manifest.
+The existing three user-provided crops are a diagnostic pilot for bottle, charger/adapter, and a partial laptop scene only; they are not camera captures and original scene metadata are incomplete. They are excluded from the official camera set. Bower is a potential independent phone-camera waste validation set, but it has generic electronic-device annotations rather than RecoLens subtype labels. Accepted RecoLens camera images: **0**; required test set: **NOT COMPLETE**. No capture metadata is fabricated in the official manifest.

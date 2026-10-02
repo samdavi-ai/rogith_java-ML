@@ -1,0 +1,103 @@
+{
+  "source": "ml/data/candidates/reject_v2",
+  "output": "ml/data/candidates/phase11_reblocked",
+  "seed": 42,
+  "inputFiles": 1468,
+  "retainedTrainValidationTestFiles": {
+    "train": 991,
+    "validation": 73,
+    "test": 75
+  },
+  "retainedClassCounts": {
+    "train": {
+      "battery_waste": 96,
+      "keyboard": 70,
+      "light_bulb": 24,
+      "mobile_phone": 90,
+      "mouse": 47,
+      "not_ewaste": 561,
+      "pcb": 103
+    },
+    "validation": {
+      "battery_waste": 7,
+      "keyboard": 6,
+      "light_bulb": 3,
+      "mobile_phone": 8,
+      "mouse": 4,
+      "not_ewaste": 36,
+      "pcb": 9
+    },
+    "test": {
+      "battery_waste": 8,
+      "keyboard": 6,
+      "light_bulb": 2,
+      "mobile_phone": 9,
+      "mouse": 5,
+      "not_ewaste": 36,
+      "pcb": 9
+    }
+  },
+  "retainedComponentsByClass": {
+    "battery_waste": {
+      "groups": 49,
+      "trainGroups": 34,
+      "validationGroups": 7,
+      "testGroups": 8
+    },
+    "keyboard": {
+      "groups": 39,
+      "trainGroups": 27,
+      "validationGroups": 6,
+      "testGroups": 6
+    },
+    "light_bulb": {
+      "groups": 18,
+      "trainGroups": 13,
+      "validationGroups": 3,
+      "testGroups": 2
+    },
+    "mobile_phone": {
+      "groups": 55,
+      "trainGroups": 38,
+      "validationGroups": 8,
+      "testGroups": 9
+    },
+    "mouse": {
+      "groups": 30,
+      "trainGroups": 21,
+      "validationGroups": 4,
+      "testGroups": 5
+    },
+    "not_ewaste": {
+      "groups": 240,
+      "trainGroups": 168,
+      "validationGroups": 36,
+      "testGroups": 36
+    },
+    "pcb": {
+      "groups": 59,
+      "trainGroups": 41,
+      "validationGroups": 9,
+      "testGroups": 9
+    }
+  },
+  "manualUnknownImages": 15,
+  "quarantinedComponentFiles": 37,
+  "quarantineByReason": {
+    "MIXED_LABEL_COMPONENT": 8,
+    "MANUAL_LABEL_HOLD": 29
+  },
+  "visualNearDuplicateEdgesAcrossAllSplits": 495,
+  "visualNearDuplicateDistanceCountsAcrossAllSplits": {
+    "0": 52,
+    "1": 99,
+    "2": 161,
+    "3": 183
+  },
+  "originalCrossSplitNearDuplicateEdges": 180,
+  "crossLabelNearDuplicateEdges": 3,
+  "crossLabelComponentCount": 1,
+  "outputSplitMethod": "Union exact source filename families, exact hashes and every dHash<=3 pair across all source partitions. Remove visually linked mixed-label components and manual label holds. Assign independent components per label by seed 42. Keep all training variants; use one deterministic image per component in validation/test.",
+  "postBuildLeakageAudit": "REQUIRED",
+  "warning": "This is a local staging split of a previously rejected candidate source. It is not the final V2 dataset; its source labels and negative-class semantics still need broader review, and it contains no real-world camera data."
+}

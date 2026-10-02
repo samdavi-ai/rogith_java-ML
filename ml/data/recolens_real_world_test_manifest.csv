@@ -1,1 +1,1 @@
-image_id,true_class,source,condition,device,lighting,distance,hash,relative_path
+image_id,file_name,true_class,device,browser,lighting,background,orientation,distance,source,sha256,object_id,camera_label,image_width,image_height,capture_date

@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RecoLens camera data collection</title>
+  <style>
+    :root { color-scheme: light; font: 16px/1.45 system-ui, sans-serif; color: #22312e; background: #f5f7f4; }
+    body { max-width: 1040px; margin: 0 auto; padding: 24px; }
+    h1 { margin: 0 0 6px; font-size: 1.7rem; } p { margin: 0 0 16px; }
+    .panel { padding: 20px; margin: 18px 0; border: 1px solid #dce3dc; border-radius: 12px; background: white; }
+    .controls { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0; }
+    button { border: 0; border-radius: 8px; padding: 11px 15px; background: #176b53; color: white; font: inherit; cursor: pointer; }
+    button.secondary { background: #e8efea; color: #163d32; }
+    button:disabled { opacity: .48; cursor: not-allowed; }
+    video { display: block; width: 100%; max-height: 55vh; margin: 14px 0; background: #18221f; object-fit: contain; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    label { display: grid; gap: 5px; font-weight: 600; }
+    input, select { width: 100%; box-sizing: border-box; min-height: 42px; padding: 8px; border: 1px solid #aebdb3; border-radius: 7px; background: white; color: inherit; font: inherit; }
+    .help { color: #52635b; font-size: .92rem; }
+    #message { min-height: 1.5em; color: #174c3c; }
+    #entries { max-height: 240px; overflow: auto; padding-left: 20px; }
+    .check { display: flex; align-items: flex-start; gap: 10px; margin-top: 14px; font-weight: 400; }
+    .check input { width: auto; min-height: auto; margin-top: 5px; }
+    @media (max-width: 560px) { body { padding: 14px; } .panel { padding: 15px; } }
+  </style>
+</head>
+<body>
+  <h1>RecoLens camera test capture</h1>
+  <p>Capture original frames from a physical camera. Files are saved locally to the directory you choose. This page does not upload or classify images.</p>
+
+  <section class="panel" aria-labelledby="cameraHeading">
+    <h2 id="cameraHeading">Camera</h2>
+    <p class="help">Run from localhost or HTTPS in a browser that supports local directory access (Chrome or Edge recommended). Choose the <code>ml/data</code> folder; images go into <code>recolens_real_world_test/</code>.</p>
+    <div class="controls">
+      <button id="folderButton" type="button">Choose ml/data folder</button>
+      <button id="startButton" type="button" class="secondary">Start camera</button>
+      <button id="stopButton" type="button" class="secondary" disabled>Stop camera</button>
+    </div>
+    <p id="folderState" class="help">No output folder selected.</p>
+    <video id="preview" autoplay playsinline muted aria-label="Camera preview"></video>
+  </section>
+
+  <section class="panel" aria-labelledby="metadataHeading">
+    <h2 id="metadataHeading">Capture details</h2>
+    <div class="grid">
+      <label>True class
+        <select id="trueClass" required>
+          <option value="">Choose the visible item</option>
+          <optgroup label="Existing V1 classes">
+            <option>battery</option><option>keyboard</option><option>light_bulb</option><option>mobile_phone</option><option>mouse</option><option>pcb</option>
+          </optgroup>
+          <optgroup label="Known failure categories">
+            <option>charger</option><option>adapter</option><option>laptop</option>
+          </optgroup>
+          <optgroup label="Everyday negative examples">
+            <option>water_bottle</option><option>book</option><option>paper</option><option>clothing</option><option>food</option><option>plastic_object</option><option>glass_object</option>
+          </optgroup>
+          <optgroup label="Unknown; keep separate from non-e-waste">
+            <option>unknown_electronic</option><option>unknown_object</option><option>partially_visible_or_ambiguous</option>
+          </optgroup>
+        </select>
+      </label>
+      <label>Object group ID
+        <input id="objectId" required placeholder="Opaque ID, e.g. OBJ-01">
+      </label>
+      <label>Device used
+        <select id="device" required><option value="">Choose device</option><option>iPhone</option><option>Android phone</option><option>desktop webcam</option><option>laptop webcam</option><option>other physical camera</option></select>
+      </label>
+      <label>Browser
+        <input id="browser" readonly>
+      </label>
+      <label>Lighting
+        <select id="lighting" required><option value="">Choose lighting</option><option>normal indoor</option><option>bright</option><option>low-light</option></select>
+      </label>
+      <label>Background
+        <select id="background" required><option value="">Choose background</option><option>plain</option><option>desk/table</option><option>cluttered</option></select>
+      </label>
+      <label>Orientation / visibility
+        <select id="orientation" required><option value="">Choose orientation</option><option>front</option><option>side</option><option>angled</option><option>rotated</option><option>partially visible</option></select>
+      </label>
+      <label>Distance
+        <select id="distance" required><option value="">Choose distance</option><option>close</option><option>medium</option><option>far</option></select>
+      </label>
+      <label>Camera label (optional)
+        <input id="cameraLabel" placeholder="Generic camera label only; no serial or personal name">
+      </label>
+    </div>
+    <p class="help">Use the same object group ID for every view of the same physical item. Do not include faces, personal screens, addresses, serial numbers, documents, QR codes, or precise location. Use “unknown” only when a metadata value is genuinely unavailable.</p>
+    <div class="controls"><button id="captureButton" type="button" disabled>Capture and save image</button></div>
+    <p id="message" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="panel" aria-labelledby="manifestHeading">
+    <h2 id="manifestHeading">Saved manifest</h2>
+    <p id="count">0 images saved.</p>
+    <ol id="entries"></ol>
+    <label class="check"><input id="reviewed" type="checkbox"><span>I reviewed every image and label, checked for identifying details, and confirm these are original physical-camera captures.</span></label>
+    <div class="controls"><button id="exportButton" type="button" class="secondary">Download manifest CSV</button><button id="lockButton" type="button" class="secondary" disabled>Lock manifest</button></div>
+    <p class="help">Locking writes a read-only review copy of the manifest and its SHA-256 digest. It does not make missing class or condition coverage adequate.</p>
+  </section>
+
+  <script>
+    const $ = id => document.getElementById(id);
+    const REQUIRED = ['trueClass', 'objectId', 'device', 'lighting', 'background', 'orientation', 'distance'];
+    const header = ['image_id','file_name','true_class','device','browser','lighting','background','orientation','distance','source','sha256','object_id','camera_label','image_width','image_height','capture_date'];
+    let baseHandle = null, imageDir = null, stream = null, rows = [], downloadsMode = false, locked = false;
+    const ua = navigator.userAgent;
+    $('browser').value = /Edg\//.test(ua) ? 'Edge' : /Chrome\//.test(ua) ? 'Chrome' : /Firefox\//.test(ua) ? 'Firefox' : /Safari\//.test(ua) ? 'Safari' : 'Other';
+    const escapeCsv = value => `"${String(value ?? '').replaceAll('"','""')}"`;
+    const csv = data => [header.join(','), ...data.map(row => header.map(key => escapeCsv(row[key])).join(','))].join('\r\n') + '\r\n';
+    const sha256 = async blob => [...new Uint8Array(await crypto.subtle.digest('SHA-256', await blob.arrayBuffer()))].map(n => n.toString(16).padStart(2,'0')).join('');
+    const setMessage = text => { $('message').textContent = text; };
+    const dateStamp = () => new Date().toISOString().slice(0,10);
+    const download = (name, blob) => { const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(url), 3000); };
+    function parseCsv(text) {
+      const lines = text.trim().split(/\r?\n/);
+      const parseLine = line => { const values=[]; let value='', quoted=false; for(let i=0;i<line.length;i++){ const c=line[i]; if(c==='"'&&quoted&&line[i+1]==='"'){value+='"';i++;} else if(c==='"'){quoted=!quoted;} else if(c===','&&!quoted){values.push(value);value='';} else value+=c;} values.push(value);return values; };
+      if(lines.length<2) return [];
+      const keys=parseLine(lines[0]);
+      return lines.slice(1).filter(Boolean).map(line=>Object.fromEntries(parseLine(line).map((v,i)=>[keys[i],v])));
+    }
+
+    async function writeFile(dir, name, data) {
+      const handle = await dir.getFileHandle(name, {create:true});
+      const writable = await handle.createWritable();
+      await writable.write(data);
+      await writable.close();
+    }
+    async function saveManifest() {
+      if (baseHandle) await writeFile(baseHandle, 'recolens_real_world_test_manifest.csv', csv(rows));
+      $('count').textContent = `${rows.length} image${rows.length === 1 ? '' : 's'} saved.`;
+      $('lockButton').disabled = locked || rows.length === 0 || !$('reviewed').checked;
+      $('entries').innerHTML = rows.slice(-12).reverse().map(r => `<li>${r.file_name} — ${r.true_class}, ${r.lighting}, ${r.background}</li>`).join('');
+    }
+    $('folderButton').addEventListener('click', async () => {
+      try {
+        if (!window.showDirectoryPicker) {
+          downloadsMode = true;
+          $('folderState').textContent = 'This browser uses downloads. Save each image and manifest, then move them into ml/data/recolens_real_world_test/. Keep matching file names.';
+          setMessage('Download mode is ready. Choose the physical camera and capture details, then start the camera.');
+          return;
+        }
+        baseHandle = await window.showDirectoryPicker({mode:'readwrite'});
+        imageDir = await baseHandle.getDirectoryHandle('recolens_real_world_test', {create:true});
+        try {
+          const lockedHandle = await baseHandle.getFileHandle('recolens_real_world_test_manifest.locked.csv');
+          if (lockedHandle) { locked = true; $('folderState').textContent = 'This set already has a locked manifest. Choose another folder for a new set version.'; setMessage('The selected test set is locked; captures are disabled.'); return; }
+        } catch { /* no locked manifest exists */ }
+        try {
+          const existingHandle = await baseHandle.getFileHandle('recolens_real_world_test_manifest.csv');
+          rows = parseCsv(await (await existingHandle.getFile()).text());
+        } catch { rows = []; }
+        $('folderState').textContent = 'Selected folder. Captures will be saved under recolens_real_world_test/ and the manifest beside it.';
+        await saveManifest();
+        $('captureButton').disabled = !stream || locked;
+      } catch (error) { setMessage(error.message || 'Could not select the output folder.'); }
+    });
+    $('startButton').addEventListener('click', async () => {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}}, audio:false});
+        $('preview').srcObject = stream;
+        $('stopButton').disabled = false;
+        $('captureButton').disabled = !(imageDir || downloadsMode) || locked;
+        setMessage('Camera preview is ready. Check the visible object and capture details before saving.');
+      } catch (error) { setMessage(`Camera could not start: ${error.message || 'check browser permission and camera availability.'}`); }
+    });
+    $('stopButton').addEventListener('click', () => {
+      stream?.getTracks().forEach(track => track.stop()); stream = null; $('preview').srcObject = null;
+      $('stopButton').disabled = true; $('captureButton').disabled = true; setMessage('Camera stopped.');
+    });
+    $('captureButton').addEventListener('click', async () => {
+      if (!stream || (!imageDir && !downloadsMode) || locked) return;
+      for (const key of REQUIRED) if (!$(`${key}`).value.trim()) { setMessage('Complete every required capture field first.'); $(`${key}`).focus(); return; }
+      const video = $('preview');
+      if (!video.videoWidth || !video.videoHeight) { setMessage('Wait for the camera preview to finish loading.'); return; }
+      const canvas = document.createElement('canvas'); canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+      canvas.getContext('2d', {willReadFrequently:false}).drawImage(video,0,0,canvas.width,canvas.height);
+      const blob = await new Promise(resolve => canvas.toBlob(resolve,'image/jpeg',0.94));
+      if (!blob) { setMessage('Could not encode this camera frame.'); return; }
+      const imageHash = await sha256(blob);
+      if (rows.some(row => row.sha256 === imageHash)) { setMessage('This frame has the same SHA-256 as an existing capture; it was not added.'); return; }
+      const id = `RW-${crypto.randomUUID()}`;
+      const fileName = `${id}.jpg`;
+      if (imageDir) await writeFile(imageDir,fileName,blob); else download(fileName,blob);
+      const settings = stream.getVideoTracks()[0]?.getSettings?.() || {};
+      rows.push({
+        image_id:id,file_name:fileName,true_class:$('trueClass').value,device:$('device').value,browser:$('browser').value,
+        lighting:$('lighting').value,background:$('background').value,orientation:$('orientation').value,distance:$('distance').value,
+        source:'recolens_physical_camera',sha256:imageHash,object_id:$('objectId').value.trim(),camera_label:$('cameraLabel').value.trim() || 'unknown',
+        image_width:settings.width || canvas.width,image_height:settings.height || canvas.height,capture_date:dateStamp()
+      });
+      await saveManifest();
+      setMessage(`Saved ${fileName}; image SHA-256 ${imageHash}.`);
+    });
+    $('reviewed').addEventListener('change', saveManifest);
+    $('exportButton').addEventListener('click', () => download('recolens_real_world_test_manifest.csv',new Blob([csv(rows)],{type:'text/csv'})));
+    $('lockButton').addEventListener('click', async () => {
+      if (!rows.length || !$('reviewed').checked || locked) return;
+      const manifestText = csv(rows);
+      const manifestHash = await sha256(new Blob([manifestText],{type:'text/csv'}));
+      if (baseHandle) {
+        await writeFile(baseHandle,'recolens_real_world_test_manifest.locked.csv',manifestText);
+        await writeFile(baseHandle,'recolens_real_world_test_manifest.locked.sha256.txt',`${manifestHash}  recolens_real_world_test_manifest.locked.csv\n`);
+      } else {
+        download('recolens_real_world_test_manifest.locked.csv',new Blob([manifestText],{type:'text/csv'}));
+        download('recolens_real_world_test_manifest.locked.sha256.txt',new Blob([`${manifestHash}  recolens_real_world_test_manifest.locked.csv\n`],{type:'text/plain'}));
+      }
+      locked = true;
+      setMessage(`Locked ${rows.length} captured images. Manifest SHA-256: ${manifestHash}. Keep the locked files unchanged; recollect a new version after any label or image correction.`);
+      $('lockButton').disabled = true;
+    });
+    if (!window.isSecureContext || !navigator.mediaDevices?.getUserMedia || !crypto?.subtle) {
+      $('startButton').disabled = true;
+      setMessage('Camera capture requires HTTPS or localhost, browser camera permission, and Web Crypto support.');
+    }
+  </script>
+</body>
+</html>

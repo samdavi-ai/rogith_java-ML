@@ -2,6 +2,8 @@
 
 The real dataset source and license rationale are in `DATASET_SOURCES.md`. The dataset archive and generated classification trees remain local and are excluded from Git. `class_mapping.json` is the authoritative six-class, zero-based mapping shared by Python and Java. The latest dataset/model audit, including a rejected negative-class experiment, is documented in `../docs/ML_AUDIT.md` and `../docs/MODEL_IMPROVEMENT_REPORT.md`.
 
+Phase 8 data/taxonomy status is documented in `RECOLENS_CLASS_TAXONOMY.md`, `DATASET_CANDIDATES.md`, `reports/phase8_dataset_audit.md`, and `reports/PHASE_8_FINAL_REPORT.md`. No Phase 8 model was trained because the new datasets did not pass the exact-category/locked-evaluation gate. See `reports/java_onnx_parity.md` for the measured Java preprocessing/confidence parity gap.
+
 ## Rebuild the dataset
 
 ```bash

@@ -17,6 +17,11 @@ data/intermediate/
 ml/data/raw/
 ml/data/processed/
 ml/data/candidates/
+ml/data/external/
+ml/data/recolens_real_world_test/images/
+ml/data/train/
+ml/data/validation/
+ml/data/test/
 ml/datasets/
 ml/checkpoints/
 ml/runs/

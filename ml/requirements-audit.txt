@@ -1,0 +1,2 @@
+# Additional dependency for the Phase 8 Parquet dataset audit.
+pyarrow==22.0.0

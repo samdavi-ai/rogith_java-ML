@@ -1,0 +1,342 @@
+{
+  "dataset": "BowerApp/bower-waste-annotations",
+  "sourceParquet": "ml/data/external/bower_validation/0000.parquet",
+  "sourceParquetSha256": "85bc4d92c37c6c09e0cc5b7b3e880cd78f685e363b48df2e693105ad4778b9a2",
+  "license": "MIT (published dataset card)",
+  "rowAnnotations": 2546,
+  "uniqueImageIds": 1578,
+  "uniqueImageByteHashes": 1578,
+  "duplicateImageGroups": [],
+  "annotationRowsByObject": {
+    "Box/Card/Tray/Crate": 496,
+    "Can/Tin/Cylinder": 103,
+    "Flexibles/Bag/Wrapper/Foil/Net": 408,
+    "Lid/Cap": 394,
+    "Jug": 29,
+    "Aseptic Flat Top Carton": 43,
+    "Bottle": 252,
+    "Aerosol": 35,
+    "Electronic Device": 2,
+    "Cup/Tub/Bowl/Bucket": 64,
+    "Jar": 111,
+    "Gable Top Carton": 46,
+    "Blister Pack": 36,
+    "Book": 27,
+    "Tube": 26,
+    "Battery": 438,
+    "Paper Product": 23,
+    "Cosmetics Containers": 5,
+    "E-cigarette": 2
+  },
+  "uniqueImagesByObject": {
+    "aerosol": 35,
+    "aseptic flat top carton": 43,
+    "battery": 53,
+    "blister pack": 34,
+    "book": 27,
+    "bottle": 235,
+    "box/card/tray/crate": 471,
+    "can/tin/cylinder": 98,
+    "cosmetics containers": 5,
+    "cup/tub/bowl/bucket": 63,
+    "e-cigarette": 2,
+    "electronic device": 2,
+    "flexibles/bag/wrapper/foil/net": 390,
+    "gable top carton": 43,
+    "jar": 109,
+    "jug": 28,
+    "lid/cap": 382,
+    "paper product": 21,
+    "tube": 26
+  },
+  "annotationRowsByMaterial": {
+    "Fiber - Cardboard / Paper Packaging": 497,
+    "Plastic - Hard": 658,
+    "Plastic - Soft": 369,
+    "Glass - Non-coloured": 111,
+    "Composite": 118,
+    "Glass - Coloured": 76,
+    "Metal": 197,
+    "Electronic Waste": 55,
+    "Fiber - Paper": 60,
+    "Hazardous Waste": 387,
+    "Fiber - Other": 3,
+    "Textiles": 4,
+    "Plastic - Other": 3
+  },
+  "uniqueImagesByMaterial": {
+    "composite": 115,
+    "electronic waste": 11,
+    "fiber - cardboard / paper packaging": 471,
+    "fiber - other": 3,
+    "fiber - paper": 58,
+    "glass - coloured": 73,
+    "glass - non-coloured": 107,
+    "hazardous waste": 46,
+    "metal": 180,
+    "plastic - hard": 451,
+    "plastic - other": 3,
+    "plastic - soft": 355,
+    "textiles": 4
+  },
+  "imageFormatCounts": {
+    "JPEG": 1578
+  },
+  "dimensionDistribution": {
+    "900x900": 1067,
+    "900x585": 7,
+    "900x704": 6,
+    "900x750": 109,
+    "364x238": 1,
+    "901x901": 131,
+    "364x308": 4,
+    "364x364": 47,
+    "899x899": 12,
+    "900x570": 16,
+    "900x591": 7,
+    "901x519": 12,
+    "360x364": 19,
+    "900x522": 3,
+    "900x678": 14,
+    "900x574": 25,
+    "320x226": 1,
+    "320x364": 2,
+    "900x516": 3,
+    "318x364": 2,
+    "901x582": 13,
+    "500x666": 22,
+    "360x270": 4,
+    "900x579": 1,
+    "256x205": 24,
+    "900x513": 3,
+    "500x375": 4,
+    "364x237": 1,
+    "900x519": 1,
+    "364x254": 2,
+    "901x591": 1,
+    "900x663": 4,
+    "900x586": 1,
+    "900x628": 5,
+    "900x627": 1,
+    "900x501": 1,
+    "900x675": 1,
+    "320x240": 1
+  },
+  "imagesBelow224Px": [
+    {
+      "imageId": "1902696879662782184",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "2419843691079067291",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "2600400205811018215",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "2723133920767703450",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "2943493127899006000",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "3726170180278023443",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "3777382722765175447",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "3802948729232925387",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "3858262494704725531",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "4065001605538292686",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "491415502453473748",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "4954097017289313580",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "5911878486114747664",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "6154697406295495963",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "6703307237079927692",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "6727361379387152884",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "7111186877345225777",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "7178300639735750519",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "7496745153523221818",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "7840912545072595082",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "7891832289660021433",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "8217813099615567630",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "8281280388137726090",
+      "size": [
+        256,
+        205
+      ]
+    },
+    {
+      "imageId": "9143348546538756598",
+      "size": [
+        256,
+        205
+      ]
+    }
+  ],
+  "imagesWithMultipleAnnotations": 544,
+  "annotationRowsPerImageDistribution": {
+    "2": 439,
+    "3": 36,
+    "1": 1034,
+    "4": 35,
+    "5": 7,
+    "9": 2,
+    "7": 4,
+    "6": 4,
+    "8": 1,
+    "13": 1,
+    "17": 1,
+    "20": 4,
+    "11": 1,
+    "28": 1,
+    "15": 1,
+    "22": 1,
+    "18": 1,
+    "19": 1,
+    "12": 1,
+    "14": 2,
+    "10": 1
+  },
+  "derivedFrameLabels": {
+    "E_WASTE": 57,
+    "NOT_E_WASTE": 1520,
+    "UNLABELED": 1
+  },
+  "derivation": "Frame is E_WASTE when any annotation material is Electronic Waste or object is Battery, Bulb, Electronic Device or E-cigarette; NOT_E_WASTE when known labels exist and no positive label; null-only images are UNLABELED.",
+  "corruptImages": [],
+  "dimensionMismatches": [],
+  "imageIdByteConflicts": {},
+  "unlabeledImageIds": [
+    "176795349676602075"
+  ],
+  "nearDuplicatePairsDHashLe3": 1,
+  "nearDuplicateExamples": [
+    {
+      "leftId": "436318062760631829",
+      "rightId": "948885229060933941",
+      "dHashDistance": 2
+    }
+  ],
+  "parquetBytes": 225427984,
+  "imagesExported": false,
+  "status": "FAIL"
+}

@@ -2,6 +2,8 @@
 
 Date: 2026-10-02. This report distinguishes the production baseline (`v1.0.0`) from an offline, rejected seven-class candidate (`candidate-v2`). No candidate artifact was promoted or deployed.
 
+The Phase 7B re-audit and final no-deploy decision are summarized in [`ml/reports/MODEL_IMPROVEMENT_REPORT.md`](../ml/reports/MODEL_IMPROVEMENT_REPORT.md); the new source-image audit is in [`ml/reports/dataset_audit.md`](../ml/reports/dataset_audit.md).
+
 ## Root cause assessment
 
 The deployed taxonomy consists of six classes: battery waste, keyboard, light bulb, mobile phone, mouse, and PCB. A charger, laptop, or ordinary plastic bottle is not represented. The v1 model must return one of its six labels for every image; the API's confidence floor only rejects low-confidence results and cannot detect an unsupported object. This explains why the examples can be confidently misclassified without proving any one training defect. Small supports, limited collection diversity, and phone-camera/background domain shift are additional plausible causes. The screenshots do not establish a Java preprocessing mismatch; Python Keras-to-ONNX parity is measured, while Java pixel-array parity still needs a direct fixture comparison.

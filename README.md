@@ -23,7 +23,7 @@ The static site can be served by the included Nginx image or deployed as a Rende
 
 ## Webcam Detection
 
-The browser captures and compresses JPEG frames, submits one request at a time to `POST /api/classifications`, and stops requesting after repeated service errors. The browser does not upload a continuous video stream. A camera run on an unspecified room frame returned **Light bulb, 89.4% confidence**; no supported target object was deliberately presented, so this is not a known-item accuracy test; it demonstrates that a room scene may be associated with a supported class.
+The camera is requested only after the user starts it. The browser shows a live preview and submits one compressed JPEG only after the user taps **Capture and identify**; it does not send a continuous video stream. A camera run on an unspecified room frame returned **Light bulb, 89.4% confidence**; no supported target object was deliberately presented, so this is not a known-item accuracy test; it demonstrates that a room scene may be associated with a supported class.
 
 ## Image Upload
 

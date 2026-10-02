@@ -26,5 +26,14 @@
     }
   }
 
-  return {read, save};
+  function clear(storage) {
+    try {
+      storage.removeItem(KEY);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  return {read, save, clear};
 });

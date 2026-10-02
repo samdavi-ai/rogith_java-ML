@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { CameraController, DEFAULT_INTERVAL_MS } = require('../camera-controller.js');
+const { CameraController } = require('../camera-controller.js');
 
 function makeStream(id = 'camera-a') {
   const track = { stopped: false, stop() { this.stopped = true; }, getSettings() { return { deviceId: id }; } };
@@ -16,14 +16,13 @@ function makeController(overrides = {}) {
     async enumerateDevices() { return [{kind:'videoinput',deviceId:'camera-a'}, {kind:'videoinput',deviceId:'camera-b'}]; }
   };
   const options = {
-    video, mediaDevices, intervalMs: 1000,
+    video, mediaDevices,
     canvasFactory: () => ({
       width: 0, height: 0,
       getContext: () => ({drawImage() {}}),
       toBlob(callback, type, quality) { this.encoded = {type,quality,width:this.width,height:this.height}; callback(new Blob(['frame'], {type})); }
     }),
     formDataFactory: () => ({append(name, blob, filename) { this.entry = {name,blob,filename}; }}),
-    visibilityState: () => 'visible',
     fetchImpl: async (url, init) => { fetchCalls.push({url,init}); return {ok:false,status:503,json:async()=>({error:{code:'MODEL_UNAVAILABLE',message:'No model'}})}; },
     onState: (state,message) => states.push({state,message}),
     onPrediction: prediction => predictions.push(prediction),
@@ -95,82 +94,74 @@ test('captures a downscaled JPEG frame without sending the video stream', async 
   assert.equal(fixture.fetchCalls.length,0);
 });
 
-test('keeps a real camera active but pauses repeated requests after MODEL_UNAVAILABLE', async () => {
+test('keeps a real camera preview idle until a user capture, then reports model unavailability', async () => {
   const fixture = makeController();
   await fixture.controller.start();
+  assert.equal(fixture.fetchCalls.length,0);
+  assert.equal(await fixture.controller.captureAndClassify(),false);
   await flush();
   assert.equal(fixture.fetchCalls.length,1);
   assert.equal(fixture.fetchCalls[0].url,'/api/classifications');
   assert.equal(fixture.fetchCalls[0].init.method,'POST');
   assert.ok(fixture.fetchCalls[0].init.body.entry.blob instanceof Blob);
-  assert.match(fixture.fetchCalls[0].init.body.entry.filename,/camera-frame\.jpg/);
+  assert.match(fixture.fetchCalls[0].init.body.entry.filename,/camera-capture\.jpg/);
   assert.equal(fixture.unavailable.length,1);
-  assert.equal(fixture.controller.inferenceEnabled,false);
   assert.ok(fixture.video.srcObject);
   assert.equal(fixture.video.srcObject.track.stopped,false);
   fixture.controller.stop();
 });
 
-test('pauses inference and reports a non-sensitive message on MODEL_LOAD_ERROR', async () => {
+test('reports a non-sensitive message on MODEL_LOAD_ERROR after an explicit capture', async () => {
   const fixture = makeController({fetchImpl:async()=>({ok:false,status:503,json:async()=>({error:{code:'MODEL_LOAD_ERROR',message:'load failed'}})})});
   await fixture.controller.start();
+  await fixture.controller.captureAndClassify();
   await flush();
   assert.match(fixture.unavailable[0],/model could not be loaded/i);
-  assert.equal(fixture.controller.inferenceEnabled,false);
   fixture.controller.stop();
 });
 
 test('uses the configured HTTPS API origin for a separately hosted production frontend', async () => {
   const fixture = makeController({apiBase:'https://ewaste-api.onrender.com/'});
   await fixture.controller.start();
-  await flush();
+  await fixture.controller.captureAndClassify();
   assert.equal(fixture.fetchCalls[0].url,'https://ewaste-api.onrender.com/api/classifications');
   fixture.controller.stop();
 });
 
-test('does not run two inference requests at once and aborts a pending request when stopped', async () => {
+test('does not run two capture requests at once and aborts a pending request when stopped', async () => {
   let calls = 0, aborted = false;
   const fixture = makeController({fetchImpl:(_url,init) => {
     calls++;
     return new Promise((resolve,reject) => init.signal.addEventListener('abort',() => {aborted=true;reject(new DOMException('Aborted','AbortError'));},{once:true}));
   }});
   await fixture.controller.start();
+  const pending = fixture.controller.captureAndClassify();
   await flush();
-  const generation = fixture.controller.loopGeneration;
-  await fixture.controller.runInference(generation);
   assert.equal(calls,1);
+  assert.equal(await fixture.controller.captureAndClassify(),false);
   fixture.controller.stop();
+  await pending;
   await flush();
   assert.equal(aborted,true);
   assert.equal(fixture.video.srcObject,null);
 });
 
-test('requires three matching predictions before presenting a stable result', () => {
-  const fixture = makeController();
-  const frame = new Blob(['frame'],{type:'image/jpeg'});
-  fixture.controller.acceptPrediction({category:'Laptop',confidence:.80,frame});
-  fixture.controller.acceptPrediction({category:'Monitor',confidence:.90,frame});
-  fixture.controller.acceptPrediction({category:'Laptop',confidence:.82,frame});
-  assert.equal(fixture.predictions.some(prediction=>prediction.stable),false);
-  fixture.controller.acceptPrediction({category:'Laptop',confidence:.84,frame});
-  const stable = fixture.predictions.at(-1);
-  assert.equal(stable.stable,true);
-  assert.equal(stable.category,'Laptop');
-  assert.ok(Math.abs(stable.confidence-.82)<0.001);
+test('returns one explicit capture classification without inventing a category for UNSURE', async () => {
+  const fixture = makeController({fetchImpl:async()=>({ok:true,status:200,json:async()=>({data:{classification:{status:'UNSURE',categoryName:null,confidence:.56,confidenceLevel:'UNSURE'}}})})});
+  await fixture.controller.start();
+  assert.equal(await fixture.controller.captureAndClassify(),true);
+  assert.equal(fixture.predictions.length,1);
+  assert.equal(fixture.predictions[0].category,'UNSURE');
+  assert.equal(fixture.predictions[0].isUnsure,true);
+  assert.equal(fixture.predictions[0].stable,true);
+  fixture.controller.stop();
 });
 
-test('stabilizes UNSURE votes without inventing a supported category', () => {
-  const fixture=makeController();
-  const frame=new Blob(['frame'],{type:'image/jpeg'});
-  for(let i=0;i<3;i++) fixture.controller.acceptPrediction({category:'UNSURE',isUnsure:true,confidence:.56,frame});
-  const stable=fixture.predictions.at(-1);
-  assert.equal(stable.stable,true);
-  assert.equal(stable.category,'UNSURE');
-  assert.equal(stable.isUnsure,true);
-});
-
-test('uses a one-second configurable inference interval by default', () => {
-  assert.equal(DEFAULT_INTERVAL_MS,1000);
-  const fixture = makeController({intervalMs:500});
-  assert.equal(fixture.controller.intervalMs,500);
+test('renders the category and confidence from a successful explicit capture response', async () => {
+  const fixture = makeController({fetchImpl:async()=>({ok:true,status:200,json:async()=>({data:{classification:{status:'CLASSIFIED',categoryName:'Mobile phone',confidence:.9913,confidenceLevel:'HIGH'}}})})});
+  await fixture.controller.start();
+  assert.equal(await fixture.controller.captureAndClassify(),true);
+  assert.equal(fixture.predictions[0].category,'Mobile phone');
+  assert.equal(fixture.predictions[0].confidence,.9913);
+  fixture.controller.stop();
 });

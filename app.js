@@ -11,7 +11,6 @@ const guides = [
 
 const $ = id => document.getElementById(id);
 const imageInput = $('imageInput'), preview = $('preview'), form = $('identifyForm');
-const INFERENCE_INTERVAL_MS = Number(window.EWASTE_CAMERA_CONFIG?.inferenceIntervalMs) || 1000;
 const ML_HIGH_CONFIDENCE_THRESHOLD = Number(window.EWASTE_CAMERA_CONFIG?.highConfidenceThreshold) || 0.85;
 const ML_MEDIUM_CONFIDENCE_THRESHOLD = Number(window.EWASTE_CAMERA_CONFIG?.mediumConfidenceThreshold) || 0.60;
 let selectedFile = null, previewUrl = null, cameraStableUrl = null, stableCameraPrediction = null;
@@ -84,7 +83,7 @@ function handleCameraState(state, message) {
     $('cameraActive').hidden = false;
     $('cameraError').hidden = true;
     $('cameraRecovery').hidden = true;
-    $('cameraLiveMessage').textContent = 'Camera active. Checking a frame for an identification…';
+    $('cameraLiveMessage').textContent = 'Camera ready. Capture the item when it is in view.';
   } else if (state === 'requesting' || state === 'switching') {
     $('cameraError').hidden = true;
     $('cameraRecovery').hidden = true;
@@ -118,22 +117,18 @@ function renderCameraPrediction(prediction) {
   const confidence = prediction.confidence <= 1 ? prediction.confidence : prediction.confidence / 100;
   const percentage = Math.round(confidence * 1000) / 10;
   const level = confidence >= ML_HIGH_CONFIDENCE_THRESHOLD ? 'High confidence' : confidence >= ML_MEDIUM_CONFIDENCE_THRESHOLD ? 'Moderate confidence' : 'Low confidence';
-  if (prediction.isUnsure || prediction.category === 'UNSURE' || confidence < ML_MEDIUM_CONFIDENCE_THRESHOLD) {
-    $('cameraLiveMessage').textContent = 'Not sure yet. Try moving closer, improving the lighting, or showing the whole item.';
-    $('useResultButton').hidden = true;
-    $('cameraPrediction').hidden = true;
-    return;
-  }
-  $('cameraLiveMessage').textContent = 'Detected item';
-  $('cameraPrediction').innerHTML = `<h4>${escapeHtml(prediction.category)}</h4><p>${percentage}% confidence · ${level}</p>`;
+  const unsure = prediction.isUnsure || prediction.category === 'UNSURE' || confidence < ML_MEDIUM_CONFIDENCE_THRESHOLD;
+  $('cameraLiveMessage').textContent = unsure ? 'No clear match. You can view this result or take another photo.' : 'Photo identified. Review the result or take another photo.';
+  $('cameraPrediction').innerHTML = `<h4>${unsure ? 'Unable to identify' : escapeHtml(prediction.category)}</h4><p>${percentage}% confidence · ${level}</p>`;
   $('cameraPrediction').hidden = false;
   $('useResultButton').hidden = false;
+  $('captureButton').disabled = false;
+  $('captureButton').textContent = 'Capture another photo';
 }
 
 const cameraController = new CameraController({
   video: $('cameraVideo'),
   apiBase: window.EWASTE_API_BASE_URL || '',
-  intervalMs: INFERENCE_INTERVAL_MS,
   onState: handleCameraState,
   onCameraCount: count => { $('switchCameraButton').hidden = count < 2; },
   onTorchAvailability: (supported, enabled) => {
@@ -147,11 +142,15 @@ const cameraController = new CameraController({
     $('cameraLiveMessage').textContent = message;
     $('cameraPrediction').hidden = true;
     $('useResultButton').hidden = true;
-    $('retryInferenceButton').hidden = false;
+    $('retryInferenceButton').hidden = true;
+    $('captureButton').disabled = false;
+    $('captureButton').textContent = 'Capture and identify';
   },
   onNetworkError: message => {
     $('cameraLiveMessage').textContent = message;
     $('retryInferenceButton').hidden = false;
+    $('captureButton').disabled = false;
+    $('captureButton').textContent = 'Capture and identify';
   }
 });
 
@@ -177,6 +176,8 @@ $('startCameraButton').addEventListener('click', async () => {
   $('cameraError').hidden = true;
   $('cameraRecovery').hidden = true;
   $('cameraPrediction').hidden = true;
+  $('captureButton').disabled = false;
+  $('captureButton').textContent = 'Capture and identify';
   $('useResultButton').hidden = true;
   $('retryInferenceButton').hidden = true;
   stableCameraPrediction = null;
@@ -201,8 +202,22 @@ $('retryInferenceButton').addEventListener('click', () => {
   $('retryInferenceButton').hidden = true;
   $('cameraPrediction').hidden = true;
   stableCameraPrediction = null;
-  cameraController.retryInference();
-  $('cameraLiveMessage').textContent = 'Trying the classification service again…';
+  cameraController.captureAndClassify();
+  $('cameraLiveMessage').textContent = 'Taking another photo and trying again…';
+});
+$('captureButton').addEventListener('click', async () => {
+  if (!cameraController.stream) return;
+  $('captureButton').disabled = true;
+  $('captureButton').textContent = 'Capturing and identifying…';
+  $('cameraPrediction').hidden = true;
+  $('useResultButton').hidden = true;
+  $('retryInferenceButton').hidden = true;
+  stableCameraPrediction = null;
+  const completed = await cameraController.captureAndClassify();
+  if (cameraController.stream) {
+    $('captureButton').disabled = false;
+    if (completed) $('captureButton').textContent = 'Capture another photo';
+  }
 });
 $('useResultButton').addEventListener('click', () => {
   if (!stableCameraPrediction || !cameraStableUrl) return;
@@ -255,7 +270,7 @@ form.addEventListener('submit', async event => {
 
 function renderUnavailable(target, message) {
   target.innerHTML = `<p class="eyebrow">Identification unavailable</p><p class="result-message error" role="status">${escapeHtml(message)} You can still browse the general guide below.</p><p class="result-disclaimer">Your image was not saved by this page. Try again later or use the general guide.</p>`;
-  saveHistory({name:'Analysis unavailable',status:'unavailable',date:new Date().toISOString()});
+  saveHistory({status:'unavailable',date:new Date().toISOString()});
 }
 function guideForCategory(category) {
   const normalized = String(category || '').toLowerCase();
@@ -268,8 +283,8 @@ function guideForCategory(category) {
   return guide ? {recyclingMethod:guide.action, preparationInstructions:guide.prepare, safetyInstructions:guide.desc} : {};
 }
 function renderResult(item, target, imageSource = previewUrl) {
-  const unsure = item.status === 'UNSURE' || item.confidenceLevel === 'UNSURE';
-  const name = unsure ? 'Not sure' : item.categoryName || item.category || 'Uncertain identification';
+  const unsure = item.status === 'UNSURE' || item.confidenceLevel === 'UNSURE' || item.category === 'UNSURE' || !(item.categoryName || item.category);
+  const name = unsure ? 'Unable to identify' : item.categoryName || item.category || 'Unable to identify';
   const conf = Number(item.confidence);
   const pct = Number.isFinite(conf) ? (conf <= 1 ? conf * 100 : conf) : null;
   const confidence = Number.isFinite(pct) ? Math.round(pct * 10) / 10 : null;
@@ -290,17 +305,39 @@ function renderResult(item, target, imageSource = previewUrl) {
     cameraStableUrl = null;
     $('identify').scrollIntoView();
   });
-  saveHistory({name,status:'complete',confidence,date:new Date().toISOString()});
+  saveHistory({name,status:item.categoryName || item.category ? 'complete' : 'unsure',confidence,date:new Date().toISOString()});
 }
 
 function saveHistory(item) {
   RecoLensHistory.save(localStorage, item);
   renderHistory();
 }
+function formatHistoryDate(value) {
+  const date = new Date(value);
+  if (!Number.isFinite(date.getTime())) return '';
+  const today = new Date();
+  const yesterday = new Date(today);
+  yesterday.setDate(today.getDate() - 1);
+  const dayKey = date.toLocaleDateString();
+  if (dayKey === today.toLocaleDateString()) return 'Today';
+  if (dayKey === yesterday.toLocaleDateString()) return 'Yesterday';
+  return date.toLocaleDateString();
+}
 function renderHistory() {
   const list = RecoLensHistory.read(localStorage);
-  $('historyList').innerHTML = list.length ? list.map(item => `<div class="history-row"><div class="upload-symbol" aria-hidden="true">${item.status === 'complete' ? '✓' : '?'}</div><div><strong>${escapeHtml(item.name || 'Unlabeled result')}</strong><span>${item.status === 'complete' && item.confidence != null ? `${escapeHtml(item.confidence)}% confidence` : 'No classification saved'}</span></div><time>${escapeHtml(item.date ? new Date(item.date).toLocaleDateString() : '')}</time></div>`).join('') : '<p class="empty-state">You haven’t identified any items yet. Choose a photo above to get started.</p>';
+  $('historyList').innerHTML = list.length ? list.map(item => {
+    const complete = item.status === 'complete' && item.name;
+    const name = complete ? item.name : 'Unable to identify';
+    const detail = complete && item.confidence != null ? `${escapeHtml(item.confidence)}% confidence` : 'No classification';
+    const date = formatHistoryDate(item.date);
+    return `<div class="history-row"><div class="upload-symbol" aria-hidden="true">${complete ? '✓' : '?'}</div><div><strong>${escapeHtml(name)}</strong><span>${detail}</span></div><time datetime="${escapeHtml(item.date || '')}">${escapeHtml(date)}</time></div>`;
+  }).join('') : '<p class="empty-state">You haven’t identified any items yet. Choose a photo above to get started.</p>';
+  $('clearHistoryButton').hidden = list.length === 0;
 }
+$('clearHistoryButton').addEventListener('click', () => {
+  RecoLensHistory.clear(localStorage);
+  renderHistory();
+});
 function renderGuides(query = '') {
   const matches = guides.filter(guide => (guide.name + ' ' + guide.terms).toLowerCase().includes(query.toLowerCase()));
   $('guideList').innerHTML = matches.length ? matches.map(guide => `<details class="guide-item"><summary>${guide.name}</summary><div class="guide-body"><p>${guide.desc}</p><strong>Before handover</strong><ul>${guide.prepare.map(item => `<li>${item}</li>`).join('')}</ul><p><strong>Recycling:</strong> ${guide.action}</p></div></details>`).join('') : '<p class="empty-state">No matching items found.</p>';

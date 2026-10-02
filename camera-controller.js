@@ -1,21 +1,16 @@
-/* Browser camera lifecycle and sampled classification requests. No frame is retained here. */
+/* Browser camera lifecycle and user-triggered single-frame classification. */
 (function (root) {
-  const DEFAULT_INTERVAL_MS = 1000;
   const FRAME_MAX_EDGE = 640;
   const FRAME_QUALITY = 0.78;
-  const HISTORY_SIZE = 5;
-  const MIN_STABLE_VOTES = 3;
 
   class CameraController {
-    constructor({ video, mediaDevices, intervalMs, fetchImpl, formDataFactory, canvasFactory, visibilityState, isMobile, apiBase, onState, onPrediction, onUnavailable, onNetworkError, onCameraCount, onTorchAvailability }) {
+    constructor({ video, mediaDevices, fetchImpl, formDataFactory, canvasFactory, isMobile, apiBase, onState, onPrediction, onUnavailable, onNetworkError, onCameraCount, onTorchAvailability }) {
       this.video = video;
       this.mediaDevices = mediaDevices || root.navigator?.mediaDevices;
-      this.intervalMs = Math.max(250, Number(intervalMs) || DEFAULT_INTERVAL_MS);
       this.fetchImpl = fetchImpl || root.fetch.bind(root);
       this.apiBase = String(apiBase || '').replace(/\/$/, '');
       this.formDataFactory = formDataFactory || (() => new root.FormData());
       this.canvasFactory = canvasFactory || (() => root.document.createElement('canvas'));
-      this.visibilityState = visibilityState || (() => root.document?.visibilityState);
       this.isMobile = isMobile;
       this.onState = onState || (() => {});
       this.onPrediction = onPrediction || (() => {});
@@ -28,13 +23,9 @@
       this.stream = null;
       this.devices = [];
       this.currentDeviceId = null;
-      this.timer = null;
       this.abortController = null;
       this.requestInProgress = false;
       this.loopGeneration = 0;
-      this.inferenceEnabled = false;
-      this.failedRequests = 0;
-      this.recentPredictions = [];
       this.deviceChangeAttached = false;
       this.handleDeviceChange = async () => {
         if (!this.stream) return;
@@ -68,7 +59,6 @@
         this.currentDeviceId = stream.getVideoTracks()[0]?.getSettings?.().deviceId || null;
         this.onCameraCount(this.devices.length);
         this.onState('active', 'Camera active.');
-        this.beginInference();
         return true;
       } catch (error) {
         this.stopTracks(this.stream);
@@ -141,7 +131,7 @@
       const current = this.devices.findIndex(device => device.deviceId === this.currentDeviceId);
       const next = this.devices[(current + 1 + this.devices.length) % this.devices.length];
       const oldStream = this.stream;
-      this.pauseInference();
+      this.cancelPendingClassification();
       this.onState('switching', 'Switching camera…');
       try {
         const nextStream = await this.mediaDevices.getUserMedia({ video: { deviceId: { exact: next.deviceId } }, audio: false });
@@ -150,15 +140,62 @@
         this.stopTracks(oldStream);
         this.currentDeviceId = next.deviceId;
         this.onState('active', 'Camera active.');
-        this.beginInference();
         return true;
       } catch (error) {
         if (this.stream !== oldStream) this.stopTracks(this.stream);
         this.stream = oldStream;
         this.video.srcObject = oldStream;
         this.onState('active', `Couldn't switch cameras. ${error.message || 'Keep using the current camera.'}`);
-        this.beginInference();
         return false;
+      }
+    }
+
+    async captureAndClassify() {
+      if (!this.stream || this.requestInProgress) return false;
+      this.cancelPendingClassification();
+      const generation = this.loopGeneration;
+      this.requestInProgress = true;
+      const controller = new AbortController();
+      this.abortController = controller;
+      const timeout = setTimeout(() => controller.abort('timeout'), 15000);
+      try {
+        const frame = await this.captureFrame();
+        if (generation !== this.loopGeneration || !this.stream) return false;
+        const body = this.formDataFactory();
+        body.append('image', frame, 'camera-capture.jpg');
+        const response = await this.fetchImpl(`${this.apiBase}/api/classifications`, { method: 'POST', body, signal: controller.signal });
+        let result;
+        try { result = await response.json(); }
+        catch { throw Object.assign(new Error('The classification service returned an unreadable response.'), { code: 'INVALID_RESPONSE' }); }
+        if (generation !== this.loopGeneration) return false;
+        if (!response.ok) {
+          const error = new Error(result?.error?.message || 'The classification service could not analyze this photo.');
+          error.code = result?.error?.code;
+          error.status = response.status;
+          if (error.code === 'MODEL_UNAVAILABLE' || error.code === 'MODEL_LOAD_ERROR') {
+            this.onUnavailable(error.code === 'MODEL_LOAD_ERROR'
+              ? 'Identification is unavailable because the model could not be loaded.'
+              : 'Identification is currently unavailable. Please try again later.');
+            return false;
+          }
+          throw error;
+        }
+        const prediction = result?.data?.classification || result?.data || result?.prediction;
+        const isUnsure = prediction?.status === 'UNSURE' || prediction?.confidenceLevel === 'UNSURE';
+        const category = isUnsure ? 'UNSURE' : prediction?.categoryName || prediction?.category;
+        const confidence = Number(prediction?.confidence);
+        if (!category || !Number.isFinite(confidence)) throw Object.assign(new Error('The service response did not contain a valid classification.'), { code: 'INVALID_RESPONSE' });
+        this.onPrediction({ category, confidence, isUnsure, confidenceLevel: prediction.confidenceLevel, alternatives: prediction.alternatives || [], frame, stable: true });
+        return true;
+      } catch (error) {
+        if (generation === this.loopGeneration && !(controller.signal.aborted && controller.signal.reason !== 'timeout')) {
+          this.onNetworkError(controller.signal.aborted ? 'Classification is taking longer than expected.' : error.message || 'The classification service is unavailable.');
+        }
+        return false;
+      } finally {
+        clearTimeout(timeout);
+        this.requestInProgress = false;
+        if (this.abortController === controller) this.abortController = null;
       }
     }
 
@@ -175,110 +212,13 @@
       return blob;
     }
 
-    beginInference() {
-      if (!this.stream) return;
-      this.inferenceEnabled = true;
-      this.recentPredictions = [];
-      this.failedRequests = 0;
-      const generation = ++this.loopGeneration;
-      this.schedule(generation, 0);
-    }
-
-    schedule(generation, delay = this.intervalMs) {
-      clearTimeout(this.timer);
-      if (!this.stream || !this.inferenceEnabled || generation !== this.loopGeneration) return;
-      this.timer = setTimeout(() => this.runInference(generation), delay);
-    }
-
-    async runInference(generation) {
-      if (!this.stream || !this.inferenceEnabled || generation !== this.loopGeneration || this.visibilityState() === 'hidden') return;
-      if (this.requestInProgress) { this.schedule(generation); return; }
-      this.requestInProgress = true;
-      const controller = new AbortController();
-      this.abortController = controller;
-      const timeout = setTimeout(() => controller.abort('timeout'), 8000);
-      try {
-        const frame = await this.captureFrame();
-        if (generation !== this.loopGeneration || controller.signal.aborted) return;
-        const body = this.formDataFactory();
-        body.append('image', frame, 'camera-frame.jpg');
-        const response = await this.fetchImpl(`${this.apiBase}/api/classifications`, { method: 'POST', body, signal: controller.signal });
-        let result;
-        try { result = await response.json(); }
-        catch { throw Object.assign(new Error('The classification service returned an unreadable response.'), { code: 'INVALID_RESPONSE' }); }
-        if (generation !== this.loopGeneration) return;
-        if (!response.ok) {
-          const error = new Error(result?.error?.message || 'The classification service could not analyze this frame.');
-          error.code = result?.error?.code;
-          error.status = response.status;
-          if (error.code === 'MODEL_UNAVAILABLE' || error.code === 'MODEL_LOAD_ERROR') {
-            this.inferenceEnabled = false;
-            clearTimeout(this.timer);
-            this.onUnavailable(error.code === 'MODEL_LOAD_ERROR'
-              ? 'Live identification is currently unavailable because the model could not be loaded.'
-              : 'Live identification is currently unavailable. A trained classification model has not been configured yet.');
-            return;
-          }
-          throw error;
-        }
-        this.failedRequests = 0;
-        const prediction = result?.data?.classification || result?.data || result?.prediction;
-        const isUnsure = prediction?.status === 'UNSURE' || prediction?.confidenceLevel === 'UNSURE';
-        const category = isUnsure ? 'UNSURE' : prediction?.categoryName || prediction?.category;
-        const confidence = Number(prediction?.confidence);
-        if (!category || !Number.isFinite(confidence)) throw Object.assign(new Error('The service response did not contain a valid classification.'), { code: 'INVALID_RESPONSE' });
-        this.acceptPrediction({ category, confidence, isUnsure, confidenceLevel: prediction.confidenceLevel, alternatives: prediction.alternatives || [], frame });
-      } catch (error) {
-        if (generation !== this.loopGeneration || controller.signal.aborted && controller.signal.reason !== 'timeout') return;
-        this.failedRequests++;
-        if (controller.signal.aborted && controller.signal.reason === 'timeout') this.onNetworkError('Classification is taking longer than expected.');
-        else this.onNetworkError(error.status === 0 ? 'No connection to the classification service.' : error.message || 'Camera is working, but the classification service is unavailable.');
-        if (this.failedRequests >= 3) {
-          this.inferenceEnabled = false;
-          this.onNetworkError('Live requests are paused after repeated service errors. Retry classification when the service is available.');
-        }
-      } finally {
-        clearTimeout(timeout);
-        this.requestInProgress = false;
-        if (this.abortController === controller) this.abortController = null;
-        if (generation === this.loopGeneration) this.schedule(generation);
-      }
-    }
-
-    acceptPrediction(prediction) {
-      this.recentPredictions.push(prediction);
-      if (this.recentPredictions.length > HISTORY_SIZE) this.recentPredictions.shift();
-      const counts = new Map();
-      for (const entry of this.recentPredictions) counts.set(entry.category, (counts.get(entry.category) || 0) + 1);
-      const [category, votes] = [...counts.entries()].sort((a, b) => b[1] - a[1])[0];
-      if (votes < MIN_STABLE_VOTES) {
-        this.onPrediction({ ...prediction, stable: false });
-        return;
-      }
-      const matching = this.recentPredictions.filter(entry => entry.category === category);
-      const average = matching.reduce((sum, entry) => sum + entry.confidence, 0) / matching.length;
-      this.onPrediction({ ...matching[matching.length - 1], category, confidence: average, stable: true });
-    }
-
-    retryInference() {
-      if (!this.stream) return;
-      this.failedRequests = 0;
-      this.recentPredictions = [];
-      this.inferenceEnabled = true;
-      const generation = ++this.loopGeneration;
-      this.schedule(generation, 0);
-    }
-
-    pauseInference() {
-      this.inferenceEnabled = false;
+    cancelPendingClassification() {
       this.loopGeneration++;
-      clearTimeout(this.timer);
-      this.timer = null;
       this.abortController?.abort('camera stopped');
     }
 
     stop(state = 'stopped', message = 'Camera stopped.') {
-      this.pauseInference();
+      this.cancelPendingClassification();
       const stream = this.stream;
       this.stream = null;
       if (this.deviceChangeAttached) this.mediaDevices?.removeEventListener?.('devicechange', this.handleDeviceChange);
@@ -310,6 +250,6 @@
     }
   }
 
-  if (typeof module !== 'undefined' && module.exports) module.exports = { CameraController, DEFAULT_INTERVAL_MS };
+  if (typeof module !== 'undefined' && module.exports) module.exports = { CameraController };
   root.CameraController = CameraController;
 })(typeof globalThis !== 'undefined' ? globalThis : window);

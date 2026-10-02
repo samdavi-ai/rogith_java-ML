@@ -46,13 +46,13 @@
           <div class="camera-frame"><video id="cameraVideo" autoplay playsinline muted aria-label="Live camera preview"></video></div>
           <p id="cameraLiveMessage" class="camera-live-message" role="status" aria-live="polite">Camera active. Identification will be unavailable until a trained model is configured.</p>
           <div id="cameraPrediction" class="camera-prediction" aria-live="polite" hidden></div>
-          <div class="camera-controls"><button class="button primary" id="useResultButton" type="button" hidden>Use this result</button><button class="button secondary" id="retryInferenceButton" type="button" hidden>Retry classification</button><button class="button secondary" id="switchCameraButton" type="button" hidden>Switch camera</button><button class="button secondary" id="flashlightButton" type="button" aria-pressed="false" hidden>Turn flashlight on</button><button class="text-button" id="stopCameraButton" type="button">Stop camera</button></div>
+          <div class="camera-controls"><button class="button primary" id="captureButton" type="button">Capture and identify</button><button class="button primary" id="useResultButton" type="button" hidden>View result</button><button class="button secondary" id="retryInferenceButton" type="button" hidden>Try another capture</button><button class="button secondary" id="switchCameraButton" type="button" hidden>Switch camera</button><button class="button secondary" id="flashlightButton" type="button" aria-pressed="false" hidden>Turn flashlight on</button><button class="text-button" id="stopCameraButton" type="button">Stop camera</button></div>
         </div>
         <div id="cameraError" class="camera-error" role="alert" hidden></div>
         <div id="cameraRecovery" class="camera-controls" hidden><button class="button secondary" id="retryCameraButton" type="button">Try again</button><button class="text-button" id="cameraUploadFallback" type="button">Upload a photo instead</button></div>
       </section>
       <form id="identifyForm" class="upload-panel">
-        <input id="imageInput" type="file" accept="image/*" aria-label="Choose an existing image of an electronic item" hidden>
+        <input id="imageInput" type="file" accept="image/jpeg,image/png" aria-label="Choose an existing image of an electronic item" hidden>
         <div id="dropZone" class="drop-zone" tabindex="0" role="button" aria-label="Choose an image of an electronic item">
           <div id="emptyUpload"><div class="upload-symbol" aria-hidden="true">＋</div><h3>Upload an image</h3><p>Choose an existing JPG or PNG photo · up to 10 MB</p><button type="button" class="button secondary" id="chooseButton">Upload image</button></div>
           <div id="previewWrap" hidden><img id="preview" alt="Preview of the selected electronic item"><div class="file-meta"><strong id="fileName"></strong><span id="fileSize"></span></div><div class="preview-actions"><button type="button" class="text-button" id="changeButton">Change image</button><button type="button" class="text-button danger-text" id="removeButton">Remove</button></div></div>
@@ -72,7 +72,7 @@
     </section>
 
     <section class="section history-section" id="history">
-      <div class="section-heading"><p class="eyebrow">On this device</p><h2>My classifications</h2><p>Your recent results are stored only in this browser.</p></div>
+      <div class="section-heading"><p class="eyebrow">On this device</p><h2>My classifications</h2><p>Your recent results are stored only in this browser.</p><button class="text-button danger-text" id="clearHistoryButton" type="button" hidden>Clear history</button></div>
       <div id="historyList" class="history-list"></div>
     </section>
 

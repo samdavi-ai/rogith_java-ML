@@ -157,6 +157,21 @@ const cameraController = new CameraController({
 
 $('useCameraButton').addEventListener('click', openCameraPanel);
 $('uploadPhotoButton').addEventListener('click', () => { closeCameraPanel(); imageInput.click(); });
+$('menuToggle').addEventListener('click', () => {
+  const isOpen = $('menuToggle').getAttribute('aria-expanded') === 'true';
+  setNavigationOpen(!isOpen);
+});
+function setNavigationOpen(isOpen) {
+  $('menuToggle').setAttribute('aria-expanded', String(isOpen));
+  $('menuToggle').setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  $('primaryNavigation').classList.toggle('is-open', isOpen);
+}
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && $('menuToggle').getAttribute('aria-expanded') === 'true') {
+    setNavigationOpen(false);
+    $('menuToggle').focus();
+  }
+});
 $('startCameraButton').addEventListener('click', async () => {
   $('cameraSetupMessage').hidden = true;
   $('cameraError').hidden = true;
@@ -279,21 +294,18 @@ function renderResult(item, target, imageSource = previewUrl) {
 }
 
 function saveHistory(item) {
-  let list = JSON.parse(localStorage.getItem('sc-history') || '[]');
-  list.unshift(item);
-  localStorage.setItem('sc-history', JSON.stringify(list.slice(0,20)));
+  RecoLensHistory.save(localStorage, item);
   renderHistory();
 }
 function renderHistory() {
-  const list = JSON.parse(localStorage.getItem('sc-history') || '[]');
-  $('historyList').innerHTML = list.length ? list.map(item => `<div class="history-row"><div class="upload-symbol" aria-hidden="true">${item.status === 'complete' ? '✓' : '?'}</div><div><strong>${escapeHtml(item.name)}</strong><span>${item.status === 'complete' && item.confidence != null ? `${item.confidence}% confidence` : 'No classification saved'}</span></div><time>${new Date(item.date).toLocaleDateString()}</time></div>`).join('') : '<p class="empty-state">You haven’t identified any items yet. Choose a photo above to get started.</p>';
+  const list = RecoLensHistory.read(localStorage);
+  $('historyList').innerHTML = list.length ? list.map(item => `<div class="history-row"><div class="upload-symbol" aria-hidden="true">${item.status === 'complete' ? '✓' : '?'}</div><div><strong>${escapeHtml(item.name || 'Unlabeled result')}</strong><span>${item.status === 'complete' && item.confidence != null ? `${escapeHtml(item.confidence)}% confidence` : 'No classification saved'}</span></div><time>${escapeHtml(item.date ? new Date(item.date).toLocaleDateString() : '')}</time></div>`).join('') : '<p class="empty-state">You haven’t identified any items yet. Choose a photo above to get started.</p>';
 }
 function renderGuides(query = '') {
   const matches = guides.filter(guide => (guide.name + ' ' + guide.terms).toLowerCase().includes(query.toLowerCase()));
   $('guideList').innerHTML = matches.length ? matches.map(guide => `<details class="guide-item"><summary>${guide.name}</summary><div class="guide-body"><p>${guide.desc}</p><strong>Before handover</strong><ul>${guide.prepare.map(item => `<li>${item}</li>`).join('')}</ul><p><strong>Recycling:</strong> ${guide.action}</p></div></details>`).join('') : '<p class="empty-state">No matching items found.</p>';
 }
 $('guideSearch').addEventListener('input', event => renderGuides(event.target.value));
-$('accountButton').addEventListener('click', () => alert('Account sign-in is available when the backend authentication service is configured.'));
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'hidden' && cameraController.stream) {
     cameraController.stop('stopped', 'Camera paused because this page is not visible. Start it again when you return.');
@@ -304,6 +316,7 @@ document.addEventListener('visibilitychange', () => {
 });
 document.addEventListener('click', event => {
   const link = event.target.closest('a[href^="#"]');
+  if (link) setNavigationOpen(false);
   if (link && link.getAttribute('href') !== '#identify' && cameraController.stream) closeCameraPanel();
 });
 window.addEventListener('pagehide', () => cameraController.stop());

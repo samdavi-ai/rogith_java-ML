@@ -16,8 +16,8 @@
 <body>
   <header class="site-header">
     <a class="brand" href="#home" aria-label="RecoLens home"><img class="brand-logo" src="assets/branding/recolens-logo.svg" alt=""><span>RecoLens</span></a>
-    <nav aria-label="Main navigation"><a href="#identify">Identify</a><a href="#guide">Guide</a><a href="#history">History</a><a href="#about">About</a></nav>
-    <button class="text-button" id="accountButton" type="button">Sign in</button>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primaryNavigation"><span aria-hidden="true">☰</span></button>
+    <nav id="primaryNavigation" aria-label="Main navigation"><a href="#identify">Identify</a><a href="#guide">Guide</a><a href="#history">History</a><a href="#about">About</a></nav>
   </header>
 
   <main>
@@ -32,8 +32,8 @@
     </section>
 
     <section class="section identify-section" id="identify">
-      <div class="section-heading"><p class="eyebrow">Start here</p><h2>Identify an item</h2><p>Use a camera or choose a clear photo showing most of the item.</p></div>
-      <div class="identify-actions"><button class="button primary" id="useCameraButton" type="button">Use camera</button><button class="button secondary" id="uploadPhotoButton" type="button">Upload a photo</button></div>
+      <div class="section-heading"><p class="eyebrow">Start here</p><h2>Identify an item</h2><p>Choose a live camera or an existing photo showing most of the item.</p></div>
+      <div class="identify-actions"><div class="identify-choice"><h3>Use your camera</h3><p>Identify an item with a live camera preview.</p><button class="button primary" id="useCameraButton" type="button">Use camera</button></div><div class="identify-choice"><h3>Upload an image</h3><p>Choose a photo already on your device.</p><button class="button secondary" id="uploadPhotoButton" type="button">Upload image</button></div></div>
       <section id="cameraPanel" class="camera-panel" aria-labelledby="cameraHeading" hidden>
         <div class="camera-heading"><div><p class="eyebrow">Live camera</p><h3 id="cameraHeading">Identify with camera</h3></div><button class="text-button" id="closeCameraButton" type="button">Close</button></div>
         <div id="cameraSetup" class="camera-setup">
@@ -52,9 +52,9 @@
         <div id="cameraRecovery" class="camera-controls" hidden><button class="button secondary" id="retryCameraButton" type="button">Try again</button><button class="text-button" id="cameraUploadFallback" type="button">Upload a photo instead</button></div>
       </section>
       <form id="identifyForm" class="upload-panel">
-        <input id="imageInput" type="file" accept="image/jpeg,image/png" capture="environment" hidden>
+        <input id="imageInput" type="file" accept="image/*" aria-label="Choose an existing image of an electronic item" hidden>
         <div id="dropZone" class="drop-zone" tabindex="0" role="button" aria-label="Choose an image of an electronic item">
-          <div id="emptyUpload"><div class="upload-symbol" aria-hidden="true">＋</div><h3>Choose a photo</h3><p>JPG or PNG · up to 10 MB</p><button type="button" class="button secondary" id="chooseButton">Choose image</button><p class="camera-hint">On a phone, you can take a photo with your camera.</p></div>
+          <div id="emptyUpload"><div class="upload-symbol" aria-hidden="true">＋</div><h3>Upload an image</h3><p>Choose an existing JPG or PNG photo · up to 10 MB</p><button type="button" class="button secondary" id="chooseButton">Upload image</button></div>
           <div id="previewWrap" hidden><img id="preview" alt="Preview of the selected electronic item"><div class="file-meta"><strong id="fileName"></strong><span id="fileSize"></span></div><div class="preview-actions"><button type="button" class="text-button" id="changeButton">Change image</button><button type="button" class="text-button danger-text" id="removeButton">Remove</button></div></div>
         </div>
         <ul class="tips"><li>Use good lighting</li><li>Keep the item in focus</li><li>Show the complete item where possible</li><li>Avoid heavy obstruction</li></ul>
@@ -80,6 +80,7 @@
   </main>
   <footer><a class="brand" href="#home" aria-label="RecoLens home"><img class="brand-logo" src="assets/branding/recolens-logo.svg" alt=""><span>RecoLens</span></a><span>AI-Powered E-Waste Identification &amp; Recycling Assistant</span><a href="#about">About this service</a></footer>
   <script src="api-config.js"></script>
+  <script src="history-store.js"></script>
   <script src="camera-controller.js"></script>
   <script src="app.js"></script>
 </body>

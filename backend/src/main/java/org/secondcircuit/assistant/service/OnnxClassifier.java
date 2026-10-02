@@ -13,8 +13,6 @@ import org.slf4j.LoggerFactory;
 
 import jakarta.annotation.PreDestroy;
 import javax.imageio.ImageIO;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.nio.FloatBuffer;
 import java.nio.file.Files;
@@ -106,24 +104,8 @@ public class OnnxClassifier {
             throw new ClassificationService.ModelUnavailableException();
         }
         try {
-            BufferedImage resized = new BufferedImage(224, 224, BufferedImage.TYPE_INT_RGB);
-            Graphics2D g = resized.createGraphics();
-            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-            g.drawImage(source, 0, 0, 224, 224, null);
-            g.dispose();
-            FloatBuffer pixels = FloatBuffer.allocate(3 * 224 * 224);
-            for (int channel = 0; channel < 3; channel++) for (int y = 0; y < 224; y++) for (int x = 0; x < 224; x++) {
-                int rgb = resized.getRGB(x, y);
-                int value = channel == 0 ? (rgb >> 16) & 255 : channel == 1 ? (rgb >> 8) & 255 : rgb & 255;
-                pixels.put(value / 127.5f - 1.0f);
-            }
-            pixels.rewind();
-            try (OnnxTensor tensor = OnnxTensor.createTensor(environment, pixels, new long[]{1, 3, 224, 224});
-                 OrtSession.Result output = session.run(Map.of(inputName, tensor))) {
-                float[][] logits = (float[][]) output.get(0).getValue();
-                if (logits.length != 1 || logits[0].length != labels.size()) throw new IllegalStateException("Model output does not match class mapping");
-                double[] probabilities = softmax(logits[0]);
+            float[] logits = rawLogits(source);
+            double[] probabilities = softmax(logits);
                 Integer[] order = new Integer[probabilities.length];
                 for (int i = 0; i < order.length; i++) order[i] = i;
                 Arrays.sort(order, (a, b) -> Double.compare(probabilities[b], probabilities[a]));
@@ -135,9 +117,51 @@ public class OnnxClassifier {
                 return new ApiModels.ClassificationView(classified ? "CLASSIFIED" : "UNSURE",
                         classified ? labels.get(order[0]) : null, confidence,
                         classified ? level : "UNSURE", alternatives, null);
-            }
         } catch (ClassificationService.ModelUnavailableException e) { throw e; }
         catch (Exception e) { throw new IllegalStateException("Image analysis failed", e); }
+    }
+
+    /** Same per-image preprocessing contract as Keras image_dataset_from_directory + train.py. */
+    static float[] preprocess(BufferedImage source) {
+        int sourceWidth = source.getWidth(), sourceHeight = source.getHeight();
+        float[] pixels = new float[3 * 224 * 224];
+        for (int y = 0; y < 224; y++) {
+            float sourceY = (y + 0.5f) * sourceHeight / 224f - 0.5f;
+            int y0 = Math.max((int) Math.floor(sourceY), 0);
+            int y1 = Math.min(y0 + 1, sourceHeight - 1);
+            float yWeight = Math.max(0f, sourceY - y0);
+            for (int x = 0; x < 224; x++) {
+                float sourceX = (x + 0.5f) * sourceWidth / 224f - 0.5f;
+                int x0 = Math.max((int) Math.floor(sourceX), 0);
+                int x1 = Math.min(x0 + 1, sourceWidth - 1);
+                float xWeight = Math.max(0f, sourceX - x0);
+                int p00 = source.getRGB(x0, y0), p01 = source.getRGB(x1, y0);
+                int p10 = source.getRGB(x0, y1), p11 = source.getRGB(x1, y1);
+                for (int channel = 0; channel < 3; channel++) {
+                    int shift = channel == 0 ? 16 : channel == 1 ? 8 : 0;
+                    float top = ((p00 >> shift) & 255) * (1f - xWeight) + ((p01 >> shift) & 255) * xWeight;
+                    float bottom = ((p10 >> shift) & 255) * (1f - xWeight) + ((p11 >> shift) & 255) * xWeight;
+                    float resized = top * (1f - yWeight) + bottom * yWeight;
+                    int index = channel * 224 * 224 + y * 224 + x;
+                    pixels[index] = resized / 127.5f - 1f;
+                }
+            }
+        }
+        return pixels;
+    }
+
+    float[] rawLogits(BufferedImage source) throws Exception {
+        return rawLogits(preprocess(source));
+    }
+
+    float[] rawLogits(float[] preprocessedNchw) throws Exception {
+        FloatBuffer pixels = FloatBuffer.wrap(preprocessedNchw);
+        try (OnnxTensor tensor = OnnxTensor.createTensor(environment, pixels, new long[]{1, 3, 224, 224});
+             OrtSession.Result output = session.run(Map.of(inputName, tensor))) {
+            float[][] logits = (float[][]) output.get(0).getValue();
+            if (logits.length != 1 || logits[0].length != labels.size()) throw new IllegalStateException("Model output does not match class mapping");
+            return logits[0].clone();
+        }
     }
 
     @PreDestroy

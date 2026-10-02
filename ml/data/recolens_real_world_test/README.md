@@ -1,5 +1,7 @@
 # RecoLens real-world test set
 
-This directory is the reserved home for the locked, original-image RecoLens camera test set. It currently contains no captured image files. The three screenshot crop regression fixtures remain in `../../tests/fixtures/real_world_challenges/` and are recorded in `../recolens_real_world_test_manifest.csv` as a diagnostic pilot only.
+The locked real-world test set currently has **zero image files**. The root manifest at `../recolens_real_world_test_manifest.csv` contains `image_id,true_class,source,condition,device,lighting,distance,hash,relative_path` and no records until a consented, PII-reviewed capture set is ready. Unknown metadata must be recorded as `unknown`, not inferred.
 
-Do not place training or validation images here. Follow [`../../REAL_WORLD_TEST_PROTOCOL.md`](../../REAL_WORLD_TEST_PROTOCOL.md). The set is not ready for aggregate real-world accuracy claims.
+Three user-provided screenshot crops remain diagnostic-only fixtures in `../../tests/fixtures/real_world_challenges/`. Their metadata and hashes are in [`pilot_manifest.csv`](pilot_manifest.csv); they are excluded from training, validation, threshold selection, and locked-set metrics. One shows only part of a laptop, so it is not a whole-laptop example.
+
+Follow [`../../REAL_WORLD_TEST_PROTOCOL.md`](../../REAL_WORLD_TEST_PROTOCOL.md) for future captures. Do not place training or validation images here. This set cannot support aggregate real-world accuracy claims yet.

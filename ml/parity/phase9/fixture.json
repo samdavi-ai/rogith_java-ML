@@ -1,0 +1,6304 @@
+{
+  "schema": "recolens-java-onnx-parity-fixture-v1",
+  "modelSha256": "91abc9882697638edff03bf226c08119b53e13c135b3e1a85af5c394741a90c5",
+  "onnxRuntimePython": "1.20.0",
+  "tensorflow": "2.17.0",
+  "input": {
+    "layout": "NCHW",
+    "shape": [
+      1,
+      3,
+      224,
+      224
+    ],
+    "type": "float32",
+    "color": "RGB",
+    "decode": "JPEG INTEGER_ACCURATE; PNG 3-channel decode; no EXIF orientation transform; alpha dropped",
+    "resize": "TensorFlow bilinear stretch, half-pixel centers, float32 output",
+    "normalization": "pixel / 127.5 - 1.0"
+  },
+  "output": {
+    "type": "raw logits",
+    "probabilities": "stable float64 softmax of float32 logits",
+    "classes": [
+      "Battery waste",
+      "Keyboard",
+      "Light bulb",
+      "Mobile phone",
+      "Mouse",
+      "Printed circuit board"
+    ]
+  },
+  "records": [
+    {
+      "imageId": "000",
+      "image": "images/battery_waste/IMG_20250803_215701_jpg.rf.352a524931e1295dac040a7f6381d4f1.jpg",
+      "source": "ml/data/processed/classification/test/battery_waste/IMG_20250803_215701_jpg.rf.352a524931e1295dac040a7f6381d4f1.jpg",
+      "trueClass": "battery_waste",
+      "imageSha256": "e6899e75f2e5ecbcf7a7f329a0639e988ed80ef21e6b61443cbb7dd4eeb2b041",
+      "tensorEntry": "000.f32",
+      "tensorSha256": "7b391c4a64503dcab29a2e0fc7df26e3d1156fd927ca0d128f0413c06e99b835",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "4fc7fb6a4803d2107d2295e94720f7a60b69faccaa98c24842c61bb691d2aaf1",
+      "rawLogits": [
+        -0.2420009970664978,
+        -9.75786018371582,
+        -7.409265518188477,
+        0.05262380838394165,
+        -9.837501525878906,
+        -5.752484321594238
+      ],
+      "probabilities": [
+        0.4259706084023181,
+        3.138300303886234e-05,
+        0.00032860653979175405,
+        0.5719177314953932,
+        2.8980555343426857e-05,
+        0.0017226900041147368
+      ],
+      "top5": [
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.5719177314953932
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.4259706084023181
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.0017226900041147368
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 0.00032860653979175405
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 3.138300303886234e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "b38238451bfcd754e6b4a7afc491e7276ab24363038ad852de19333f65605f39",
+        "rawLogits": [
+          -0.055280089378356934,
+          -9.837242126464844,
+          -7.358262062072754,
+          0.030109494924545288,
+          -9.876626014709473,
+          -5.744530200958252
+        ],
+        "probabilities": [
+          0.47771283984184265,
+          2.6972105843015015e-05,
+          0.00032175268279388547,
+          0.5202968120574951,
+          2.5930483388947323e-05,
+          0.0016156863421201706
+        ],
+        "top5": [
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.5202968120574951
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.47771283984184265
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.0016156863421201706
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 0.00032175268279388547
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 2.6972105843015015e-05
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "001",
+      "image": "images/battery_waste/IMG_20250803_220311_jpg.rf.72c9015fb578049a797e0d93bd65aee3.jpg",
+      "source": "ml/data/processed/classification/test/battery_waste/IMG_20250803_220311_jpg.rf.72c9015fb578049a797e0d93bd65aee3.jpg",
+      "trueClass": "battery_waste",
+      "imageSha256": "0ba29832d53dcad6f8d92456f8906413a311db1da66b8f7e6c34fe7566989c76",
+      "tensorEntry": "001.f32",
+      "tensorSha256": "932558ed0f5c99eb5433574cc07964a875e9d3ae2bf1d432d8e54b46af2844af",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "013fb6e20a937f43dfc1cdce80de3b4eb012d4310a3e94165e5b7186a484ef64",
+      "rawLogits": [
+        0.9788682460784912,
+        -10.30691146850586,
+        -8.942948341369629,
+        0.46420109272003174,
+        -7.337057113647461,
+        -3.665900707244873
+      ],
+      "probabilities": [
+        0.6220385187651348,
+        7.806662864768044e-06,
+        3.0537050278986096e-05,
+        0.37179211400155177,
+        0.00015214468412555384,
+        0.005978878836043953
+      ],
+      "top5": [
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.6220385187651348
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.37179211400155177
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.005978878836043953
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.00015214468412555384
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 3.0537050278986096e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "c0e16cd81fa47c9e5675617973fe033325c9205de65789029db5562fe5a37074",
+        "rawLogits": [
+          1.0535850524902344,
+          -10.3119478225708,
+          -9.043081283569336,
+          0.432553231716156,
+          -7.501996994018555,
+          -3.7132744789123535
+        ],
+        "probabilities": [
+          0.6467711329460144,
+          7.494841156585608e-06,
+          2.6657791750039905e-05,
+          0.347568154335022,
+          0.00012448256893549114,
+          0.005502117332071066
+        ],
+        "top5": [
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.6467711329460144
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.347568154335022
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.005502117332071066
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.00012448256893549114
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 2.6657791750039905e-05
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "002",
+      "image": "images/battery_waste/IMG_20250803_220312_jpg.rf.07000a53f58fd8b7ca0a0d97613d25f3.jpg",
+      "source": "ml/data/processed/classification/test/battery_waste/IMG_20250803_220312_jpg.rf.07000a53f58fd8b7ca0a0d97613d25f3.jpg",
+      "trueClass": "battery_waste",
+      "imageSha256": "279076bebccecdd7dc92c526f30fd7540d2234099e58e7fe97a9335d9101e899",
+      "tensorEntry": "002.f32",
+      "tensorSha256": "dbd2eab4f61869e5049700cac8a92427c7c852a4a54d3fd6dc2464e988ca4e31",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "51c26b743d3c74f044f4effa31b286a8e87db0ff2f45fc3c4ce4c199e203b3e9",
+      "rawLogits": [
+        1.3786189556121826,
+        -10.456962585449219,
+        -9.01515007019043,
+        0.029230862855911255,
+        -8.267655372619629,
+        -3.6973211765289307
+      ],
+      "probabilities": [
+        0.7900474976782054,
+        5.721704813009326e-06,
+        2.41933867367818e-05,
+        0.20493748359185862,
+        5.10892456466287e-05,
+        0.004934014392739441
+      ],
+      "top5": [
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.7900474976782054
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.20493748359185862
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.004934014392739441
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 5.10892456466287e-05
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 2.41933867367818e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "a6450b52ca7bb20dcdcc3d6d1435eb343fc71278142cda8f2b50209169b40357",
+        "rawLogits": [
+          1.3248014450073242,
+          -10.394938468933105,
+          -9.043941497802734,
+          0.13713237643241882,
+          -8.214859962463379,
+          -3.735846757888794
+        ],
+        "probabilities": [
+          0.7625530958175659,
+          6.200857569638174e-06,
+          2.3943202904774807e-05,
+          0.2325262427330017,
+          5.4858988733030856e-05,
+          0.0048356917686760426
+        ],
+        "top5": [
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.7625530958175659
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.2325262427330017
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.0048356917686760426
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 5.4858988733030856e-05
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 2.3943202904774807e-05
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "003",
+      "image": "images/battery_waste/IMG_20250803_220321_jpg.rf.18be45e7ac54d6c3c9f1bac80e64585e.jpg",
+      "source": "ml/data/processed/classification/test/battery_waste/IMG_20250803_220321_jpg.rf.18be45e7ac54d6c3c9f1bac80e64585e.jpg",
+      "trueClass": "battery_waste",
+      "imageSha256": "79cc6547c59c8fe6e94b0951125d3aa20bc3327ab14a889d45d0af7b21aba178",
+      "tensorEntry": "003.f32",
+      "tensorSha256": "3720f1d040761f6628215cab631a726f84c7524216844a1c93b51ed3b8374f4d",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "c8975dda856071d5185d5cd29beb7e7cc7e260252cbc54b5be4f0f14ccaf110c",
+      "rawLogits": [
+        4.760837078094482,
+        -10.055907249450684,
+        -6.866875648498535,
+        -6.186792373657227,
+        -7.452242851257324,
+        -0.8842566013336182
+      ],
+      "probabilities": [
+        0.9964460108860346,
+        3.6612001513836823e-07,
+        8.883872122869872e-06,
+        1.7537137700869023e-05,
+        4.947440187962635e-06,
+        0.003522254543938692
+      ],
+      "top5": [
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.9964460108860346
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.003522254543938692
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 1.7537137700869023e-05
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 8.883872122869872e-06
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 4.947440187962635e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "fca2398fdde1c156b1033a80e7bc1144c097dfd764cec6ddb197066c3f4e1523",
+        "rawLogits": [
+          4.711431503295898,
+          -9.841915130615234,
+          -6.77947473526001,
+          -6.190053462982178,
+          -7.582882881164551,
+          -0.9007809162139893
+        ],
+        "probabilities": [
+          0.9963268637657166,
+          4.7639122158216196e-07,
+          1.0185090104641858e-05,
+          1.8363136405241676e-05,
+          4.560883553494932e-06,
+          0.003639561589807272
+        ],
+        "top5": [
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.9963268637657166
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.003639561589807272
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 1.8363136405241676e-05
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 1.0185090104641858e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 4.560883553494932e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "004",
+      "image": "images/battery_waste/IMG_20250803_220322_jpg.rf.4ad5d2a122e2ec7a03c34971a4269fd9.jpg",
+      "source": "ml/data/processed/classification/test/battery_waste/IMG_20250803_220322_jpg.rf.4ad5d2a122e2ec7a03c34971a4269fd9.jpg",
+      "trueClass": "battery_waste",
+      "imageSha256": "2b57ee0f0b9a075263b7d4e880dd83e716aa14d97605d26243ae26a46fa17996",
+      "tensorEntry": "004.f32",
+      "tensorSha256": "fe60c184830242e0694818d532910484f0c7f599faaf6c9d250fd4ff15613dcf",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "b50fcb52c193c06930dbabb6a3fb736ec4e01f8b85576d889afabd703949f4a2",
+      "rawLogits": [
+        4.179671764373779,
+        -10.75435733795166,
+        -7.4103546142578125,
+        -5.743300914764404,
+        -8.773771286010742,
+        -2.0826363563537598
+      ],
+      "probabilities": [
+        0.9980360372886214,
+        3.261217705139688e-07,
+        9.239781937317637e-06,
+        4.8938870820240236e-05,
+        2.3634008355613235e-06,
+        0.0019030945360151202
+      ],
+      "top5": [
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.9980360372886214
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.0019030945360151202
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 4.8938870820240236e-05
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 9.239781937317637e-06
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 2.3634008355613235e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "0734dabc28838e49fdd06902a43c0f8c06e68edc154ef1997132f8c4ab1f8bba",
+        "rawLogits": [
+          4.160949230194092,
+          -10.942303657531738,
+          -7.450296878814697,
+          -5.7960524559021,
+          -8.831830978393555,
+          -2.129222869873047
+        ],
+        "probabilities": [
+          0.9980902075767517,
+          2.7536617608348024e-07,
+          9.046272680279799e-06,
+          4.730411455966532e-05,
+          2.2723584152117837e-06,
+          0.0018508991925045848
+        ],
+        "top5": [
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.9980902075767517
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.0018508991925045848
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 4.730411455966532e-05
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 9.046272680279799e-06
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 2.2723584152117837e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "005",
+      "image": "images/battery_waste/IMG_20250822_231124_1_jpg.rf.15f6be87893a7f3e91d86d821962f40f.jpg",
+      "source": "ml/data/processed/classification/test/battery_waste/IMG_20250822_231124_1_jpg.rf.15f6be87893a7f3e91d86d821962f40f.jpg",
+      "trueClass": "battery_waste",
+      "imageSha256": "b18b0a16d80fc6663cc5ac54b6f5438181077907a13fb370589d6bfa05679731",
+      "tensorEntry": "005.f32",
+      "tensorSha256": "4ced0b024ea6c7f27ac44e8e910c233840adc2883519caf9f3d5819cf2fb2f60",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "5a3c88918294382f3b391fc1adb70896c156738299a8b353031cf0f4ce927f2c",
+      "rawLogits": [
+        5.220150947570801,
+        -11.229411125183105,
+        -5.91759729385376,
+        -8.36056900024414,
+        -10.846210479736328,
+        -2.2164218425750732
+      ],
+      "probabilities": [
+        0.9993950705274978,
+        7.174359997283213e-08,
+        1.4543689730171727e-05,
+        1.2638789170122072e-06,
+        1.0524587686576997e-07,
+        0.0005889449143783096
+      ],
+      "top5": [
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.9993950705274978
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.0005889449143783096
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 1.4543689730171727e-05
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 1.2638789170122072e-06
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 1.0524587686576997e-07
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "e3501a78cff7371d6d4ede999a1c2bfaece9277f60d24aedd825c250a08937d0",
+        "rawLogits": [
+          5.188704490661621,
+          -11.168038368225098,
+          -5.831586837768555,
+          -8.300686836242676,
+          -10.792153358459473,
+          -2.083920955657959
+        ],
+        "probabilities": [
+          0.9992882609367371,
+          7.871321372476814e-08,
+          1.6354568288079463e-05,
+          1.3845944977219915e-06,
+          1.1462844895504531e-07,
+          0.0006937926518730819
+        ],
+        "top5": [
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.9992882609367371
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.0006937926518730819
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 1.6354568288079463e-05
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 1.3845944977219915e-06
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 1.1462844895504531e-07
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "006",
+      "image": "images/battery_waste/IMG_20250822_231125_1_jpg.rf.055929b00c16ff17c6d4a49b7cef58a9.jpg",
+      "source": "ml/data/processed/classification/test/battery_waste/IMG_20250822_231125_1_jpg.rf.055929b00c16ff17c6d4a49b7cef58a9.jpg",
+      "trueClass": "battery_waste",
+      "imageSha256": "8e5aca2aca1cc1ef6c48e7c3b500ae3a213db544172a1ef24898572286785a29",
+      "tensorEntry": "006.f32",
+      "tensorSha256": "f6599de393e8acc23daa284cc5c4095fec10fdfd69814dcc79bab2c4cc840c44",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "2323446aabd060c9a1c841973a9d68ff3952945597fef8d2e297e38e8ff61089",
+      "rawLogits": [
+        4.747013092041016,
+        -11.4192533493042,
+        -6.647038459777832,
+        -8.21300220489502,
+        -11.61661148071289,
+        -2.3076300621032715
+      ],
+      "probabilities": [
+        0.9991235896448788,
+        9.521358212240256e-08,
+        1.1252408690083015e-05,
+        2.350477423365483e-06,
+        7.816050505832436e-08,
+        0.0008626340949207085
+      ],
+      "top5": [
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.9991235896448788
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.0008626340949207085
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 1.1252408690083015e-05
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 2.350477423365483e-06
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 9.521358212240256e-08
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "1b3480d6d9c255a509329982f4d16bb5c2dc972c2365b44ef6fadc210ae2b671",
+        "rawLogits": [
+          4.627223968505859,
+          -11.525847434997559,
+          -6.699527263641357,
+          -7.944436073303223,
+          -11.555915832519531,
+          -2.132084846496582
+        ],
+        "probabilities": [
+          0.9988256096839905,
+          9.644938359087973e-08,
+          1.2032169252051972e-05,
+          3.4648710425244644e-06,
+          9.359256836205532e-08,
+          0.001158668426796794
+        ],
+        "top5": [
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.9988256096839905
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.001158668426796794
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 1.2032169252051972e-05
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 3.4648710425244644e-06
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 9.644938359087973e-08
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "007",
+      "image": "images/battery_waste/IMG_20250822_231125_jpg.rf.712cf5e8bb04d06029470cfebfd9db8a.jpg",
+      "source": "ml/data/processed/classification/test/battery_waste/IMG_20250822_231125_jpg.rf.712cf5e8bb04d06029470cfebfd9db8a.jpg",
+      "trueClass": "battery_waste",
+      "imageSha256": "78556295e21539701601b0a1a67699bde3bbe3cdf8c7fbfaddeb2d8d12993bc6",
+      "tensorEntry": "007.f32",
+      "tensorSha256": "82382e1c368df45779c7f958b58d9dfc3221c62e2143703e97d0c5f278620292",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "b2090bdbb47cd1aacd0cc96acd568d16a7d29083b8a333d156b87942948d89b0",
+      "rawLogits": [
+        4.691267490386963,
+        -10.830357551574707,
+        -6.125323295593262,
+        -7.920976161956787,
+        -11.207507133483887,
+        -1.4985640048980713
+      ],
+      "probabilities": [
+        0.9979304189348166,
+        1.8119414294389809e-07,
+        2.002232791057352e-05,
+        3.3240874323878977e-06,
+        1.2426538589709275e-07,
+        0.0020459291903115423
+      ],
+      "top5": [
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.9979304189348166
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.0020459291903115423
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 2.002232791057352e-05
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 3.3240874323878977e-06
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 1.8119414294389809e-07
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "5f6d6bfeca0e914370d5e83aeeed255f94e4c07342aa7dd1a3d8ad1c74c576b3",
+        "rawLogits": [
+          4.630289554595947,
+          -10.998042106628418,
+          -5.97938346862793,
+          -7.99703311920166,
+          -11.204242706298828,
+          -1.4506051540374756
+        ],
+        "probabilities": [
+          0.9976909160614014,
+          1.6281620673908037e-07,
+          2.461919211782515e-05,
+          3.273552238169941e-06,
+          1.324787604062294e-07,
+          0.002280851826071739
+        ],
+        "top5": [
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.9976909160614014
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.002280851826071739
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 2.461919211782515e-05
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 3.273552238169941e-06
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 1.6281620673908037e-07
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "008",
+      "image": "images/battery_waste/IMG_20250822_231126_jpg.rf.7712b4701c0e3c8ad2f513a37cac8107.jpg",
+      "source": "ml/data/processed/classification/test/battery_waste/IMG_20250822_231126_jpg.rf.7712b4701c0e3c8ad2f513a37cac8107.jpg",
+      "trueClass": "battery_waste",
+      "imageSha256": "53aadecd598f246bf55fac6bd0896a7aba6d9eafa2395454db32118e1e1525f5",
+      "tensorEntry": "008.f32",
+      "tensorSha256": "25cc6beef90e3cfb7d51c7bb3630cc7276d655737871100a3b96128acb6620c3",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "d221084fd9df604752cddde96d3b768c6f5b3c687cd683b9d7e9fa23399bfd63",
+      "rawLogits": [
+        4.4719767570495605,
+        -12.542003631591797,
+        -5.530380725860596,
+        -9.014310836791992,
+        -10.890386581420898,
+        -3.0028016567230225
+      ],
+      "probabilities": [
+        0.9993862288508021,
+        4.079956782058268e-08,
+        4.526522671226197e-05,
+        1.389034643156954e-06,
+        2.1278633472595144e-07,
+        0.0005668633019399492
+      ],
+      "top5": [
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.9993862288508021
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.0005668633019399492
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 4.526522671226197e-05
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 1.389034643156954e-06
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 2.1278633472595144e-07
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "cf5a6feb2a5dc20eead20788a95448ca2cadb9696c0d173d21c054879b63e714",
+        "rawLogits": [
+          4.5193705558776855,
+          -12.544210433959961,
+          -5.5436224937438965,
+          -8.938050270080566,
+          -10.741849899291992,
+          -2.9770143032073975
+        ],
+        "probabilities": [
+          0.9994009733200073,
+          3.88258101224892e-08,
+          4.260272908140905e-05,
+          1.4297377219918417e-06,
+          2.3543755389709986e-07,
+          0.0005547550390474498
+        ],
+        "top5": [
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.9994009733200073
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.0005547550390474498
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 4.260272908140905e-05
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 1.4297377219918417e-06
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 2.3543755389709986e-07
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "009",
+      "image": "images/battery_waste/IMG_20250822_231153_1_jpg.rf.055d65f1f0714e9fda6d890f79bc15ab.jpg",
+      "source": "ml/data/processed/classification/test/battery_waste/IMG_20250822_231153_1_jpg.rf.055d65f1f0714e9fda6d890f79bc15ab.jpg",
+      "trueClass": "battery_waste",
+      "imageSha256": "f812eb53457cceedb3ee63c7316cbc50859c2d83fccf0b5c0342fce3633136ed",
+      "tensorEntry": "009.f32",
+      "tensorSha256": "9f4bd6108d81fde13a1fea9221a8216ca4479f0a4ad7a6f0608287a6a2b8be28",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "67da8b329968b82430b9d318e3fddc31e31f678aca8c8888413620b51ddee342",
+      "rawLogits": [
+        5.301562309265137,
+        -9.413790702819824,
+        -6.268671989440918,
+        -7.993005752563477,
+        -7.063882350921631,
+        -8.15108585357666
+      ],
+      "probabilities": [
+        0.9999827661921692,
+        4.0662671031372625e-07,
+        9.442861179675255e-06,
+        1.6835846864902783e-06,
+        4.263321979659185e-06,
+        1.43741327461407e-06
+      ],
+      "top5": [
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.9999827661921692
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 9.442861179675255e-06
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 4.263321979659185e-06
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 1.6835846864902783e-06
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 1.43741327461407e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "9ab25b5617c774efc7465592d7e74943466f92a575959df2bb10b7b4dace5524",
+        "rawLogits": [
+          5.360018730163574,
+          -9.195683479309082,
+          -6.144557952880859,
+          -7.896056175231934,
+          -7.049156188964844,
+          -7.812396049499512
+        ],
+        "probabilities": [
+          0.9999817609786987,
+          4.770138275489444e-07,
+          1.0083654160553124e-05,
+          1.7496528244009824e-06,
+          4.080899088876322e-06,
+          1.9023264030693099e-06
+        ],
+        "top5": [
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.9999817609786987
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 1.0083654160553124e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 4.080899088876322e-06
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 1.9023264030693099e-06
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 1.7496528244009824e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "010",
+      "image": "images/battery_waste/IMG_20250822_231153_jpg.rf.c0581636936ffd3f551a62ae4e3aadb3.jpg",
+      "source": "ml/data/processed/classification/test/battery_waste/IMG_20250822_231153_jpg.rf.c0581636936ffd3f551a62ae4e3aadb3.jpg",
+      "trueClass": "battery_waste",
+      "imageSha256": "b9536ef77a8dc91338a7507a41abdaee5bd96eb8e47f4e8573bc4bcd7cbe7b7e",
+      "tensorEntry": "010.f32",
+      "tensorSha256": "fadb8985c42b602e27b669a371d67dfe73b86da1c9044df9bc8d32eb60709327",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "af0eccdc00f0160d92594d256fb676b6221710a661ad9f9a43de88bc1a87fc93",
+      "rawLogits": [
+        5.152630805969238,
+        -9.275453567504883,
+        -7.321969032287598,
+        -8.155281066894531,
+        -7.403078079223633,
+        -7.315305709838867
+      ],
+      "probabilities": [
+        0.999986601603775,
+        5.419469210415144e-07,
+        3.82247195212833e-06,
+        1.6612748451251233e-06,
+        3.5246751439945993e-06,
+        3.848027362712441e-06
+      ],
+      "top5": [
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.999986601603775
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 3.848027362712441e-06
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 3.82247195212833e-06
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 3.5246751439945993e-06
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 1.6612748451251233e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "93390a2d2e1e4f6839ccf2c1ff704918db8e8968bb56591ae4fa099dc5211a41",
+        "rawLogits": [
+          5.3090643882751465,
+          -9.453773498535156,
+          -7.299686908721924,
+          -8.204120635986328,
+          -7.469236850738525,
+          -7.16025447845459
+        ],
+        "probabilities": [
+          0.999988317489624,
+          3.877713368183322e-07,
+          3.3425953915866558e-06,
+          1.3529852367355488e-06,
+          2.82129963125044e-06,
+          3.842720161628677e-06
+        ],
+        "top5": [
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.999988317489624
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 3.842720161628677e-06
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 3.3425953915866558e-06
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 2.82129963125044e-06
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 1.3529852367355488e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "011",
+      "image": "images/battery_waste/IMG_20250822_231155_jpg.rf.504426a470f2b291095627bb367e7dad.jpg",
+      "source": "ml/data/processed/classification/test/battery_waste/IMG_20250822_231155_jpg.rf.504426a470f2b291095627bb367e7dad.jpg",
+      "trueClass": "battery_waste",
+      "imageSha256": "133e4c00a8875ce7bc9929649ae357d47cdf9622a6d26463f16c924be61d9a20",
+      "tensorEntry": "011.f32",
+      "tensorSha256": "dc67ad0e118d5849cb4a27f65443720c8f8771b66b48d9d614a02ccd07ab93f2",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "351ecef5d5401bd623a4a37271ec58e436f2b7c0497c198229038d826fe3a219",
+      "rawLogits": [
+        2.5860488414764404,
+        -10.294740676879883,
+        -7.673788070678711,
+        -6.038764476776123,
+        -5.322977542877197,
+        -4.041927337646484
+      ],
+      "probabilities": [
+        0.998096229934315,
+        2.541655029020309e-06,
+        3.494474365633139e-05,
+        0.00017925182400221556,
+        0.0003667126565000779,
+        0.0013203191864974162
+      ],
+      "top5": [
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.998096229934315
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.0013203191864974162
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.0003667126565000779
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.00017925182400221556
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 3.494474365633139e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "5ea30aa25c829beb58bc875c0a738dd48e4e090e510c6f4e1dcd4986811aa3db",
+        "rawLogits": [
+          2.3917553424835205,
+          -10.149918556213379,
+          -7.773693561553955,
+          -5.718230247497559,
+          -5.284220218658447,
+          -4.071483612060547
+        ],
+        "probabilities": [
+          0.9976394176483154,
+          3.566103259800002e-06,
+          3.838619886664674e-05,
+          0.0002998138661496341,
+          0.0004627428133971989,
+          0.001556054106913507
+        ],
+        "top5": [
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.9976394176483154
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.001556054106913507
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.0004627428133971989
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.0002998138661496341
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 3.838619886664674e-05
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "012",
+      "image": "images/battery_waste/IMG_20250822_231202_jpg.rf.1763ce102999536a602ed04b81bf0435.jpg",
+      "source": "ml/data/processed/classification/test/battery_waste/IMG_20250822_231202_jpg.rf.1763ce102999536a602ed04b81bf0435.jpg",
+      "trueClass": "battery_waste",
+      "imageSha256": "ab4487157d901a59d64b5776c99671e49452b53d8d9d2631b62b1d984e6a3a71",
+      "tensorEntry": "012.f32",
+      "tensorSha256": "175e01f820c4200c49e29356d01a1a43dbcd1cb9f33f9c539fafbda9120cc979",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "636aef9664589472767760247fced668815af26aad8fd4be8f4d3451933412a2",
+      "rawLogits": [
+        6.513975620269775,
+        -9.077240943908691,
+        -6.149233341217041,
+        -7.385261058807373,
+        -7.161639213562012,
+        -7.912204265594482
+      ],
+      "probabilities": [
+        0.9999940523770986,
+        1.6936282804782606e-07,
+        3.165451339785146e-06,
+        9.19677633462299e-07,
+        1.150147018631049e-06,
+        5.429840813779829e-07
+      ],
+      "top5": [
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.9999940523770986
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 3.165451339785146e-06
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 1.150147018631049e-06
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 9.19677633462299e-07
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 5.429840813779829e-07
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "58b00d15cdd4575e1c6b1f182303842f30e448599d38c117cf01a86cf6879229",
+        "rawLogits": [
+          6.757743835449219,
+          -9.162409782409668,
+          -6.31016731262207,
+          -7.487524509429932,
+          -7.161196708679199,
+          -7.879761695861816
+        ],
+        "probabilities": [
+          0.9999958276748657,
+          1.218886609422043e-07,
+          2.1119153643667232e-06,
+          6.50664276236057e-07,
+          9.017354045681714e-07,
+          4.395520250000118e-07
+        ],
+        "top5": [
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.9999958276748657
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 2.1119153643667232e-06
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 9.017354045681714e-07
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 6.50664276236057e-07
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 4.395520250000118e-07
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "013",
+      "image": "images/battery_waste/IMG_20250822_231209_1_jpg.rf.fcf651145e2d95b81efe4e9904f3cfed.jpg",
+      "source": "ml/data/processed/classification/test/battery_waste/IMG_20250822_231209_1_jpg.rf.fcf651145e2d95b81efe4e9904f3cfed.jpg",
+      "trueClass": "battery_waste",
+      "imageSha256": "4c94ae150118519e0764f9b2a143ff68f2f5ffddb66904bfa03e1f3a031f89a9",
+      "tensorEntry": "013.f32",
+      "tensorSha256": "19bc15e6d688972790aece5c666134e355b6275feb48a9e265538b3d079dca11",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "8e02f5c41c0c8cf890dde29f7b714fd90f065c943e20631c1bb69850879fecbe",
+      "rawLogits": [
+        6.648921966552734,
+        -9.853130340576172,
+        -5.719468116760254,
+        -7.639797210693359,
+        -8.679952621459961,
+        -6.724740028381348
+      ],
+      "probabilities": [
+        0.9999932823242899,
+        6.811563748453878e-08,
+        4.250827870192102e-06,
+        6.229959026761635e-07,
+        2.2016659972305815e-07,
+        1.5555697003687882e-06
+      ],
+      "top5": [
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.9999932823242899
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 4.250827870192102e-06
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 1.5555697003687882e-06
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 6.229959026761635e-07
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 2.2016659972305815e-07
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "c641daaead2ca179828c11f6e8446f0965e64871970ab5c0f890a0d0ea4fcb91",
+        "rawLogits": [
+          6.755177974700928,
+          -9.966609954833984,
+          -5.880424976348877,
+          -7.666961669921875,
+          -8.625136375427246,
+          -6.664656639099121
+        ],
+        "probabilities": [
+          0.9999945163726807,
+          5.467857633334461e-08,
+          3.2540558549953857e-06,
+          5.451822744362289e-07,
+          2.091279895921616e-07,
+          1.485380380472634e-06
+        ],
+        "top5": [
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.9999945163726807
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 3.2540558549953857e-06
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 1.485380380472634e-06
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 5.451822744362289e-07
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 2.091279895921616e-07
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "014",
+      "image": "images/battery_waste/IMG_20250822_231221_1_jpg.rf.187ee67700b833c74c2c876f9f8165c7.jpg",
+      "source": "ml/data/processed/classification/test/battery_waste/IMG_20250822_231221_1_jpg.rf.187ee67700b833c74c2c876f9f8165c7.jpg",
+      "trueClass": "battery_waste",
+      "imageSha256": "c72694f24797b481bfb8d45876f5b67468d87452f13b636702a7b5c26af9c263",
+      "tensorEntry": "014.f32",
+      "tensorSha256": "79ff31a0d0cb5236b5c0e0da07c595d123e86d62eab96015904091630d3823db",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "3ce8a025a104712f5df967394a61e8cc01b3e2fd376049b0fea52db733edb041",
+      "rawLogits": [
+        5.611590385437012,
+        -9.67372989654541,
+        -4.789043426513672,
+        -4.064993381500244,
+        -7.547873020172119,
+        -7.630980491638184
+      ],
+      "probabilities": [
+        0.999902930164198,
+        2.299469155704199e-07,
+        3.0410248443931418e-05,
+        6.272936733168219e-05,
+        1.926972421696993e-06,
+        1.7733006895042138e-06
+      ],
+      "top5": [
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.999902930164198
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 6.272936733168219e-05
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 3.0410248443931418e-05
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 1.926972421696993e-06
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 1.7733006895042138e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "df1a27a379b378d6004173d4a2ed315fa9f18d9f868fbdf376a41df03fa87ca0",
+        "rawLogits": [
+          5.612716197967529,
+          -9.866277694702148,
+          -4.828947067260742,
+          -3.952268600463867,
+          -7.458044052124023,
+          -7.392157554626465
+        ],
+        "probabilities": [
+          0.9998960494995117,
+          1.8945802082726004e-07,
+          2.918756945291534e-05,
+          7.013495633145794e-05,
+          2.1056955574749736e-06,
+          2.249107183160959e-06
+        ],
+        "top5": [
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.9998960494995117
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 7.013495633145794e-05
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 2.918756945291534e-05
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 2.249107183160959e-06
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 2.1056955574749736e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "015",
+      "image": "images/keyboard/IMG_20250822_135858_jpg.rf.6fef6bce27ad1bc4cc43ec098061a9fe.jpg",
+      "source": "ml/data/processed/classification/test/keyboard/IMG_20250822_135858_jpg.rf.6fef6bce27ad1bc4cc43ec098061a9fe.jpg",
+      "trueClass": "keyboard",
+      "imageSha256": "a43c8b7ac1557a8bec143c09b4fe44608538e9c3d68732a737c5fa348f34ab3c",
+      "tensorEntry": "015.f32",
+      "tensorSha256": "bc6ab208846c2b579500bf37eaedfd752186742ce30a0876562ee7fa7ba2a2fb",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "bbb5dc3f135d1e831adfc13f6ec936b8e977f706c45ee404a21bad7cc357ace2",
+      "rawLogits": [
+        -8.536566734313965,
+        9.32882308959961,
+        -8.993121147155762,
+        -6.326218605041504,
+        -7.168023586273193,
+        -3.93673038482666
+      ],
+      "probabilities": [
+        1.7424443583047496e-08,
+        0.9999980109995752,
+        1.103773228948563e-08,
+        1.5889159119639961e-07,
+        6.847147067869513e-08,
+        1.733175187083235e-06
+      ],
+      "top5": [
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.9999980109995752
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 1.733175187083235e-06
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 1.5889159119639961e-07
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 6.847147067869513e-08
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 1.7424443583047496e-08
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "55d38a0255e7d13a09487ee7aeb02945507d0eece73419ca7a2f5108e17430fb",
+        "rawLogits": [
+          -8.51558780670166,
+          9.265146255493164,
+          -8.950350761413574,
+          -6.2907891273498535,
+          -7.132386207580566,
+          -3.8751769065856934
+        ],
+        "probabilities": [
+          1.8963737247190693e-08,
+          0.9999977350234985,
+          1.2277490135659264e-08,
+          1.7544554964388226e-07,
+          7.56207114704921e-08,
+          1.9643955511128297e-06
+        ],
+        "top5": [
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.9999977350234985
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 1.9643955511128297e-06
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 1.7544554964388226e-07
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 7.56207114704921e-08
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 1.8963737247190693e-08
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "016",
+      "image": "images/keyboard/IMG_20250822_135913_jpg.rf.1a2398d375a8d8737469f91847530138.jpg",
+      "source": "ml/data/processed/classification/test/keyboard/IMG_20250822_135913_jpg.rf.1a2398d375a8d8737469f91847530138.jpg",
+      "trueClass": "keyboard",
+      "imageSha256": "8e5a1866dbffb27f8eb510cc75ad32508c55c474b11fe9872f6aa1feaa15eb50",
+      "tensorEntry": "016.f32",
+      "tensorSha256": "e886ecc94920d49a8d8cf9e9e83550e93f9a82b98748c2a55daec503c2a70194",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "f2a6a5d472542bc52fa611cd9ca61d987f6cc9f93019ab02ef552280329dec98",
+      "rawLogits": [
+        -9.301626205444336,
+        9.151735305786133,
+        -6.43463659286499,
+        -3.048208236694336,
+        -2.3188114166259766,
+        -1.577012062072754
+      ],
+      "probabilities": [
+        9.678111379832026e-09,
+        0.9999624518527067,
+        1.7017994707770992e-07,
+        5.030550727222124e-06,
+        1.0432503684930237e-05,
+        2.1905234822580076e-05
+      ],
+      "top5": [
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.9999624518527067
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 2.1905234822580076e-05
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 1.0432503684930237e-05
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 5.030550727222124e-06
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 1.7017994707770992e-07
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "28d96f86c06c804af82e3ad7db8e110725dd2aed4cdfdc3cca52cd9748d2b01c",
+        "rawLogits": [
+          -9.310948371887207,
+          9.23200798034668,
+          -6.441374778747559,
+          -2.959418773651123,
+          -2.2486231327056885,
+          -1.6364904642105103
+        ],
+        "probabilities": [
+          8.848730637112112e-09,
+          0.9999654293060303,
+          1.5599883340655651e-07,
+          5.0735907279886305e-06,
+          1.0327859854442067e-05,
+          1.904828786791768e-05
+        ],
+        "top5": [
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.9999654293060303
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 1.904828786791768e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 1.0327859854442067e-05
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 5.0735907279886305e-06
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 1.5599883340655651e-07
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "017",
+      "image": "images/keyboard/IMG_20250822_135925_jpg.rf.04443fe2e82a23db600b84c069b411e2.jpg",
+      "source": "ml/data/processed/classification/test/keyboard/IMG_20250822_135925_jpg.rf.04443fe2e82a23db600b84c069b411e2.jpg",
+      "trueClass": "keyboard",
+      "imageSha256": "9ab93f4f865b36aaf109bf5f9cb4be34a4130e9727e1b2c56d6da74d6b761cf6",
+      "tensorEntry": "017.f32",
+      "tensorSha256": "8e54732364d9fb9cd6f0dec12270bc6e7bae0d971c8f99387ce401a3d00e469b",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "aeeea366c161933724816174fc7b7bdbe2a2dd5fd7303fdc66137eb45da5df93",
+      "rawLogits": [
+        -5.586694240570068,
+        6.245453834533691,
+        -9.268966674804688,
+        -3.394462823867798,
+        -6.443985939025879,
+        -4.0890045166015625
+      ],
+      "probabilities": [
+        7.266352038923127e-06,
+        0.9998919057757618,
+        1.8286299797860173e-07,
+        6.507144365832206e-05,
+        3.083183553206467e-06,
+        3.2490381989812796e-05
+      ],
+      "top5": [
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.9998919057757618
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 6.507144365832206e-05
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 3.2490381989812796e-05
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 7.266352038923127e-06
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 3.083183553206467e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "777951d5fa38a06a5c9249494c07bf25b7edded5e9c33af7f4bd04302dfb056a",
+        "rawLogits": [
+          -5.621180057525635,
+          6.3499650955200195,
+          -9.354677200317383,
+          -3.2768397331237793,
+          -6.403118133544922,
+          -4.077291488647461
+        ],
+        "probabilities": [
+          6.32341925665969e-06,
+          0.9998950958251953,
+          1.5118718010853627e-07,
+          6.593050784431398e-05,
+          2.893082182708895e-06,
+          2.961109385068994e-05
+        ],
+        "top5": [
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.9998950958251953
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 6.593050784431398e-05
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 2.961109385068994e-05
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 6.32341925665969e-06
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 2.893082182708895e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "018",
+      "image": "images/keyboard/IMG_20250822_135943_jpg.rf.77556fead8d7f313c04b78a1c7ced099.jpg",
+      "source": "ml/data/processed/classification/test/keyboard/IMG_20250822_135943_jpg.rf.77556fead8d7f313c04b78a1c7ced099.jpg",
+      "trueClass": "keyboard",
+      "imageSha256": "f0d3849b7a87ddd4fdc45ca50863bdca08bc9820a2500d8247541b85c7861db3",
+      "tensorEntry": "018.f32",
+      "tensorSha256": "340eeaaef4ccc588fb1958a9f0f50dc6ec885dc962d80178104be45833335509",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "04730e60c5d438e24753ba642d66a70c4003bd1543cf451ea14664637ff5c54e",
+      "rawLogits": [
+        -7.381109714508057,
+        7.971104145050049,
+        -8.931556701660156,
+        -6.7063212394714355,
+        -3.6335387229919434,
+        -2.7386574745178223
+      ],
+      "probabilities": [
+        2.1508210635903488e-07,
+        0.9999678683961682,
+        4.5630340546029627e-08,
+        4.223390047387044e-07,
+        9.12333628398167e-06,
+        2.2325216096190933e-05
+      ],
+      "top5": [
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.9999678683961682
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 2.2325216096190933e-05
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 9.12333628398167e-06
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 4.223390047387044e-07
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 2.1508210635903488e-07
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "4a811f1cf27e1ca94ee2a217a8359a9299fef74ebd79018e84a7de7436e9fe97",
+        "rawLogits": [
+          -7.369755268096924,
+          8.028889656066895,
+          -8.855544090270996,
+          -6.66933012008667,
+          -3.514707326889038,
+          -2.8569116592407227
+        ],
+        "probabilities": [
+          2.0532444011678308e-07,
+          0.9999709129333496,
+          4.646981821565532e-08,
+          4.1364884850736416e-07,
+          9.697656423668377e-06,
+          1.8721642845775932e-05
+        ],
+        "top5": [
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.9999709129333496
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 1.8721642845775932e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 9.697656423668377e-06
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 4.1364884850736416e-07
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 2.0532444011678308e-07
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "019",
+      "image": "images/keyboard/IMG_20250822_135947_jpg.rf.3de7e5999050f8b8f3cce938cfe9c1ce.jpg",
+      "source": "ml/data/processed/classification/test/keyboard/IMG_20250822_135947_jpg.rf.3de7e5999050f8b8f3cce938cfe9c1ce.jpg",
+      "trueClass": "keyboard",
+      "imageSha256": "a5806f34fd1270a85cc21a9400e06c306336607776f894cda107bb43fac77164",
+      "tensorEntry": "019.f32",
+      "tensorSha256": "1e714b50aadb94da5bc48af539a6d12825106557094d6f2fa1d816e4b52a26dd",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "cb2c94a2e459aa18ef953e35ca38c705d63f1932de4070e12456f8ddf55f32de",
+      "rawLogits": [
+        -8.567729949951172,
+        8.385998725891113,
+        -5.408306121826172,
+        -2.521097421646118,
+        -1.6025176048278809,
+        -4.622766494750977
+      ],
+      "probabilities": [
+        4.3357062409690026e-08,
+        0.9999324471599911,
+        1.0213631484443124e-06,
+        1.8326477192569104e-05,
+        4.592119026697644e-05,
+        2.240452338252589e-06
+      ],
+      "top5": [
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.9999324471599911
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 4.592119026697644e-05
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 1.8326477192569104e-05
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 2.240452338252589e-06
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 1.0213631484443124e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "f1ca8c61dae8177350c8d11f653aff531514435b862624cdb206d3088229dab9",
+        "rawLogits": [
+          -8.623462677001953,
+          8.415254592895508,
+          -5.447883605957031,
+          -2.3855228424072266,
+          -1.5874699354171753,
+          -4.712512493133545
+        ],
+        "probabilities": [
+          3.9824410436040125e-08,
+          0.9999314546585083,
+          9.534233527119795e-07,
+          2.0382254660944454e-05,
+          4.527329656411894e-05,
+          1.989084466913482e-06
+        ],
+        "top5": [
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.9999314546585083
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 4.527329656411894e-05
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 2.0382254660944454e-05
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 1.989084466913482e-06
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 9.534233527119795e-07
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "020",
+      "image": "images/keyboard/IMG_20250822_140011_jpg.rf.4ba817efa7531784cd457e7370eee615.jpg",
+      "source": "ml/data/processed/classification/test/keyboard/IMG_20250822_140011_jpg.rf.4ba817efa7531784cd457e7370eee615.jpg",
+      "trueClass": "keyboard",
+      "imageSha256": "50c704ab7814d93ed7078fb3a6d742ea4ad62a556d4db16d1ca4acd1dc22dc5c",
+      "tensorEntry": "020.f32",
+      "tensorSha256": "54a69512e7f4c17c8f4cee05abcd2f8d06609c2aba43b18ac200bfec2c9404a0",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "1fefe6370da9ee8e1b30f2d4f1f4f0b5132f7833d708f7f1f9f276f1a8e05960",
+      "rawLogits": [
+        -5.259922981262207,
+        6.854215621948242,
+        -3.81124210357666,
+        -2.090381145477295,
+        -2.9164795875549316,
+        -3.573045253753662
+      ],
+      "probabilities": [
+        5.480114590786485e-06,
+        0.9997540869565044,
+        2.3331558568870218e-05,
+        0.00013040798043223963,
+        5.708659954683503e-05,
+        2.9606790357108052e-05
+      ],
+      "top5": [
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.9997540869565044
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.00013040798043223963
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 5.708659954683503e-05
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 2.9606790357108052e-05
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 2.3331558568870218e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "4613e8d5bab18f61c0d31e7285468406fe94c414594cfec58b6f8dd0a5611a4c",
+        "rawLogits": [
+          -5.281768798828125,
+          6.8192925453186035,
+          -3.7384796142578125,
+          -2.1170413494110107,
+          -2.9121789932250977,
+          -3.4964590072631836
+        ],
+        "probabilities": [
+          5.552199581870809e-06,
+          0.9997444748878479,
+          2.5984061721828766e-05,
+          0.0001314887631451711,
+          5.9369638620410115e-05,
+          3.30989969370421e-05
+        ],
+        "top5": [
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.9997444748878479
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.0001314887631451711
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 5.9369638620410115e-05
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 3.30989969370421e-05
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 2.5984061721828766e-05
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "021",
+      "image": "images/keyboard/IMG_20250822_140222_jpg.rf.ff63928f6fd759424a21461d4c5e1203.jpg",
+      "source": "ml/data/processed/classification/test/keyboard/IMG_20250822_140222_jpg.rf.ff63928f6fd759424a21461d4c5e1203.jpg",
+      "trueClass": "keyboard",
+      "imageSha256": "65bbfc61b4872877ababa5f9b252f0bebef2ba949345846f7569db0d97f92e78",
+      "tensorEntry": "021.f32",
+      "tensorSha256": "c8e64830746789a1a74cd3cca7d861ab8745338d7c6742e252ee2317a6495805",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "a9ff778fecbb6628eaed2d964ee08561b35e09ead88f541d98291ff213dcc90a",
+      "rawLogits": [
+        -9.08424186706543,
+        10.455585479736328,
+        -10.49028491973877,
+        -8.670549392700195,
+        -0.6798312664031982,
+        -3.7186172008514404
+      ],
+      "probabilities": [
+        3.265533653910791e-09,
+        0.9999847061780348,
+        8.004190655989547e-10,
+        4.9387668304367795e-09,
+        1.458623853153118e-05,
+        6.985787140151233e-07
+      ],
+      "top5": [
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.9999847061780348
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 1.458623853153118e-05
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 6.985787140151233e-07
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 4.9387668304367795e-09
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 3.265533653910791e-09
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "93851e3417d978d58633f38d13f5a969ee5d6a3ff5f4fe583de070ab5f637e47",
+        "rawLogits": [
+          -9.146193504333496,
+          10.677892684936523,
+          -10.474366188049316,
+          -8.764763832092285,
+          -0.570130467414856,
+          -3.7588701248168945
+        ],
+        "probabilities": [
+          2.457555270396483e-09,
+          0.9999864101409912,
+          6.511550187937587e-10,
+          3.5987794966274578e-09,
+          1.3032860806561075e-05,
+          5.372639293454995e-07
+        ],
+        "top5": [
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.9999864101409912
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 1.3032860806561075e-05
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 5.372639293454995e-07
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 3.5987794966274578e-09
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 2.457555270396483e-09
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "022",
+      "image": "images/keyboard/IMG_20250822_140248_jpg.rf.961c47dc7a9179c5684484af5d6a9b4f.jpg",
+      "source": "ml/data/processed/classification/test/keyboard/IMG_20250822_140248_jpg.rf.961c47dc7a9179c5684484af5d6a9b4f.jpg",
+      "trueClass": "keyboard",
+      "imageSha256": "a48d524d9220a525e8cf3126157a4c650ff3365c3579f3ae02da0434b44e0fdf",
+      "tensorEntry": "022.f32",
+      "tensorSha256": "13dbc687c8f105c2d2aa21186c9d023b2ecd4fad7062b5067e35cb554ca81bcf",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "c9694a661302e603ef4934a0482677366f935efdc5bfba75339c0f7807b5c817",
+      "rawLogits": [
+        -7.886427879333496,
+        2.5811853408813477,
+        -8.093940734863281,
+        -2.601043224334717,
+        -1.7779381275177002,
+        -9.1510648727417
+      ],
+      "probabilities": [
+        2.792719882578559e-05,
+        0.9818701048570715,
+        2.2693719829797024e-05,
+        0.00551366997312649,
+        0.012557719236413911,
+        7.885014732634271e-06
+      ],
+      "top5": [
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.9818701048570715
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.012557719236413911
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.00551366997312649
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 2.792719882578559e-05
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 2.2693719829797024e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "d60fa1cc199b98c60630ca997a8798a852c31a772232e2586f6416fc5cfbaadd",
+        "rawLogits": [
+          -7.879809379577637,
+          2.7476956844329834,
+          -8.047250747680664,
+          -2.489076852798462,
+          -1.8638538122177124,
+          -9.041810035705566
+        ],
+        "probabilities": [
+          2.3874603357398883e-05,
+          0.9849247336387634,
+          2.019376370299142e-05,
+          0.005237229634076357,
+          0.009786617010831833,
+          7.469398951798212e-06
+        ],
+        "top5": [
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.9849247336387634
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.009786617010831833
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.005237229634076357
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 2.3874603357398883e-05
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 2.019376370299142e-05
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "023",
+      "image": "images/light_bulb/IMG_20250803_221548_jpg.rf.bbe6ae2021e28b57ff8d34546aa38603.jpg",
+      "source": "ml/data/processed/classification/test/light_bulb/IMG_20250803_221548_jpg.rf.bbe6ae2021e28b57ff8d34546aa38603.jpg",
+      "trueClass": "light_bulb",
+      "imageSha256": "9893ef8cd1f133361e9b425a5c56b66957c456001db8ba08dc607f88c29d998d",
+      "tensorEntry": "023.f32",
+      "tensorSha256": "d5767a8afa0bd583c9f8b1313495dde86995ea72f8cb57b814a405b3262b93b4",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "b151a485b34005fc35698b75ad07f98831ec070c257b31e8f2a3cc1d109cf1fa",
+      "rawLogits": [
+        -3.3508481979370117,
+        -13.154534339904785,
+        2.2478909492492676,
+        -7.702528476715088,
+        -9.435968399047852,
+        -11.207850456237793
+      ],
+      "probabilities": [
+        0.0036886586445183936,
+        2.0378943858395388e-07,
+        0.9962537838419314,
+        4.7528896868775464e-05,
+        8.397196993122336e-06,
+        1.4276302497985099e-06
+      ],
+      "top5": [
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 0.9962537838419314
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.0036886586445183936
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 4.7528896868775464e-05
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 8.397196993122336e-06
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 1.4276302497985099e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "148f167198d83764730de0c63fdedc6865efaeb4b67013c91855a166c35d0db9",
+        "rawLogits": [
+          -3.4575939178466797,
+          -12.945791244506836,
+          2.2828516960144043,
+          -7.436635494232178,
+          -9.365606307983398,
+          -11.134743690490723
+        ],
+        "probabilities": [
+          0.0032028185669332743,
+          2.425830132324336e-07,
+          0.9967268705368042,
+          5.9904097724938765e-05,
+          8.703920684638433e-06,
+          1.4838457218502299e-06
+        ],
+        "top5": [
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 0.9967268705368042
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.0032028185669332743
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 5.9904097724938765e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 8.703920684638433e-06
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 1.4838457218502299e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "024",
+      "image": "images/light_bulb/IMG_20250803_221615_jpg.rf.b08ac1fd862f41b0aff68cc4a9a7add8.jpg",
+      "source": "ml/data/processed/classification/test/light_bulb/IMG_20250803_221615_jpg.rf.b08ac1fd862f41b0aff68cc4a9a7add8.jpg",
+      "trueClass": "light_bulb",
+      "imageSha256": "dc25296908400b7be8021aa054bc7ea89c7521300573269fd8c378edc5914d37",
+      "tensorEntry": "024.f32",
+      "tensorSha256": "956585b731e12fce4d80c77efbb0737e916683f717b5b25534cf79bdcfbcdc7c",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "81b2057fc8dc6477788fcb64df6a8742d0346c1b12df6772cc5683ac4f9f4caa",
+      "rawLogits": [
+        -3.726047992706299,
+        -10.056268692016602,
+        4.148148536682129,
+        -8.143421173095703,
+        -9.461159706115723,
+        -10.664883613586426
+      ],
+      "probabilities": [
+        0.00038028721766597003,
+        6.775351158036772e-07,
+        0.9996128495695906,
+        4.5885020626093354e-06,
+        1.2285260159679276e-06,
+        3.686495490859218e-07
+      ],
+      "top5": [
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 0.9996128495695906
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.00038028721766597003
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 4.5885020626093354e-06
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 1.2285260159679276e-06
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 6.775351158036772e-07
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "ae5872dc60e94de610e6815a3397acc9077d9e2abc826f38d3406451573531ae",
+        "rawLogits": [
+          -3.5314931869506836,
+          -10.018438339233398,
+          3.98458194732666,
+          -8.053494453430176,
+          -9.459074974060059,
+          -10.431772232055664
+        ],
+        "probabilities": [
+          0.0005439636879600585,
+          8.285626904580567e-07,
+          0.9994471669197083,
+          5.9113913266628515e-06,
+          1.449618821425247e-06,
+          5.480457048179233e-07
+        ],
+        "top5": [
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 0.9994471669197083
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.0005439636879600585
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 5.9113913266628515e-06
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 1.449618821425247e-06
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 8.285626904580567e-07
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "025",
+      "image": "images/light_bulb/IMG_20250803_221617_jpg.rf.18ca7c3cad8949d8e4b6178c404d1fae.jpg",
+      "source": "ml/data/processed/classification/test/light_bulb/IMG_20250803_221617_jpg.rf.18ca7c3cad8949d8e4b6178c404d1fae.jpg",
+      "trueClass": "light_bulb",
+      "imageSha256": "7cded0dc993e8ce7d3bf273f290eaf973b37d211f5e91536bd231d228a1fedc6",
+      "tensorEntry": "025.f32",
+      "tensorSha256": "7d51095dbbedf9b2e332974dba2a89941b987ca8bf079f4d2f69d136fa1f75fe",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "2ad044f526917276e24e8667f4d868ee0a0b5dd3a488800feb78a7bfe1372b88",
+      "rawLogits": [
+        -6.029565334320068,
+        -12.863080978393555,
+        1.1477670669555664,
+        -8.04273796081543,
+        -5.621403694152832,
+        -8.67626953125
+      ],
+      "probabilities": [
+        0.0007621253055194987,
+        8.208583983846252e-07,
+        0.9979349635454203,
+        0.00010179269656954544,
+        0.0011462747612194185,
+        5.4022832872919184e-05
+      ],
+      "top5": [
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 0.9979349635454203
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.0011462747612194185
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.0007621253055194987
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.00010179269656954544
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 5.4022832872919184e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "9d2829e7d893346ac3c62a356ecc8c09077084e16f1a9fa2e6ffc944be1d0eee",
+        "rawLogits": [
+          -6.259761810302734,
+          -12.637624740600586,
+          1.1933739185333252,
+          -8.005860328674316,
+          -5.514082431793213,
+          -8.796126365661621
+        ],
+        "probabilities": [
+          0.0005784936947748065,
+          9.827158464759123e-07,
+          0.9980545043945312,
+          0.00010092010779771954,
+          0.0012193906586617231,
+          4.5789882278768346e-05
+        ],
+        "top5": [
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 0.9980545043945312
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.0012193906586617231
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.0005784936947748065
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.00010092010779771954
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 4.5789882278768346e-05
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "026",
+      "image": "images/mobile_phone/IMG_20250803_220037_jpg.rf.a1e1878bef855197a7260cca88694e51.jpg",
+      "source": "ml/data/processed/classification/test/mobile_phone/IMG_20250803_220037_jpg.rf.a1e1878bef855197a7260cca88694e51.jpg",
+      "trueClass": "mobile_phone",
+      "imageSha256": "134dc9a0d3b038b76eaad7be0585f01d43a8590493c9adbb5e3d0105dc3b8286",
+      "tensorEntry": "026.f32",
+      "tensorSha256": "91793cb750d4e1ce8d81deacb20e7dfaa983b352a1975ea613cd6b9e067fdd88",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "1bb4b9b417a1a01b99232aa1389c2cf2d07dfae2a4d739636dbf6c705f875b95",
+      "rawLogits": [
+        -4.313920974731445,
+        -5.147329807281494,
+        -6.7432146072387695,
+        4.25930643081665,
+        -5.775540828704834,
+        -6.249351501464844
+      ],
+      "probabilities": [
+        0.0001890334785909129,
+        8.21474088443175e-05,
+        1.665366816325833e-05,
+        0.9996410467976183,
+        4.3829376144461895e-05,
+        2.7289270638677646e-05
+      ],
+      "top5": [
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.9996410467976183
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.0001890334785909129
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 8.21474088443175e-05
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 4.3829376144461895e-05
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 2.7289270638677646e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "a82fc88bf8052706e76f1fc02127857607e9e0c63a706df5f7f2156f51ae86e4",
+        "rawLogits": [
+          -4.437106132507324,
+          -5.114446640014648,
+          -6.7242631912231445,
+          4.368895053863525,
+          -5.738583087921143,
+          -6.332526206970215
+        ],
+        "probabilities": [
+          0.0001497855264460668,
+          7.608604937558994e-05,
+          1.5211434401862789e-05,
+          0.9996956586837769,
+          4.076109325978905e-05,
+          2.2506055756821297e-05
+        ],
+        "top5": [
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.9996956586837769
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.0001497855264460668
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 7.608604937558994e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 4.076109325978905e-05
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 2.2506055756821297e-05
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "027",
+      "image": "images/mobile_phone/IMG_20250803_220053_jpg.rf.143f84f401009a4e0c09c5b7c33c1ea3.jpg",
+      "source": "ml/data/processed/classification/test/mobile_phone/IMG_20250803_220053_jpg.rf.143f84f401009a4e0c09c5b7c33c1ea3.jpg",
+      "trueClass": "mobile_phone",
+      "imageSha256": "da09aa15eb1b2917b1e59d477040dac3f6784a25d0711af58887913cbdee1eae",
+      "tensorEntry": "027.f32",
+      "tensorSha256": "686d2e9dee8512145766f75692ff15b627f5be6b239a28a42c4739d6891f74b2",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "ee1b3047aeeafad4e0e0be72780060475e86c0b1dd6ecabc7f7b5823c6ec59d8",
+      "rawLogits": [
+        -3.5299766063690186,
+        -4.032918453216553,
+        -7.249275207519531,
+        2.8537328243255615,
+        -4.000824451446533,
+        -2.6634950637817383
+      ],
+      "probabilities": [
+        0.0016757378063617682,
+        0.0010134006980264882,
+        4.063826975896223e-05,
+        0.9922379826700648,
+        0.0010464523243482494,
+        0.003985788231439666
+      ],
+      "top5": [
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.9922379826700648
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.003985788231439666
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.0016757378063617682
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.0010464523243482494
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.0010134006980264882
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "145dd766297879571bbc13801d15f19855aaeb23ad9f6a3826de35776facd51c",
+        "rawLogits": [
+          -3.651132106781006,
+          -4.040250778198242,
+          -7.315281867980957,
+          2.816086769104004,
+          -3.8813319206237793,
+          -2.634031295776367
+        ],
+        "probabilities": [
+          0.0015409416519105434,
+          0.0010442250641062856,
+          3.948809171561152e-05,
+          0.9918903112411499,
+          0.0012240852229297161,
+          0.0042609600350260735
+        ],
+        "top5": [
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.9918903112411499
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.0042609600350260735
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.0015409416519105434
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.0012240852229297161
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.0010442250641062856
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "028",
+      "image": "images/mobile_phone/IMG_20250803_220149_jpg.rf.ea36148ba2419eaf41dc5822d2e5d88a.jpg",
+      "source": "ml/data/processed/classification/test/mobile_phone/IMG_20250803_220149_jpg.rf.ea36148ba2419eaf41dc5822d2e5d88a.jpg",
+      "trueClass": "mobile_phone",
+      "imageSha256": "45ea5fe1987a16a6d118391cae9993277ed983e8e73c60eb4aad22cc968b0dc8",
+      "tensorEntry": "028.f32",
+      "tensorSha256": "6fb9a702b6ca45d2eb1be7a3c3e360faa1a1db0dd6d8ed9c7f8652ec840f8043",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "c4d74843ab564f9f37c5f8756844f9af2ab3d787c046f9cc56ebd5712c79eee3",
+      "rawLogits": [
+        -2.7099242210388184,
+        -4.688351631164551,
+        -6.204766750335693,
+        5.358140468597412,
+        -4.927778720855713,
+        -5.026841163635254
+      ],
+      "probabilities": [
+        0.00031325411153694483,
+        4.331882547421003e-05,
+        9.50836739918884e-06,
+        0.9995689437106876,
+        3.409532299429865e-05,
+        3.0879661907670107e-05
+      ],
+      "top5": [
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.9995689437106876
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.00031325411153694483
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 4.331882547421003e-05
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 3.409532299429865e-05
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 3.0879661907670107e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "2accc3f3327d13ada66e641308ead9d79eec5a358a622411d5176120be2c7284",
+        "rawLogits": [
+          -2.8154959678649902,
+          -4.564277648925781,
+          -6.293675422668457,
+          5.507814884185791,
+          -4.789669990539551,
+          -5.036370277404785
+        ],
+        "probabilities": [
+          0.00024270510766655207,
+          4.222726056468673e-05,
+          7.4907366069965065e-06,
+          0.9996474981307983,
+          3.3705891837598756e-05,
+          2.633693475218024e-05
+        ],
+        "top5": [
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.9996474981307983
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.00024270510766655207
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 4.222726056468673e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 3.3705891837598756e-05
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 2.633693475218024e-05
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "029",
+      "image": "images/mobile_phone/IMG_20250803_220204_jpg.rf.bc112e5f5fe9cdef5d8d26d4e5954183.jpg",
+      "source": "ml/data/processed/classification/test/mobile_phone/IMG_20250803_220204_jpg.rf.bc112e5f5fe9cdef5d8d26d4e5954183.jpg",
+      "trueClass": "mobile_phone",
+      "imageSha256": "9f2141a0b93ac6a5398f98b1275b239a06aa3d8b68700b3f5ff2bb134e514670",
+      "tensorEntry": "029.f32",
+      "tensorSha256": "22087a657efe62e2826ea91353d23cdc2669b4ade7885d7ac55faf1e78938de5",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "501f5a43e8f01ed463a53227c96ae1f613894a419f222515bc8414c5dcbbe0c5",
+      "rawLogits": [
+        -5.092723369598389,
+        -3.6607236862182617,
+        -8.347914695739746,
+        1.6765656471252441,
+        -4.999917984008789,
+        -4.9000563621521
+      ],
+      "probabilities": [
+        0.001138656489159297,
+        0.004767627170057837,
+        4.3921897594307124e-05,
+        0.9914198086311002,
+        0.0012493887537496624,
+        0.0013805970583385123
+      ],
+      "top5": [
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.9914198086311002
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.004767627170057837
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.0013805970583385123
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.0012493887537496624
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.001138656489159297
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "15e6d8861022bf28e399742a553efb0b8c2d5f14286e565261bd902639dcad35",
+        "rawLogits": [
+          -5.136437892913818,
+          -4.04233980178833,
+          -8.25568675994873,
+          1.8233556747436523,
+          -5.078667640686035,
+          -4.796149730682373
+        ],
+        "probabilities": [
+          0.0009434749954380095,
+          0.0028176766354590654,
+          4.169248859398067e-05,
+          0.9938716888427734,
+          0.0009995849104598165,
+          0.0013259148690849543
+        ],
+        "top5": [
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.9938716888427734
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.0028176766354590654
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.0013259148690849543
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.0009995849104598165
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.0009434749954380095
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "030",
+      "image": "images/mobile_phone/IMG_20250803_220206_jpg.rf.de998e9b904dcfe77468124a9e729352.jpg",
+      "source": "ml/data/processed/classification/test/mobile_phone/IMG_20250803_220206_jpg.rf.de998e9b904dcfe77468124a9e729352.jpg",
+      "trueClass": "mobile_phone",
+      "imageSha256": "5d3cdb87393b85b2a1b02b5e439b646c1c27af7a42ecbffefebc69eecee2ecde",
+      "tensorEntry": "030.f32",
+      "tensorSha256": "3ecdda9672584aa824a9c60c03245ba88496935d4f979eac69361a905adb181a",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "7e705d5f6e3de2e1eafe0ba92b0cc5fe8335b7371ee57c62f08c180ef6ae655c",
+      "rawLogits": [
+        -3.4819188117980957,
+        -6.785708427429199,
+        -6.902396202087402,
+        1.9301337003707886,
+        -5.519295692443848,
+        -7.84537410736084
+      ],
+      "probabilities": [
+        0.004438455278751559,
+        0.0001630850867268913,
+        0.000145123382502802,
+        0.9946181731058481,
+        0.0005786424774603398,
+        5.652066871023674e-05
+      ],
+      "top5": [
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.9946181731058481
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.004438455278751559
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.0005786424774603398
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.0001630850867268913
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 0.000145123382502802
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "cb7849e9c935b5e330dca233079d96538b5495cf459d99a781808b7af417b0cb",
+        "rawLogits": [
+          -3.376762866973877,
+          -6.829054355621338,
+          -6.882189750671387,
+          1.8565839529037476,
+          -5.44361686706543,
+          -7.678540229797363
+        ],
+        "probabilities": [
+          0.005301640368998051,
+          0.00016791872621979564,
+          0.00015922928287182003,
+          0.9936283230781555,
+          0.0006710995803587139,
+          7.180790998972952e-05
+        ],
+        "top5": [
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.9936283230781555
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.005301640368998051
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.0006710995803587139
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.00016791872621979564
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 0.00015922928287182003
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "031",
+      "image": "images/mobile_phone/IMG_20250803_220207_jpg.rf.0f17df4cec5b7117887884be5ea29430.jpg",
+      "source": "ml/data/processed/classification/test/mobile_phone/IMG_20250803_220207_jpg.rf.0f17df4cec5b7117887884be5ea29430.jpg",
+      "trueClass": "mobile_phone",
+      "imageSha256": "d017b90375afbb0d01e1786513ae71dbdc1fae22c7642fd74ebe865e39637835",
+      "tensorEntry": "031.f32",
+      "tensorSha256": "6d78380fec0aa0575f1e394512d8b257107733ddd55287e14e413098ac54825f",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "0ed9a72c5839e4fce59c3be03c462bf829c0969bdf8714dc56780b2cbd43154a",
+      "rawLogits": [
+        -1.7151367664337158,
+        -6.7070159912109375,
+        -7.784318447113037,
+        1.1752467155456543,
+        -6.4059295654296875,
+        -6.187968730926514
+      ],
+      "probabilities": [
+        0.05254885229511919,
+        0.0003569584223688048,
+        0.00012154892481964758,
+        0.945890430945253,
+        0.00048236724200969287,
+        0.0005998421704296404
+      ],
+      "top5": [
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.945890430945253
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.05254885229511919
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.0005998421704296404
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.00048236724200969287
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.0003569584223688048
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "3b0709b3afa81b2c5683d19ac69f2627eec6c47aac2003a7f86db65be074a859",
+        "rawLogits": [
+          -1.651552677154541,
+          -6.8444952964782715,
+          -7.6913909912109375,
+          1.364912748336792,
+          -6.406336784362793,
+          -6.402608394622803
+        ],
+        "probabilities": [
+          0.04663269221782684,
+          0.00025907426606863737,
+          0.00011107644240837544,
+          0.9521925449371338,
+          0.0004015261947643012,
+          0.0004030262352898717
+        ],
+        "top5": [
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.9521925449371338
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.04663269221782684
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.0004030262352898717
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.0004015261947643012
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.00025907426606863737
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "032",
+      "image": "images/mobile_phone/IMG_20250803_220226_jpg.rf.b4392a8eca529f4ed6fed45e99eeeb5e.jpg",
+      "source": "ml/data/processed/classification/test/mobile_phone/IMG_20250803_220226_jpg.rf.b4392a8eca529f4ed6fed45e99eeeb5e.jpg",
+      "trueClass": "mobile_phone",
+      "imageSha256": "85e3831d68cf17926e796b6f87606ba64eecd8bca61c4f6b59526242ef9d22e9",
+      "tensorEntry": "032.f32",
+      "tensorSha256": "4cd7842b921d1de319c0fb1d805993f0f478722e5b79a5315c66120b9209b8d8",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "61d707f71bfd3dc71b9fa9154327d8380d8ad31ee25c5aefadfaa65c9267564c",
+      "rawLogits": [
+        -5.583432197570801,
+        -8.640667915344238,
+        -4.108991622924805,
+        3.5434138774871826,
+        -5.462794780731201,
+        -7.063502311706543
+      ],
+      "probabilities": [
+        0.00010862793947714751,
+        5.107412552767072e-06,
+        0.0004745510592291362,
+        0.9992644317554495,
+        0.0001225557539634787,
+        2.4726079328014176e-05
+      ],
+      "top5": [
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.9992644317554495
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 0.0004745510592291362
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.0001225557539634787
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.00010862793947714751
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 2.4726079328014176e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "6dce87c21e7f27ac27045511ef8db656a9fc3eb085af7f5388ec3e913c8ee4ff",
+        "rawLogits": [
+          -5.645799160003662,
+          -8.638212203979492,
+          -4.078622817993164,
+          3.6295065879821777,
+          -5.614206790924072,
+          -7.177355766296387
+        ],
+        "probabilities": [
+          9.364775905851275e-05,
+          4.697953045251779e-06,
+          0.000448862585471943,
+          0.9993358254432678,
+          9.665352990850806e-05,
+          2.0246547137503512e-05
+        ],
+        "top5": [
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.9993358254432678
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 0.000448862585471943
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 9.665352990850806e-05
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 9.364775905851275e-05
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 2.0246547137503512e-05
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "033",
+      "image": "images/mobile_phone/IMG_20250803_220352_jpg.rf.8d5cd74618268102d6ee8e431e2dc659.jpg",
+      "source": "ml/data/processed/classification/test/mobile_phone/IMG_20250803_220352_jpg.rf.8d5cd74618268102d6ee8e431e2dc659.jpg",
+      "trueClass": "mobile_phone",
+      "imageSha256": "b6464c47c63d89e4c773b1bdae49a3f81feace5ee316b63d953e9762fab18b0b",
+      "tensorEntry": "033.f32",
+      "tensorSha256": "bf8c28053fbca4a3f650908c7172e6632e98625657ca845360e747527944836a",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "5bc7327c763e61efb6a3fa7ebb42cdb08193bfe12ede4f2638401c90e7ba4c0b",
+      "rawLogits": [
+        -5.787628173828125,
+        -4.316310405731201,
+        -6.943120956420898,
+        5.718195915222168,
+        -4.485641002655029,
+        -3.942087411880493
+      ],
+      "probabilities": [
+        1.0069676530871652e-05,
+        4.385314123862579e-05,
+        3.1709645040473023e-06,
+        0.9998421277052819,
+        3.702212679285628e-05,
+        6.375638565145226e-05
+      ],
+      "top5": [
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.9998421277052819
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 6.375638565145226e-05
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 4.385314123862579e-05
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 3.702212679285628e-05
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 1.0069676530871652e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "4fbf9aa78bb237b87a6b348ed1ee842b97616dd5c7fe25159ac26929e94928f2",
+        "rawLogits": [
+          -5.781428337097168,
+          -4.077891826629639,
+          -6.955352783203125,
+          5.735648155212402,
+          -4.331244945526123,
+          -3.875371217727661
+        ],
+        "probabilities": [
+          9.956812391465064e-06,
+          5.4696185543434694e-05,
+          3.0781616260355804e-06,
+          0.9998229146003723,
+          4.245483432896435e-05,
+          6.69746586936526e-05
+        ],
+        "top5": [
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.9998229146003723
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 6.69746586936526e-05
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 5.4696185543434694e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 4.245483432896435e-05
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 9.956812391465064e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "034",
+      "image": "images/mobile_phone/IMG_20250805_203338_1_jpg.rf.bf2025683e05750526dc29fc829b8ac5.jpg",
+      "source": "ml/data/processed/classification/test/mobile_phone/IMG_20250805_203338_1_jpg.rf.bf2025683e05750526dc29fc829b8ac5.jpg",
+      "trueClass": "mobile_phone",
+      "imageSha256": "c9be20972a6dede5b730e8ba84f60cf302a4627f0dd5e5b04a3342b35e3f3703",
+      "tensorEntry": "034.f32",
+      "tensorSha256": "ef392b15eed8bfa3b8b7cbc966c65ffaca7f137bf4d9a913b13b346a0dffd24e",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "acbbee87b82a41dc66ccf5b105ad31ed0f9999a41b943f2e020387c445192fc9",
+      "rawLogits": [
+        -2.730809211730957,
+        -4.61570930480957,
+        -9.977630615234375,
+        5.089207649230957,
+        -8.705747604370117,
+        -5.001121520996094
+      ],
+      "probabilities": [
+        0.00040141204412234534,
+        6.095210233545386e-05,
+        2.859801253660706e-07,
+        0.9994948718173043,
+        1.0202524009127768e-06,
+        4.145780371163475e-05
+      ],
+      "top5": [
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.9994948718173043
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.00040141204412234534
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 6.095210233545386e-05
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 4.145780371163475e-05
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 1.0202524009127768e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "1581ef45bf6eaf26a59db33ae207d150305c3fb42b643c166aa534c56cdc3f4e",
+        "rawLogits": [
+          -2.645359516143799,
+          -4.583437919616699,
+          -9.930793762207031,
+          4.924528121948242,
+          -8.730334281921387,
+          -5.124438285827637
+        ],
+        "probabilities": [
+          0.0005154233076609671,
+          7.421083137160167e-05,
+          3.532971675213048e-07,
+          0.9993657469749451,
+          1.1735269254131708e-06,
+          4.320298830862157e-05
+        ],
+        "top5": [
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.9993657469749451
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.0005154233076609671
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 7.421083137160167e-05
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 4.320298830862157e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 1.1735269254131708e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "035",
+      "image": "images/mobile_phone/IMG_20250805_203852_jpg.rf.14242e22d41ed3ca487f99b193502f87.jpg",
+      "source": "ml/data/processed/classification/test/mobile_phone/IMG_20250805_203852_jpg.rf.14242e22d41ed3ca487f99b193502f87.jpg",
+      "trueClass": "mobile_phone",
+      "imageSha256": "9758e4bb03525aa08b4ad3f6b439500f2e7b10a0017a0157c17c43304a9cc4ea",
+      "tensorEntry": "035.f32",
+      "tensorSha256": "5ac6dee8aa3c5dbf873262b2880921caa6ed7d2686e3875fb835e1ec71649db0",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "81b63b4007b0cbad4f93dfda1f323454ef0b676b32c31f01a3af795bf861cd91",
+      "rawLogits": [
+        -2.9681475162506104,
+        -9.342321395874023,
+        -4.778235912322998,
+        2.932467222213745,
+        -6.005002021789551,
+        -5.787744045257568
+      ],
+      "probabilities": [
+        0.002728253164388027,
+        4.651747415225563e-06,
+        0.0004464504503865353,
+        0.9965270420704168,
+        0.00013091683984936466,
+        0.00016268572754411133
+      ],
+      "top5": [
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.9965270420704168
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.002728253164388027
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 0.0004464504503865353
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.00016268572754411133
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.00013091683984936466
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "490e0cd8045326307dfe3044f8726598a106bd5cc0e1068c9c1ed6436f755b36",
+        "rawLogits": [
+          -3.0180234909057617,
+          -9.415708541870117,
+          -4.578351020812988,
+          2.962463140487671,
+          -6.020726680755615,
+          -5.7323408126831055
+        ],
+        "probabilities": [
+          0.0025191421154886484,
+          4.195399924356025e-06,
+          0.0005291893030516803,
+          0.9966555833816528,
+          0.000125082180602476,
+          0.00016689358744770288
+        ],
+        "top5": [
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.9966555833816528
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.0025191421154886484
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 0.0005291893030516803
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.00016689358744770288
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.000125082180602476
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "036",
+      "image": "images/mobile_phone/IMG_20250805_203903_jpg.rf.8f402e3b8d9da9885fbbcabec1f42576.jpg",
+      "source": "ml/data/processed/classification/test/mobile_phone/IMG_20250805_203903_jpg.rf.8f402e3b8d9da9885fbbcabec1f42576.jpg",
+      "trueClass": "mobile_phone",
+      "imageSha256": "1bf7c2e0755d8733c8550dd09ca653b409f60b56b0a2cf417c5456b2e8722c15",
+      "tensorEntry": "036.f32",
+      "tensorSha256": "cf122ad273f477100b45c40e4e36f3bdfef8f45cc0544be77107ca50ea31250c",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "83886eeaa9f5823fb1a3aa3bea40a8f5d018962398a88c02fff897c037f09a8e",
+      "rawLogits": [
+        -3.881697654724121,
+        -8.571599006652832,
+        -5.041916847229004,
+        5.92131233215332,
+        -6.208626747131348,
+        -5.671459197998047
+      ],
+      "probabilities": [
+        5.528009105811327e-05,
+        5.078909472307089e-07,
+        1.7325746534627472e-05,
+        0.9999122594368849,
+        5.395060076664318e-06,
+        9.231774498548911e-06
+      ],
+      "top5": [
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.9999122594368849
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 5.528009105811327e-05
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 1.7325746534627472e-05
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 9.231774498548911e-06
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 5.395060076664318e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "68280fac1b15da0c2c3462fe7dc2b826f2901c487c560630cac072db02e134e0",
+        "rawLogits": [
+          -3.9894611835479736,
+          -8.643834114074707,
+          -4.990877151489258,
+          5.813372611999512,
+          -6.202353477478027,
+          -5.625483512878418
+        ],
+        "probabilities": [
+          5.5289565352723e-05,
+          5.263499360808055e-07,
+          2.0311108528403565e-05,
+          0.9999071359634399,
+          6.047781880624825e-06,
+          1.0767814274004195e-05
+        ],
+        "top5": [
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.9999071359634399
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 5.5289565352723e-05
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 2.0311108528403565e-05
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 1.0767814274004195e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 6.047781880624825e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "037",
+      "image": "images/mobile_phone/IMG_20250805_203908_jpg.rf.4c4645aca4c09485234d7bb650187ba9.jpg",
+      "source": "ml/data/processed/classification/test/mobile_phone/IMG_20250805_203908_jpg.rf.4c4645aca4c09485234d7bb650187ba9.jpg",
+      "trueClass": "mobile_phone",
+      "imageSha256": "e75ba241b20803e1a6974f476e458aeecc1a5311edc968c89f687a9aa55e5eb9",
+      "tensorEntry": "037.f32",
+      "tensorSha256": "d577430b4b83147d16e45eb5b954a071866683da4d494823af6c2c1d9f963ff2",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "397fa38cab00728e59453cb16bb786f167acde7605f47f930da08e93cd619ac5",
+      "rawLogits": [
+        -8.210892677307129,
+        -8.221549034118652,
+        -6.207333564758301,
+        7.740833759307861,
+        -2.765371799468994,
+        -9.73287582397461
+      ],
+      "probabilities": [
+        1.1809754058606944e-07,
+        1.1684573275650407e-07,
+        8.757406720992143e-07,
+        0.9999714982184741,
+        2.7365319417194923e-05,
+        2.5778163342650645e-08
+      ],
+      "top5": [
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.9999714982184741
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 2.7365319417194923e-05
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 8.757406720992143e-07
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 1.1809754058606944e-07
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 1.1684573275650407e-07
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "c85c7d2d81ebb29d92872f1912d393b895eb0f2485016e0996138954a4ccd9df",
+        "rawLogits": [
+          -7.981423377990723,
+          -8.128908157348633,
+          -6.103204727172852,
+          7.6820855140686035,
+          -2.7781295776367188,
+          -9.573657989501953
+        ],
+        "probabilities": [
+          1.575474186665815e-07,
+          1.3594394943083898e-07,
+          1.0306512194802053e-06,
+          0.9999699592590332,
+          2.865322312572971e-05,
+          3.2056270526936714e-08
+        ],
+        "top5": [
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.9999699592590332
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 2.865322312572971e-05
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 1.0306512194802053e-06
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 1.575474186665815e-07
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 1.3594394943083898e-07
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "038",
+      "image": "images/mouse/IMG_20250803_215915_jpg.rf.1c08cb4ae20dd1839fb94bb0705366f4.jpg",
+      "source": "ml/data/processed/classification/test/mouse/IMG_20250803_215915_jpg.rf.1c08cb4ae20dd1839fb94bb0705366f4.jpg",
+      "trueClass": "mouse",
+      "imageSha256": "ed7939100029b140a85b3125fe35f340c11ec707229c802b9cdbbb0b838a4185",
+      "tensorEntry": "038.f32",
+      "tensorSha256": "f648db6b0a95781b740d3112686ced0c0835ac0fc997157d73580a318f789964",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "fc741cdfc510fc6a2c3febb991b06975ab6fd07dcfc0a8e706cf34b6f69ac9db",
+      "rawLogits": [
+        -8.652283668518066,
+        -5.954414367675781,
+        -6.65208625793457,
+        -0.15139752626419067,
+        2.3871054649353027,
+        -9.743589401245117
+      ],
+      "probabilities": [
+        1.4876016740509216e-05,
+        0.00022088000764671287,
+        0.0001099414236827344,
+        0.07317700005321681,
+        0.926472307462966,
+        4.995035747201827e-06
+      ],
+      "top5": [
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.926472307462966
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.07317700005321681
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.00022088000764671287
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 0.0001099414236827344
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 1.4876016740509216e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "e87e89e34acfcb3ffedc64c93d9f6aaa770e44f7e360b2fced51e79e4c4c0c37",
+        "rawLogits": [
+          -8.76645278930664,
+          -5.81471586227417,
+          -6.643509864807129,
+          -0.06136101484298706,
+          2.461782455444336,
+          -9.879293441772461
+        ],
+        "probabilities": [
+          1.2302074537728913e-05,
+          0.00023545135627500713,
+          0.00010279234265908599,
+          0.07422524690628052,
+          0.9254201650619507,
+          4.042758519062772e-06
+        ],
+        "top5": [
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.9254201650619507
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.07422524690628052
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.00023545135627500713
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 0.00010279234265908599
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 1.2302074537728913e-05
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "039",
+      "image": "images/mouse/IMG_20250805_204856_jpg.rf.12965a47deed1f631b0ae71724ee2c79.jpg",
+      "source": "ml/data/processed/classification/test/mouse/IMG_20250805_204856_jpg.rf.12965a47deed1f631b0ae71724ee2c79.jpg",
+      "trueClass": "mouse",
+      "imageSha256": "95b0bd31c85e2e7b93c5ad2b90cfcc94489b744fd9b0f5d11cbd7d5720e43117",
+      "tensorEntry": "039.f32",
+      "tensorSha256": "5e77ec285b89951b6d000081c6e3ef11f7ec92e9e25048abed8f7be9c0f6272b",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "17318d104baaf2581d44560d0c7d8d20e603884bc7c5c265c225ac89fa0cab0a",
+      "rawLogits": [
+        -6.844015121459961,
+        -4.734100341796875,
+        -7.169421195983887,
+        -7.033959865570068,
+        3.8126273155212402,
+        -6.124177932739258
+      ],
+      "probabilities": [
+        2.3536810658197426e-05,
+        0.00019412074963877707,
+        1.699908522086895e-05,
+        1.94650560869728e-05,
+        0.9996975313649732,
+        4.834693342194406e-05
+      ],
+      "top5": [
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.9996975313649732
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.00019412074963877707
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 4.834693342194406e-05
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 2.3536810658197426e-05
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 1.94650560869728e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "048105a73745a90ad4e63f06adb2bba941d88278fb6b9ca5ad559285966aabfd",
+        "rawLogits": [
+          -6.883945941925049,
+          -4.765165328979492,
+          -7.103379249572754,
+          -7.040262222290039,
+          3.8578219413757324,
+          -6.224063873291016
+        ],
+        "probabilities": [
+          2.1616642698063515e-05,
+          0.0001798716839402914,
+          1.7357604519929737e-05,
+          1.8488459318177775e-05,
+          0.9997208714485168,
+          4.181876283837482e-05
+        ],
+        "top5": [
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.9997208714485168
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.0001798716839402914
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 4.181876283837482e-05
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 2.1616642698063515e-05
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 1.8488459318177775e-05
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "040",
+      "image": "images/mouse/IMG_20250822_140348_jpg.rf.0d4ffab7cac89217083f61c6a314e3a1.jpg",
+      "source": "ml/data/processed/classification/test/mouse/IMG_20250822_140348_jpg.rf.0d4ffab7cac89217083f61c6a314e3a1.jpg",
+      "trueClass": "mouse",
+      "imageSha256": "d6f06093500330d9b4b0ff828f6d53313fe14ebec669d5651bbdcf3df18e713c",
+      "tensorEntry": "040.f32",
+      "tensorSha256": "d46b8bb221302f3421c82ebb4d8c4a257c1949dd2816defc913234267a617a2b",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "9bf091ee03e387221fba03fc8f205c5294e0e8863491d59b91f8552fe2f8d114",
+      "rawLogits": [
+        -6.417191505432129,
+        -8.851542472839355,
+        -7.892819404602051,
+        -8.53184700012207,
+        1.8832200765609741,
+        -5.261291980743408
+      ],
+      "probabilities": [
+        0.00024813016966628905,
+        2.174975555768243e-05,
+        5.673127165368676e-05,
+        2.9943072374983988e-05,
+        0.9988551660033759,
+        0.0007882797273717215
+      ],
+      "top5": [
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.9988551660033759
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.0007882797273717215
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.00024813016966628905
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 5.673127165368676e-05
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 2.9943072374983988e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "a9f3b0e59adac1f4dcb7c9a24b9fc57cfb00ffdd896ef53f00882260ac29bf94",
+        "rawLogits": [
+          -6.2655863761901855,
+          -8.875997543334961,
+          -7.902062892913818,
+          -8.459687232971191,
+          1.8680611848831177,
+          -5.202353477478027
+        ],
+        "probabilities": [
+          0.0002931277849711478,
+          2.154616595362313e-05,
+          5.7061639381572604e-05,
+          3.267166903242469e-05,
+          0.9987467527389526,
+          0.0008488156599923968
+        ],
+        "top5": [
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.9987467527389526
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.0008488156599923968
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.0002931277849711478
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 5.7061639381572604e-05
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 3.267166903242469e-05
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "041",
+      "image": "images/mouse/IMG_20250822_140412_jpg.rf.4ee51e53754b9b6942d000b4469de550.jpg",
+      "source": "ml/data/processed/classification/test/mouse/IMG_20250822_140412_jpg.rf.4ee51e53754b9b6942d000b4469de550.jpg",
+      "trueClass": "mouse",
+      "imageSha256": "d3f2f53641701babb63bd40c411a9f2710fe04893a49cfe05159ff64be6e64f9",
+      "tensorEntry": "041.f32",
+      "tensorSha256": "334652dee282e660f771bb4d6c94957884b6daa60c68136fe0c2624d31677b91",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "fb5a83fa707a7f81eadc1f322c9f8b204eaf2acd8876d9a2cfa6fdaa9d9f043e",
+      "rawLogits": [
+        -8.073497772216797,
+        -3.4389421939849854,
+        -7.820101737976074,
+        -5.37054443359375,
+        3.591803550720215,
+        -4.189741134643555
+      ],
+      "probabilities": [
+        8.574227064263877e-06,
+        0.0008829922546572107,
+        1.1046977763092143e-05,
+        0.00012795954884617969,
+        0.9985526640861166,
+        0.0004167629055526153
+      ],
+      "top5": [
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.9985526640861166
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.0008829922546572107
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.0004167629055526153
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.00012795954884617969
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 1.1046977763092143e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "c4fc36fc997ef593d5997a3c501bf8f37ff5541ca44dd8a8f3fd63a03a090c63",
+        "rawLogits": [
+          -8.003838539123535,
+          -3.482600688934326,
+          -7.841059684753418,
+          -5.4703168869018555,
+          3.5336685180664062,
+          -4.133573532104492
+        ],
+        "probabilities": [
+          9.74247814156115e-06,
+          0.0008958144462667406,
+          1.1464718227216508e-05,
+          0.00012273371976334602,
+          0.9984930753707886,
+          0.0004672014038078487
+        ],
+        "top5": [
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.9984930753707886
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.0008958144462667406
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.0004672014038078487
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.00012273371976334602
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 1.1464718227216508e-05
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "042",
+      "image": "images/mouse/IMG_20250822_140413_jpg.rf.73cf4af821a990defde96ed1db5c0d92.jpg",
+      "source": "ml/data/processed/classification/test/mouse/IMG_20250822_140413_jpg.rf.73cf4af821a990defde96ed1db5c0d92.jpg",
+      "trueClass": "mouse",
+      "imageSha256": "d11e4a3c2c9872d49634ff8a24532dd649fe5fee576fbce63bc0ee3bc85ae889",
+      "tensorEntry": "042.f32",
+      "tensorSha256": "0065b9a7e2958aa7fe0e07a1b1cb9b847c0c8f8c135795bb645cdc8de0aa4576",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "ac0eb2042c42debea07395394bfcf717c55e1d5cf88cc9f2fd64bd37b300a09f",
+      "rawLogits": [
+        -7.87318229675293,
+        -4.836790561676025,
+        -7.858049392700195,
+        -5.1889472007751465,
+        3.890084743499756,
+        -5.903903007507324
+      ],
+      "probabilities": [
+        7.782642258148455e-06,
+        0.00016211202968263255,
+        7.901311880068388e-06,
+        0.00011399231095761918,
+        0.9996524451014416,
+        5.5766603779901673e-05
+      ],
+      "top5": [
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.9996524451014416
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.00016211202968263255
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.00011399231095761918
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 5.5766603779901673e-05
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 7.901311880068388e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "63cab44d0d3dba6a558b983fa5502db76fcf8b7f67e492ba60bc5d0a4051fe69",
+        "rawLogits": [
+          -7.977574348449707,
+          -4.8522868156433105,
+          -7.796596527099609,
+          -5.1197590827941895,
+          3.9259562492370605,
+          -5.868040084838867
+        ],
+        "probabilities": [
+          6.764159024896799e-06,
+          0.0001539957447675988,
+          8.106082532322034e-06,
+          0.00011785472452174872,
+          0.9996575117111206,
+          5.5766380683053285e-05
+        ],
+        "top5": [
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.9996575117111206
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.0001539957447675988
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.00011785472452174872
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 5.5766380683053285e-05
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 8.106082532322034e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "043",
+      "image": "images/mouse/IMG_20250822_140430_jpg.rf.122afd8993d44c452a4724a71eac2411.jpg",
+      "source": "ml/data/processed/classification/test/mouse/IMG_20250822_140430_jpg.rf.122afd8993d44c452a4724a71eac2411.jpg",
+      "trueClass": "mouse",
+      "imageSha256": "6cf91f9092929f1f0cb03f7b09b427b1db598ee4395303a0676e3fae5a7a332e",
+      "tensorEntry": "043.f32",
+      "tensorSha256": "ef0c082ed82ccac43f2139ec7c35866a6bc0da7fb39a14a3057233ab09596042",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "baf92d1b9fef0423b719ec83dd2343a806f97ac0150b88c8b8df832dd7d89a7a",
+      "rawLogits": [
+        -11.91603946685791,
+        -9.126487731933594,
+        -9.340839385986328,
+        -6.942488670349121,
+        1.6721888780593872,
+        -6.52324914932251
+      ],
+      "probabilities": [
+        1.2545624117002453e-06,
+        2.0416401456168705e-05,
+        1.6477353396593366e-05,
+        0.000181333455582334,
+        0.9995047454781503,
+        0.00027577274900293463
+      ],
+      "top5": [
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.9995047454781503
+        },
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.00027577274900293463
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.000181333455582334
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 2.0416401456168705e-05
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 1.6477353396593366e-05
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "f455eede3e141796129382b8c745fae16ba1c4ad6404c582d58fd791fefe7a1b",
+        "rawLogits": [
+          -11.996025085449219,
+          -9.06045913696289,
+          -9.41752815246582,
+          -7.265495777130127,
+          1.7532057762145996,
+          -6.50238037109375
+        ],
+        "probabilities": [
+          1.0680805644369684e-06,
+          2.011426113313064e-05,
+          1.4074435966904275e-05,
+          0.00012107291695429012,
+          0.9995840191841125,
+          0.00025969502166844904
+        ],
+        "top5": [
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.9995840191841125
+          },
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.00025969502166844904
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.00012107291695429012
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 2.011426113313064e-05
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 1.4074435966904275e-05
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "044",
+      "image": "images/pcb/IMG_20250819_235853_1_jpg.rf.ae6094b2a084ddac00441c8cf74ac624.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250819_235853_1_jpg.rf.ae6094b2a084ddac00441c8cf74ac624.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "d99ddddc948cb18407846a6ea07de63604cb1b5ff0d8d069b3c0ff913d5e65cb",
+      "tensorEntry": "044.f32",
+      "tensorSha256": "3d4e9caf2953a14213aec2b9a383e6fb3c4a508ebc8e354ecbfdfcfecca171ea",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "9472e084aff4032f48cc06cab2b8f6f66a3b5805c2713330baa27db1dc7fcc3a",
+      "rawLogits": [
+        -2.8654513359069824,
+        -4.640093803405762,
+        -7.709414482116699,
+        -3.1011297702789307,
+        -7.625400066375732,
+        4.9760565757751465
+      ],
+      "probabilities": [
+        0.0003927707945576358,
+        6.65919536563272e-05,
+        3.093376075562459e-06,
+        0.00031030254941942894,
+        3.364493700518764e-06,
+        0.9992238768325905
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.9992238768325905
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.0003927707945576358
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.00031030254941942894
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 6.65919536563272e-05
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 3.364493700518764e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "11baeadf6900ba388766f3fb855232ae134d3934351182503ca8533491f7b38c",
+        "rawLogits": [
+          -2.85036301612854,
+          -4.679626941680908,
+          -7.66642951965332,
+          -3.0841829776763916,
+          -7.6311492919921875,
+          5.036513328552246
+        ],
+        "probabilities": [
+          0.0003753636556211859,
+          6.0257716540945694e-05,
+          3.0399121442314936e-06,
+          0.0002971019421238452,
+          3.149075155306491e-06,
+          0.9992610812187195
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.9992610812187195
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.0003753636556211859
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.0002971019421238452
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 6.0257716540945694e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 3.149075155306491e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "045",
+      "image": "images/pcb/IMG_20250819_235854_1_jpg.rf.c972ca1131e9d19f42d96feac39ee3ea.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250819_235854_1_jpg.rf.c972ca1131e9d19f42d96feac39ee3ea.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "ec0f577846c0df14f4fdeaadfa9873ed67feb276e1c95920cfe391828505f2cf",
+      "tensorEntry": "045.f32",
+      "tensorSha256": "bf5e9f5f4eaaf4b2f4ed1a999ecde9ced7937ff872a30af2b1d491e2e93ba26c",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "a45fcfae95326e8ac0822d2028cdd467b61c6f69c774dc90c1cc82ef8c9c0cc6",
+      "rawLogits": [
+        -3.008375406265259,
+        -5.206362724304199,
+        -8.047384262084961,
+        -3.073808431625366,
+        -7.6690993309021,
+        5.583333969116211
+      ],
+      "probabilities": [
+        0.00018556740163153755,
+        2.060287953184231e-05,
+        1.202507922513833e-06,
+        0.00017381389221077692,
+        1.755395596325086e-06,
+        0.999617057923107
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.999617057923107
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.00018556740163153755
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.00017381389221077692
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 2.060287953184231e-05
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 1.755395596325086e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "247f35f40b1f2b55908e4359c374c0ff9bdd65a5884a358954f0668a212be6b2",
+        "rawLogits": [
+          -2.9143664836883545,
+          -5.159621715545654,
+          -7.92936372756958,
+          -2.947519540786743,
+          -7.5980682373046875,
+          5.489850997924805
+        ],
+        "probabilities": [
+          0.0002238162123830989,
+          2.3702245016465895e-05,
+          1.4856149164188537e-06,
+          0.00021651777205988765,
+          2.0691204554168507e-06,
+          0.9995324611663818
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.9995324611663818
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.0002238162123830989
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.00021651777205988765
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 2.3702245016465895e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 2.0691204554168507e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "046",
+      "image": "images/pcb/IMG_20250819_235854_jpg.rf.1301ce39100af13ea5388ee514c5ae8d.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250819_235854_jpg.rf.1301ce39100af13ea5388ee514c5ae8d.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "8e0fac75f0a69590a403700ac16f5082da25caf9615f0eaf5339425be822b20a",
+      "tensorEntry": "046.f32",
+      "tensorSha256": "f5024ab3c757752e041524236cd5c06c464f2394a6290406c0f6dc443adb3f44",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "f9ec455ee8008afc02ede3d5624475b54ad13db074c455783d20b2f3807a471d",
+      "rawLogits": [
+        -2.67447829246521,
+        -4.958384990692139,
+        -7.974826812744141,
+        -3.738935708999634,
+        -7.494186878204346,
+        5.976796627044678
+      ],
+      "probabilities": [
+        0.00017485907017899237,
+        1.781558503526794e-05,
+        8.725213249007546e-07,
+        6.0311507299887264e-05,
+        1.4109620130217148e-06,
+        0.9997447303541479
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.9997447303541479
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.00017485907017899237
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 6.0311507299887264e-05
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 1.781558503526794e-05
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 1.4109620130217148e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "3db56b0c46aab2bbc23472cba8eab0576a3d05abc035aeaf6031c32041fe5275",
+        "rawLogits": [
+          -2.545376777648926,
+          -5.005583763122559,
+          -7.968812465667725,
+          -3.776384115219116,
+          -7.544933795928955,
+          6.015268802642822
+        ],
+        "probabilities": [
+          0.0001914446329465136,
+          1.6352676539099775e-05,
+          8.446468768852355e-07,
+          5.590154250967316e-05,
+          1.290515911023249e-06,
+          0.999734103679657
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.999734103679657
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.0001914446329465136
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 5.590154250967316e-05
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 1.6352676539099775e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 1.290515911023249e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "047",
+      "image": "images/pcb/IMG_20250819_235855_1_jpg.rf.f04c1306dc16b1f9b9278111b7d62f68.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250819_235855_1_jpg.rf.f04c1306dc16b1f9b9278111b7d62f68.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "a9f8bddddcaf48fa0c52a5f242de16b08aebcd7cd05532b55c5cfd63618cdf81",
+      "tensorEntry": "047.f32",
+      "tensorSha256": "8533102d383e7701f33796d4109329da098b9db66083cd260ce4474c9590f068",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "5b08a682d01a2e74c6f7a3eab0fe100a3254ecafe0869639a3378af6427c0ae1",
+      "rawLogits": [
+        -2.0722150802612305,
+        -5.220884323120117,
+        -7.168837070465088,
+        -3.834294557571411,
+        -7.724370002746582,
+        5.633614540100098
+      ],
+      "probabilities": [
+        0.0004499470682993923,
+        1.930686451422009e-05,
+        2.7524955135001637e-06,
+        7.725027475992816e-05,
+        1.5792894447289389e-06,
+        0.9994491640074683
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.9994491640074683
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.0004499470682993923
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 7.725027475992816e-05
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 1.930686451422009e-05
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 2.7524955135001637e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "0abf790d090b7bb54afc5244a47c86a258de88aa090d2ffa8a009f4239caf2b2",
+        "rawLogits": [
+          -2.048922538757324,
+          -5.248844623565674,
+          -7.210914611816406,
+          -3.805403470993042,
+          -7.722251892089844,
+          5.692669868469238
+        ],
+        "probabilities": [
+          0.00043414876563474536,
+          1.7698230294627137e-05,
+          2.487790879968088e-06,
+          7.495636236853898e-05,
+          1.4919110071787145e-06,
+          0.9994692206382751
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.9994692206382751
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.00043414876563474536
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 7.495636236853898e-05
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 1.7698230294627137e-05
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 2.487790879968088e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "048",
+      "image": "images/pcb/IMG_20250819_235855_jpg.rf.ec4e49eb3acae9ad6cf5993ae2a773e8.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250819_235855_jpg.rf.ec4e49eb3acae9ad6cf5993ae2a773e8.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "32aeaeb6cf85ae8c7c5202e8e8aa1695f2c4c493c9e115b5165e50c5c10f71b4",
+      "tensorEntry": "048.f32",
+      "tensorSha256": "6aee3623daa8e77cb7591bf9016301116c59086d88bedaf1747bee8ea3062404",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "b660007f817c4cc11886d37ba4b238cb6bb6c9d6674b2a67d189175ec5bdf89d",
+      "rawLogits": [
+        -3.098116159439087,
+        -5.254454612731934,
+        -8.07081127166748,
+        -3.449118137359619,
+        -7.528533458709717,
+        6.0262556076049805
+      ],
+      "probabilities": [
+        0.0001089553809518348,
+        1.2611385235243731e-05,
+        7.544572496590228e-07,
+        7.670266637331315e-05,
+        1.2976061580447502e-06,
+        0.9997996785040318
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.9997996785040318
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.0001089553809518348
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 7.670266637331315e-05
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 1.2611385235243731e-05
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 1.2976061580447502e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "4e01d4282dbb1654f43e40f5e0f706d200729785d40487a32aa7c928274f7419",
+        "rawLogits": [
+          -3.070413827896118,
+          -5.311492443084717,
+          -8.097515106201172,
+          -3.5379793643951416,
+          -7.56784725189209,
+          6.026589393615723
+        ],
+        "probabilities": [
+          0.00011197903222637251,
+          1.1908271517313551e-05,
+          7.343350603150611e-07,
+          7.015773735474795e-05,
+          1.2471712125261547e-06,
+          0.9998040795326233
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.9998040795326233
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.00011197903222637251
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 7.015773735474795e-05
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 1.1908271517313551e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 1.2471712125261547e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "049",
+      "image": "images/pcb/IMG_20250819_235930_jpg.rf.d83c7b6eba6e84b684277de0e5deeeb4.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250819_235930_jpg.rf.d83c7b6eba6e84b684277de0e5deeeb4.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "cad5c741cde72704eb87edf7094cd810e016b2c78632d2fc82a9128243a6391c",
+      "tensorEntry": "049.f32",
+      "tensorSha256": "aa686ef0b5cfb2045475c8d79a4ddbc1d374090102f0f1f503ac490062211d93",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "3639fbaf995f5f924ea18e8c4a8ea042c1bed74d0740274a1fc73a82d6e10ee7",
+      "rawLogits": [
+        -4.842756271362305,
+        -5.154188632965088,
+        -10.298874855041504,
+        -3.418579339981079,
+        -9.516440391540527,
+        6.645755767822266
+      ],
+      "probabilities": [
+        1.0246519202992353e-05,
+        7.5045214309442706e-06,
+        4.375363754625083e-08,
+        4.2568518994172985e-05,
+        9.567999297329162e-08,
+        0.9999395410067414
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.9999395410067414
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 4.2568518994172985e-05
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 1.0246519202992353e-05
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 7.5045214309442706e-06
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 9.567999297329162e-08
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "c20522fb5d9e3fcd2bc87677eecb99845b48bd837acf404cc97ee9c37ae32107",
+        "rawLogits": [
+          -4.9338297843933105,
+          -5.197566986083984,
+          -10.296224594116211,
+          -3.4072890281677246,
+          -9.503199577331543,
+          6.623420238494873
+        ],
+        "probabilities": [
+          9.565849723003339e-06,
+          7.348246526817093e-06,
+          4.486057747499217e-08,
+          4.402422928251326e-05,
+          9.914518983578091e-08,
+          0.9999388456344604
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.9999388456344604
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 4.402422928251326e-05
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 9.565849723003339e-06
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 7.348246526817093e-06
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 9.914518983578091e-08
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "050",
+      "image": "images/pcb/IMG_20250819_235931_2_jpg.rf.13a2291cd8f07b383435a932bbcc4e6a.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250819_235931_2_jpg.rf.13a2291cd8f07b383435a932bbcc4e6a.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "4e7fa20ec11bc7719b00ca1183101a6c5b954b97a304f87c66f1506444cbf2c0",
+      "tensorEntry": "050.f32",
+      "tensorSha256": "9e9561bbfac898c2e2efc25e31183343a412ef130f3761b5ec92ad06c955fd12",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "7d80e15bf1bb0997ed4df7f2d6b12c1bd2d7630fc9b8032aa91b011e42ae1cb1",
+      "rawLogits": [
+        -4.624996185302734,
+        -3.76664662361145,
+        -9.605969429016113,
+        -4.577780246734619,
+        -9.846429824829102,
+        6.941508769989014
+      ],
+      "probabilities": [
+        9.477908888797213e-06,
+        2.236088600995128e-05,
+        6.50883609417823e-08,
+        9.936150272820538e-06,
+        5.117675116135028e-08,
+        0.9999581087897164
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.9999581087897164
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 2.236088600995128e-05
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 9.936150272820538e-06
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 9.477908888797213e-06
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 6.50883609417823e-08
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "4ba1c07d1e6fde1d5ce9e1b12f23b9a49fec6c5b14eba79163e1e1e863f08d3e",
+        "rawLogits": [
+          -4.680097579956055,
+          -3.778681516647339,
+          -9.678773880004883,
+          -4.667990684509277,
+          -9.81583309173584,
+          6.929739475250244
+        ],
+        "probabilities": [
+          9.075997695617843e-06,
+          2.23549814108992e-05,
+          6.123460138951486e-08,
+          9.186538591166027e-06,
+          5.339153119621187e-08,
+          0.9999593496322632
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.9999593496322632
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 2.23549814108992e-05
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 9.186538591166027e-06
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 9.075997695617843e-06
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 6.123460138951486e-08
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "051",
+      "image": "images/pcb/IMG_20250819_235939_1_jpg.rf.6b3ceff1f99e5d0f9c0da48d741dc194.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250819_235939_1_jpg.rf.6b3ceff1f99e5d0f9c0da48d741dc194.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "e9f6c87b697575ee581223a51ccccd286455221731070495e9ec7d4481bf1ade",
+      "tensorEntry": "051.f32",
+      "tensorSha256": "d4486f481bfa54885c04c38ed55c7046b9046e38a252f69cb733bbc840005102",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "bd82210993610b24de27a24f298d18689980720d45d10279e3e65481bf3daacf",
+      "rawLogits": [
+        -3.9772558212280273,
+        -4.886287689208984,
+        -9.967973709106445,
+        -3.8935723304748535,
+        -10.046733856201172,
+        6.634434223175049
+      ],
+      "probabilities": [
+        2.4624923295961367e-05,
+        9.921729036942594e-06,
+        6.16082914703094e-08,
+        2.6774302428976645e-05,
+        5.694217710423247e-08,
+        0.9999385604947695
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.9999385604947695
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 2.6774302428976645e-05
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 2.4624923295961367e-05
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 9.921729036942594e-06
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 6.16082914703094e-08
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "e7cea469bbc1c646ae8bc69ca4582eb701175d20a2187f0c36a27aee06c4b0e4",
+        "rawLogits": [
+          -3.9236278533935547,
+          -4.970224857330322,
+          -10.044193267822266,
+          -3.911848545074463,
+          -10.049158096313477,
+          6.647989273071289
+        ],
+        "probabilities": [
+          2.5631774406065233e-05,
+          9.000105819723103e-06,
+          5.631847344034213e-08,
+          2.5935496523743495e-05,
+          5.603955699484686e-08,
+          0.9999393224716187
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.9999393224716187
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 2.5935496523743495e-05
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 2.5631774406065233e-05
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 9.000105819723103e-06
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 5.631847344034213e-08
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "052",
+      "image": "images/pcb/IMG_20250819_235945_jpg.rf.4b18a9226a923f8ab01e2acb3b4d2e8e.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250819_235945_jpg.rf.4b18a9226a923f8ab01e2acb3b4d2e8e.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "ad2e9ba15b607c93a370a7b40bac638ce2016bfc0c32b2a2f78f5b1583fcd2c7",
+      "tensorEntry": "052.f32",
+      "tensorSha256": "eaf325b715cbac2745c1b30860e3e8c073302ed5e90c6a4f110631feee9dae42",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "11dfc43f52da147e30e1ff99e5a5882589ad92787cfb502713a92f029289615c",
+      "rawLogits": [
+        -3.727797508239746,
+        -4.487918376922607,
+        -10.875640869140625,
+        -6.424588680267334,
+        -9.072057723999023,
+        6.097393989562988
+      ],
+      "probabilities": [
+        5.4067634870631634e-05,
+        2.5282561562222358e-05,
+        4.2527361914598383e-08,
+        3.6453215868730883e-06,
+        2.581990563473644e-07,
+        0.999916703755562
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.999916703755562
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 5.4067634870631634e-05
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 2.5282561562222358e-05
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 3.6453215868730883e-06
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 2.581990563473644e-07
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "26fe4059ed8962ab24b0ef2e54f19e7e36b2aef63faf01b39547673c769c18dd",
+        "rawLogits": [
+          -3.6086761951446533,
+          -4.5326409339904785,
+          -10.995354652404785,
+          -6.483852386474609,
+          -9.053739547729492,
+          6.131392478942871
+        ],
+        "probabilities": [
+          5.8871453802566975e-05,
+          2.3368544134427793e-05,
+          3.6467916686433455e-08,
+          3.3207140859303763e-06,
+          2.5418134441679285e-07,
+          0.9999141693115234
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.9999141693115234
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 5.8871453802566975e-05
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 2.3368544134427793e-05
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 3.3207140859303763e-06
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 2.5418134441679285e-07
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "053",
+      "image": "images/pcb/IMG_20250819_235951_jpg.rf.4de6acc3d1063ed79d9edf34a855ce99.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250819_235951_jpg.rf.4de6acc3d1063ed79d9edf34a855ce99.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "5d6f6ffacd6e408686cea241ca9824436f7b5fac74ee0c4d901b42c5c10dc08d",
+      "tensorEntry": "053.f32",
+      "tensorSha256": "97fcfcd517632bfa5ee9d5230e7a53e3b158aaf317525b6ead8506c7df528d98",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "35cde652f33121efa0e7e51c010529640bb81f32c481a77f05fb94e8163d011e",
+      "rawLogits": [
+        -4.4487690925598145,
+        -2.8360300064086914,
+        -8.783516883850098,
+        -3.7760510444641113,
+        -7.733471393585205,
+        6.431275844573975
+      ],
+      "probabilities": [
+        1.8827423209375914e-05,
+        9.444839252635189e-05,
+        2.4673674931864057e-07,
+        3.6893394952208566e-05,
+        7.051196229065472e-07,
+        0.9998488789329398
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.9998488789329398
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 9.444839252635189e-05
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 3.6893394952208566e-05
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 1.8827423209375914e-05
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 7.051196229065472e-07
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "4803c4995aea88a4d9bbc31f247a3a75da3a6d80e7a5bb8ef932524feabf67b6",
+        "rawLogits": [
+          -4.415959358215332,
+          -2.924300193786621,
+          -8.80335807800293,
+          -3.677345037460327,
+          -7.6918134689331055,
+          6.383399486541748
+        ],
+        "probabilities": [
+          2.040943581960164e-05,
+          9.070899250218645e-05,
+          2.5375086920575995e-07,
+          4.271761645213701e-05,
+          7.711620355621562e-07,
+          0.9998451471328735
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.9998451471328735
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 9.070899250218645e-05
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 4.271761645213701e-05
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 2.040943581960164e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 7.711620355621562e-07
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "054",
+      "image": "images/pcb/IMG_20250819_235956_1_jpg.rf.13c8f40791f750605aa42a1d3e903da9.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250819_235956_1_jpg.rf.13c8f40791f750605aa42a1d3e903da9.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "07c98c92587a01bfc88897cc91664d82c0b24aaf72f7ceb507d458a5fa99c866",
+      "tensorEntry": "054.f32",
+      "tensorSha256": "5cba89d582107593400e8c28b59e9673e759b6c3861c832ef127ece946fb5f42",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "1b588852caa361e1068047587956d3fbe0a8f60cafa1e08d3353ad43edcf6c1d",
+      "rawLogits": [
+        -5.131792068481445,
+        -3.0216214656829834,
+        -9.343183517456055,
+        -3.032142400741577,
+        -8.270975112915039,
+        4.683450698852539
+      ],
+      "probabilities": [
+        5.456071401373204e-05,
+        0.0004501067167623828,
+        8.089021275676527e-07,
+        0.00044539599726525406,
+        2.3634704198641467e-06,
+        0.9990467641994112
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.9990467641994112
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.0004501067167623828
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.00044539599726525406
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 5.456071401373204e-05
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 2.3634704198641467e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "94959da7dad2ba48cfb914153153b31a0c2b3b6aa23e459880f0ba1beda2d02e",
+        "rawLogits": [
+          -5.1471428871154785,
+          -3.0502729415893555,
+          -9.294195175170898,
+          -3.0304839611053467,
+          -8.229536056518555,
+          4.767313480377197
+        ],
+        "probabilities": [
+          4.941178121953271e-05,
+          0.00040224401163868606,
+          7.812477633706294e-07,
+          0.0004102833627257496,
+          2.2655017346551176e-06,
+          0.9991350769996643
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.9991350769996643
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.0004102833627257496
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.00040224401163868606
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 4.941178121953271e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 2.2655017346551176e-06
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "055",
+      "image": "images/pcb/IMG_20250820_000035_jpg.rf.3407d126afc41a5158e1ab67a1306b90.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250820_000035_jpg.rf.3407d126afc41a5158e1ab67a1306b90.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "16f539123675e9a9db988461d929ce888849428de3de3e3011a8b7a90e72e851",
+      "tensorEntry": "055.f32",
+      "tensorSha256": "da6c1491b783108b571bb011819dfd9b03e901cbf4eccea9f1c83d6b8a527564",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "ed40c472da25dfa220a1b9c859ca2c71f032c43785814bc3026e79e7cb20c84c",
+      "rawLogits": [
+        -3.4559898376464844,
+        -6.560919284820557,
+        -6.017215728759766,
+        -6.6820597648620605,
+        -6.8223419189453125,
+        0.7531761527061462
+      ],
+      "probabilities": [
+        0.014599253373155823,
+        0.0006544506754922573,
+        0.001127208810078695,
+        0.0005797840695532993,
+        0.0005038978587210402,
+        0.982535405212999
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.982535405212999
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.014599253373155823
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 0.001127208810078695
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 0.0006544506754922573
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.0005797840695532993
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "cb8e56e7a865633fcb2030ad4ae1bcbff80abecb068df305d044ef3ec9330c91",
+        "rawLogits": [
+          -3.470386505126953,
+          -6.656919002532959,
+          -6.023019790649414,
+          -6.690338611602783,
+          -6.915915489196777,
+          0.7872176170349121
+        ],
+        "probabilities": [
+          0.013921454548835754,
+          0.0005751632270403206,
+          0.001084151677787304,
+          0.0005562591250054538,
+          0.00044392579002305865,
+          0.9834189414978027
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.9834189414978027
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.013921454548835754
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 0.001084151677787304
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 0.0005751632270403206
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.0005562591250054538
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "056",
+      "image": "images/pcb/IMG_20250820_000047_jpg.rf.c2f82c69a566742b8d1f5b87fd1b9984.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250820_000047_jpg.rf.c2f82c69a566742b8d1f5b87fd1b9984.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "cca7ef6c47e87af152d68766239f703219ba8f488030d044a3367a3f7a582ab6",
+      "tensorEntry": "056.f32",
+      "tensorSha256": "b1fce8ceb5e82717381c2568cbacdd789d724f98700c9c7371badc57ecb29cfc",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "8cc3b9451e27899a452a37b20b29461575a377e5470cf5e502ae174b90ee47ca",
+      "rawLogits": [
+        -4.3807902336120605,
+        -12.546003341674805,
+        -7.486984729766846,
+        -6.570075035095215,
+        -5.804982662200928,
+        0.12599852681159973
+      ],
+      "probabilities": [
+        0.010866249825830038,
+        3.090101104576394e-06,
+        0.0004864929558150672,
+        0.0012169854251663549,
+        0.0026155364262311744,
+        0.9848116452658527
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.9848116452658527
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.010866249825830038
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.0026155364262311744
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.0012169854251663549
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 0.0004864929558150672
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "24faf3dc67c4e91a151e2d28fd451c1ea1e3f429c9e9265a2cf0c2771688f84a",
+        "rawLogits": [
+          -4.3666582107543945,
+          -12.555586814880371,
+          -7.343812942504883,
+          -6.588474273681641,
+          -5.888259410858154,
+          0.22799283266067505
+        ],
+        "probabilities": [
+          0.009966949932277203,
+          2.767934120129212e-06,
+          0.0005076921079307795,
+          0.001080537447705865,
+          0.002176402835175395,
+          0.9862657189369202
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.9862657189369202
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.009966949932277203
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.002176402835175395
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.001080537447705865
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 0.0005076921079307795
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "057",
+      "image": "images/pcb/IMG_20250820_000048_jpg.rf.6a99fa63000cac5c466630531a0a9129.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250820_000048_jpg.rf.6a99fa63000cac5c466630531a0a9129.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "8fa88d1323d90f73a98da0aeb54726b8987e196ca47d7fad848cd3418727429c",
+      "tensorEntry": "057.f32",
+      "tensorSha256": "8f2806b3216b34506f1c8357210ad22362f2e7bc1244ce200a4ae62a3fce90d4",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "abd6f74b22c2df25757fdb6e5da4563c9abd7d833bc2612d98b601cde5bbc0fc",
+      "rawLogits": [
+        -4.622182846069336,
+        -12.43025016784668,
+        -7.713893890380859,
+        -6.431257247924805,
+        -6.246088981628418,
+        0.5068281292915344
+      ],
+      "probabilities": [
+        0.005873480459254713,
+        2.3872339164327347e-06,
+        0.0002667979461739495,
+        0.0009621094893372165,
+        0.0011578226851373659,
+        0.9917374021861803
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.9917374021861803
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 0.005873480459254713
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 0.0011578226851373659
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 0.0009621094893372165
+        },
+        {
+          "index": 2,
+          "category": "Light bulb",
+          "probability": 0.0002667979461739495
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "c2333bd2a4e47773c742048b8d2d98569dc43a256a076ba42061993d90f3cc48",
+        "rawLogits": [
+          -4.888595104217529,
+          -12.482250213623047,
+          -7.737526893615723,
+          -6.46034574508667,
+          -6.233064651489258,
+          0.4437277615070343
+        ],
+        "probabilities": [
+          0.004797431640326977,
+          2.416164534224663e-06,
+          0.000277800892945379,
+          0.0009963368065655231,
+          0.0012505846098065376,
+          0.9926754832267761
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.9926754832267761
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 0.004797431640326977
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 0.0012505846098065376
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 0.0009963368065655231
+          },
+          {
+            "index": 2,
+            "category": "Light bulb",
+            "probability": 0.000277800892945379
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "058",
+      "image": "images/pcb/IMG_20250820_000127_jpg.rf.1cd11b1b49dea06042f3597002d6027f.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250820_000127_jpg.rf.1cd11b1b49dea06042f3597002d6027f.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "e2621a8f520ed5dd39f3332ee36f68acea086d4445c7914d1eb1d4f971ecbe2e",
+      "tensorEntry": "058.f32",
+      "tensorSha256": "82946767347c624ff95ee651a227b910136cfa57fb7ace1192c7802ca6dd9128",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "1a4934148e812cbb01eafad63d8ff9ddde18d924526c3cebe87be8fc67a753b0",
+      "rawLogits": [
+        -4.98546028137207,
+        -8.986905097961426,
+        -10.584137916564941,
+        -9.531632423400879,
+        -8.482272148132324,
+        4.24873161315918
+      ],
+      "probabilities": [
+        9.763293493852297e-05,
+        1.7856278106555592e-06,
+        3.615110211560606e-07,
+        1.0356639748329145e-06,
+        2.9576736133213477e-06,
+        0.9998962265886414
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.9998962265886414
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 9.763293493852297e-05
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 2.9576736133213477e-06
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 1.7856278106555592e-06
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 1.0356639748329145e-06
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "190efacdc7957e3fc9422a410cafcd492d3e9c79c7d58c4f0de27ddf525bd333",
+        "rawLogits": [
+          -4.9120635986328125,
+          -9.044419288635254,
+          -10.497215270996094,
+          -9.581189155578613,
+          -8.54500961303711,
+          4.352630615234375
+        ],
+        "probabilities": [
+          9.470021905144677e-05,
+          1.5194685829555965e-06,
+          3.554270335826004e-07,
+          8.883324085218192e-07,
+          2.503701807654579e-06,
+          0.9998999834060669
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.9998999834060669
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 9.470021905144677e-05
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 2.503701807654579e-06
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 1.5194685829555965e-06
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 8.883324085218192e-07
+          }
+        ]
+      }
+    },
+    {
+      "imageId": "059",
+      "image": "images/pcb/IMG_20250820_000200_jpg.rf.c7a263db062da89abf39061e96a7de27.jpg",
+      "source": "ml/data/processed/classification/test/pcb/IMG_20250820_000200_jpg.rf.c7a263db062da89abf39061e96a7de27.jpg",
+      "trueClass": "pcb",
+      "imageSha256": "dfaf437432239c01f3082a632d0a6386b583cb54a10dab35be32a1cd28f3374b",
+      "tensorEntry": "059.f32",
+      "tensorSha256": "fb65faa6f1ff73115aa83fdfc9eed77373a0dd7b92b0aff22e14df4e48ada2f8",
+      "decodedShape": [
+        640,
+        640,
+        3
+      ],
+      "decodedSha256": "41acda34e2087e6c3881ae45d4a3a02e089549d6043da7a1825c6931880050bd",
+      "rawLogits": [
+        -5.678841590881348,
+        -8.463838577270508,
+        -9.402215957641602,
+        -4.503173828125,
+        -9.318696975708008,
+        5.484036445617676
+      ],
+      "probabilities": [
+        1.419047204039916e-05,
+        8.75967551794463e-07,
+        3.427329829213877e-07,
+        4.598147137196195e-05,
+        3.725870308822212e-07,
+        0.9999382367690222
+      ],
+      "top5": [
+        {
+          "index": 5,
+          "category": "Printed circuit board",
+          "probability": 0.9999382367690222
+        },
+        {
+          "index": 3,
+          "category": "Mobile phone",
+          "probability": 4.598147137196195e-05
+        },
+        {
+          "index": 0,
+          "category": "Battery waste",
+          "probability": 1.419047204039916e-05
+        },
+        {
+          "index": 1,
+          "category": "Keyboard",
+          "probability": 8.75967551794463e-07
+        },
+        {
+          "index": 4,
+          "category": "Mouse",
+          "probability": 3.725870308822212e-07
+        }
+      ],
+      "phase8Reference": {
+        "preprocessedTensorSha256": "addf1d4cc16d78492616aed28eee0e182588dca7826c37417e522e71c654f56c",
+        "rawLogits": [
+          -5.650320053100586,
+          -8.474637031555176,
+          -9.483081817626953,
+          -4.440045356750488,
+          -9.256974220275879,
+          5.516204833984375
+        ],
+        "probabilities": [
+          1.413879817846464e-05,
+          8.391260166717984e-07,
+          3.0610132739639084e-07,
+          4.742726741824299e-05,
+          3.837624262814643e-07,
+          0.9999369382858276
+        ],
+        "top5": [
+          {
+            "index": 5,
+            "category": "Printed circuit board",
+            "probability": 0.9999369382858276
+          },
+          {
+            "index": 3,
+            "category": "Mobile phone",
+            "probability": 4.742726741824299e-05
+          },
+          {
+            "index": 0,
+            "category": "Battery waste",
+            "probability": 1.413879817846464e-05
+          },
+          {
+            "index": 1,
+            "category": "Keyboard",
+            "probability": 8.391260166717984e-07
+          },
+          {
+            "index": 4,
+            "category": "Mouse",
+            "probability": 3.837624262814643e-07
+          }
+        ]
+      }
+    }
+  ],
+  "preprocessingProbes": [
+    {
+      "id": "rgba_alpha_png",
+      "image": "probes/rgba_alpha.png",
+      "imageSha256": "59d766124c293cd976915709cf401eac4868f1ca0492415f54f22e95a243e233",
+      "decodedShape": [
+        240,
+        320,
+        3
+      ],
+      "decodedEntry": "probe-0.rgb8",
+      "decodedSha256": "ba91db0c1be775a601c80afc74b9545bb46da39101da2e24724c804d8daf402f",
+      "tensorEntry": "probe-0.f32",
+      "tensorSha256": "1431d6cb42ccae3873a25bb4c8e6f3eee4819b48a690a79f6f1592df842189b4"
+    },
+    {
+      "id": "exif_orientation_6_jpeg",
+      "image": "probes/jpeg_exif_orientation_6.jpg",
+      "imageSha256": "cea228abce95e2bddcc8135721bc1e5c5d32b79520ff2e6ea9d28a0285efd9a4",
+      "decodedShape": [
+        240,
+        320,
+        3
+      ],
+      "decodedEntry": "probe-1.rgb8",
+      "decodedSha256": "8a7717f3538d994b094a0ecf71f568f8877d65753a337c56de0da9ba6f307056",
+      "tensorEntry": "probe-1.f32",
+      "tensorSha256": "0ecfa0003473946bf176a239ceaf824ba3a4ff51c8c226cda87192799b8afcc8"
+    }
+  ]
+}

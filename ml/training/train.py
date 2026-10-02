@@ -41,28 +41,25 @@ def list_files(data_root: Path, split: str, classes: list[dict]) -> tuple[list[s
 
 
 def make_dataset(data_root: Path, split: str, classes: list[dict], batch_size: int, shuffle: bool) -> tf.data.Dataset:
-    dataset = tf.keras.utils.image_dataset_from_directory(
-        data_root / split,
-        labels="inferred",
-        label_mode="int",
-        class_names=[entry["name"] for entry in classes],
-        color_mode="rgb",
-        image_size=IMAGE_SIZE,
-        batch_size=batch_size,
-        shuffle=shuffle,
-        seed=SEED if shuffle else None,
-        interpolation="bilinear",
-        crop_to_aspect_ratio=False,
-    )
-    if dataset.class_names != [entry["name"] for entry in classes]:
-        raise ValueError(f"Dataset classes do not match class_mapping.json: {dataset.class_names}")
+    paths, labels = list_files(data_root, split, classes)
+    dataset = tf.data.Dataset.from_tensor_slices((paths, labels))
+    if shuffle:
+        dataset = dataset.shuffle(len(paths), seed=SEED, reshuffle_each_iteration=True)
 
-    def preprocess(images: tf.Tensor, labels: tf.Tensor) -> tuple[tf.Tensor, tf.Tensor]:
-        rgb = tf.cast(images, tf.float32) / 127.5 - 1.0
-        nchw = tf.transpose(rgb, [0, 3, 1, 2])
-        return nchw, labels
+    def decode_resize(path: tf.Tensor, label: tf.Tensor) -> tuple[tf.Tensor, tf.Tensor]:
+        encoded = tf.io.read_file(path)
+        is_png = tf.strings.regex_full_match(tf.strings.lower(path), ".*\\.png")
+        rgb = tf.cond(
+            is_png,
+            lambda: tf.io.decode_png(encoded, channels=3),
+            lambda: tf.io.decode_jpeg(encoded, channels=3, dct_method="INTEGER_ACCURATE"),
+        )
+        resized = tf.image.resize(rgb, IMAGE_SIZE, method="bilinear", antialias=False)
+        nchw = tf.transpose(resized / 127.5 - 1.0, [2, 0, 1])
+        return nchw, label
 
-    return dataset.map(preprocess, num_parallel_calls=1).prefetch(1)
+    dataset = dataset.map(decode_resize, num_parallel_calls=1)
+    return dataset.batch(batch_size).prefetch(1)
 
 
 def build_model(class_count: int) -> tuple[tf.keras.Model, tf.keras.Model]:

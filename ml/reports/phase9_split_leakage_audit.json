@@ -1,0 +1,276 @@
+{
+  "dataRoot": "ml/data/processed/classification",
+  "images": 643,
+  "countsBySplitAndClass": {
+    "train": {
+      "battery_waste": 103,
+      "keyboard": 90,
+      "light_bulb": 31,
+      "mobile_phone": 106,
+      "mouse": 47,
+      "pcb": 146
+    },
+    "validation": {
+      "battery_waste": 10,
+      "keyboard": 10,
+      "light_bulb": 3,
+      "mobile_phone": 11,
+      "mouse": 11,
+      "pcb": 15
+    },
+    "test": {
+      "battery_waste": 15,
+      "keyboard": 8,
+      "light_bulb": 3,
+      "mobile_phone": 12,
+      "mouse": 6,
+      "pcb": 16
+    }
+  },
+  "corruptOrSmall": [],
+  "unsupportedFiles": [],
+  "exactDuplicateGroups": [],
+  "sourceFilenameFamiliesCrossingSplits": [],
+  "crossSplitDHashDistanceAtMost3": [
+    {
+      "distance": 3,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/battery_waste/IMG_20250803_215638_jpg.rf.ba4f3127b341131ea269136e3d2b124e.jpg",
+      "leftSplit": "train",
+      "leftLabel": "battery_waste",
+      "right": "ml/data/processed/classification/validation/battery_waste/IMG_20250803_215639_jpg.rf.fbe999007ecf4fd037195142c1702267.jpg",
+      "rightSplit": "validation",
+      "rightLabel": "battery_waste"
+    },
+    {
+      "distance": 3,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/battery_waste/IMG_20250803_215648_jpg.rf.c339d9561861e32aec3649527f4423f7.jpg",
+      "leftSplit": "train",
+      "leftLabel": "battery_waste",
+      "right": "ml/data/processed/classification/validation/battery_waste/IMG_20250803_215639_jpg.rf.fbe999007ecf4fd037195142c1702267.jpg",
+      "rightSplit": "validation",
+      "rightLabel": "battery_waste"
+    },
+    {
+      "distance": 2,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/battery_waste/IMG_20250822_231201_jpg.rf.44bc2d8fc2946f343332124c030baa7e.jpg",
+      "leftSplit": "train",
+      "leftLabel": "battery_waste",
+      "right": "ml/data/processed/classification/validation/battery_waste/IMG_20250822_231201_1_jpg.rf.3ee4562ffda16d4de26bfe881d3c0a8b.jpg",
+      "rightSplit": "validation",
+      "rightLabel": "battery_waste"
+    },
+    {
+      "distance": 3,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/battery_waste/IMG_20250822_231210_1_jpg.rf.bf5f830d9485eb8d3bf5ca84d009a28d.jpg",
+      "leftSplit": "train",
+      "leftLabel": "battery_waste",
+      "right": "ml/data/processed/classification/test/battery_waste/IMG_20250822_231209_1_jpg.rf.fcf651145e2d95b81efe4e9904f3cfed.jpg",
+      "rightSplit": "test",
+      "rightLabel": "battery_waste"
+    },
+    {
+      "distance": 1,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/keyboard/IMG_20250822_135902_jpg.rf.74d747b6bf4265df472619033ad67b14.jpg",
+      "leftSplit": "train",
+      "leftLabel": "keyboard",
+      "right": "ml/data/processed/classification/validation/keyboard/IMG_20250822_135903_jpg.rf.a4113502495933e697f731c4c8f73979.jpg",
+      "rightSplit": "validation",
+      "rightLabel": "keyboard"
+    },
+    {
+      "distance": 0,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/keyboard/IMG_20250822_135902_jpg.rf.74d747b6bf4265df472619033ad67b14.jpg",
+      "leftSplit": "train",
+      "leftLabel": "keyboard",
+      "right": "ml/data/processed/classification/validation/keyboard/IMG_20250822_135905_jpg.rf.38ad275938f82a1a7dd66f5e6ea0abbc.jpg",
+      "rightSplit": "validation",
+      "rightLabel": "keyboard"
+    },
+    {
+      "distance": 0,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/keyboard/IMG_20250822_135902_jpg.rf.74d747b6bf4265df472619033ad67b14.jpg",
+      "leftSplit": "train",
+      "leftLabel": "keyboard",
+      "right": "ml/data/processed/classification/validation/keyboard/IMG_20250822_135906_jpg.rf.3b7d2cbc98e29c0fcb4c76e1ca805446.jpg",
+      "rightSplit": "validation",
+      "rightLabel": "keyboard"
+    },
+    {
+      "distance": 3,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/keyboard/IMG_20250822_135911_jpg.rf.3c17a94c830285c2baab6a963f036a2a.jpg",
+      "leftSplit": "train",
+      "leftLabel": "keyboard",
+      "right": "ml/data/processed/classification/validation/keyboard/IMG_20250822_135913_1_jpg.rf.e523beb553e404e87d04d9f51fc707e6.jpg",
+      "rightSplit": "validation",
+      "rightLabel": "keyboard"
+    },
+    {
+      "distance": 3,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/keyboard/IMG_20250822_135911_jpg.rf.3c17a94c830285c2baab6a963f036a2a.jpg",
+      "leftSplit": "train",
+      "leftLabel": "keyboard",
+      "right": "ml/data/processed/classification/test/keyboard/IMG_20250822_135913_jpg.rf.1a2398d375a8d8737469f91847530138.jpg",
+      "rightSplit": "test",
+      "rightLabel": "keyboard"
+    },
+    {
+      "distance": 2,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/keyboard/IMG_20250822_140219_jpg.rf.02ec3714370ecd019073128a348ea140.jpg",
+      "leftSplit": "train",
+      "leftLabel": "keyboard",
+      "right": "ml/data/processed/classification/test/keyboard/IMG_20250822_140222_jpg.rf.ff63928f6fd759424a21461d4c5e1203.jpg",
+      "rightSplit": "test",
+      "rightLabel": "keyboard"
+    },
+    {
+      "distance": 0,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/keyboard/IMG_20250822_140223_jpg.rf.1306b02c448e484476bfb44cd9960957.jpg",
+      "leftSplit": "train",
+      "leftLabel": "keyboard",
+      "right": "ml/data/processed/classification/test/keyboard/IMG_20250822_140222_jpg.rf.ff63928f6fd759424a21461d4c5e1203.jpg",
+      "rightSplit": "test",
+      "rightLabel": "keyboard"
+    },
+    {
+      "distance": 0,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/keyboard/IMG_20250822_140316_jpg.rf.ee07999425e965357a1cf5a45b46d93f.jpg",
+      "leftSplit": "train",
+      "leftLabel": "keyboard",
+      "right": "ml/data/processed/classification/validation/keyboard/IMG_20250822_140317_jpg.rf.8a8350e9a0119414b9d805cd5d27bb2a.jpg",
+      "rightSplit": "validation",
+      "rightLabel": "keyboard"
+    },
+    {
+      "distance": 3,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/light_bulb/IMG_20250803_221537_jpg.rf.f94a1d39a26e5aacb39cde33918a6f82.jpg",
+      "leftSplit": "train",
+      "leftLabel": "light_bulb",
+      "right": "ml/data/processed/classification/validation/light_bulb/IMG_20250803_221539_jpg.rf.fdd8d01810754a6be1a9802cba87e223.jpg",
+      "rightSplit": "validation",
+      "rightLabel": "light_bulb"
+    },
+    {
+      "distance": 2,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/light_bulb/IMG_20250803_221540_jpg.rf.7c1bf9738f9bc3a5e16edfeb0e65ab3b.jpg",
+      "leftSplit": "train",
+      "leftLabel": "light_bulb",
+      "right": "ml/data/processed/classification/validation/light_bulb/IMG_20250803_221539_jpg.rf.fdd8d01810754a6be1a9802cba87e223.jpg",
+      "rightSplit": "validation",
+      "rightLabel": "light_bulb"
+    },
+    {
+      "distance": 2,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/mobile_phone/IMG_20250803_220243_jpg.rf.c17d27aa58b11aa0475d5b41c8ddbd97.jpg",
+      "leftSplit": "train",
+      "leftLabel": "mobile_phone",
+      "right": "ml/data/processed/classification/validation/mobile_phone/IMG_20250803_220244_jpg.rf.25e694fad0069d6b3720bcfeff342f09.jpg",
+      "rightSplit": "validation",
+      "rightLabel": "mobile_phone"
+    },
+    {
+      "distance": 2,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/mobile_phone/IMG_20250805_203338_jpg.rf.68cadbff708a1a27b20e57a030073a53.jpg",
+      "leftSplit": "train",
+      "leftLabel": "mobile_phone",
+      "right": "ml/data/processed/classification/test/mobile_phone/IMG_20250805_203338_1_jpg.rf.bf2025683e05750526dc29fc829b8ac5.jpg",
+      "rightSplit": "test",
+      "rightLabel": "mobile_phone"
+    },
+    {
+      "distance": 3,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/mobile_phone/IMG_20250805_203804_jpg.rf.d0d25dd17b163cc60b1a269ea27346dd.jpg",
+      "leftSplit": "train",
+      "leftLabel": "mobile_phone",
+      "right": "ml/data/processed/classification/validation/mobile_phone/IMG_20250805_203803_jpg.rf.46ed623c40ba0974562c6bbf6953d2cf.jpg",
+      "rightSplit": "validation",
+      "rightLabel": "mobile_phone"
+    },
+    {
+      "distance": 3,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/mobile_phone/IMG_20250805_203806_jpg.rf.7fd019ac3a6efc21e4b37227c5bb73e1.jpg",
+      "leftSplit": "train",
+      "leftLabel": "mobile_phone",
+      "right": "ml/data/processed/classification/validation/mobile_phone/IMG_20250805_203803_jpg.rf.46ed623c40ba0974562c6bbf6953d2cf.jpg",
+      "rightSplit": "validation",
+      "rightLabel": "mobile_phone"
+    },
+    {
+      "distance": 3,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/mobile_phone/IMG_20250805_203851_jpg.rf.30549cb0368d0ebf082a10e12534ea69.jpg",
+      "leftSplit": "train",
+      "leftLabel": "mobile_phone",
+      "right": "ml/data/processed/classification/test/mobile_phone/IMG_20250805_203852_jpg.rf.14242e22d41ed3ca487f99b193502f87.jpg",
+      "rightSplit": "test",
+      "rightLabel": "mobile_phone"
+    },
+    {
+      "distance": 2,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/mobile_phone/IMG_20250805_203917_jpg.rf.41ede18eba5e4814a68b0143d4b637b7.jpg",
+      "leftSplit": "train",
+      "leftLabel": "mobile_phone",
+      "right": "ml/data/processed/classification/validation/mobile_phone/IMG_20250805_203918_jpg.rf.0320c79bd3505204e3c7b6d35a1d716a.jpg",
+      "rightSplit": "validation",
+      "rightLabel": "mobile_phone"
+    },
+    {
+      "distance": 2,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/pcb/IMG_20250819_235853_jpg.rf.e95c8d2b451c6f2c57a329213addcc46.jpg",
+      "leftSplit": "train",
+      "leftLabel": "pcb",
+      "right": "ml/data/processed/classification/test/pcb/IMG_20250819_235855_1_jpg.rf.f04c1306dc16b1f9b9278111b7d62f68.jpg",
+      "rightSplit": "test",
+      "rightLabel": "pcb"
+    },
+    {
+      "distance": 3,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/pcb/IMG_20250819_235957_1_jpg.rf.8395b3c2109ab1b121449f163cf7c81d.jpg",
+      "leftSplit": "train",
+      "leftLabel": "pcb",
+      "right": "ml/data/processed/classification/test/pcb/IMG_20250819_235956_1_jpg.rf.13c8f40791f750605aa42a1d3e903da9.jpg",
+      "rightSplit": "test",
+      "rightLabel": "pcb"
+    },
+    {
+      "distance": 1,
+      "sameLabel": true,
+      "left": "ml/data/processed/classification/train/pcb/IMG_20250820_000208_1_jpg.rf.ab380142c7dec1bf20a763ba6d75c2ec.jpg",
+      "leftSplit": "train",
+      "leftLabel": "pcb",
+      "right": "ml/data/processed/classification/validation/pcb/IMG_20250820_000208_jpg.rf.8ef14c59eeed172b81cad649377fa976.jpg",
+      "rightSplit": "validation",
+      "rightLabel": "pcb"
+    }
+  ],
+  "crossSplitDHashCandidateCount": 23,
+  "sourceArchiveCrossSplitDHashCandidateCount": 544,
+  "interpretation": "dHash distance <=3 marks candidates for visual review; it does not prove same physical object. Any unresolved candidate remains a split-leakage gate failure.",
+  "manualVisualReview": {
+    "reviewedPairCount": 23,
+    "method": "Side-by-side contact sheet inspection of every cross-split dHash candidate.",
+    "finding": "All reviewed pairs show the same apparent object or near-identical view in the same scene. Image-only review cannot establish physical-object identity, so all remain potential leakage candidates.",
+    "disposition": "UNRESOLVED; retain as a split leakage gate failure until related views are grouped or removed and the split is rebuilt."
+  },
+  "gate": "FAIL"
+}

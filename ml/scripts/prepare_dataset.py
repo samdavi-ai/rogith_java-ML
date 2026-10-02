@@ -84,6 +84,8 @@ def audit_and_prepare(data_root: Path, classes_path: Path, output_root: Path, re
         "missingImagesForLabels": 0,
         "exactDuplicateGroups": [],
         "nearDuplicateCandidatesAcrossSplits": [],
+        "nearDuplicateCandidatesWithinSourceSplit": [],
+        "nearDuplicateClassConflicts": [],
         "sourceGroupCrossSplitLeaks": [],
         "classificationImagesBySplitAndClass": {split: Counter() for split in SPLITS.values()},
         "classificationUniqueSourceGroupsBySplitAndClass": {split: Counter() for split in SPLITS.values()},
@@ -162,23 +164,32 @@ def audit_and_prepare(data_root: Path, classes_path: Path, output_root: Path, re
         if label in canonical_by_source:
             report["uniqueSourceGroupsBySplitAndClass"][source_split][label] += 1
 
-    # The filename family is the available grouping key. Compare one representative
-    # of every source family across partitions for additional near-duplicate leaks.
-    representatives = [min(rows, key=lambda row: str(row["path"])) for rows in groups.values()]
-    hashes = [(row, dhash(row["path"])) for row in representatives]
+    # Compare every source image variant across filename families before creating
+    # new splits. Comparing only source-partition crossings or one family
+    # representative can leave near-identical source views split between train/test.
+    hashes = [(row, dhash(row["path"])) for row in records]
     near_edges: list[tuple[tuple[str, str], tuple[str, str]]] = []
     for index, (left, left_hash) in enumerate(hashes):
         for right, right_hash in hashes[index + 1:]:
-            if left["sourceSplit"] == right["sourceSplit"]:
-                continue
+            left_group = (left["sourceSplit"], left["group"])
+            right_group = (right["sourceSplit"], right["group"])
             distance = (left_hash ^ right_hash).bit_count()
             if distance <= 3:
-                report["nearDuplicateCandidatesAcrossSplits"].append({
+                candidate = {
                     "distance": distance, "left": str(left["path"]), "right": str(right["path"]),
                     "leftClass": left["label"], "rightClass": right["label"],
-                })
+                }
+                if left["sourceSplit"] == right["sourceSplit"]:
+                    report["nearDuplicateCandidatesWithinSourceSplit"].append(candidate)
+                else:
+                    report["nearDuplicateCandidatesAcrossSplits"].append(candidate)
                 if left["label"] == right["label"] and left["label"] in canonical_by_source:
-                    near_edges.append(((left["sourceSplit"], left["group"]), (right["sourceSplit"], right["group"])))
+                    near_edges.append((left_group, right_group))
+                elif left["label"] in canonical_by_source and right["label"] in canonical_by_source:
+                    report["nearDuplicateClassConflicts"].append({
+                        "distance": distance, "left": str(left["path"]), "right": str(right["path"]),
+                        "leftClass": left["label"], "rightClass": right["label"],
+                    })
 
     if report["sourceGroupCrossSplitLeaks"]:
         raise ValueError(f"Source-group leakage across splits: {report['sourceGroupCrossSplitLeaks'][:5]}")
@@ -226,7 +237,7 @@ def audit_and_prepare(data_root: Path, classes_path: Path, output_root: Path, re
                 assigned_split[key] = split
     report["nearDuplicateComponentCount"] = len({find(key) for keys in selected_groups.values() for key in keys})
     report["selectedNearDuplicateEdgesGrouped"] = len(near_edges)
-    report["splitMethod"] = "Selected-class source filename families connected by same-class dHash distance <=3 were kept together; deterministic seed-42 70/15/15 split stratified by class; training variants retained only in train."
+    report["splitMethod"] = "Every source-image variant was compared across source partitions; selected-class same-label filename families connected by dHash distance <=3 were kept together; deterministic seed-42 70/15/15 split stratified by class; training variants retained only in train. Cross-class near-duplicate candidates are reported for manual label review."
 
     # Keep all train variants; held-out components contain one image per family.
     for (source_split, group), rows in groups.items():

@@ -118,18 +118,59 @@ function renderCameraPrediction(prediction) {
   const percentage = Math.round(confidence * 1000) / 10;
   const level = confidence >= ML_HIGH_CONFIDENCE_THRESHOLD ? 'High confidence' : confidence >= ML_MEDIUM_CONFIDENCE_THRESHOLD ? 'Moderate confidence' : 'Low confidence';
   const unsure = prediction.isUnsure || prediction.category === 'UNSURE' || confidence < ML_MEDIUM_CONFIDENCE_THRESHOLD;
-  $('cameraLiveMessage').textContent = unsure ? 'No clear match. You can view this result or take another photo.' : 'Photo identified. Review the result or take another photo.';
-  $('cameraPrediction').innerHTML = `<h4>${unsure ? 'Unable to identify' : escapeHtml(prediction.category)}</h4><p>${percentage}% confidence · ${level}</p>`;
+  $('cameraLiveMessage').textContent = prediction.live
+    ? (unsure ? 'Live scan: no clear V1 match yet. Keep the item visible or move closer.' : `Live identification: ${prediction.category}. Keep the item in view for updates.`)
+    : (unsure ? 'No clear match. You can view this result or take another photo.' : 'Photo identified. Review the result or take another photo.');
+  $('cameraPrediction').innerHTML = `<h4>${unsure ? 'Unable to identify' : escapeHtml(prediction.category)}</h4><p>${percentage}% confidence · ${level}${prediction.live ? ' · Live V1' : ''}</p>`;
   $('cameraPrediction').hidden = false;
   $('useResultButton').hidden = false;
   $('captureButton').disabled = false;
-  $('captureButton').textContent = 'Capture another photo';
+  $('captureButton').textContent = 'Capture current item';
+}
+
+function renderLiveDetections(detections) {
+  const canvas = $('liveDetectionOverlay');
+  const frame = $('cameraVideo');
+  const wrapper = canvas.parentElement;
+  const bounds = wrapper.getBoundingClientRect();
+  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = Math.max(1, Math.round(bounds.width * ratio));
+  canvas.height = Math.max(1, Math.round(bounds.height * ratio));
+  const context = canvas.getContext('2d');
+  context.setTransform(ratio, 0, 0, ratio, 0, 0);
+  context.clearRect(0, 0, bounds.width, bounds.height);
+  wrapper.classList.toggle('has-detections', detections.length > 0);
+  if (!detections.length || !frame.videoWidth || !frame.videoHeight) return;
+
+  const scale = Math.min(bounds.width / frame.videoWidth, bounds.height / frame.videoHeight);
+  const offsetX = (bounds.width - frame.videoWidth * scale) / 2;
+  const offsetY = (bounds.height - frame.videoHeight * scale) / 2;
+  context.font = '600 14px Inter, Arial, sans-serif';
+  context.lineWidth = 3;
+  detections.forEach(item => {
+    const [x,y,width,height] = item.bbox;
+    const left = offsetX + x * scale;
+    const top = offsetY + y * scale;
+    const boxWidth = width * scale;
+    const boxHeight = height * scale;
+    const label = `${item.class} ${Math.round(item.score * 100)}%`;
+    context.strokeStyle = '#83e1a6';
+    context.strokeRect(left, top, boxWidth, boxHeight);
+    const labelWidth = context.measureText(label).width + 16;
+    const labelTop = Math.max(0, top - 26);
+    context.fillStyle = '#173b29';
+    context.fillRect(left, labelTop, labelWidth, 24);
+    context.fillStyle = '#fff';
+    context.fillText(label, left + 8, labelTop + 17);
+  });
 }
 
 const cameraController = new CameraController({
   video: $('cameraVideo'),
   apiBase: window.EWASTE_API_BASE_URL || '',
   onState: handleCameraState,
+  onDetections: renderLiveDetections,
+  onLiveStatus: message => { $('cameraLiveMessage').textContent = message; },
   onCameraCount: count => { $('switchCameraButton').hidden = count < 2; },
   onTorchAvailability: (supported, enabled) => {
     const button = $('flashlightButton');
@@ -144,13 +185,13 @@ const cameraController = new CameraController({
     $('useResultButton').hidden = true;
     $('retryInferenceButton').hidden = true;
     $('captureButton').disabled = false;
-    $('captureButton').textContent = 'Capture and identify';
+    $('captureButton').textContent = 'Capture current item';
   },
   onNetworkError: message => {
     $('cameraLiveMessage').textContent = message;
     $('retryInferenceButton').hidden = false;
     $('captureButton').disabled = false;
-    $('captureButton').textContent = 'Capture and identify';
+    $('captureButton').textContent = 'Capture current item';
   }
 });
 
@@ -177,13 +218,17 @@ $('startCameraButton').addEventListener('click', async () => {
   $('cameraRecovery').hidden = true;
   $('cameraPrediction').hidden = true;
   $('captureButton').disabled = false;
-  $('captureButton').textContent = 'Capture and identify';
+  $('captureButton').textContent = 'Capture current item';
   $('useResultButton').hidden = true;
   $('retryInferenceButton').hidden = true;
   stableCameraPrediction = null;
-  await cameraController.start();
+  const started = await cameraController.start();
+  if (started) cameraController.startLiveIdentification();
 });
-$('retryCameraButton').addEventListener('click', () => cameraController.start());
+$('retryCameraButton').addEventListener('click', async () => {
+  const started = await cameraController.start();
+  if (started) cameraController.startLiveIdentification();
+});
 $('switchCameraButton').addEventListener('click', () => cameraController.switchCamera());
 $('flashlightButton').addEventListener('click', async () => {
   const enabled = await cameraController.toggleTorch();
@@ -216,7 +261,7 @@ $('captureButton').addEventListener('click', async () => {
   const completed = await cameraController.captureAndClassify();
   if (cameraController.stream) {
     $('captureButton').disabled = false;
-    if (completed) $('captureButton').textContent = 'Capture another photo';
+    $('captureButton').textContent = 'Capture current item';
   }
 });
 $('useResultButton').addEventListener('click', () => {

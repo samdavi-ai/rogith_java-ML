@@ -38,16 +38,16 @@
         <div class="camera-heading"><div><p class="eyebrow">Live camera</p><h3 id="cameraHeading">Identify with camera</h3></div><button class="text-button" id="closeCameraButton" type="button">Close</button></div>
         <div id="cameraSetup" class="camera-setup">
           <p>Use your camera to identify an electronic item in real time.</p>
-          <p>Your camera is accessed only while this screen is active. Video is not recorded or stored.</p>
+          <p>Camera preview boxes are analyzed on this device. Crops of detected phones, keyboards, and mice are sent to RecoLens for live V1 identification while this screen is active; frames are not saved. Other detected items are boxed but may not have a matching V1 class.</p>
           <p id="cameraSetupMessage" class="camera-live-message" role="status" hidden></p>
           <button class="button primary" id="startCameraButton" type="button">Start camera</button>
         </div>
         <div id="cameraActive" hidden>
-          <div class="camera-frame"><video id="cameraVideo" autoplay playsinline muted aria-label="Live camera preview"></video><div class="camera-guide" aria-hidden="true"><span></span></div></div>
-          <p class="camera-framing-hint">Fit the whole item inside the frame. Move closer until it fills most of the box.</p>
+          <div class="camera-frame"><video id="cameraVideo" autoplay playsinline muted aria-label="Live camera preview"></video><canvas id="liveDetectionOverlay" aria-hidden="true"></canvas><div class="camera-guide" aria-hidden="true"><span></span></div></div>
+          <p class="camera-framing-hint">Green boxes mark objects detected on this device. Keep the whole electronic item visible for live V1 identification.</p>
           <p id="cameraLiveMessage" class="camera-live-message" role="status" aria-live="polite">Camera active. Identification will be unavailable until a trained model is configured.</p>
           <div id="cameraPrediction" class="camera-prediction" aria-live="polite" hidden></div>
-          <div class="camera-controls"><button class="button primary" id="captureButton" type="button">Capture and identify</button><button class="button primary" id="useResultButton" type="button" hidden>View result</button><button class="button secondary" id="retryInferenceButton" type="button" hidden>Try another capture</button><button class="button secondary" id="switchCameraButton" type="button" hidden>Switch camera</button><button class="button secondary" id="flashlightButton" type="button" aria-pressed="false" hidden>Turn flashlight on</button><button class="text-button" id="stopCameraButton" type="button">Stop camera</button></div>
+          <div class="camera-controls"><button class="button primary" id="captureButton" type="button">Capture current item</button><button class="button primary" id="useResultButton" type="button" hidden>View result</button><button class="button secondary" id="retryInferenceButton" type="button" hidden>Try another capture</button><button class="button secondary" id="switchCameraButton" type="button" hidden>Switch camera</button><button class="button secondary" id="flashlightButton" type="button" aria-pressed="false" hidden>Turn flashlight on</button><button class="text-button" id="stopCameraButton" type="button">Stop camera</button></div>
         </div>
         <div id="cameraError" class="camera-error" role="alert" hidden></div>
         <div id="cameraRecovery" class="camera-controls" hidden><button class="button secondary" id="retryCameraButton" type="button">Try again</button><button class="text-button" id="cameraUploadFallback" type="button">Upload a photo instead</button></div>
@@ -82,6 +82,7 @@
   <footer><a class="brand" href="#home" aria-label="RecoLens home"><img class="brand-logo" src="assets/branding/recolens-logo.svg" alt=""><span>RecoLens</span></a><span>AI-Powered E-Waste Identification &amp; Recycling Assistant</span><a href="#about">About this service</a></footer>
   <script src="api-config.js"></script>
   <script src="history-store.js"></script>
+  <script src="live-object-detector.js"></script>
   <script src="camera-controller.js"></script>
   <script src="app.js"></script>
 </body>

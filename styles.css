@@ -44,6 +44,8 @@
 .camera-frame{position:relative;isolation:isolate;border-radius:8px}
 .camera-frame video{display:block}
 .camera-guide{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.camera-frame.has-detections .camera-guide{display:none}
+.camera-frame #liveDetectionOverlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .camera-guide span{width:76%;height:72%;border:2px solid rgba(255,255,255,.88);border-radius:12px;box-shadow:0 0 0 999px rgba(12,18,14,.12),0 1px 8px rgba(0,0,0,.55);}
 .camera-framing-hint{max-width:760px;margin:0 auto 10px;color:#526057;font-size:13px;text-align:center}
 @media(max-width:700px){.camera-frame{aspect-ratio:3/4;max-height:58vh}.camera-guide span{width:80%;height:70%;border-radius:14px}.camera-framing-hint{font-size:12px;padding:0 8px}}

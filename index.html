@@ -43,7 +43,8 @@
           <button class="button primary" id="startCameraButton" type="button">Start camera</button>
         </div>
         <div id="cameraActive" hidden>
-          <div class="camera-frame"><video id="cameraVideo" autoplay playsinline muted aria-label="Live camera preview"></video></div>
+          <div class="camera-frame"><video id="cameraVideo" autoplay playsinline muted aria-label="Live camera preview"></video><div class="camera-guide" aria-hidden="true"><span></span></div></div>
+          <p class="camera-framing-hint">Fit the whole item inside the frame. Move closer until it fills most of the box.</p>
           <p id="cameraLiveMessage" class="camera-live-message" role="status" aria-live="polite">Camera active. Identification will be unavailable until a trained model is configured.</p>
           <div id="cameraPrediction" class="camera-prediction" aria-live="polite" hidden></div>
           <div class="camera-controls"><button class="button primary" id="captureButton" type="button">Capture and identify</button><button class="button primary" id="useResultButton" type="button" hidden>View result</button><button class="button secondary" id="retryInferenceButton" type="button" hidden>Try another capture</button><button class="button secondary" id="switchCameraButton" type="button" hidden>Switch camera</button><button class="button secondary" id="flashlightButton" type="button" aria-pressed="false" hidden>Turn flashlight on</button><button class="text-button" id="stopCameraButton" type="button">Stop camera</button></div>
